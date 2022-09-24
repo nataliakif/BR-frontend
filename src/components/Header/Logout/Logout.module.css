@@ -1,0 +1,11 @@
+.logoutBtn {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 2.71;
+    text-decoration-line: underline;
+    color: #242a37;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+};
