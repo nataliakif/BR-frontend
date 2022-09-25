@@ -18,7 +18,6 @@ const baseQueryWithErrorHandler = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (!result?.meta?.response?.ok) {
-    //console.log('Ошибочка');
     let errorMessage = '';
     switch (result.meta.response.status) {
       case 400:

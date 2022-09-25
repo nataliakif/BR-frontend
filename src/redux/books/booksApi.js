@@ -1,6 +1,6 @@
 import { apiSlice } from '../api/apiSlice';
 
-export const contactsApi = apiSlice.injectEndpoints({
+export const booksApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
     fetchBooks: builder.query({
       query: () => '/books',
@@ -61,4 +61,4 @@ export const {
   useCreateBookMutation,
   useDeleteBookMutation,
   useEditBookMutation,
-} = contactsApi;
+} = booksApi;
