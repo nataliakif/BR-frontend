@@ -3,9 +3,17 @@
     align-items: center;
     position: absolute;
     top: 50%;
-    right: 74px;
+    right: 81px;
     transform: translateY(-50%);
-};
+}
+
+@media screen and (min-width: 768px) {
+    .userBar {
+        right: 50%;
+        display: flex;
+        transform: translate(50%, -50%);
+    }
+}
 
 .firstLetter {
     font-family: 'Montserrat';
@@ -21,7 +29,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-};
+}
+
+@media screen and (min-width:768px) {
+    .firstLetter {
+        margin-right: 11px;
+    }
+}
 
 .userName {
     font-family: 'Montserrat';
@@ -30,4 +44,10 @@
     line-height: 2.71;
     color: #242a37;
     display: none;
+}
+
+@media screen and (min-width:768px) {
+    .userName {
+        display: inline;
+    }
 }
