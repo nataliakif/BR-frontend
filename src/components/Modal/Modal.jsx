@@ -34,7 +34,6 @@ const ModalWrapper = ({ open, onClose, children }) => {
 };
 
 ModalWrapper.propTypes = {
-  size: PropTypes.oneOf(['small', 'large']),
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
