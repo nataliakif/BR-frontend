@@ -1,0 +1,140 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   width: 280px;
+   margin: 0 auto;
+}
+
+.googleLink {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 700;
+   width: 150px;
+   font-size: 16px;
+   line-height: 2.37;
+   text-decoration: none;
+   margin: 0 auto 25px;
+   color: #707375;
+   background-color: #F5F7FA;
+   box-shadow: 0px 2px 2px rgb(9 30 63 / 15%);
+}
+
+.form {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 15px;
+}
+
+.label {
+   position: relative;
+   margin-bottom: 8px;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 1.21;
+   color: #FFFFFF;
+}
+
+.label:first-child:after {
+   position: absolute;
+   content: '*';
+   top: 0;
+   left: 35px;
+   color: #F25137;
+}
+
+.label:nth-child(3):after {
+   position: absolute;
+   content: '*';
+   top: 0;
+   left: 61px;
+   color: #F25137;
+}
+
+.input {
+   margin-bottom: 20px;
+   padding: 14px 8px;
+   outline: none;
+   border: none;
+   background: #F5F7FA;
+   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+}
+
+.input::placeholder {
+   font-style: normal;
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 1.21px;
+   color: #A6ABB9;
+
+}
+
+.btn {
+   box-sizing: border-box;
+   border: none;
+   padding: 20px 113px;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 1.25;
+   color: #FFFFFF;
+   background-color: #FF6B08;
+   transition: background-color 250ms ease-in-out;
+}
+
+.btn:hover {
+   cursor: pointer;
+   background-color: #D15807;
+}
+
+.signupLink {
+   text-align: center;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 1.23;
+   color: #FF6B08;
+   transition: color 250ms ease-in-out;
+}
+
+.signupLink:hover {
+   cursor: pointer;
+   color: #D15807;
+}
+
+.errorEmail, .errorPassword {
+   position: absolute;
+   left: 32%;
+   top: 30%;
+   font-size: 12px;
+   color: #F25137;
+}
+
+.errorPassword {
+   top: 67%;
+}
+
+@media screen and (min-width: 768px) {
+   .container {
+      width: 320px;
+      margin: 0 auto;
+      padding: 45px 40px 45px;
+      background-color: #FFFFFF;
+   }
+
+   .googleLink {
+      margin: 0 auto 30px;
+   }
+
+   .form {
+      margin-bottom: 20px;
+   }
+
+   .label {
+      color: #898F9F;
+   }
+}

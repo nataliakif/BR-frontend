@@ -4,13 +4,18 @@
   "private": true,
   "homepage": "https://nataliakif.github.io/BR-frontend/",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "formik": "^2.2.9",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-media": "^1.10.0",
+    "react-redux": "^8.0.4",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.3"
+    "web-vitals": "^2.1.3",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
