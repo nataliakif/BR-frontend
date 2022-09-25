@@ -1,4 +1,4 @@
-.container{
+.container {
     margin-left: auto;
     margin-right: auto;
     padding-left: 20px;
@@ -9,7 +9,25 @@
     align-items: center;
     position: relative;
     justify-content: space-between;
+};
+ 
+
+@media screen and (min-width: 768px) {
+    .container {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    
 }
+
+@media screen and (min-width: 1248px) {
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+
 
 .header {
     height: 60px;
