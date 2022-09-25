@@ -9,11 +9,9 @@ const Header = () => {
         <header className={s.header}>
             <div className={s.container}>
                 <span className={s.logo}>BR</span>
-                <>
-                    <UserBar />
-                    <Navigation />
-                    <Logout/>
-                </>
+                <UserBar />
+                <Navigation />
+                <Logout />
             </div>
         </header>
     );
