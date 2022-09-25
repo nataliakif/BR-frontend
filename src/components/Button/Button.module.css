@@ -7,13 +7,18 @@
   background-color: var(--accent-color);
   color: var(--main-color);
   border: none;
-  transition: background-color 250ms linear, scale 250ms linear,
+  transition: transform 250ms linear, scale 250ms linear,
     box-shadow 250ms linear;
 }
-/* .main:disabled {
+.main:disabled,
+.transparent:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-} */
+}
+.main:hover,
+.transparent:hover {
+  transform: scale(0.9);
+}
 
 .transparent {
   display: block;
@@ -24,4 +29,6 @@
   background-color: transparent;
   color: #000000;
   border: 1px solid #000000;
+  transition: transform 250ms linear, scale 250ms linear,
+    box-shadow 250ms linear;
 }
