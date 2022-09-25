@@ -1,0 +1,33 @@
+.userBar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 74px;
+    transform: translateY(-50%);
+};
+
+.firstLetter {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 2.71;
+    text-transform: capitalize;
+    color: #242a37;
+    width: 33px;
+    height: 33px;
+    background-color: #F5F7FA;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+};
+
+.userName {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 2.71;
+    color: #242a37;
+    display: none;
+}
