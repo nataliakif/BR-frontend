@@ -1,10 +1,12 @@
 import { apiSlice } from '../api/apiSlice';
 
+const tag = 'Books';
+
 export const booksApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
     fetchBooks: builder.query({
       query: () => '/books',
-      providesTags: ['Books'],
+      providesTags: [tag],
     }),
     createBook: builder.mutation({
       query: ({ title, author, publicationDate, pageAmount }) => ({
@@ -17,14 +19,14 @@ export const booksApi = apiSlice.injectEndpoints({
           pageAmount,
         },
       }),
-      invalidatesTags: ['Books'],
+      invalidatesTags: [tag],
     }),
     deleteBook: builder.mutation({
       query: bookId => ({
         url: `/books/${bookId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Books'],
+      invalidatesTags: [tag],
     }),
     editBook: builder.mutation({
       query: ({
@@ -51,7 +53,7 @@ export const booksApi = apiSlice.injectEndpoints({
           readStatistics,
         },
       }),
-      invalidatesTags: ['Books'],
+      invalidatesTags: [tag],
     }),
   }),
 });
