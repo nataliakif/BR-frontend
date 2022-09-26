@@ -1,5 +1,6 @@
 import React from "react";
 import DatePickerInput from "../DatePicker/DatePicker";
+import { TiArrowSortedDown } from "react-icons/ti"
 import s from "./TrainingForm.module.css";
 import TrainingList from "../TrainingList/TrainingList";
 import { Formik, useFormik } from "formik";
@@ -34,10 +35,12 @@ const formik = useFormik({
        <DatePickerInput/>
        </div> 
        <div className={s.bookLabel}>
-        <input className={s.bookInput} placeholder="Choose one book from the library"></input>
+        <div className={s.bookInput} >
+          <TiArrowSortedDown width="20" height="20" className={s.arrow}/>
+          </div>
        <button type="button" className={s.btnAdd}>Add</button>
        </div>
-       <TrainingList/>
+       <TrainingList className={s.arrow}/>
        <Formik/>
         </form>
         

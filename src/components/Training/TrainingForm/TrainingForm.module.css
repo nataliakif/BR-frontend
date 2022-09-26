@@ -32,10 +32,22 @@
 }
 
 .bookInput {
-   width: 280px;
+    position: relative;
+   display: inline-block;
+   min-width: 280px;
    height: 42px;
    margin-bottom: 32px;
+   background: var(--main-color);
+   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+}
 
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
 }
 
 .btnAdd {

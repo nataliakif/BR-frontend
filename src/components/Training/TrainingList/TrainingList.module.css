@@ -1,43 +1,57 @@
-.listContainer {
+.listHeader {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.25;
     color: var(--secondary-text-color);
 }
-.booksList {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    display: grid;
-    grid-template-columns: 252px 252px 100px 100px;
+.header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
     border-top: 1px solid var(--icon-color); 
-    border-top: 1px solid var(--icon-color);
+    border-bottom: 1px solid var(--icon-color);
 }
 .item {
-    position: relative;
-    padding: 20px 40px;
-    display: grid;
-    gap: 15px;
+    margin: 0;
     font-weight: 500;
     color: var(--main-text-color);
-    border-bottom: 1px solid var(--icon-color);
-  
 }
+.list {
+    margin: 0;
+    padding: 10px;;
+    display: grid;
+    grid-template-columns: 242px 232px;
+    padding-left: 10px;
+    border-bottom: 1px solid var(--icon-color);
+}
+.itemBook {
+    font-weight: 500;
+    color: var(--main-text-color);
+}
+
 @media screen and (min-width: 768px) {
-    .listContainer{
+    .listHeader{
         margin-top: 40px;
+    }
+    .header{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        display: grid;
+        grid-template-columns: 242px 232px 100px 100px;
+        border-top: 1px solid var(--icon-color);
+        border-bottom: 1px solid var(--icon-color);
     }
     .item {
         padding-left: 0;
-        display: grid;
-        grid-template-columns: 252px 252px 100px 100px;
-        gap: unset;
     }
-   
 }
 
 @media screen and (min-width: 1280px) {
-    .listContainer{
+    .listHeader{
         margin-top: 23px;
+    }
+    .header {
+        grid-template-columns: 345px 340px 100px 100px;
     }
 }
  
