@@ -1,4 +1,4 @@
-import { apiSlice } from 'redux/apiSlice';
+import { apiSlice } from '../api/apiSlice';
 
 export const authUserApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
