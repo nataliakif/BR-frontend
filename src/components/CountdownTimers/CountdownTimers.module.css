@@ -1,0 +1,70 @@
+.countdownTimers {
+  margin-top: 20px;
+}
+
+.countdownTimer {
+  text-align: -webkit-center;
+}
+
+.countdownTimer:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.countdownTimer h3 {
+  margin: 0;
+  color: var(--secondary-text-color);
+  font: 500 14px/17.07px var(--main-font);
+}
+
+.showCounter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 60px;
+  margin-top: 9px;
+  background: var(--main-color);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+
+.showCounter > p {
+  align-self: start;
+  margin: 1px 10px;
+  color: var(--goals-amount-color);
+  font: 700 25px/38px var(--countdown-font);
+}
+
+.countdown > p {
+  margin: 1px 0;
+  color: var(--goals-amount-color);
+  font: 700 25px/38px var(--countdown-font);
+}
+
+.countdown > span {
+  vertical-align: top;
+  color: var(--secondary-text-color);
+  font: 500 10px/12px var(--main-font);
+}
+
+@media screen and (min-width: 768px) {
+  .countdownTimers {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .countdownTimer:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1248px) {
+  .countdownTimers {
+    margin-top: 28px;
+  }
+
+  .countdownTimer:not(:last-child) {
+    margin-right: 74px;
+  }
+}

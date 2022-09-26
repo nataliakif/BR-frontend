@@ -1,9 +1,11 @@
-import Header from "./Header/Header";
+import Header from './Header/Header';
+import StatisticsView from 'views/StatisticsView';
 
 export const App = () => {
   return (
     <>
-      <Header/>
+      <Header />
+      <StatisticsView />
     </>
   );
 };
