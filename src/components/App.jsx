@@ -15,6 +15,7 @@ const Header = lazy(() => import('../components/Header/Header'));
 const HomeView = lazy(() => import('../views/HomeView'));
 const LibraryView = lazy(() => import('../views/LibraryView'));
 const TrainingView = lazy(() => import('../views/TrainingView'));
+const StatisticView = lazy(() => import('../views/StatisticView'));
 // const NotFoundView = lazy(() => import('../views/NotFoundView.jsx'));
 
 function App() {
@@ -34,10 +35,9 @@ function App() {
 
   return (
     <>
-      
       {/* {isFetchingCurUser && ( */}
       <Suspense fallback={<p>Loading...</p>}>
-        <Header/>
+        <Header />
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/register" element={<RegisterView />} />
@@ -47,6 +47,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/library" element={<LibraryView />} />
             <Route path="/training" element={<TrainingView />} />
+            <Route path="/statistics" element={<StatisticView />} />
           </Route>
           {/* <Route path="*" element={<NotFoundView />} /> */}
         </Routes>
