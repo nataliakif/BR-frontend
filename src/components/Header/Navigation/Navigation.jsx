@@ -1,27 +1,28 @@
 import sprite from '../images/sprite.svg';
 import s from './Navigation.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
     return (
         <nav className={s.nav}>
-            <a
+            <NavLink
                 className={s.nav_link}
                 activeclassname={s.activeLink}
-                href='/'
+                to={'/BR-frontend/library'}
             >
                 <svg className={s.navSvg}>
                     <use href={`${sprite}#icon-library-header`}></use>
                 </svg>
-            </a>
-            <a
+            </NavLink>
+            <NavLink
                 className={s.nav_link}
                 activeclassname={s.activeLink}
-                href='/'
+                to={'/BR-frontend/'}
             >
                 <svg className={s.navSvg}>
                     <use href={`${sprite}#icon-home-header`}></use>
                 </svg>
-            </a>
+            </NavLink>
         </nav>
     );
 }
