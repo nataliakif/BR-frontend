@@ -22,19 +22,33 @@ ChartJS.register(
   Legend
 );
 
-const labels = ['', '', '', 'Time'];
+export const Chart = ({ plan, readingStatistics }) => {
+  const dates = readingStatistics.map(stat => stat.date);
+  const pages = readingStatistics.map(stat => stat.pageAmount);
 
-export const Chart = ({ plan, actPages }) => {
+  let actPages = pages.length > 1 ? pages : [...pages, pages];
+
+  let maxPagesValue = Math.max(...actPages.flatMap(item => item));
+
+  const labels = dates.length > 1 ? dates : [...dates, dates];
+
+  //console.log(maxPagesValue);
+
+  let maxChartValue =
+    plan * 2 > maxPagesValue
+      ? plan * 2
+      : (maxPagesValue += maxPagesValue * 0.1);
+
   const options = {
     responsive: true,
     plugins: {
       legend: false,
     },
     scales: {
-      x: {},
+      x: { ticks: { display: false } },
       y: {
         min: 1,
-        max: plan * 2,
+        max: maxChartValue,
         ticks: { display: false },
         grid: { display: false },
       },
@@ -46,7 +60,7 @@ export const Chart = ({ plan, actPages }) => {
     datasets: [
       {
         label: 'Plan',
-        data: [30, 30, 30, 30],
+        data: [...actPages.map(item => plan)],
         backgroundColor: 'transparent',
         borderColor: 'rgb(0, 0, 0)',
         pointBorderColor: 'rgb(0, 0, 0)',
@@ -54,12 +68,12 @@ export const Chart = ({ plan, actPages }) => {
       },
       {
         label: 'Act',
-        data: actPages[1],
+        data: actPages,
         backgroundColor: 'transparent',
         borderColor: '#FF6B08',
         pointBorderColor: '#FF6B08',
         pointBorderWidth: 4,
-        tension: 0.5,
+        tension: 0.3,
       },
     ],
   };
