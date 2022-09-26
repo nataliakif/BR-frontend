@@ -34,9 +34,10 @@ function App() {
 
   return (
     <>
-      <Header />
+      
       {/* {isFetchingCurUser && ( */}
       <Suspense fallback={<p>Loading...</p>}>
+        <Header/>
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/register" element={<RegisterView />} />
