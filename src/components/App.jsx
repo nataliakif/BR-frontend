@@ -14,7 +14,7 @@ const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
 
 // const HomeView = lazy(() => import('../views/HomeView'));
-// const LibraryView = lazy(() => import('../views/LibraryView'));
+const LibraryView = lazy(() => import('../views/LibraryView'));
 // const TrainingView = lazy(() => import('../views/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
 
@@ -46,11 +46,11 @@ function App() {
           {/* <Route path="/login" element={<LoginView />} /> */}
           {/* <Route path="/" element={<HomeView />} /> */}
           {/* </Route> */}
-          {/* <Route element={<PrivateRoute />}>
-            <Route path="/library" element={<LibraryView />} />
-            <Route path="/training" element={<TrainingView />} /> */}
+          {/* <Route element={<PrivateRoute /> */}
+          <Route path="/library" element={<LibraryView />} />
+          {/* <Route path="/training" element={<TrainingView/>} /> */}
           <Route path="/statistics" element={<StatisticView />} />
-          {/* </Route> */}
+          {/* </Route>  */}
           {/* <Route path="*" element={<NotFoundView />} /> */}
         </Routes>
       </Suspense>
