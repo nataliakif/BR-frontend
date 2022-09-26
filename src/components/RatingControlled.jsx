@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Rating from '@mui/material/Rating';
 
 const RatingControlled = ({step}) => {
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(null);
   return (
     <Rating
       name="simple-controlled"

@@ -1,0 +1,13 @@
+.cardBook {
+    background-color: var(--main-color);
+    margin-bottom: 16px;
+
+}
+.cardBook:last-child {
+
+    margin-bottom: 0;
+
+}
+.cardTitleBook{
+    display: flex;
+}
