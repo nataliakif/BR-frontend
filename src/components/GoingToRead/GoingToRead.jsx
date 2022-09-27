@@ -1,4 +1,4 @@
-import GoingToReadMobile from './mobile/GoingToReadMobile';
+import GoingToReadMobile from './GoingToReadMobile/GoingToReadMobile';
 import GoingToReadMain from './GoingToReadMain/GoingToReadMain';
 import useIsMobile from "../../helpers/useIsMobile";
 
@@ -6,10 +6,6 @@ import useIsMobile from "../../helpers/useIsMobile";
 
 const GoingToRead = () => {
   const isMobile = useIsMobile();
-    
-    // if (isMobile) {
-    //     console.log("isMobile")
-    // }
   return (
     <>
       
