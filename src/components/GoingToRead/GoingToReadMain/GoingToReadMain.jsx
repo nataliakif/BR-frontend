@@ -1,7 +1,7 @@
-import books from '../../dataFiles/book.json';
-import sprite from '../../images/sprite.svg';
+import books from '../../../dataFiles/book.json';
+import sprite from '../../../images/sprite.svg';
 import EllipsisText from 'react-ellipsis-text';
-// import { useState } from 'react';
+import s from "./GoingToReadMain.module.css"
 
 import {
   createColumnHelper,
@@ -27,7 +27,7 @@ const columns = [
   columnHelper.accessor('title', {
     cell: info => (
       <i>
-        <div>
+        <div >
           <svg className="icon" width="22" height="17">
             <use href={sprite + '#icon-open-book'} />{' '}
           </svg>
@@ -58,7 +58,7 @@ const columns = [
   }),
 ];
 
-function GoingToRead() {
+function GoingToReadMain() {
 
     const data=readingNowBooks
   const table = useReactTable({
@@ -69,15 +69,16 @@ function GoingToRead() {
 
   return (
     <>
-      <h2>Going to read </h2>
+      {/* <h2>Going to read </h2> */}
       {/* {!readingNowBooks && ( */}
-      <div className="p-2">
-        <table>
+      <div>
+        <table className={s.table}>
+          <capture className={s.title}>Going to read</capture>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
+              <tr key={headerGroup.id} className={s.tablerow}>
                 {headerGroup.headers.map(header => (
-                  <th key={header.id}>
+                  <th key={header.id} className={s.tableTitleCell}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -91,9 +92,9 @@ function GoingToRead() {
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
+              <tr key={row.id} className={s.tablerow}>
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>
+                  <td key={cell.id} >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -102,9 +103,9 @@ function GoingToRead() {
           </tbody>
           <tfoot>
             {table.getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id}>
+              <tr key={footerGroup.id} className={s.tablerow}>
                 {footerGroup.headers.map(header => (
-                  <th key={header.id}>
+                  <th key={header.id} className={s.tableTitleCell}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -124,4 +125,4 @@ function GoingToRead() {
   );
 }
 
-export default GoingToRead;
+export default GoingToReadMain;
