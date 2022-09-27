@@ -1,0 +1,212 @@
+.containerTwoGoals {
+  margin-top: 20px;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}
+
+.containerThreeGoals {
+  composes: containerTwoGoals;
+}
+
+.containerTwoGoals h2 {
+  padding: 18px 0;
+  text-align: center;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--main-color);
+  background-color: var(--training-bg-color);
+}
+
+.containerThreeGoals h2 {
+  padding: 18px 0;
+  text-align: center;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--main-color);
+  background-color: var(--training-bg-color);
+}
+
+.allTwoGoals {
+  display: flex;
+  justify-content: space-around;
+  padding: 44px 30px;
+  height: 148px;
+  background-color: var(--main-color);
+}
+
+.allThreeGoals {
+  composes: allTwoGoals;
+  padding: 32px 30px;
+  height: 97px;
+}
+
+.twoGoals {
+  width: 100px;
+  text-align: center;
+}
+
+.twoGoals:not(:last-child) {
+  margin-right: 20px;
+}
+
+.twoGoals p {
+  width: 100px;
+  padding: 31px 0;
+  margin-bottom: 14px;
+  font-family: var(--countdown-font);
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 38px;
+  color: var(--goals-amount-color);
+  background-color: var(--goals-bg-color);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+
+.twoGoals h4 {
+  margin: 0;
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--secondary-text-color);
+}
+
+.threeGoals {
+  width: 66px;
+  align-self: center;
+  text-align: center;
+}
+
+.threeGoals:not(:last-child) {
+  margin-right: 16px;
+}
+
+.threeGoals p {
+  width: 63px;
+  padding: 13px 0 12px;
+  margin-bottom: 14px;
+  font-family: var(--countdown-font);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 38px;
+  color: var(--goals-amount-color);
+  background-color: var(--goals-bg-color);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+
+.threeGoals:last-child p {
+  color: var(--accent-color);
+}
+
+.threeGoals h4 {
+  margin: 0;
+  width: 55px;
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--secondary-text-color);
+}
+
+@media screen and (min-width: 650px) and (max-width: 1247px) {
+  .containerTwoGoals {
+    display: flex;
+    height: 105px;
+    width: 100%;
+    background-color: var(--main-color);
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+  }
+
+  .containerThreeGoals {
+    composes: containerTwoGoals;
+    height: 125px;
+  }
+
+  .containerTwoGoals h2 {
+    width: 275px;
+    height: 24px;
+    margin-top: 23px;
+    margin-right: auto;
+  }
+
+  .containerThreeGoals h2 {
+    width: 275px;
+    height: 24px;
+    margin-top: 23px;
+    margin-right: auto;
+  }
+
+  .allTwoGoals {
+    padding: 20px 52px 8px;
+    height: 0;
+  }
+
+  .allThreeGoals {
+    padding: 20px 52px 8px;
+    height: 0;
+  }
+
+  .twoGoals:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  .twoGoals p {
+    margin-bottom: 4px;
+    padding: 11px 0;
+    font-size: 40px;
+  }
+
+  .twoGoals h4 {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .threeGoals {
+    width: 100px;
+    align-self: end;
+    text-align: center;
+  }
+
+  .threeGoals:not(:last-child) {
+    margin-right: 12px;
+  }
+
+  .threeGoals p {
+    margin-bottom: 4px;
+    width: 100px;
+    padding: 11px 0;
+    font-size: 40px;
+  }
+
+  .threeGoals h4 {
+    width: 100px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+@media screen and (min-width: 1248px) {
+  .containerTwoGoals {
+    width: 288px;
+    height: 304px;
+    padding: 0;
+  }
+
+  .containerThreeGoals {
+    width: 288px;
+    height: 241px;
+    padding: 0;
+  }
+
+  .allTwoGoals {
+    padding: 48px 34px;
+  }
+
+  .allThreeGoals {
+    padding: 80px 25px 79px 25px;
+    height: 110px;
+  }
+}
