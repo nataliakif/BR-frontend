@@ -33,14 +33,14 @@
   display: flex;
   justify-content: space-around;
   padding: 44px 30px;
-  height: 148px;
+  height: 236px;
   background-color: var(--main-color);
 }
 
 .allThreeGoals {
   composes: allTwoGoals;
   padding: 32px 30px;
-  height: 97px;
+  height: 161px;
 }
 
 .twoGoals {
@@ -111,11 +111,11 @@
   color: var(--secondary-text-color);
 }
 
-@media screen and (min-width: 650px) and (max-width: 1247px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .containerTwoGoals {
     display: flex;
     height: 105px;
-    width: 100%;
+    padding: 20px 43px 28px 42px;
     background-color: var(--main-color);
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
   }
@@ -127,25 +127,23 @@
 
   .containerTwoGoals h2 {
     width: 275px;
-    height: 24px;
-    margin-top: 23px;
-    margin-right: auto;
+    height: 60px;
+    margin-right: 109px;
   }
 
   .containerThreeGoals h2 {
     width: 275px;
-    height: 24px;
-    margin-top: 23px;
-    margin-right: auto;
+    height: 60px;
+    margin-right: 20px;
   }
 
   .allTwoGoals {
-    padding: 20px 52px 8px;
+    padding: 0;
     height: 0;
   }
 
   .allThreeGoals {
-    padding: 20px 52px 8px;
+    padding: 0;
     height: 0;
   }
 
@@ -188,7 +186,7 @@
   }
 }
 
-@media screen and (min-width: 1248px) {
+@media screen and (min-width: 1280px) {
   .containerTwoGoals {
     width: 288px;
     height: 304px;
@@ -203,10 +201,11 @@
 
   .allTwoGoals {
     padding: 48px 34px;
+    height: 244px;
   }
 
   .allThreeGoals {
     padding: 80px 25px 79px 25px;
-    height: 110px;
+    height: 269px;
   }
 }
