@@ -13,7 +13,7 @@ const books = [
     title: 'Eloquent JavaScript, Third Edition',
     author: 'Marijn Haverbeke',
     year: '2014',
-    pages: '35',
+    pages: '350',
     rating: '3',
     status: 'Already read',
     readStatistics: [
@@ -31,7 +31,7 @@ const books = [
     rating: '2',
     status: 'Reading now',
     readStatistics: [
-      { dateTime: '10.09.22', pageAmount: 100 },
+      { dateTime: '10.09.22', pageAmount: 10 },
       { dateTime: '11.09.22', pageAmount: 11 },
       { dateTime: '12.09.22', pageAmount: 8 },
       { dateTime: '13.09.22', pageAmount: 7 },

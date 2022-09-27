@@ -22,6 +22,28 @@ ChartJS.register(
   Legend
 );
 
+const customLegend = {
+  id: 'customLegend',
+  afterDraw: (chart, args, options) => {
+    const { _metasets, ctx } = chart;
+    console.log(chart);
+    //ctx.save();
+
+    _metasets.forEach(meta => {
+      ctx.font = 'bolder 12px Montserat';
+      ctx.fillStyle = meta._dataset.borderColor;
+      ctx.textBaseLine = 'middle';
+      ctx.textAlign = 'center';
+      ctx.fillText(
+        meta._dataset.label,
+        meta.data[meta.data.length - 1].x - meta._dataset.label.length * 5,
+        meta.data[meta.data.length - 1].y - 10
+      );
+      console.log('here');
+    });
+  },
+};
+
 export const Chart = ({ plan, readingStatistics }) => {
   const dates = readingStatistics.map(stat => stat.date);
   const pages = readingStatistics.map(stat => stat.pageAmount);
@@ -40,9 +62,10 @@ export const Chart = ({ plan, readingStatistics }) => {
       : (maxPagesValue += maxPagesValue * 0.1);
 
   const options = {
-    responsive: true,
+    responsive: false,
+    maintainAspectRatio: false,
     plugins: {
-      legend: false,
+      legend: { display: false },
     },
     scales: {
       x: { ticks: { display: false } },
@@ -59,17 +82,17 @@ export const Chart = ({ plan, readingStatistics }) => {
     labels,
     datasets: [
       {
-        label: 'Plan',
+        label: 'PLAN',
         data: [...actPages.map(item => plan)],
-        backgroundColor: 'transparent',
+        backgroundColor: '#F5F7FA',
         borderColor: 'rgb(0, 0, 0)',
         pointBorderColor: 'rgb(0, 0, 0)',
         pointBorderWidth: 4,
       },
       {
-        label: 'Act',
+        label: 'ACT',
         data: actPages,
-        backgroundColor: 'transparent',
+        backgroundColor: '#F5F7FA',
         borderColor: '#FF6B08',
         pointBorderColor: '#FF6B08',
         pointBorderWidth: 4,
@@ -80,7 +103,11 @@ export const Chart = ({ plan, readingStatistics }) => {
 
   return (
     <div className={s.container}>
-      <Line options={options} data={data} />
+      <p className={s.chart__title}>
+        Amont of pages / DAY{' '}
+        <span className={s.trainigPlan__title}>{plan}</span>
+      </p>
+      <Line options={options} data={data} plugins={[customLegend]} />
     </div>
   );
 };
