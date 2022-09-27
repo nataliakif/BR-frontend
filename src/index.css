@@ -1,4 +1,10 @@
-@import 'normalize.css'; /* bring in normalize.css styles */
+/* @import '~normalize.css'; bring in normalize.css styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -9,12 +15,34 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-color);
+  color: var(--primary-text-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 ul {
   list-style: none;
 }
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+

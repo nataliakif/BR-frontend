@@ -10,7 +10,7 @@ const Header = () => {
             <div className={s.container}>
                 <span className={s.logo}>BR</span>
                 <>
-                    <UserBar />
+                    <UserBar/>
                     <Navigation />
                     <Logout/>
                 </>

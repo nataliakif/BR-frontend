@@ -1,0 +1,62 @@
+[
+  {
+    "id": "u9kgwNWGi3uUUwh0b8V49",
+    "title": "Eloquent JavaScript, Third Edition",
+    "author": "Marijn Haverbeke",
+    "year": "2014",
+    "pages": "35",
+    "read": "0",
+    "rating": "3",
+    "status": "Already read"
+  },
+  {
+    "id": "YxhM4QDxPeA3SmPHcEZPJ",
+    "title": "Practical Modern JavaScript",
+    "author": "Nicolas Bevacqua",
+    "year": "1985",
+    "pages": "128",
+    "read": "128",
+    "rating": "2",
+    "status": "Reading now"
+  },
+  {
+    "id": "ck89qe3HriUDHe09TBoJ8",
+    "title": "Speaking about JavaScript",
+    "author": "Axel Rahmayer",
+    "year": "2011",
+    "pages": "204",
+    "read": "204",
+    "rating": "43",
+    "status": "Going to read"
+  },
+  {
+    "id": "zCd_RioNMOBaQwAXnc8Px",
+    "title": "Understanding ECMAScript 6",
+    "author": "Nicholas C. Zakas",
+    "year": "2020",
+    "pages": "356",
+    "read": "0",
+    "rating": "5",
+    "status": "Going to read"
+  },
+  {
+    "id": "ck89qe3HriUDHe09TBoJ8",
+    "title": "Speaking JavaScript",
+    "author": "Axel Rauschmayer",
+    "year": "2000",
+    "pages": "200",
+    "read": "0",
+    "rating": "4",
+    "status": "Going to read"
+  },
+    {
+    "id": "zCd_RioNMOghQwAXnc8Px",
+    "title": "ECMAScript 6",
+    "author": "Nicholas  Zakas",
+    "year": "2010",
+    "pages": "351",
+    "read": "25",
+    "rating": "5",
+    "status": "Going to read"
+  }
+]

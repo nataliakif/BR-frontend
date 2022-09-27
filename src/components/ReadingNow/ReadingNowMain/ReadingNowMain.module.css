@@ -1,0 +1,35 @@
+.table{
+    width: 100%;
+    background-color:var(--main-color);
+    background-color: var(--bg-color);
+
+  border: none;
+}
+/* .table >th, 
+.table>td{
+  border: none;
+} */
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    
+}
+.tableTitleCell {
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  /* border-bottom: 1px solid var(--main-color); */
+      background-color: var(--main-color);
+        background-color: var(--bg-color);
+        
+}
+
+.tablerow{
+    background-color: var(--main-color);
+      /* background-color: var(--bg-color); */
+
+/* background-color: var(--main-color); */
+/* border: 8px solid var(--bg-color); */
+/* border: 8px solid red; */
+}
