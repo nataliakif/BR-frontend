@@ -36,6 +36,7 @@ const formik = useFormik({
        </div> 
        <div className={s.bookLabel}>
         <div className={s.bookInput} >
+            <span className={s.bookPlaceholder}>Select one book of your library</span>
           <TiArrowSortedDown width="20" height="20" className={s.arrow}/>
           </div>
        <button type="button" className={s.btnAdd}>Add</button>

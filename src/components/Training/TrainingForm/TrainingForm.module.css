@@ -8,6 +8,11 @@
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     align-items: center;
 }
+.bookPlaceholder {
+    position: absolute;
+    color: var(--icon-color);
+    padding: 10px;
+}
 .title {
     margin: 0;
     padding: 18px 81px;

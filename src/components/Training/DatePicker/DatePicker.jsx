@@ -5,9 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import s from "./DatePicker.module.css"
 import { RiCalendar2Line } from "react-icons/ri";
 import { TiArrowSortedDown } from "react-icons/ti"
+ 
 
 
-const DatePickerInput = ({ inputDate, text, onChange}) => {
+const DatePickerInput = ({ inputDate, placeholderText, onChange}) => {
 
     return (
         <div className={s.dateWrapper}>
@@ -17,6 +18,7 @@ const DatePickerInput = ({ inputDate, text, onChange}) => {
         selected={inputDate}
         onChange={(date) => onChange(date)}
         minDate={new Date()}
+        placeholderText="Start"
         className={s.dateInput}
       />
       <RiCalendar2Line className={s.dateIcon}/>

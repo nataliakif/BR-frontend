@@ -12,10 +12,21 @@ const TrainingList = () => {
             <p className={s.item}>Pages</p>
         </div >
         <ul className={s.list}>
-            <li className={s.itemBook}><BookIcon/></li>
-            <li className={s.itemBook}>...</li>
-            <li className={s.itemBook}></li>
-            <li className={s.itemBook}></li>
+            <li className={s.itemBook}><BookIcon/>
+            <span className={s.dots}>...</span>
+            </li>
+            <li className={s.itemBook}>
+            <p className={s.author}>Author</p>
+            <span className={s.dots}>...</span>
+            </li>
+            <li className={s.itemBook}>
+            <p className={s.year}>Year</p>
+            <span className={s.dots}>...</span>
+            </li>
+            <li className={s.itemBook}>
+            <p className={s.pages}>Pages</p>
+            <span className={s.dots}>...</span>
+            </li>
         </ul>
         </div>
     )
