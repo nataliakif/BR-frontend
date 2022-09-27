@@ -14,12 +14,7 @@ import {
 // console.log(readingNowBooks);
 
 
-const readingNowBooks = books.filter(book => {
-  const readPages = +book.read;
-  const pagesOfBook = +book.pages;
-
-  return readPages < pagesOfBook && readPages >= 1;
-});
+const readingNowBooks = books.filter(book => book.status === "Going to read");
 
 const columnHelper = createColumnHelper(readingNowBooks);
 
@@ -69,14 +64,14 @@ function GoingToReadMain() {
 
   return (
     <>
-      {/* <h2>Going to read </h2> */}
+      <h2 className={s.title}>Going to read </h2>
       {/* {!readingNowBooks && ( */}
       <div>
         <table className={s.table}>
-          <capture className={s.title}>Going to read</capture>
+          {/* <capture className={s.title}>Going to read</capture> */}
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} className={s.tablerow}>
+              <tr key={headerGroup.id} >
                 {headerGroup.headers.map(header => (
                   <th key={header.id} className={s.tableTitleCell}>
                     {header.isPlaceholder

@@ -1,8 +1,5 @@
-import books from '../../dataFiles/book.json';
-import sprite from '../../images/sprite.svg';
-import EllipsisText from 'react-ellipsis-text';
 // import { useState } from 'react';
-
+import EllipsisText from 'react-ellipsis-text';
 import {
   createColumnHelper,
   flexRender,
@@ -10,18 +7,20 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-// const readingNowBooks = books.filter(book => book.status === 'Reading now');
-// console.log(readingNowBooks);
+import RatingControlled from 'components/RatingControlled';
+import ResumeModal from 'components/modals/ResumeModal';
+import books from '../../../dataFiles/book.json';
+import sprite from '../../../images/sprite.svg';
+import s from "../AlreadyReadMain/AlreadyReadMain.module.css"
 
-
-const readingNowBooks = books.filter(book => {
+const alreadyReadBooks = books.filter(book => {
   const readPages = +book.read;
   const pagesOfBook = +book.pages;
 
-  return readPages < pagesOfBook && readPages >= 1;
+  return readPages >= pagesOfBook;
 });
 
-const columnHelper = createColumnHelper(readingNowBooks);
+const columnHelper = createColumnHelper(alreadyReadBooks);
 
 const columns = [
   columnHelper.accessor('title', {
@@ -56,11 +55,29 @@ const columns = [
     cell: info => info.getValue(),
     header: () => <span>Pages</span>,
   }),
+  columnHelper.accessor('rating', {
+    cell: info => (
+      <div>
+        <RatingControlled step={0.5} status={+info.getValue()} />
+      </div>
+    ),
+    header: 'Rating',
+  }),
+  columnHelper.accessor('resume', {
+    cell: () => (
+      <i>
+        <ResumeModal />
+      </i>
+    ),
+    header: '',
+  }),
 ];
 
-function GoingToReadMain() {
+function AlreadyReadMain() {
+  const data = alreadyReadBooks;
+  // setData(alreadyReadBooks);
+  // console.log(data)
 
-    const data=readingNowBooks
   const table = useReactTable({
     data,
     columns,
@@ -69,8 +86,8 @@ function GoingToReadMain() {
 
   return (
     <>
-      <h2>Going to read </h2>
-      {/* {!readingNowBooks && ( */}
+{data && (<><h2>Already read</h2>
+
       <div className="p-2">
         <table>
           <thead>
@@ -118,10 +135,9 @@ function GoingToReadMain() {
           </tfoot>
         </table>
         <div className="h-4" />
-      </div>
-      {/* )} */}
+      </div></>)}
     </>
   );
 }
 
-export default GoingToReadMain;
+export default AlreadyReadMain;

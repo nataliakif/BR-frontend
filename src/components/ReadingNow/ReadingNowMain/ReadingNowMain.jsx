@@ -1,5 +1,8 @@
-// import { useState } from 'react';
+import books from '../../../dataFiles/book.json';
+import sprite from '../../../images/sprite.svg';
 import EllipsisText from 'react-ellipsis-text';
+import s from "./ReadingNowMain.module.css"
+
 import {
   createColumnHelper,
   flexRender,
@@ -7,19 +10,11 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import RatingControlled from 'components/RatingControlled';
-import ResumeModal from 'components/modals/ResumeModal';
-import books from '../../dataFiles/book.json';
-import sprite from '../../images/sprite.svg';
+const goingToReadBooks = books.filter(book => book.status === 'Reading now');
+// console.log(goingToReadBooks);
 
-const alreadyReadBooks = books.filter(book => {
-  const readPages = +book.read;
-  const pagesOfBook = +book.pages;
 
-  return readPages >= pagesOfBook;
-});
-
-const columnHelper = createColumnHelper(alreadyReadBooks);
+const columnHelper = createColumnHelper(goingToReadBooks);
 
 const columns = [
   columnHelper.accessor('title', {
@@ -54,28 +49,11 @@ const columns = [
     cell: info => info.getValue(),
     header: () => <span>Pages</span>,
   }),
-  columnHelper.accessor('rating', {
-    cell: info => (
-      <div>
-        <RatingControlled step={0.5} status={+info.getValue()} />
-      </div>
-    ),
-    header: 'Rating',
-  }),
-  columnHelper.accessor('resume', {
-    cell: () => (
-      <i>
-        <ResumeModal />
-      </i>
-    ),
-    header: '',
-  }),
 ];
 
-function AlreadyRead() {
-  const data = alreadyReadBooks;
-  // setData(alreadyReadBooks);
-  // console.log(data)
+function ReadingNowMain() {
+  const data = [...goingToReadBooks]
+  
 
   const table = useReactTable({
     data,
@@ -85,8 +63,8 @@ function AlreadyRead() {
 
   return (
     <>
-{data && (<><h2>Already read</h2>
-
+      <h2>Reading now</h2>
+      {/* {!goingToReadBooks && ( */}
       <div className="p-2">
         <table>
           <thead>
@@ -134,9 +112,10 @@ function AlreadyRead() {
           </tfoot>
         </table>
         <div className="h-4" />
-      </div></>)}
+      </div>
+      {/* )} */}
     </>
   );
 }
 
-export default AlreadyRead;
+export default ReadingNowMain;
