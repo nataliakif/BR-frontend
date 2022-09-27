@@ -12,8 +12,9 @@ import { lazy, Suspense } from 'react';
 // const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
+
 // const HomeView = lazy(() => import('../views/HomeView'));
-// const LibraryView = lazy(() => import('../views/LibraryView'));
+const LibraryView = lazy(() => import('../views/LibraryView'));
 const TrainingView = lazy(() => import('../views/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
 // const NotFoundView = lazy(() => import('../views/NotFoundView.jsx'));
@@ -39,16 +40,16 @@ function App() {
       <Suspense fallback={<p>Loading...</p>}>
         <Header />
         <Routes>
-          {/* <Route element={<PublicRoute />}> */}
+          {/* <Route element={<PublicRoute /> */}
           <Route path="/register" element={<RegisterView />} />
-          {/* <Route path="/login" element={<LoginView />} />
-          <Route path="/" element={<HomeView />} /> */}
+          {/* <Route path="/login" element={<LoginView />} /> */}
+          {/* <Route path="/" element={<HomeView />} /> */}
           {/* </Route> */}
-          {/* <Route element={<PrivateRoute />}> */}
-          {/* <Route path="/library" element={<LibraryView />} />*/}
+          {/* <Route element={<PrivateRoute /> */}
+          <Route path="/library" element={<LibraryView />} />
           <Route path="/training" element={<TrainingView />} />
           <Route path="/statistics" element={<StatisticView />} />
-          {/* </Route> */}
+          {/* </Route>  */}
           {/* <Route path="*" element={<NotFoundView />} /> */}
         </Routes>
       </Suspense>

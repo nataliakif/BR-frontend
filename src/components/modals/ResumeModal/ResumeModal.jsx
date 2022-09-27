@@ -64,28 +64,6 @@ function ResumeModal() {
                 </Form>
               )}
             </Formik>
-            {/* <RatingControlled step={1}/> */}
-            {/* 
-              <label className={s.label}>Resume
-              <textarea
-                className={s.textAreaBox}
-                name="message" placeholder="..."
-                minLength="1"
-                maxlengt="1000"
-                required></textarea>
-              </label>
-
-          <ul className={s.buttonList}>
-            <li>
-            <button className={s.buttonBack} type="submit" onClick={handleClose}>Back</button>
-            </li>
-            <li>
-                <button className={s.buttonSave} type="submit" onClick={(e) => {
-                  
-                    console.log(e.target.value)
-            }}>Save</button>
-            </li>
-          </ul> */}
           </Box>
         </div>
       </Modal>
