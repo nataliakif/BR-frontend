@@ -26,21 +26,21 @@ const customLegend = {
   id: 'customLegend',
   afterDraw: (chart, args, options) => {
     const { _metasets, ctx } = chart;
-    console.log(chart);
-    //ctx.save();
+    let x, y;
+    ctx.font = 'bold 12px Montserat';
+    ctx.textBaseLine = 'middle';
+    ctx.textAlign = 'center';
 
     _metasets.forEach(meta => {
-      ctx.font = 'bolder 12px Montserat';
       ctx.fillStyle = meta._dataset.borderColor;
-      ctx.textBaseLine = 'middle';
-      ctx.textAlign = 'center';
-      ctx.fillText(
-        meta._dataset.label,
-        meta.data[meta.data.length - 1].x - meta._dataset.label.length * 5,
-        meta.data[meta.data.length - 1].y - 10
-      );
-      console.log('here');
+
+      x = meta.data[meta.data.length - 1].x - meta._dataset.label.length * 5;
+      y = meta.data[meta.data.length - 1].y - 10;
+
+      ctx.fillText(meta._dataset.label, x, y);
     });
+    ctx.fillStyle = '#091E3F';
+    ctx.fillText('TIME', x, chart.chartArea.height + 23);
   },
 };
 
@@ -54,16 +54,15 @@ export const Chart = ({ plan, readingStatistics }) => {
 
   const labels = dates.length > 1 ? dates : [...dates, dates];
 
-  //console.log(maxPagesValue);
-
   let maxChartValue =
     plan * 2 > maxPagesValue
       ? plan * 2
       : (maxPagesValue += maxPagesValue * 0.1);
 
   const options = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false,
+    layout: { padding: { bottom: 20 } },
     plugins: {
       legend: { display: false },
     },
