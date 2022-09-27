@@ -1,0 +1,21 @@
+.table{
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.tableTitleCell {
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+color: var(--secondary-text-color);
+}
+
+.tablerow{
+
+background-color: var(--main-color);
+}

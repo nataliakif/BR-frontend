@@ -1,0 +1,64 @@
+
+.title {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.21;
+
+  margin-bottom: 20px;
+}
+
+.card {
+  /* max-width: 280px; */
+}
+
+.cardBook {
+  background-color: var(--main-color);
+  margin-bottom: 16px;
+  padding-top: 20px;
+  padding-bottom: 32px;
+  padding-left: 54px;
+  padding-right: 35px;
+}
+.cardBook:last-child {
+  margin-bottom: 0;
+}
+.cardTitleBook {
+  /* display: flex; */
+  /* font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25; */
+}
+
+.cardTitleBook::after {
+  position: absolute;
+  top: 29px;
+  left: 56px;
+  display: block;
+  content: '';
+  background: url('../../../images/sprite.svg#icon-open-book');
+  /* z-index: 1; */
+}
+.cardTitle{
+    font-weight: 500;
+        font-size: 12px;
+        line-height: 1.25;
+}
+
+.cardTableBody > th {
+  width: 40%;
+}
+
+
+.tableTitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--secondary-text-color);
+}
+
+.tableContent {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  padding: 8px;
+}
