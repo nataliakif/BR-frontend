@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // import { logOut, setError } from '../auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://localhost:3001/api',
+  baseUrl: 'https://br-backend.herokuapp.com/api',
 
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
