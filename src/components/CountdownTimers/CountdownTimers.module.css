@@ -13,7 +13,10 @@
 .countdownTimer h3 {
   margin: 0;
   color: var(--secondary-text-color);
-  font: 500 14px/17.07px var(--main-font);
+  font-family: var(--main-font);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
 }
 
 .showCounter {
@@ -31,19 +34,28 @@
   align-self: start;
   margin: 1px 10px;
   color: var(--goals-amount-color);
-  font: 700 25px/38px var(--countdown-font);
+  font-family: var(--countdown-font);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 38px;
 }
 
 .countdown > p {
   margin: 1px 0;
   color: var(--goals-amount-color);
-  font: 700 25px/38px var(--countdown-font);
+  font-family: var(--countdown-font);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 38px;
 }
 
 .countdown > span {
   vertical-align: top;
   color: var(--secondary-text-color);
-  font: 500 10px/12px var(--main-font);
+  font-family: var(--main-font);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
 }
 
 @media screen and (min-width: 768px) {
