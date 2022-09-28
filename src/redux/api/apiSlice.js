@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { logOut, setError } from '../auth/authSlice';
+import { logOut, setError } from '../authUser/authUserSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://localhost:3001/api',
@@ -14,7 +14,7 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithErrorHandler = async (args, api, extraOptions) => {
-  // api.dispatch(setError(null));
+  api.dispatch(setError(null));
   let result = await baseQuery(args, api, extraOptions);
 
   if (!result?.meta?.response?.ok) {
@@ -29,8 +29,8 @@ const baseQueryWithErrorHandler = async (args, api, extraOptions) => {
       default:
         errorMessage = 'Something went wrong! Try again!';
     }
-    // api.dispatch(logOut());
-    //api.dispatch(setError(errorMessage));
+    api.dispatch(logOut());
+    api.dispatch(setError(errorMessage));
   }
   return result;
 };
