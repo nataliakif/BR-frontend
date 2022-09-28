@@ -4,15 +4,15 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getCurrentStatus } from '../redux/authUser/authUserSlice';
 
-export default function PublicRoute({
+const PublicRoute = ({
   children,
   restricted = false,
   redirectTo = '/library',
-}) {
+}) => {
   const isLoggedIn = useSelector(getCurrentStatus);
   const shouldRedirect = isLoggedIn && restricted;
   return <>{shouldRedirect ? <Navigate to={redirectTo} /> : children}</>;
-}
+};
 
 PublicRoute.propTypes = {
   restricted: PropTypes.bool,
@@ -22,3 +22,4 @@ PublicRoute.propTypes = {
     PropTypes.node,
   ]),
 };
+export default PublicRoute;
