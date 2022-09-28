@@ -18,9 +18,12 @@ const authUserSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
+    setError: (state, { payload }) => {
+      state.errorMsg = payload;
+    },
   },
 });
-export const { logOut, setCredentials } = authUserSlice.actions;
+export const { logOut, setCredentials, setError } = authUserSlice.actions;
 export default authUserSlice.reducer;
 
 export const getCurrentUser = state => state.auth.user?.name;

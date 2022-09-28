@@ -8,12 +8,14 @@
     max-width: 480px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .container {
     min-width: 768px;
     padding: 32px 32px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;

@@ -1,4 +1,4 @@
-import { ReactComponent as QuoteMobileIcon } from '../../images/mobile/quote.svg';
+import { ReactComponent as QuoteMobileIcon } from '../../images/quote.svg';
 import s from './LoginInfoQuote.module.css';
 
 const LoginInfoQuote = () => {

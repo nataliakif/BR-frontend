@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { apiSlice } from './api/apiSlice';
-//import authReducer from './auth/authSlice';
+import authUserReducer from './authUser/authUserSlice';
 import { booksApi } from './books/booksApi';
 import { trainingApi } from './training/trainingApi';
 
@@ -33,7 +33,7 @@ const middleware = [
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistReducer(authPersistConfig, authUserReducer),
     [booksApi.reducerPath]: booksApi.reducer,
     [trainingApi.reducerPath]: trainingApi.reducer,
     [apiSlice.reducerPath]: apiSlice.reducer,

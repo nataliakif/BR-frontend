@@ -2,7 +2,7 @@ import LoginForm from 'components/LoginForm';
 import LoginInfoQuote from 'components/LoginInfoQuote';
 import s from './LoginView.module.css';
 
-const Login = () => {
+const LoginView = () => {
   return (
     <div className={s.wrapper}>
       <section className={s.section}>
@@ -13,4 +13,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginView;
