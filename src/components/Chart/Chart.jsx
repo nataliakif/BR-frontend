@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { breadcrumbsClasses } from '@mui/material';
 
 ChartJS.register(
   CategoryScale,
@@ -48,11 +49,19 @@ export const Chart = ({ plan, readingStatistics }) => {
   const dates = readingStatistics.map(stat => stat.date);
   const pages = readingStatistics.map(stat => stat.pageAmount);
 
-  let actPages = pages.length > 1 ? pages : [...pages, pages];
+  let actPages = pages.length === 1 ? [pages, pages] : pages;
 
   let maxPagesValue = Math.max(...actPages.flatMap(item => item));
 
-  const labels = dates.length > 1 ? dates : [...dates, dates];
+  let labels = [plan, plan];
+  //dates.length > 1 ? dates : [...dates, ...dates];
+
+  if (dates.length === 1) {
+    labels = [...dates, ...dates];
+  }
+  if (dates.length > 1) {
+    labels = dates;
+  }
 
   let maxChartValue =
     plan * 2 > maxPagesValue
@@ -82,24 +91,29 @@ export const Chart = ({ plan, readingStatistics }) => {
     datasets: [
       {
         label: 'PLAN',
-        data: [...actPages.map(item => plan)],
+        data:
+          actPages.length > 0 ? [...actPages.map(item => plan)] : [plan, plan],
+
         backgroundColor: '#F5F7FA',
         borderColor: 'rgb(0, 0, 0)',
         pointBorderColor: 'rgb(0, 0, 0)',
         pointBorderWidth: 4,
       },
-      {
-        label: 'ACT',
-        data: actPages,
-        backgroundColor: '#F5F7FA',
-        borderColor: '#FF6B08',
-        pointBorderColor: '#FF6B08',
-        pointBorderWidth: 4,
-        tension: 0.3,
-      },
     ],
   };
 
+  if (actPages.length > 0) {
+    data.datasets.push({
+      label: 'ACT',
+      data: actPages,
+      backgroundColor: '#F5F7FA',
+      borderColor: '#FF6B08',
+      pointBorderColor: '#FF6B08',
+      pointBorderWidth: 4,
+      tension: 0.3,
+    });
+  }
+  console.log(data);
   return (
     <div className={s.container}>
       <p className={s.chart__title}>

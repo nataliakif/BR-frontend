@@ -16,11 +16,7 @@ const books = [
     pages: '350',
     rating: '3',
     status: 'Already read',
-    readStatistics: [
-      { dateTime: '11.09.22', pageAmount: 11 },
-      { dateTime: '11.09.22', pageAmount: 11 },
-      { dateTime: '11.09.22', pageAmount: 11 },
-    ],
+    readStatistics: [],
   },
   {
     id: 'YxhM4QDxPeA3SmPHcEZPJ',
