@@ -1,0 +1,50 @@
+.title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.21;
+}
+
+.titleBookWrapper {
+  position: relative;
+}
+
+.titleBook {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 60px;
+  padding-right: 60px;
+font-style: normal;
+}
+
+.titleBook::before {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  content: url('../../../images/open-book.svg');
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0 8px;
+  border-collapse: separate;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+.tableTitleCell {
+  text-align: start;
+  font-style: normal;
+  /* padding-bottom: 8px; */
+  color: var(--secondary-text-color);
+  width:38%;
+  /* padding-right: 60px; */
+}
+
+.tablerow {
+  background-color: var(--main-color);
+
+}

@@ -11,14 +11,9 @@ import RatingControlled from 'components/RatingControlled';
 import ResumeModal from 'components/modals/ResumeModal';
 import books from '../../../dataFiles/book.json';
 import sprite from '../../../images/sprite.svg';
-// import s from "../AlreadyReadMain/AlreadyReadMain.module.css"
+import s from "../AlreadyReadMain/AlreadyReadMain.module.css"
 
-const alreadyReadBooks = books.filter(book => {
-  const readPages = +book.read;
-  const pagesOfBook = +book.pages;
-
-  return readPages >= pagesOfBook;
-});
+const alreadyReadBooks = books.filter(book => book.status === 'Already read');
 
 const columnHelper = createColumnHelper(alreadyReadBooks);
 
@@ -26,14 +21,11 @@ const columns = [
   columnHelper.accessor('title', {
     cell: info => (
       <i>
-        <div>
-          <svg className="icon" width="22" height="17">
-            <use href={sprite + '#icon-open-book'} />{' '}
-          </svg>
-        </div>
-        <div>
+        <div className={s.titleBookWrapper}>
+        <div className={s.titleBook}>
           <EllipsisText text={info.getValue()} length={23} />
         </div>
+          </div>
       </i>
     ),
     header: () => (
@@ -75,9 +67,6 @@ const columns = [
 
 function AlreadyReadMain() {
   const data = alreadyReadBooks;
-  // setData(alreadyReadBooks);
-  // console.log(data)
-
   const table = useReactTable({
     data,
     columns,
@@ -86,15 +75,15 @@ function AlreadyReadMain() {
 
   return (
     <>
-{data && (<><h2>Already read</h2>
+    <h2>Already read</h2>
 
-      <div className="p-2">
-        <table>
+      <div>
+        <table className={s.table} >
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
+              <tr key={headerGroup.id} >
                 {headerGroup.headers.map(header => (
-                  <th key={header.id}>
+                  <th key={header.id} className={s.tableTitleCell}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -108,34 +97,18 @@ function AlreadyReadMain() {
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
+              <tr key={row.id} className={s.tablerow}>
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>
+                  <td key={cell.id} >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
               </tr>
             ))}
           </tbody>
-          <tfoot>
-            {table.getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id}>
-                {footerGroup.headers.map(header => (
-                  <th key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.footer,
-                          header.getContext()
-                        )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </tfoot>
         </table>
-        <div className="h-4" />
-      </div></>)}
+        <div/>
+      </div>
     </>
   );
 }

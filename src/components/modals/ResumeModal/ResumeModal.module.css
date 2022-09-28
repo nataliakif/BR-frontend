@@ -1,10 +1,9 @@
-
 .box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width:280px;
+  width: 280px;
   background-color: whitesmoke;
   border: none;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
@@ -15,52 +14,89 @@
   padding-bottom: 40px;
 }
 
-.title{
-    margin-bottom: 20px;
-    font-weight: 500;
-      font-size: 16px;
-      line-height: 1.25;
+@media screen and (min-width: 768px) {
+  .box {
+    width: 608px;
+    height: 399px;
+  }
 }
-.label{
-    margin-top: 20px;
 
-    display: block;
+.title {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+.label {
+  margin-top: 20px;
+
+  display: block;
 }
 .textAreaBox {
-    width: 240px;
+  width: 240px;
+  height: 170px;
+  resize: none;
+  margin-top: 8px;
+  padding: 8px;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .textAreaBox {
+    width: 568px;
     height: 170px;
-    resize: none;
-    margin-top: 8px;
-    padding: 8px;
+  }
 }
 .buttonList {
-    display: flex;
-    justify-content: space-around;
-    justify-content: center;
-    margin-top: 20px;
-}
-.titleTextarea{
+  display: flex;
+  justify-content: space-around;
+  justify-content: center;
   margin-top: 20px;
-  font-weight: 500;
-    font-size: 16px;
-    line-height: 1.25;
 }
-.button {
+.titleTextarea {
+  font-size: 14px;
+  line-height: 17px;
+  border-radius: 0;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  opacity: 0.8;
+}
+.buttonOpen {
   padding-top: 11px;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
 
   text-align: center;
-  min-width: 127px;
+  width: 127px;
   height: 40px;
   margin: 0 auto;
   display: block;
   font-weight: 500;
-    font-size: 14px;
-    line-height: 1.21;
-    color: var(--main-color);
-    background: #6D7A8D;;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-      border: none;
+  font-size: 14px;
+  line-height: 1.21;
+  color: var(--main-color);
+  background: #6d7a8d;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+@media screen and (min-width: 768px) {
+  .buttonWrapper {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: 32px;
+    padding-right: 5px;
+  }
+  .buttonWrapper > .buttonOpen {
+    width: 80px;
+    padding: 11px;
+  }
+  .buttonBack,
+  .buttonSave {
+    width: 130px;
+    height: 40px;
+  }
 }
 
 .buttonBack {
@@ -69,30 +105,28 @@
   padding-bottom: 12px;
   text-align: center;
   font-weight: 500;
-    font-size: 14px;
-    line-height: 1.21;
-    background-color: var(--main-color);
-    border: 1px solid var(--primary-text-color);
+  font-size: 14px;
+  line-height: 1.21;
+  background-color: var(--main-color);
+  border: 1px solid var(--primary-text-color);
 }
 
 .buttonSave {
-    min-width: 99px;
+  min-width: 99px;
   padding-top: 11px;
   padding-bottom: 12px;
   text-align: center;
   margin-left: 16px;
-    font-weight: 500;
-      font-size: 14px;
-      line-height: 1.21;
-      color: var(--main-color);;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: var(--main-color);
   background: var(--accent-color);
   border: 1px solid var(--primary-text-color);
-
 }
 .buttonBack:hover,
 .buttonBack:focus,
 .buttonSave:hover,
-.buttonSave:focus{
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+.buttonSave:focus {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
-
