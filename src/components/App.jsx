@@ -13,8 +13,6 @@ import { Navigate } from 'react-router';
 const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
-
-const HomeView = lazy(() => import('../views/HomeView'));
 const LibraryView = lazy(() => import('../views/LibraryView'));
 const TrainingView = lazy(() => import('../views/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
