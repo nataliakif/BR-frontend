@@ -71,7 +71,7 @@ const App = () => {
             <Route
               path="/training"
               element={
-                <PrivateRoute redirectTo="/training">
+                <PrivateRoute redirectTo="/login">
                   <TrainingView />
                 </PrivateRoute>
               }
@@ -79,7 +79,7 @@ const App = () => {
             <Route
               path="/statistics"
               element={
-                <PrivateRoute redirectTo="/statistics">
+                <PrivateRoute redirectTo="/login">
                   <StatisticView />
                 </PrivateRoute>
               }
