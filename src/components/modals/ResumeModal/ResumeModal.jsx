@@ -5,17 +5,20 @@ import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
 // import { useFormik } from 'formik';
 import RatingControlled from 'components/RatingControlled';
 
 import s from './ResumeModal.module.css';
 
 
-
 function ResumeModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const onChangeRaring = () => {
+    console.log('first');
+  };
 
   return (
     <div>
@@ -43,9 +46,27 @@ function ResumeModal() {
             >
               {({ errors, touched, isValidating }) => (
                 <Form>
+                  {/* <p className={s.titleTextarea}>Resume</p> */}
                   <RatingControlled step={1} />
-                  <Field name="text" className={s.textAreaBox}  />
-                  {errors.rating && touched.rating && <div>{errors.rating}</div>}
+                  <p className={s.titleTextarea}>Resume</p>
+                  <TextField name="text"  className={s.textAreaBox}/>
+                  {/* {errors.rating && touched.rating && <div>{errors.rating}</div>} */}
+
+                  {/* <Field name="lastName">
+                    {({
+                      field, // { name, value, onChange, onBlur }
+                      form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                      meta,
+                    }) => (
+                      <div>
+                        <textarea type="text" placeholder="..." {...field} className={s.textAreaBox}/>
+                        {meta.touched && meta.error && (
+                          <div className="error">{meta.error}</div>
+                        )}
+                      </div>
+                    )}
+                  </Field> */}
+
 
                   <ul className={s.buttonList}>
                     <li>
@@ -58,7 +79,9 @@ function ResumeModal() {
                       </button>
                     </li>
                     <li>
-                      <button className={s.buttonSave} type="submit">Submit</button>
+                      <button className={s.buttonSave} type="submit">
+                        Submit
+                      </button>
                     </li>
                   </ul>
                 </Form>

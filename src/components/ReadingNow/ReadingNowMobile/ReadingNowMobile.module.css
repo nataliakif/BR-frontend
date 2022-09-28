@@ -33,8 +33,11 @@
   position: absolute;
   top: 27px;
   left: 20px;
-  content: url('../../../images/open-book.svg');
-  /* z-index: 1; */
+  width: 22px;
+  height: 17px;
+  content: url('../../../images/open-book-going-to-read.svg');
+  /* content: url('../../../images/sprite.svg#icon-open-book'); */
+
 }
 
 .cardTitle {

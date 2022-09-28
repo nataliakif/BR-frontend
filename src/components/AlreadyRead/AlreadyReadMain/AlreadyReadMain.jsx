@@ -11,7 +11,7 @@ import RatingControlled from 'components/RatingControlled';
 import ResumeModal from 'components/modals/ResumeModal';
 import books from '../../../dataFiles/book.json';
 import sprite from '../../../images/sprite.svg';
-import s from "../AlreadyReadMain/AlreadyReadMain.module.css"
+// import s from "../AlreadyReadMain/AlreadyReadMain.module.css"
 
 const alreadyReadBooks = books.filter(book => {
   const readPages = +book.read;

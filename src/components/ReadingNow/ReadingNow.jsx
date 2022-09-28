@@ -1,4 +1,4 @@
-import ReadingNowMobile from './GoingToReadMobile/GoingToReadMobile';
+import ReadingNowMobile from './ReadingNowMobile/ReadingNowMobile';
 import ReadingNowMain from './ReadingNowMain/ReadingNowMain';
 import useIsMobile from "../../helpers/useIsMobile";
 

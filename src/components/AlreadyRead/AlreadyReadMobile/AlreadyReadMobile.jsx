@@ -1,8 +1,7 @@
 import ResumeModal from 'components/modals/ResumeModal';
 import RatingControlled from 'components/RatingControlled';
 import books from '../../../dataFiles/book.json';
-// import EllipsisText from 'react-ellipsis-text';
-// import { useState } from 'react';
+
 
 import s from './AlreadyReadMobile.module.css';
 
@@ -18,6 +17,7 @@ function AlreadyReadMobile() {
         {alreadyReadBooks.map(({ id, title, author, year, pages, rating }) => {
           return (
             <li className={s.cardBook} key={id}>
+                            <div className={s.cardBookWrapper}>
                 <h3 className={s.cardTitle}>{title}</h3>
                 {/* </div> */}
                 <div className={s.cardTableBook}>
@@ -37,11 +37,13 @@ function AlreadyReadMobile() {
                     </tr>
                     <tr className={s.cardTableBody}>
                       <th className={s.tableTitle}>Rating:</th>
-                      <td className={s.tableContent}><RatingControlled step={0.5} status={rating} /></td>
+                        <td className={s.tableContent}>
+                          <RatingControlled step={0.5} status={rating} /></td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
+                </div>
+                </div>
               <div>
                 <ResumeModal />
               </div>
