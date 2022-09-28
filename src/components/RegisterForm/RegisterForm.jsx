@@ -151,7 +151,7 @@ const RegisterForm = () => {
       </Formik>
       <p className={s.text}>
         Already have an account?{' '}
-        <a className={s.signupLink} href="/">
+        <a className={s.signupLink} href="/BR-frontend/login">
           Login
         </a>
       </p>
