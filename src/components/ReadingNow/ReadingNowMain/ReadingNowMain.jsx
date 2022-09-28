@@ -1,7 +1,7 @@
-import books from '../../../dataFiles/book.json';
-import sprite from '../../../images/sprite.svg';
 import EllipsisText from 'react-ellipsis-text';
 import s from "./ReadingNowMain.module.css"
+
+import books from '../../../dataFiles/book.json';
 
 import {
   createColumnHelper,

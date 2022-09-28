@@ -1,14 +1,16 @@
-import books from '../../../dataFiles/book.json';
-import sprite from '../../../images/sprite.svg';
-import EllipsisText from 'react-ellipsis-text';
-import s from "./GoingToReadMain.module.css"
-
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import EllipsisText from 'react-ellipsis-text';
+
+import s from "./GoingToReadMain.module.css"
+
+
+
+import books from '../../../dataFiles/book.json';
 
 const readingNowBooks = books.filter(book => book.status === "Going to read");
 

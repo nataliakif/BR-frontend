@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import EllipsisText from 'react-ellipsis-text';
 import {
   createColumnHelper,
@@ -9,9 +8,10 @@ import {
 
 import RatingControlled from 'components/RatingControlled';
 import ResumeModal from 'components/modals/ResumeModal';
-import books from '../../../dataFiles/book.json';
-import sprite from '../../../images/sprite.svg';
+
 import s from "../AlreadyReadMain/AlreadyReadMain.module.css"
+
+import books from '../../../dataFiles/book.json';
 
 const alreadyReadBooks = books.filter(book => book.status === 'Already read');
 

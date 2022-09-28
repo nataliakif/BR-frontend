@@ -1,26 +1,35 @@
 import { useState } from 'react';
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik, Form,
+  // Field
+} from 'formik';
 import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 // import { useFormik } from 'formik';
 import RatingControlled from 'components/RatingControlled';
 
 import s from './ResumeModal.module.css';
 
- const MyInput = ({ field, form, ...props }) => {
-   return <textarea {...field} {...props} />;
- };
+// const MyInput = ({ field, form, ...props }) => {
+//   return <textarea {...field} {...props} />;
+// };
 
 function ResumeModal() {
   const [open, setOpen] = useState(false);
+  const [textArea, setTextArea] = useState('textAreaEmpty');
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const onChangeRaring = () => {
-    console.log('first');
+  // const onChangeRaring = () => {
+  //   console.log('first');
+  // };
+
+  const handleChange = e => {
+    e.preventDefault();
+    setTextArea(!!e.target.value ? 'textAreaFilled' : 'textAreaEmpty');
   };
 
   return (
@@ -52,9 +61,18 @@ function ResumeModal() {
                   <RatingControlled step={1} />
                   <p className={s.titleTextarea}>Resume</p>
                   {/* <TextField name="text" className={s.textAreaBox} /> */}
-                  <Field name="lastName" placeholder="..."  className={s.textAreaBox} component={MyInput} />
-                  {/* {errors.rating && touched.rating && <div>{errors.rating}</div>} */}
+                  <textarea
+                    onChange={handleChange}
+                    placeholder="..."
+                    className={s[textArea]}
+                  />
 
+                  {/* <Field
+                    name="lastName"
+                    placeholder="..."
+                    className={s.textAreaBox}
+                  /> */}
+                  {/* {errors.rating && touched.rating && <div>{errors.rating}</div>} */}
                   {/* <Field name="lastName">
                     {({
                       field, // { name, value, onChange, onBlur }
@@ -69,8 +87,6 @@ function ResumeModal() {
                       </div>
                     )}
                   </Field> */}
-
-
                   <ul className={s.buttonList}>
                     <li>
                       <button
