@@ -1,19 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-// import PublicRoute from './PublicRoute';
-// import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+import PrivateRoute from './PrivateRoute';
+import { Navigate } from 'react-router';
 // import {
 //   getCurrentToken,
 //   setCredentials,
 // } from '../redux/authUser/authUserSlice';
 // import { useFetchCurrentUserQuery } from '../redux/authUser/authUserApiSlice';
 
-// const LoginView = lazy(() => import('../views/LoginView'));
+const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
 
-// const HomeView = lazy(() => import('../views/HomeView'));
+const HomeView = lazy(() => import('../views/HomeView'));
 const LibraryView = lazy(() => import('../views/LibraryView'));
 const TrainingView = lazy(() => import('../views/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
@@ -36,23 +37,59 @@ const App = () => {
 
   return (
     <>
-      {/* {isFetchingCurUser && ( */}
-      <Suspense fallback={<p>Loading...</p>}>
-        <Header />
-        <Routes>
-          {/* <Route element={<PublicRoute /> */}
-          <Route path="/register" element={<RegisterView />} />
-          {/* <Route path="/login" element={<LoginView />} /> */}
-          {/* <Route path="/" element={<HomeView />} /> */}
-          {/* </Route> */}
-          {/* <Route element={<PrivateRoute /> */}
-          <Route path="/library" element={<LibraryView />} />
-          <Route path="/training" element={<TrainingView />} />
-          <Route path="/statistics" element={<StatisticView />} />
-          {/* </Route>  */}
-          {/* <Route path="*" element={<NotFoundView />} /> */}
-        </Routes>
-      </Suspense>
+      {false ? (
+        <>Loading</>
+      ) : (
+        <Suspense fallback={<p>Loading...</p>}>
+          <Header />
+          <Routes>
+            <Route path="*" element={<Navigate to="/library" />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute restricted>
+                  <LoginView />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute restricted>
+                  <RegisterView />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/library"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <LibraryView />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/training"
+              element={
+                <PrivateRoute redirectTo="/training">
+                  <TrainingView />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/statistics"
+              element={
+                <PrivateRoute redirectTo="/statistics">
+                  <StatisticView />
+                </PrivateRoute>
+              }
+            />
+
+            {/* <Route path="*" element={<NotFoundView />} /> */}
+          </Routes>
+        </Suspense>
+      )}
     </>
   );
 };

@@ -5,12 +5,12 @@ const tag = 'Training';
 export const trainingApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
     fetchTraining: builder.query({
-      query: () => '/training',
+      query: () => '/api/planing',
       providesTags: [tag],
     }),
     createTraining: builder.mutation({
       query: ({ books, startDate, finishDate }) => ({
-        url: '/training',
+        url: '/api/planing',
         method: 'POST',
         body: {
           books,
@@ -22,14 +22,14 @@ export const trainingApi = apiSlice.injectEndpoints({
     }),
     deleteTraining: builder.mutation({
       query: trainingId => ({
-        url: `/training/${trainingId}`,
+        url: `/planing/${trainingId}`,
         method: 'DELETE',
       }),
       invalidatesTags: [tag],
     }),
     editTraining: builder.mutation({
       query: ({ trainingId, books, startDate, finishDate }) => ({
-        url: `/training/${trainingId}`,
+        url: `/planing/${trainingId}`,
         method: 'PATCH',
         body: {
           books,
