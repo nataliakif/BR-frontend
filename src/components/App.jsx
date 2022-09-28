@@ -19,7 +19,7 @@ const TrainingView = lazy(() => import('../views/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
 // const NotFoundView = lazy(() => import('../views/NotFoundView.jsx'));
 
-function App() {
+const App = () => {
   // const currentToken = useSelector(getCurrentToken);
   // const dispatch = useDispatch();
   // const { data, isLoading: isFetchingCurUser } = useFetchCurrentUserQuery(
@@ -55,6 +55,6 @@ function App() {
       </Suspense>
     </>
   );
-}
+};
 
 export default App;

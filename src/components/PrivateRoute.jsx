@@ -3,10 +3,10 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getCurrentStatus } from '../redux/authUser/authUserSlice';
 
-export default function PrivateRoute({ children, redirectTo = '/' }) {
+const PrivateRoute = ({ children, redirectTo = '/' }) => {
   const isLoggedIn = useSelector(getCurrentStatus);
   return isLoggedIn ? children : <Navigate to={redirectTo} />;
-}
+};
 
 PrivateRoute.propTypes = {
   redirectTo: PropTypes.string,
@@ -15,3 +15,4 @@ PrivateRoute.propTypes = {
     PropTypes.node,
   ]),
 };
+export default PrivateRoute;
