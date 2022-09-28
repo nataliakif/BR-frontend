@@ -1,35 +1,47 @@
-.table{
-    width: 100%;
-    background-color:var(--main-color);
-    background-color: var(--bg-color);
-
-  border: none;
+.title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.21;
 }
-/* .table >th, 
-.table>td{
-  border: none;
-} */
-.flex{
-    display: flex;
-    flex-wrap: nowrap;
-    
-}
-.tableTitleCell {
 
+.titleBookWrapper {
+  position: relative;
+}
+
+.titleBook {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 60px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 60px;
+  font-style: normal;
+}
+
+.titleBook::before {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  content: url('../../../images/open-book-going-to-read.svg');
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0 8px;
+  border-collapse: separate;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
-  /* border-bottom: 1px solid var(--main-color); */
-      background-color: var(--main-color);
-        background-color: var(--bg-color);
-        
 }
 
-.tablerow{
-    background-color: var(--main-color);
-      /* background-color: var(--bg-color); */
+.tableTitleCell {
+  text-align: start;
+  /* padding-bottom: 8px; */
+  color: var(--secondary-text-color);
+}
 
-/* background-color: var(--main-color); */
-/* border: 8px solid var(--bg-color); */
-/* border: 8px solid red; */
+.tablerow {
+  background-color: var(--main-color);
 }

@@ -12,22 +12,17 @@ import {
 
 const goingToReadBooks = books.filter(book => book.status === 'Reading now');
 // console.log(goingToReadBooks);
-
-
 const columnHelper = createColumnHelper(goingToReadBooks);
 
 const columns = [
   columnHelper.accessor('title', {
     cell: info => (
       <i>
-        <div>
-          <svg className="icon" width="22" height="17">
-            <use href={sprite + '#icon-open-book'} />{' '}
-          </svg>
+        <div className={s.titleBookWrapper}>
+        <div className={s.titleBook}>
+          <EllipsisText text={info.getValue()} length={40} />
         </div>
-        <div>
-          <EllipsisText text={info.getValue()} length={23} />
-        </div>
+          </div>
       </i>
     ),
     header: () => (
@@ -63,15 +58,15 @@ function ReadingNowMain() {
 
   return (
     <>
-      <h2>Reading now</h2>
+      <h2 className={s.title}>Reading now</h2>
       {/* {!goingToReadBooks && ( */}
-      <div className="p-2">
-        <table>
+      <div>
+        <table className={s.table} >
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
+              <tr key={headerGroup.id} >
                 {headerGroup.headers.map(header => (
-                  <th key={header.id}>
+                  <th key={header.id} className={s.tableTitleCell}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -85,31 +80,15 @@ function ReadingNowMain() {
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
+              <tr key={row.id} className={s.tablerow}>
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>
+                  <td key={cell.id} >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
               </tr>
             ))}
           </tbody>
-          <tfoot>
-            {table.getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id}>
-                {footerGroup.headers.map(header => (
-                  <th key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.footer,
-                          header.getContext()
-                        )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </tfoot>
         </table>
         <div className="h-4" />
       </div>
