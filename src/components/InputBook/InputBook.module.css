@@ -60,8 +60,8 @@ position: relative;
     }
 
 input{
-    background: #F6F7FB;
-    border: 1px solid #A6ABB9;
+    background: var(--bg-color);
+    border: 1px solid var(--icon-color);
     box-sizing: border-box;
     height: 42px;
     margin-bottom: 10px;
@@ -70,13 +70,13 @@ input{
   
 }
 input:focus {
-    background-color: white;
+    background-color: var(--main-color);
     }
 
 .button {
 width: 171px;
 height: 42px;
-background: #F6F7FB;
+background:  var(--bg-color);
 border: 1px solid black;
 cursor: pointer;
 -webkit-transition-duration: 0.4s;
@@ -96,8 +96,8 @@ transition-duration: 0.4s;
         
 .button:hover,
 .button:focus {
-            background: orange;
-            color: #F6F7FB;
+            background: var(--accent-color);
+            color:  var(--bg-color);
 
 }
 
@@ -111,3 +111,12 @@ transition-duration: 0.4s;
         width: 346px;
     }   
     }
+.bookError {
+	position: absolute;
+	top: 80%;
+	right: 2%;
+	font-size: 15px;
+	color: var(--accent-color);
+	text-align: center;
+	font-style: italic;
+}

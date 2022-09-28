@@ -8,13 +8,17 @@ const Navigation = () => {
       <NavLink
         className={s.nav_link}
         activeclassname={s.activeLink}
-        to={'/library'}
+        to={'/training'}
       >
         <svg className={s.navSvg}>
           <use href={`${sprite}#icon-library-header`}></use>
         </svg>
       </NavLink>
-      <NavLink className={s.nav_link} activeclassname={s.activeLink} to={'/'}>
+      <NavLink
+        className={s.nav_link}
+        activeclassname={s.activeLink}
+        to={'/library'}
+      >
         <svg className={s.navSvg}>
           <use href={`${sprite}#icon-home-header`}></use>
         </svg>
