@@ -1,11 +1,17 @@
-.listAlreadyRead {
-    padding-top: 20px;
-      padding-bottom: 20px;
-      padding-left: 20px;
-      padding-right: 20px;
-        /* margin: 0 auto; */
+
+.cardBookWrapper {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
 }
 
+.cardBookWrapper::before {
+    position: absolute;
+    top: 27px;
+    left: 20px;
+    content: url('../../../images/open-book.svg');
+    /* z-index: 1; */
+}
 .title {
     font-weight: 600;
     font-size: 19px;
@@ -19,6 +25,7 @@
 }
 
 .cardBook {
+    position: relative;
     background-color: var(--main-color);
     margin-bottom: 16px;
     padding-top: 20px;

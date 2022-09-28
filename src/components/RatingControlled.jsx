@@ -7,6 +7,7 @@ const RatingControlled = ({step}) => {
     <Rating
       name="simple-controlled"
       value={value}
+      size="small"
       onChange={(event, newValue) => {
         setValue(newValue);
         console.log(newValue);
