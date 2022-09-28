@@ -94,7 +94,7 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
-      <a className={s.signupLink} href="/">
+      <a className={s.signupLink} href="/BR-frontend/register">
         Register
       </a>
     </div>

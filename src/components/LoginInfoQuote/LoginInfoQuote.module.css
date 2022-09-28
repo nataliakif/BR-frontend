@@ -33,7 +33,7 @@ hr {
 @media screen and (min-width: 768px) {
    .container {
       padding: 65px 0 110px;
-      width: 309px;
+      width: 397px;
    }
 
    .text:nth-child(2) {
@@ -55,7 +55,7 @@ hr {
 
 @media screen and (min-width: 1280px) {
    .container {
-      padding: 265px 165px 350px;
-      width: 309px;
+      padding: 205px 0 350px;
+
    }
 }

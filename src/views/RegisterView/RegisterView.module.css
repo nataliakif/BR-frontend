@@ -7,7 +7,7 @@
    background-image: linear-gradient(to right,
          rgba(9, 30, 63, 0.8),
          rgba(9, 30, 63, 0.8)), url('images/mobile/register/bg-image.jpg');
-   background-position: center;
+   background-position: bottom;
    background-repeat: no-repeat;
    background-size: cover;
 }
@@ -24,11 +24,11 @@
 
 @media screen and (min-width: 768px) {
    .section {
-      padding: 50px 0 80px;
+      padding: 65px 0 65px;
       background-image: linear-gradient(to right,
             rgba(9, 30, 63, 0.8),
             rgba(9, 30, 63, 0.8)), url('images/tablet/register/bg-image.jpg');
-      background-position: center;
+      background-position: bottom;
       background-repeat: no-repeat;
       background-size: cover;
    }
@@ -50,11 +50,11 @@
    }
 
    .section {
-      padding: 85px 75px 95px;
+      padding: 90px 75px 90px;
       background-image: linear-gradient(to right,
             rgba(9, 30, 63, 0.8),
             rgba(9, 30, 63, 0.8)), url('images/desktop/register/bg-image.jpg');
-      background-position: center;
+      background-position: bottom;
       background-repeat: no-repeat;
       background-size: cover;
    }
