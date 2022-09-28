@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { logOut, setError } from '../authUser/authUserSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://br-backend.herokuapp.com/api',
+  baseUrl: 'https://br-backend.herokuapp.com/',
 
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -29,7 +29,7 @@ const baseQueryWithErrorHandler = async (args, api, extraOptions) => {
       default:
         errorMessage = 'Something went wrong! Try again!';
     }
-    api.dispatch(logOut());
+    // api.dispatch(logOut());  Перевести ошибки на человеческий язык
     api.dispatch(setError(errorMessage));
   }
   return result;

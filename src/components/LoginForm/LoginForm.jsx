@@ -30,7 +30,8 @@ const LoginForm = () => {
 
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     const userData = await loginUser({ email, password }).unwrap();
-    dispatch(setCredentials({ ...userData, email }));
+    console.log(userData);
+    dispatch(setCredentials({ ...userData.data }));
     resetForm();
   };
 

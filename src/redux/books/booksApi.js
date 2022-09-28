@@ -5,12 +5,12 @@ const tag = 'Books';
 export const booksApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
     fetchBooks: builder.query({
-      query: () => '/books',
+      query: () => '/api/books',
       providesTags: [tag],
     }),
     createBook: builder.mutation({
       query: ({ title, author, publicationDate, pageAmount }) => ({
-        url: '/books',
+        url: '/api/books',
         method: 'POST',
         body: {
           title,
@@ -23,7 +23,7 @@ export const booksApi = apiSlice.injectEndpoints({
     }),
     deleteBook: builder.mutation({
       query: bookId => ({
-        url: `/books/${bookId}`,
+        url: `/api/books/${bookId}`,
         method: 'DELETE',
       }),
       invalidatesTags: [tag],
@@ -40,7 +40,7 @@ export const booksApi = apiSlice.injectEndpoints({
         rating,
         readStatistics,
       }) => ({
-        url: `/books/${bookId}`,
+        url: `/api/books/${bookId}`,
         method: 'PATCH',
         body: {
           title,
