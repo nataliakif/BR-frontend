@@ -55,7 +55,34 @@
    font-size: 14px;
    line-height: 1.21px;
    color: var(--icon-color);
+}
 
+.errName,
+.errEmail,
+.errPassword,
+.errConfirmPassword {
+   position: absolute;
+   text-align: center;
+   width: 100%;
+   left: 0;
+   top: 17%;
+}
+
+.errEmail {
+   top: 39%;
+}
+
+.errPassword {
+   top: 60%;
+}
+
+.errConfirmPassword {
+   top: 81%;
+}
+
+.errText {
+   font-size: 12px;
+   color: #F25137;
 }
 
 .btn {
@@ -75,11 +102,16 @@
    background-color: #D15807;
 }
 
-.signupLink {
-   text-align: center;
+.text {
    font-weight: 500;
    font-size: 13px;
    line-height: 1.23;
+   text-align: center;
+   color: var(--secondary-text-color);
+}
+
+.signupLink {
+   text-decoration: none;
    color: var(--accent-color);
    transition: color 250ms ease-in-out;
 }
@@ -89,23 +121,7 @@
    color: #D15807;
 }
 
-.errEmail, .errPassword {
-   position: absolute;
-   text-align: center;
-   width: 100%;
-   left: 0;
-   top: 30%;
-}
-
-.errPassword {
-   top: 67%;
-}
-
-.errText {
-   font-size: 12px;
-   color: #F25137;
-}
-
+/** min-width 768px breakpoint */
 @media screen and (min-width: 768px) {
    .container {
       width: 320px;

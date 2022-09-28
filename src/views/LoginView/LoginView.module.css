@@ -2,7 +2,7 @@
       padding: 30px 0;
       background-image: linear-gradient(to right,
             rgba(9, 30, 63, 0.8),
-            rgba(9, 30, 63, 0.8)), url('images/mobile/bg-image.jpg');
+            rgba(9, 30, 63, 0.8)), url('images/mobile/login/bg-image.jpg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -14,7 +14,7 @@
       .section {
          background-image: linear-gradient(to right,
                rgba(9, 30, 63, 0.8),
-               rgba(9, 30, 63, 0.8)), url('images/mobile/bg-image@2x.jpg');
+               rgba(9, 30, 63, 0.8)), url('images/mobile/login/bg-image@2x.jpg');
       }
    }
 
@@ -24,7 +24,7 @@
          padding: 40px 0;
          background-image: linear-gradient(to right,
                rgba(9, 30, 63, 0.8),
-               rgba(9, 30, 63, 0.8)), url('images/tablet/bg-image.jpg');
+               rgba(9, 30, 63, 0.8)), url('images/tablet/login/bg-image.jpg');
          background-position: center;
          background-repeat: no-repeat;
          background-size: cover;
@@ -36,7 +36,7 @@
          .section {
             background-image: linear-gradient(to right,
                   rgba(9, 30, 63, 0.8),
-                  rgba(9, 30, 63, 0.8)), url('images/tablet/bg-image@2x.jpg');
+                  rgba(9, 30, 63, 0.8)), url('images/tablet/login/bg-image@2x.jpg');
          }
       }
    }
@@ -44,15 +44,13 @@
    @media screen and (min-width: 1280px) {
       .wrapper {
          display: flex;
-
       }
 
       .section {
-
          padding: 185px 75px 175px;
          background-image: linear-gradient(to right,
                rgba(9, 30, 63, 0.8),
-               rgba(9, 30, 63, 0.8)), url('images/desktop/bg-image.jpg');
+               rgba(9, 30, 63, 0.8)), url('images/desktop/login/bg-image.jpg');
          background-position: center;
          background-repeat: no-repeat;
          background-size: cover;
@@ -64,7 +62,7 @@
          .section {
             background-image: linear-gradient(to right,
                   rgba(9, 30, 63, 0.8),
-                  rgba(9, 30, 63, 0.8)), url('images/desktop/bg-image@2x.jpg');
+                  rgba(9, 30, 63, 0.8)), url('images/desktop/login/bg-image@2x.jpg');
          }
       }
    }
