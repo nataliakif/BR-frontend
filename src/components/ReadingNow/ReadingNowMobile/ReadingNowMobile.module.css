@@ -1,0 +1,64 @@
+.title {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.21;
+
+  margin-bottom: 20px;
+}
+
+.card {
+  /* max-width: 280px; */
+}
+
+.cardBook {
+  position: relative;
+  background-color: var(--main-color);
+  padding-top: 20px;
+  padding-bottom: 32px;
+  padding-left: 54px;
+  padding-right: 35px;
+}
+
+.cardBook:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.cardBookWrapper {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.cardBookWrapper::before {
+  position: absolute;
+  top: 27px;
+  left: 20px;
+  width: 22px;
+  height: 17px;
+  content: url('../../../images/open-book-going-to-read.svg');
+  /* content: url('../../../images/sprite.svg#icon-open-book'); */
+
+}
+
+.cardTitle {
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.cardTableBody>th {
+  width: 40%;
+}
+
+.tableTitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--secondary-text-color);
+}
+
+.tableContent {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  padding: 8px;
+}

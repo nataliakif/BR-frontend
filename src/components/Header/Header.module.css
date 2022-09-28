@@ -11,6 +11,20 @@
     justify-content: space-between;
 }
 
+@media screen and (min-width: 1248px) {
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
 .header {
     height: 60px;
     border-bottom: 1px solid #e5e5e5;

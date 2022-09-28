@@ -2,6 +2,7 @@
   --main-font: 'Montserrat', sans-serif;
   --accent-font: 'Roboto', sans-serif;
   --logo-font: 'Abril Fatface', cursive;
+  --countdown-font: 'Open Sans', sans-serif;
 
   --main-color: #ffffff;
   --bg-color: #f6f7fb;
@@ -11,4 +12,6 @@
   --icon-color: #a6abb9;
   --training-bg-color: #b1b5c2;
   --goals-amount-color: #091e3f;
+  --goals-bg-color: #f5f7fa;
+  --modal-overlay: rgba(43, 43, 43, 0.1);
 }
