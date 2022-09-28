@@ -10,10 +10,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-// const readingNowBooks = books.filter(book => book.status === 'Reading now');
-// console.log(readingNowBooks);
-
-
 const readingNowBooks = books.filter(book => book.status === "Going to read");
 
 const columnHelper = createColumnHelper(readingNowBooks);
@@ -22,14 +18,11 @@ const columns = [
   columnHelper.accessor('title', {
     cell: info => (
       <i>
-        <div >
-          <svg className="icon" width="22" height="17">
-            <use href={sprite + '#icon-open-book'} />{' '}
-          </svg>
+        <div className={s.titleBookWrapper}>
+        <div className={s.titleBook}>
+          <EllipsisText text={info.getValue()} length={40} />
         </div>
-        <div>
-          <EllipsisText text={info.getValue()} length={23} />
-        </div>
+          </div>
       </i>
     ),
     header: () => (
@@ -67,8 +60,7 @@ function GoingToReadMain() {
       <h2 className={s.title}>Going to read </h2>
       {/* {!readingNowBooks && ( */}
       <div>
-        <table className={s.table}>
-          {/* <capture className={s.title}>Going to read</capture> */}
+        <table className={s.table} >
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id} >
@@ -96,26 +88,9 @@ function GoingToReadMain() {
               </tr>
             ))}
           </tbody>
-          <tfoot>
-            {table.getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id} className={s.tablerow}>
-                {footerGroup.headers.map(header => (
-                  <th key={header.id} className={s.tableTitleCell}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.footer,
-                          header.getContext()
-                        )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </tfoot>
         </table>
         <div className="h-4" />
       </div>
-      {/* )} */}
     </>
   );
 }

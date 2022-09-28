@@ -6,7 +6,7 @@ const readingNowBooks = books.filter(book => book.status === 'Going to read');
 
 function GoingToReadMobile() {
   return (
-    <>
+    <section className={s.goingToReadMobilesection}>
       <h2 className={s.title}>Going to read </h2>
       <ul className={s.card}>
         {readingNowBooks.map(({ id, title, author, year, pages }) => {
@@ -36,7 +36,7 @@ function GoingToReadMobile() {
           );
         })}
       </ul>
-    </>
+    </section>
   );
 }
 

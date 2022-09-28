@@ -11,6 +11,9 @@ import RatingControlled from 'components/RatingControlled';
 
 import s from './ResumeModal.module.css';
 
+ const MyInput = ({ field, form, ...props }) => {
+   return <textarea {...field} {...props} />;
+ };
 
 function ResumeModal() {
   const [open, setOpen] = useState(false);
@@ -21,8 +24,8 @@ function ResumeModal() {
   };
 
   return (
-    <div>
-      <button className={s.button} onClick={handleOpen}>
+    <div className={s.buttonWrapper}>
+      <button className={s.buttonOpen} onClick={handleOpen}>
         Resume
       </button>
       <Modal
@@ -46,10 +49,10 @@ function ResumeModal() {
             >
               {({ errors, touched, isValidating }) => (
                 <Form>
-                  {/* <p className={s.titleTextarea}>Resume</p> */}
                   <RatingControlled step={1} />
                   <p className={s.titleTextarea}>Resume</p>
-                  <TextField name="text"  className={s.textAreaBox}/>
+                  {/* <TextField name="text" className={s.textAreaBox} /> */}
+                  <Field name="lastName" placeholder="..."  className={s.textAreaBox} component={MyInput} />
                   {/* {errors.rating && touched.rating && <div>{errors.rating}</div>} */}
 
                   {/* <Field name="lastName">
@@ -80,7 +83,7 @@ function ResumeModal() {
                     </li>
                     <li>
                       <button className={s.buttonSave} type="submit">
-                        Submit
+                        Save
                       </button>
                     </li>
                   </ul>

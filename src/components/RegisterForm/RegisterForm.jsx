@@ -51,7 +51,7 @@ const RegisterForm = () => {
       password,
       confirmPassword,
     }).unwrap();
-    dispatch(setCredentials({ ...userData, name, email }));
+    dispatch(setCredentials({ ...userData.data }));
     resetForm();
   };
 
