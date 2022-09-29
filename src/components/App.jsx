@@ -15,7 +15,7 @@ const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
 const LibraryView = lazy(() => import('../views/LibraryView'));
-const TrainingView = lazy(() => import('../views/TrainingView'));
+const TrainingView = lazy(() => import('../views/TrainingView/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
 // const NotFoundView = lazy(() => import('../views/NotFoundView.jsx'));
 

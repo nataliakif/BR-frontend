@@ -1,117 +1,111 @@
-
 .form {
-    width: 100%;
-    margin-top: 68px;
-    min-width: 280px;
-    height: 60px;
-    background: var(--training-bg-color);
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    align-items: center;
+  min-width: 280px;
+  height: 60px;
+  background: var(--training-bg-color);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  align-items: center;
 }
 .bookPlaceholder {
-    position: absolute;
-    color: var(--icon-color);
-    padding: 10px;
+  position: absolute;
+  color: var(--icon-color);
+  padding: 10px;
 }
 .title {
-    margin: 0;
-    padding: 18px 81px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    color: var(--main-color);
+  margin: 0;
+  padding: 18px 81px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: var(--main-color);
 }
 .dateContainer {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .bookLabel {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 32px;
 }
 
 .bookInput {
-    position: relative;
-   display: inline-block;
-   min-width: 280px;
-   height: 42px;
-   margin-bottom: 32px;
-   background: var(--main-color);
-   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+  position: relative;
+  display: inline-block;
+  min-width: 280px;
+  height: 42px;
+  margin-bottom: 32px;
+  background: var(--main-color);
+  box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 }
 
 .arrow {
-    position: absolute;
-    top: 50%;
-    left: 90%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
 }
 
 .btnAdd {
-   width: 171px;
-   height: 42px;
-   margin: auto;
-   background: var(--bg-color);
-   border: 1px solid var(--primary-text-color);  
-   }
+  width: 171px;
+  height: 42px;
+  margin: auto;
+  background: var(--bg-color);
+  border: 1px solid var(--primary-text-color);
+}
 .btnAdd:hover {
-    color: var(--main-color);
-    background-color: var(--accent-color);
-    border: var(--accent-color);
+  color: var(--main-color);
+  background-color: var(--accent-color);
+  border: var(--accent-color);
 }
 
 @media screen and (min-width: 768px) {
-    .form {
-        margin-top: 40px;
-        width: 704px;        
-        height: 60px;        
-        left: 32px;
-        top: 374px;
-    } 
-    .title {
-        padding-left: 293px;
-        padding-right: 293px;
-    }
-    .dateContainer {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-    .bookLabel {
-        flex-direction: row;
-        flex-grow: 1;
-    }
-    .bookInput {
-        margin: 0;
-        margin-right: 50px;
-        width: 483px;
-        height: 42px;
-    }
-    .btnAdd {
-        margin: 0;
-
-    }
+  .form {
+    width: 704px;
+    height: 60px;
+    left: 32px;
+    top: 374px;
+  }
+  .title {
+    padding-left: 293px;
+    padding-right: 293px;
+  }
+  .dateContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .bookLabel {
+    flex-direction: row;
+    flex-grow: 1;
+  }
+  .bookInput {
+    margin: 0;
+    margin-right: 50px;
+    width: 483px;
+    height: 42px;
+  }
+  .btnAdd {
+    margin: 0;
+  }
 }
 @media screen and (min-width: 1280px) {
-    .form {
-        margin-bottom: 25px;
-        width: 928px;
-        height: 60px;
-        left: 16px;
-        top: 100px;        
-    }
-    .title {
-        padding-left: 364px;
-        padding-right: 364px;
-    }
-  
+  .form {
+    margin-bottom: 25px;
+    width: 928px;
+    height: 60px;
+    left: 16px;
+    top: 100px;
+  }
+  .title {
+    padding-left: 364px;
+    padding-right: 364px;
+  }
 }

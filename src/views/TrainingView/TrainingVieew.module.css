@@ -1,8 +1,13 @@
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+.training {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .training {
+    flex-direction: row-reverse;
+  }
 }
 .wrapperContainer {
   display: flex;
@@ -19,6 +24,7 @@
 @media screen and (min-width: 1280px) {
   .wrapperContainer {
     flex-direction: row;
+    margin-right: 32px;
     justify-content: space-between;
     padding-top: 0;
     padding-bottom: 0;
