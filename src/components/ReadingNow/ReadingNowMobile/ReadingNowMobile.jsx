@@ -4,10 +4,10 @@ import s from './ReadingNowMobile.module.css';
 
 const readingNowBooks = books.filter(book => book.status === 'Reading now');
 
-function ReadingNowMobile() {
+const ReadingNowMobile = () => {
   return (
     <section className={s.readingNowMobileSection}>
-    <h2 className={s.title}>Reading now</h2>
+      <h2 className={s.title}>Reading now</h2>
       <ul className={s.card}>
         {readingNowBooks.map(({ id, title, author, year, pages }) => {
           return (
@@ -38,6 +38,6 @@ function ReadingNowMobile() {
       </ul>
     </section>
   );
-}
+};
 
 export default ReadingNowMobile;

@@ -7,24 +7,24 @@
 }
 
 .titleBookWrapper {
-  position: relative;
+  display: flex;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 20px;
 }
 
 .titleBook {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 60px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 60px;
   font-style: normal;
 }
 
-.titleBook::before {
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  content: url('../../../images/open-book-going-to-read.svg');
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
+}
+
+.icon {
+  fill: var(--accent-color);
 }
 
 .table {
@@ -38,10 +38,21 @@
 
 .tableTitleCell {
   text-align: start;
+  /* width: 368;
   /* padding-bottom: 8px; */
   color: var(--secondary-text-color);
 }
 
 .tablerow {
   background-color: var(--main-color);
+}
+
+.style {
+  width: 368px;
+}
+
+@media screen and (min-width: 1280px) {
+  .style {
+    width: 640px;
+  }
 }

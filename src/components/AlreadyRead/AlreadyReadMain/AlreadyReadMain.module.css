@@ -7,24 +7,25 @@
 }
 
 .titleBookWrapper {
-  position: relative;
+  display: flex;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 20px;
 }
 
 .titleBook {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 60px;
-  padding-right: 60px;
-font-style: normal;
+  font-style: normal;
 }
 
-.titleBook::before {
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  content: url('../../../images/open-book.svg');
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
 }
 
+.icon {
+  fill: var(--library-color);
+}
 .table {
   width: 100%;
   border-spacing: 0 8px;
@@ -38,13 +39,19 @@ font-style: normal;
 .tableTitleCell {
   text-align: start;
   font-style: normal;
-  /* padding-bottom: 8px; */
+
   color: var(--secondary-text-color);
-  width:38%;
-  /* padding-right: 60px; */
 }
 
 .tablerow {
   background-color: var(--main-color);
+}
+.style {
+  width: 216px;
+}
 
+@media screen and (min-width: 1280px) {
+  .style {
+    width: 361px;
+  }
 }
