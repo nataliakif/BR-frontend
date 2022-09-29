@@ -2,7 +2,7 @@ import AlreadyRead from 'components/AlreadyRead';
 import Container from 'components/Container';
 import GoingToRead from 'components/GoingToRead';
 import ReadingNow from 'components/ReadingNow';
-import InputBook from 'components/InputBook';
+import InputBook from 'components/InputBook/InputBook';
 
 const LibraryView = () => {
   return (

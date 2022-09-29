@@ -9,14 +9,14 @@ export const booksApi = apiSlice.injectEndpoints({
       providesTags: [tag],
     }),
     createBook: builder.mutation({
-      query: ({ title, author, publicationDate, pageAmount }) => ({
+      query: ({ bookTitle, author, publicationDate, amountOfPages }) => ({
         url: '/api/books',
         method: 'POST',
         body: {
-          title,
+          bookTitle,
           author,
           publicationDate,
-          pageAmount,
+          amountOfPages,
         },
       }),
       invalidatesTags: [tag],
