@@ -1,7 +1,7 @@
 import * as Yup from "yup"; 
 
 const InputAddSchema = Yup.object().shape({
-     title: Yup.string()
+  title: Yup.string()
     .required("Fill the gap")
     .min(2, "Too short")
     .max(254, "Too long. Max 254"),
