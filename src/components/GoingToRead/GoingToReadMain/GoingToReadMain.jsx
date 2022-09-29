@@ -1,8 +1,3 @@
-import books from '../../../dataFiles/book.json';
-import sprite from '../../../images/sprite.svg';
-import EllipsisText from 'react-ellipsis-text';
-import s from "./GoingToReadMain.module.css"
-
 import {
   createColumnHelper,
   flexRender,
@@ -10,7 +5,12 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-const readingNowBooks = books.filter(book => book.status === "Going to read");
+import stringMax from 'helpers/stringMax';
+import s from './GoingToReadMain.module.css';
+import sprite from '../../../images/sprite.svg';
+import books from '../../../dataFiles/book.json';
+
+const readingNowBooks = books.filter(book => book.status === 'Going to read');
 
 const columnHelper = createColumnHelper(readingNowBooks);
 
@@ -19,10 +19,15 @@ const columns = [
     cell: info => (
       <i>
         <div className={s.titleBookWrapper}>
-        <div className={s.titleBook}>
-          <EllipsisText text={info.getValue()} length={40} />
-        </div>
+          <div className={s.iconWrapper}>
+            <svg  className={s.icon} width="22" height="17">
+              <use href={sprite + '#icon-open-book'} />{' '}
+            </svg>
           </div>
+          <div className={s.titleBook}>
+            {stringMax(info.getValue(), 77)}
+          </div>
+        </div>
       </i>
     ),
     header: () => (
@@ -46,9 +51,8 @@ const columns = [
   }),
 ];
 
-function GoingToReadMain() {
-
-    const data=readingNowBooks
+const  GoingToReadMain=()=> {
+  const data = readingNowBooks;
   const table = useReactTable({
     data,
     columns,
@@ -58,12 +62,18 @@ function GoingToReadMain() {
   return (
     <>
       <h2 className={s.title}>Going to read </h2>
-      {/* {!readingNowBooks && ( */}
       <div>
-        <table className={s.table} >
+        <table className={s.table}>
+          <colgroup>
+            <col
+              span="1"
+              className={s.style}
+            />
+          </colgroup>
+
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} >
+              <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
                   <th key={header.id} className={s.tableTitleCell}>
                     {header.isPlaceholder
@@ -81,7 +91,7 @@ function GoingToReadMain() {
             {table.getRowModel().rows.map(row => (
               <tr key={row.id} className={s.tablerow}>
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id} >
+                  <td key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -89,7 +99,7 @@ function GoingToReadMain() {
             ))}
           </tbody>
         </table>
-        <div className="h-4" />
+        <div/>
       </div>
     </>
   );

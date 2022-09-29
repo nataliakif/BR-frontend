@@ -1,8 +1,9 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Rating from '@mui/material/Rating';
 
-const RatingControlled = ({step}) => {
+const RatingControlled = ({ step }) => {
   const [value, setValue] = useState(null);
+
   return (
     <Rating
       name="simple-controlled"
@@ -11,6 +12,7 @@ const RatingControlled = ({step}) => {
       onChange={(event, newValue) => {
         setValue(newValue);
         console.log(newValue);
+        // dispatch(addContact(newContact));
       }}
       precision={step}
     />
@@ -18,4 +20,3 @@ const RatingControlled = ({step}) => {
 };
 
 export default RatingControlled;
-

@@ -4,7 +4,7 @@ import s from './GoingToReadMobile.module.css';
 
 const readingNowBooks = books.filter(book => book.status === 'Going to read');
 
-function GoingToReadMobile() {
+const GoingToReadMobile=()=> {
   return (
     <section className={s.goingToReadMobilesection}>
       <h2 className={s.title}>Going to read </h2>

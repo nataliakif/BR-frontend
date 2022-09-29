@@ -38,12 +38,6 @@
     margin-bottom: 0;
 }
 
-.cardTitleBook {
-    /* display: flex; */
-    /* font-weight: 500;
-  font-size: 12px;
-  line-height: 1.25; */
-}
 
 .cardTitleBook::after {
     position: absolute;

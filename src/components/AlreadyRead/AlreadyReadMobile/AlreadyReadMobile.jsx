@@ -6,7 +6,7 @@ import s from './AlreadyReadMobile.module.css';
 
 const alreadyReadBooks = books.filter(book => book.status === 'Already read');
 
-function AlreadyReadMobile() {
+const   AlreadyReadMobile=() =>{
   return (
     <section className={s.listAlreadyRead}>
       <h2 className={s.title}>Already read</h2>

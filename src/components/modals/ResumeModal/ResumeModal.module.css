@@ -77,7 +77,7 @@
   font-size: 14px;
   line-height: 1.21;
   color: var(--main-color);
-  background: #6d7a8d;
+  background: var(--library-color);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border: none;
 }

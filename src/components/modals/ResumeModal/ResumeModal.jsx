@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 // import { useFormik } from 'formik';
 import RatingControlled from 'components/RatingControlled';
 
@@ -15,13 +15,13 @@ import s from './ResumeModal.module.css';
    return <textarea {...field} {...props} />;
  };
 
-function ResumeModal() {
+const  ResumeModal=()=> {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const onChangeRaring = () => {
-    console.log('first');
-  };
+  // const onChangeRaring = () => {
+  //   console.log('first');
+  // };
 
   return (
     <div className={s.buttonWrapper}>

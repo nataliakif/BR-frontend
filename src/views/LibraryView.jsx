@@ -1,8 +1,10 @@
-import AlreadyRead from 'components/AlreadyRead';
 import Container from 'components/Container';
+import InputBook from 'components/InputBook';
+import ContainerLibrary from 'components/ContainerLibrary';
 import GoingToRead from 'components/GoingToRead';
 import ReadingNow from 'components/ReadingNow';
-import InputBook from 'components/InputBook';
+import AlreadyRead from 'components/AlreadyRead';
+
 
 const LibraryView = () => {
   return (
@@ -10,15 +12,12 @@ const LibraryView = () => {
       <Container>
         <InputBook />
       </Container>
-      <Container>
+
+      <ContainerLibrary>
         <AlreadyRead />
-      </Container>
-      <Container>
         <ReadingNow />
-      </Container>
-      <Container>
         <GoingToRead />
-      </Container>
+      </ContainerLibrary>
     </>
   );
 };
