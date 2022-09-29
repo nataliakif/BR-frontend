@@ -9,3 +9,7 @@
     border: none;
     background-color: transparent;
 };
+
+.logoutBtn:hover {
+    cursor: pointer;
+}
