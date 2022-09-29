@@ -27,32 +27,42 @@
   font-size: 16px;
   line-height: 1.25;
 }
+
 .label {
   margin-top: 20px;
 
   display: block;
 }
-.textAreaBox {
+
+.textAreaEmpty {
   width: 240px;
   height: 170px;
   resize: none;
   margin-top: 8px;
   padding: 8px;
   outline: none;
+  border: 1px solid var(--icon-color);
+}
+
+.textAreaFilled {
+  composes: textAreaEmpty;
+  border: 1px solid var(--accent-color);
 }
 
 @media screen and (min-width: 768px) {
-  .textAreaBox {
+  .textAreaEmpty {
     width: 568px;
     height: 170px;
   }
 }
+
 .buttonList {
   display: flex;
   justify-content: space-around;
   justify-content: center;
   margin-top: 20px;
 }
+
 .titleTextarea {
   font-size: 14px;
   line-height: 17px;
@@ -64,6 +74,13 @@
   line-height: 1.25;
   opacity: 0.8;
 }
+@media screen and (min-width: 768px) {
+  .textAreaBox {
+    width: 568px;
+    height: 170px;
+  }
+}
+
 .buttonOpen {
   padding-top: 11px;
   padding-bottom: 11px;
@@ -81,6 +98,7 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border: none;
 }
+
 @media screen and (min-width: 768px) {
   .buttonWrapper {
     padding-top: 11px;
@@ -88,10 +106,12 @@
     padding-left: 32px;
     padding-right: 5px;
   }
-  .buttonWrapper > .buttonOpen {
+
+  .buttonWrapper>.buttonOpen {
     width: 80px;
     padding: 11px;
   }
+
   .buttonBack,
   .buttonSave {
     width: 130px;
@@ -124,6 +144,7 @@
   background: var(--accent-color);
   border: 1px solid var(--primary-text-color);
 }
+
 .buttonBack:hover,
 .buttonBack:focus,
 .buttonSave:hover,
