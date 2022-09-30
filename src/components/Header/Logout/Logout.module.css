@@ -4,12 +4,9 @@
     font-size: 14px;
     line-height: 2.71;
     text-decoration-line: underline;
-    color: #242a37;
+    color: var(--primary-text-color);
     width: 59px;
     border: none;
     background-color: transparent;
-};
-
-.logoutBtn:hover {
     cursor: pointer;
-}
+};

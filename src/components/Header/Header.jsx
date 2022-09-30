@@ -1,6 +1,7 @@
 import Navigation from './Navigation/Navigation';
 import UserBar from './UserBar/UserBar';
 import { getCurrentStatus } from 'redux/authUser/authUserSlice';
+import { NavLink } from 'react-router-dom';
 
 import s from '../Header/Header.module.css';
 import Logout from './Logout/Logout';
@@ -17,7 +18,7 @@ const Header = () => {
     return (
         <header className={s.header}>
             <div className={headerStyles.join(' ')}>
-                <span className={s.logo}>BR</span>
+                <NavLink to="/library" className={s.logo}>BR</NavLink>
                 {isLoggedIn && (
                 <>
                     <UserBar/>

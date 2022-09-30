@@ -44,12 +44,12 @@
 .nav_link:hover,
 .nav_link:focus {
     transition: background-color 500ms cubic-bezier(.61, .36, .46, .9);
-    background-color: #f5f7fa;
+    background-color: var(--goals-bg-color);
 };
 
 .activeLink {
     border-radius: 50%;
-    background-color: #f5f7fa;
+    background-color: var(--goals-bg-color);
 }
 
 .navSvg {

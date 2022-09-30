@@ -21,10 +21,10 @@
     font-size: 14px;
     line-height: 2.71;
     text-transform: capitalize;
-    color: #242a37;
+    color: var(--primary-text-color);
     width: 33px;
     height: 33px;
-    background-color: #F5F7FA;
+    background-color: var(--goals-bg-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@
     font-size: 14px;
     font-weight: 300;
     line-height: 2.71;
-    color: #242a37;
+    color: var(--primary-text-color);
     display: none;
 }
 
