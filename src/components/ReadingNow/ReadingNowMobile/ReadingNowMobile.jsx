@@ -1,15 +1,15 @@
-import books from '../../../dataFiles/book.json';
+// import books from '../../../dataFiles/book.json';
 
 import s from './ReadingNowMobile.module.css';
 
-const readingNowBooks = books.filter(book => book.status === 'reading_now');
+// const readingNowBooks = books.filter(book => book.status === 'reading_now');
 
-const ReadingNowMobile = () => {
+const ReadingNowMobile = ({readingNowListBooks}) => {
   return (
     <section className={s.readingNowMobileSection}>
       <h2 className={s.title}>Reading now</h2>
       <ul className={s.card}>
-        {readingNowBooks.map(({ _id, bookTitle, author, publicationDate, amountOfPages }) => {
+        {readingNowListBooks.map(({ _id, bookTitle, author, publicationDate, amountOfPages }) => {
           return (
             <li className={s.cardBook} key={_id}>
               <div className={s.cardBookWrapper}>

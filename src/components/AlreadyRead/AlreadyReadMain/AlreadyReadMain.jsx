@@ -4,73 +4,75 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import Rating from '@mui/material/Rating';
 
-import RatingControlled from 'components/RatingControlled';
 import ResumeModal from 'components/modals/ResumeModal';
-import books from '../../../dataFiles/book.json';
 import sprite from '../../../images/sprite.svg';
 import s from '../AlreadyReadMain/AlreadyReadMain.module.css';
 import stringMax from 'helpers/stringMax';
 
-const goingToReadListBooks = books.filter(book => book.status === 'finished');
 
+const AlreadyReadMain = ({alreadyReadListBooks}) => {
+  // const AlreadyReadMain = () => {
+  const data = alreadyReadListBooks;
+  const columnHelper = createColumnHelper(alreadyReadListBooks);
 
-
-function AlreadyReadMain() {
-  const data = goingToReadListBooks;
-  const columnHelper = createColumnHelper(goingToReadListBooks);
-
-const columns = [
-  columnHelper.accessor('bookTitle', {
-    cell: info => (
-      <i>
-        <div className={s.titleBookWrapper}>
-          <div className={s.iconWrapper}>
-            <svg className={s.icon} width="22" height="17">
-              <use href={sprite + '#icon-open-book'} />{' '}
-            </svg>
+  const columns = [
+    columnHelper.accessor('bookTitle', {
+      cell: info => (
+        <i>
+          <div className={s.titleBookWrapper}>
+            <div className={s.iconWrapper}>
+              <svg className={s.icon} width="22" height="17">
+                <use href={sprite + '#icon-open-book'} />{' '}
+              </svg>
+            </div>
+            <div className={s.titleBook}>{stringMax(info.getValue(), 25)}</div>
           </div>
-          <div className={s.titleBook}>{stringMax(info.getValue(), 25)}</div>
+        </i>
+      ),
+      header: () => (
+        <div>
+          <span>Book title</span>
         </div>
-      </i>
-    ),
-    header: () => (
-      <div>
-        <span>Book title</span>
-      </div>
-    ),
-  }),
-  columnHelper.accessor('author', {
-    id: 'author',
-    cell: info => info.getValue(),
-    header: () => <span>Author</span>,
-  }),
-  columnHelper.accessor('publicationDate', {
-    header: () => <span>Year</span>,
-    cell: info => info.renderValue(),
-  }),
-  columnHelper.accessor('amountOfPages', {
-    cell: info => info.getValue(),
-    header: () => <span>Pages</span>,
-  }),
-  columnHelper.accessor('rating', {
-    cell: info => (
-      <div>
-        <RatingControlled step={0.5} status={+info.getValue()} />
-      </div>
-    ),
-    header: 'Rating',
-  }),
-  columnHelper.accessor('review', {
-    cell: () => (
-      <i>
-        <ResumeModal />
-      </i>
-    ),
-    header: '',
-  }),
+      ),
+    }),
+    columnHelper.accessor('author', {
+      id: 'author',
+      cell: info => info.getValue(),
+      header: () => <span>Author</span>,
+    }),
+    columnHelper.accessor('publicationDate', {
+      header: () => <span>Year</span>,
+      cell: info => info.renderValue(),
+    }),
+    columnHelper.accessor('amountOfPages', {
+      cell: info => info.getValue(),
+      header: () => <span>Pages</span>,
+    }),
+    columnHelper.accessor('rating', {
+      cell: info => (
+        <i>
+          <Rating
+            name="read-only"
+            value={+info.getValue()}
+            size="small"
+            readOnly
+          />
+        </i>
+      ),
+      header: 'Rating',
+    }),
+    columnHelper.accessor('action', {
+      cell: row => (
+        <i>
+          <ResumeModal row={row} />
+        </i>
+      ),
+      header: '',
+    }),
   ];
-  
+
   const table = useReactTable({
     data,
     columns,
@@ -87,20 +89,11 @@ const columns = [
       <div>
         <table className={s.table}>
           <colgroup>
-            <col
-              span="1"
-              className={s.styleTitleBook}
-            />
-            <col
-              span="1"
-              className={s.styleAuthor}
-            />
-            <col span="2"
-            className={s.styleColums}/>
-                      <col span="1"
-              className={s.styleRating} />
-            <col span="1"
-            className={s.styleResume}/>
+            <col span="1" className={s.styleTitleBook} />
+            <col span="1" className={s.styleAuthor} />
+            <col span="2" className={s.styleColums} />
+            <col span="1" className={s.styleRating} />
+            <col span="1" className={s.styleResume} />
           </colgroup>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
@@ -134,6 +127,6 @@ const columns = [
       </div>
     </>
   );
-}
+};
 
 export default AlreadyReadMain;
