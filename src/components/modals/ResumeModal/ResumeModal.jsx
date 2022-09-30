@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
-// import RatingControlled from 'components/RatingControlled';
+
 import { useEditBookMutation } from '../../../redux/books/booksApi';
 
 import s from './ResumeModal.module.css';
@@ -13,23 +13,21 @@ const MyInput = ({ field, form, ...props }) => {
   return <textarea {...field} {...props} />;
 };
 
-const  ResumeModal=({ row })=> {
+const ResumeModal = ({ row }) => {
   const [open, setOpen] = useState(false);
   const [openedBook, setOpenedBook] = useState();
-  // const [value, setValue] = useState(null);
+
   const [editBook] = useEditBookMutation();
 
   const onHandleModalOpen = () => {
     setOpen(true);
     setOpenedBook(row.row.original);
-    // setValue(row.row.original.rating)
   };
   const onHandleModalClose = () => {
     setOpen(false);
     setOpenedBook({});
   };
 
-  // console.log(openedBook);
   return (
     <div className={s.buttonWrapper}>
       <button className={s.buttonOpen} onClick={onHandleModalOpen}>
@@ -49,18 +47,13 @@ const  ResumeModal=({ row })=> {
                 rating: 2,
               }}
               onSubmit={values => {
-                // const changedBook = {
-                //   id: openedBook._id,
-                //   rating: values.rating,
-                //   review: values.review,
-                // };
-                // console.log(values)
-                console.log(openedBook);
-                // console.log(openedBook.rating, openedBook.review );
-                editBook({ id: openedBook._id, rating: openedBook.rating, review: openedBook.review });
-                // setValue(null)
-                setOpen(false);
+                editBook({
+                  id: openedBook._id,
+                  rating: openedBook.rating,
+                  review: openedBook.review,
+                });
 
+                setOpen(false);
               }}
             >
               {({ errors, touched, isValidating }) => (
@@ -70,10 +63,7 @@ const  ResumeModal=({ row })=> {
                     value={openedBook.rating}
                     size="small"
                     onChange={(event, newValue) => {
-                      // setValue(newValue);
-                      setOpenedBook({...openedBook, rating:newValue})
-                      console.log(newValue);
-                      // console.log('change', newValue);
+                      setOpenedBook({ ...openedBook, rating: newValue });
                     }}
                     precision={1}
                   />
@@ -84,10 +74,8 @@ const  ResumeModal=({ row })=> {
                     placeholder="..."
                     className={s.textAreaBox}
                     component={MyInput}
-                    onChange={(event, newValue) => {
-                      setOpenedBook({ ...openedBook, review: newValue })
-                      console.log(newValue)
-
+                    onChange={e => {
+                      setOpenedBook({ ...openedBook, review: e.target.value });
                     }}
                   />
 
@@ -115,6 +103,6 @@ const  ResumeModal=({ row })=> {
       </Modal>
     </div>
   );
-}
+};
 
 export default ResumeModal;
