@@ -12,7 +12,6 @@ import sprite from '../../../images/sprite.svg';
 
 const GoingToReadMain = ({goingToReadListBooks}) => {
 
-// console.log(goingToReadListBooks)
   const data = goingToReadListBooks;
   const columnHelper = createColumnHelper(goingToReadListBooks);
 

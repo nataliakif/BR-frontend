@@ -10,13 +10,13 @@ import stringMax from 'helpers/stringMax';
 import s from './ReadingNowMain.module.css';
 import sprite from '../../../images/sprite.svg';
 
-import books from '../../../dataFiles/book.json';
+// import books from '../../../dataFiles/book.json';
 
-const readingNowListBooks = books.filter(book => book.status === 'reading_now');
+// const readingNowListBooks = books.filter(book => book.status === 'reading_now');
 // console.log(readingNowListBooks);
 
 
-const ReadingNowMain = () => {
+const ReadingNowMain = ({readingNowListBooks}) => {
   const data = readingNowListBooks;
 const columnHelper = createColumnHelper(readingNowListBooks);
   // console.log(readingNowListBooks)
