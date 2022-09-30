@@ -10,6 +10,7 @@ import { TiArrowSortedDown } from "react-icons/ti"
 const DatePickerInput = ({onChange, ...props}) => {
   const { setFieldValue } = useFormikContext();
   const [ field ] = useField(props);
+  
     return (
         <div className={s.dateWrapper}>
         <DatePicker
@@ -18,13 +19,16 @@ const DatePickerInput = ({onChange, ...props}) => {
           {...props}
        selected={(field.value && new Date(field.value)) || null}
        onChange={(value) => {
+        
         setFieldValue(field.name, value);
-        onChange && onChange(value)
+        onChange(value);
       }}
       />
       <RiCalendar2Line className={s.dateIcon}/>
       <TiArrowSortedDown className={s.dateArrow}/>
       </div>
     )
+    
 };
+
 export default DatePickerInput;

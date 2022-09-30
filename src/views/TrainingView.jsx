@@ -1,11 +1,22 @@
 import Container from 'components/Container';
 import MyGoals from 'components/MyGoals';
-import Training from '../components/Training/TrainingWrapper';
+import { useState } from 'react'
+import TrainingWrapper from 'components/Training/TrainingWrapper';
 
 const TrainingView = () => {
+  const [startDate, setStartDate] = useState(null);
+  const [finishDate, setFinishDate] = useState(null);
+console.log(startDate);
+
+const onStartDateSelect = (value) => {
+    setStartDate(value)
+}
   return (
     <Container>
-      <Training/>
+      <TrainingWrapper
+       onStartDateChange={onStartDateSelect}
+       onFinishDateChange={setFinishDate}
+      />
       <MyGoals />
     </Container>
   );
