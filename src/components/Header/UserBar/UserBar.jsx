@@ -1,12 +1,9 @@
 import s from './UserBar.module.css';
-import { getCurrentStatus, getCurrentUser } from 'redux/authUser/authUserSlice';
+import { getCurrentUser } from 'redux/authUser/authUserSlice';
 import { useSelector } from 'react-redux';
-import { useFetchCurrentUserQuery } from 'redux/authUser/authUserApiSlice';
+import EllipsisText from 'react-ellipsis-text/lib/components/EllipsisText';
 
 const UserBar = () => {
-    const auth = useSelector(getCurrentStatus);
-    const { data } = useFetchCurrentUserQuery(null, { skip: !auth });
-
     const userName = useSelector(getCurrentUser);
 
     const [firstName] = userName.split(" ");
@@ -16,7 +13,7 @@ const UserBar = () => {
     return userName ? (
         <div className={s.userBar}>
             <span className={s.firstLetter}>{`${letter}`}</span>
-            <span className={s.userName}>{`${userName}`}</span>
+            <EllipsisText text={`${userName}`} length={"30"} className={s.userName}/>
         </div>
     ) : null;
 }
