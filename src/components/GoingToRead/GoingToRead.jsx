@@ -8,7 +8,7 @@ import useIsMobile from "../../helpers/useIsMobile";
 
 const GoingToRead = ({goingToReadListBooks}) => {
   const isMobile = useIsMobile();
-  console.log(goingToReadListBooks)
+  // console.log(goingToReadListBooks)
   return (
     <>
       
