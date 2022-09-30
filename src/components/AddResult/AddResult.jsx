@@ -1,19 +1,17 @@
 import s from './AddResult.module.css';
-// import DatePickerField from 'components/DatePickerField';
 import Button from 'components/Button/Button';
 import sprite from './sprite.svg';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
-import {
-  useFetchTrainingQuery,
-  // useDeleteTrainingMutation,
-  // useEditTrainingMutation,
-} from '../../redux/training/trainingApi';
+import // useFetchTrainingQuery,
+// useDeleteTrainingMutation,
+// useEditTrainingMutation,
+'../../redux/training/trainingApi';
 const AddResult = () => {
-  const { data, error } = useFetchTrainingQuery();
-  console.log(data, error);
+  // const { data, error } = useFetchTrainingQuery();
+  // console.log(data, error);
   const [doingFineModal, setDoingFineModal] = useState(false);
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
@@ -34,7 +32,11 @@ const AddResult = () => {
             <div className={s.fieldWrapper}>
               <p className={s.name}>Date</p>
 
-              <DatePickerField name="date" className={s.input} />
+              <DatePickerField
+                name="date"
+                className={s.input}
+                maxDate={Date.now()}
+              />
 
               <svg className={s.iconSvg} style={{ width: '24px' }}>
                 <use href={`${sprite}#icon-Polygon`}></use>
