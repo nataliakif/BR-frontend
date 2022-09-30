@@ -1,24 +1,19 @@
 import s from './UserBar.module.css';
-import { getCurrentStatus, getCurrentUser } from 'redux/authUser/authUserSlice';
+import { getCurrentUser } from 'redux/authUser/authUserSlice';
 import { useSelector } from 'react-redux';
-import { useFetchCurrentUserQuery } from 'redux/authUser/authUserApiSlice';
 
 const UserBar = () => {
-    const auth = useSelector(getCurrentStatus);
-    const { data } = useFetchCurrentUserQuery(null, { skip: !auth });
+  const userName = useSelector(getCurrentUser);
 
-    const userName = useSelector(getCurrentUser);
+  const [firstName] = userName.split(' ');
+  const [letter] = firstName.split('');
 
-    const [firstName] = userName.split(" ");
-    const [letter] = firstName.split("");
-
-    
-    return userName ? (
-        <div className={s.userBar}>
-            <span className={s.firstLetter}>{`${letter}`}</span>
-            <span className={s.userName}>{`${userName}`}</span>
-        </div>
-    ) : null;
-}
+  return userName ? (
+    <div className={s.userBar}>
+      <span className={s.firstLetter}>{`${letter}`}</span>
+      <span className={s.userName}>{`${userName}`}</span>
+    </div>
+  ) : null;
+};
 
 export default UserBar;
