@@ -6,6 +6,7 @@ export const booksApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
     fetchBooks: builder.query({
       query: () => '/api/books',
+      transformResponse: response => response.data.result,
       providesTags: [tag],
     }),
     createBook: builder.mutation({
