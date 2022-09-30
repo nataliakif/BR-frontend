@@ -5,13 +5,15 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
-import // useFetchTrainingQuery,
-// useDeleteTrainingMutation,
-// useEditTrainingMutation,
-'../../redux/training/trainingApi';
+import { useFetchCurrentUserQuery } from '../../redux/authUser/authUserApiSlice';
+import {
+  useFetchTrainingQuery,
+  // useDeleteTrainingMutation,
+  // useEditTrainingMutation,
+} from '../../redux/training/trainingApi';
 const AddResult = () => {
-  // const { data, error } = useFetchTrainingQuery();
-  // console.log(data, error);
+  const { data, error } = useFetchCurrentUserQuery();
+  console.log(data, error);
   const [doingFineModal, setDoingFineModal] = useState(false);
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
