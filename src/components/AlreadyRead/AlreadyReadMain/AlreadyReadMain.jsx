@@ -11,14 +11,17 @@ import books from '../../../dataFiles/book.json';
 import sprite from '../../../images/sprite.svg';
 import s from '../AlreadyReadMain/AlreadyReadMain.module.css';
 import stringMax from 'helpers/stringMax';
-import { useFetchBooksQuery } from 'redux/books/booksApi';
 
-const alreadyReadBooks = books.filter(book => book.status === 'Already read');
+const goingToReadListBooks = books.filter(book => book.status === 'finished');
 
-const columnHelper = createColumnHelper(alreadyReadBooks);
+
+
+function AlreadyReadMain() {
+  const data = goingToReadListBooks;
+  const columnHelper = createColumnHelper(goingToReadListBooks);
 
 const columns = [
-  columnHelper.accessor('title', {
+  columnHelper.accessor('bookTitle', {
     cell: info => (
       <i>
         <div className={s.titleBookWrapper}>
@@ -42,11 +45,11 @@ const columns = [
     cell: info => info.getValue(),
     header: () => <span>Author</span>,
   }),
-  columnHelper.accessor('year', {
+  columnHelper.accessor('publicationDate', {
     header: () => <span>Year</span>,
     cell: info => info.renderValue(),
   }),
-  columnHelper.accessor('pages', {
+  columnHelper.accessor('amountOfPages', {
     cell: info => info.getValue(),
     header: () => <span>Pages</span>,
   }),
@@ -58,7 +61,7 @@ const columns = [
     ),
     header: 'Rating',
   }),
-  columnHelper.accessor('resume', {
+  columnHelper.accessor('review', {
     cell: () => (
       <i>
         <ResumeModal />
@@ -66,10 +69,8 @@ const columns = [
     ),
     header: '',
   }),
-];
-
-function AlreadyReadMain() {
-  const data = alreadyReadBooks;
+  ];
+  
   const table = useReactTable({
     data,
     columns,
@@ -81,15 +82,25 @@ function AlreadyReadMain() {
 
   return (
     <>
-      <h2>Already read</h2>
+      <h2 className={s.title}>Already read</h2>
 
       <div>
         <table className={s.table}>
           <colgroup>
             <col
               span="1"
-              className={s.style}
+              className={s.styleTitleBook}
             />
+            <col
+              span="1"
+              className={s.styleAuthor}
+            />
+            <col span="2"
+            className={s.styleColums}/>
+                      <col span="1"
+              className={s.styleRating} />
+            <col span="1"
+            className={s.styleResume}/>
           </colgroup>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
@@ -109,7 +120,7 @@ function AlreadyReadMain() {
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (
-              <tr key={row.id} className={s.tablerow}>
+              <tr key={row.id} className={s.tableRow}>
                 {row.getVisibleCells().map(cell => (
                   <td key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

@@ -4,18 +4,18 @@ import books from '../../../dataFiles/book.json';
 
 import s from './AlreadyReadMobile.module.css';
 
-const alreadyReadBooks = books.filter(book => book.status === 'Already read');
+const goingToReadListBooks = books.filter(book => book.status === 'finished');
 
 const   AlreadyReadMobile=() =>{
   return (
     <section className={s.listAlreadyRead}>
       <h2 className={s.title}>Already read</h2>
       <ul className={s.card}>
-        {alreadyReadBooks.map(({ id, title, author, year, pages, rating }) => {
+        {goingToReadListBooks.map(({ _id, bookTitle, author, publicationDate, amountOfPages, rating }) => {
           return (
-            <li className={s.cardBook} key={id}>
+            <li className={s.cardBook} key={_id}>
               <div className={s.cardBookWrapper}>
-                <h3 className={s.cardTitle}>{title}</h3>
+                <h3 className={s.cardTitle}>{bookTitle}</h3>
                 <div className={s.cardTableBook}>
                   <table className={s.cardTable}>
                     <tbody>
@@ -25,11 +25,11 @@ const   AlreadyReadMobile=() =>{
                       </tr>
                       <tr className={s.cardTableBody}>
                         <th className={s.tableTitle}>Year:</th>
-                        <td className={s.tableContent}>{year}</td>
+                        <td className={s.tableContent}>{publicationDate}</td>
                       </tr>
                       <tr className={s.cardTableBody}>
                         <th className={s.tableTitle}>Pages:</th>
-                        <td className={s.tableContent}>{pages}</td>
+                        <td className={s.tableContent}>{amountOfPages}</td>
                       </tr>
                       <tr className={s.cardTableBody}>
                         <th className={s.tableTitle}>Rating:</th>

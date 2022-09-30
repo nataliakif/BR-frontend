@@ -4,18 +4,24 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+// import PropTypes from 'prop-types';
+
 import stringMax from 'helpers/stringMax';
 import s from './ReadingNowMain.module.css';
 import sprite from '../../../images/sprite.svg';
 
 import books from '../../../dataFiles/book.json';
 
-const goingToReadBooks = books.filter(book => book.status === 'Reading now');
-// console.log(goingToReadBooks);
-const columnHelper = createColumnHelper(goingToReadBooks);
+const readingNowListBooks = books.filter(book => book.status === 'reading_now');
+// console.log(readingNowListBooks);
 
+
+const ReadingNowMain = () => {
+  const data = readingNowListBooks;
+const columnHelper = createColumnHelper(readingNowListBooks);
+  // console.log(readingNowListBooks)
 const columns = [
-  columnHelper.accessor('title', {
+  columnHelper.accessor('bookTitle', {
     cell: info => (
       <i>
         <div className={s.titleBookWrapper}>
@@ -39,24 +45,21 @@ const columns = [
     cell: info => info.getValue(),
     header: () => <span>Author</span>,
   }),
-  columnHelper.accessor('year', {
+  columnHelper.accessor('publicationDate', {
     header: () => <span>Year</span>,
     cell: info => info.renderValue(),
   }),
-  columnHelper.accessor('pages', {
+  columnHelper.accessor('amountOfPages', {
     cell: info => info.getValue(),
     header: () => <span>Pages</span>,
   }),
 ];
-
-const ReadingNowMain = () => {
-  const data = [...goingToReadBooks];
-
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
 
   return (
     <>
