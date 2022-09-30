@@ -1,4 +1,5 @@
 .form {
+  margin-top: 50px;
   position: relative;
   display: block;
   padding: 22px 20px 22px;
@@ -128,14 +129,10 @@
 }
 
 .button {
-  width: 100%;
-  height: 40px;
-  background-color: var(--btn-cl);
-  border-color: transparent;
-  color: var(--primary-white-cl);
-  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .button {
     position: absolute;
     top: 89px;
@@ -151,10 +148,12 @@
     height: 40px;
     margin-bottom: 24px;
   }
-}
+} */
 
 .statisticsTitle {
-  font-family: 'Montserrat';
+  display: block;
+  position: relative;
+  margin-top: 24px;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.25;
@@ -164,11 +163,13 @@
 }
 @media screen and (min-width: 768px) {
   .statisticsTitle {
+    margin-top: 20px;
     text-align: left;
   }
 }
 @media screen and (min-width: 1280px) {
   .statisticsTitle {
+    margin-top: 24px;
     text-align: center;
   }
 }
@@ -176,44 +177,46 @@
 .statisticsTitle::before {
   content: '';
   position: absolute;
-  top: calc(100% / 2 + 39px);
-  left: calc(100% / 2 - 119px);
+  top: 7px;
   display: block;
   width: 71px;
+  margin-right: 12px;
   border-bottom: 1px solid #e0e5eb;
   background-color: #e0e5eb;
 }
-/* @include mq(tablet) {
+@media screen and (min-width: 768px) {
+  .statisticsTitle::before {
     display: none;
   }
+}
 
-  @include mq(desktop) {
+@media screen and (min-width: 1280px) {
+  .statisticsTitle::before {
     display: block;
+    top: 7px;
   }
-} */
+}
 
 .statisticsTitle::after {
   content: '';
   position: absolute;
-  top: calc(100% / 2 + 39px);
-  right: calc(100% / 2 - 120px);
   display: block;
+  margin-left: 12px;
   width: 71px;
   border-bottom: 1px solid #e0e5eb;
   background-color: #e0e5eb;
-
-  /* @include mq(tablet) {
+}
+@media screen and (min-width: 768px) {
+  .statisticsTitle::after {
     width: 159px;
-    top: calc(100% / 2 + 8px);
-    left: calc(100% / 2 - 174px);
   }
-
-  @include mq(desktop) {
-    left: unset;
-    top: calc(100% / 2 + 39px);
-    right: calc(100% / 2 - 120px);
+}
+@media screen and (min-width: 1280px) {
+  .statisticsTitle::after {
     width: 71px;
-  } */
+    top: 7px;
+    right: 0;
+  }
 }
 
 .statistics {

@@ -10,7 +10,7 @@ export const authUserApi = apiSlice.injectEndpoints({
       }),
     }),
     fetchCurrentUser: builder.query({
-      query: () => '/users/current',
+      query: () => '/auth/user',
       method: 'GET',
     }),
     registerUser: builder.mutation({
