@@ -1,0 +1,16 @@
+.addResult {
+  margin-top: 32px;
+}
+@media screen and (min-width: 768px) {
+  .addResult {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .addResult {
+    margin-top: 17px;
+    grid-column: 2/3;
+    grid-row: 3/4;
+  }
+}

@@ -24,7 +24,7 @@ const DoingFineModal = ({ open, onClose, onNewTraining }) => {
 
 DoingFineModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onNewTraining: PropTypes.func.isRequired,
+  onNewTraining: PropTypes.func,
   onClose: PropTypes.func.isRequired,
 };
 

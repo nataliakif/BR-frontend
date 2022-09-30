@@ -1,0 +1,261 @@
+.form {
+  margin-top: 50px;
+  position: relative;
+  display: block;
+  padding: 22px 20px 22px;
+  width: 100%;
+  background-color: var(--main-color);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}
+@media screen and (min-width: 768px) {
+  .form {
+    padding: 28px 96px 32px;
+    width: 704px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form {
+    padding: 20px 24px 22px;
+    width: 288px;
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--primary-text-color);
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .title {
+    font-size: 12px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    justify-content: space-between;
+    width: 240px;
+    margin-top: 27px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    margin-top: 12px;
+    margin-bottom: 28px;
+  }
+}
+
+.name {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.18;
+  color: var(--secondary-text-cl);
+}
+
+.date {
+  position: relative;
+  display: block;
+  margin-top: 4px;
+  padding: 12px 22px 12px 8px;
+  width: 110px;
+  height: 42px;
+  background: var(--secondary-bg-cl);
+  border: 1px solid var(--placeholder-cl);
+  outline: none;
+
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: var(--main-text-cl);
+}
+
+.iconSvg {
+  position: absolute;
+  display: block;
+  top: 35px;
+  right: 4px;
+  width: 13px;
+  height: 7px;
+  pointer-events: none;
+}
+
+.fieldWrapper {
+  position: relative;
+}
+
+.input {
+  display: block;
+  margin-top: 4px;
+  padding: 10px;
+  width: 110px;
+  height: 42px;
+  background: #f6f7fb;
+  border: 1px solid #a6abb9;
+  outline: none;
+
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: var(--main-text-cl);
+}
+
+.error {
+  composes: name;
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  color: var(--error-cl);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+/* @media screen and (min-width: 768px) {
+  .button {
+    position: absolute;
+    top: 89px;
+    right: 96px;
+    width: 240px;
+    height: 42px;
+    margin-bottom: unset;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .button {
+    position: unset;
+    height: 40px;
+    margin-bottom: 24px;
+  }
+} */
+
+.statisticsTitle {
+  display: block;
+  position: relative;
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+  color: #242a37;
+}
+@media screen and (min-width: 768px) {
+  .statisticsTitle {
+    margin-top: 20px;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .statisticsTitle {
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+.statisticsTitle::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  display: block;
+  width: 71px;
+  margin-right: 12px;
+  border-bottom: 1px solid #e0e5eb;
+  background-color: #e0e5eb;
+}
+@media screen and (min-width: 768px) {
+  .statisticsTitle::before {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .statisticsTitle::before {
+    display: block;
+    top: 7px;
+  }
+}
+
+.statisticsTitle::after {
+  content: '';
+  position: absolute;
+  display: block;
+  margin-left: 12px;
+  width: 71px;
+  border-bottom: 1px solid #e0e5eb;
+  background-color: #e0e5eb;
+}
+@media screen and (min-width: 768px) {
+  .statisticsTitle::after {
+    width: 159px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .statisticsTitle::after {
+    width: 71px;
+    top: 7px;
+    right: 0;
+  }
+}
+
+.statistics {
+  margin-top: 4px;
+  height: 100px;
+  overflow-x: hidden;
+
+  /* @include mq(tablet) {
+    margin-top: 6px;
+    width: 240px;
+  }
+
+  @include mq(desktop) {
+    margin-top: 4px;
+  } */
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+}
+
+.data {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #242a37;
+  width: 75px;
+}
+
+.day {
+  composes: data;
+  text-align: left;
+}
+
+.pages {
+  composes: data;
+  text-align: right;
+}
