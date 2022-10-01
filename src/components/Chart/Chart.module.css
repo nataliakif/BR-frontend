@@ -1,0 +1,78 @@
+.ccontainer {
+  padding-top: 25px;
+  padding-bottom: 49px;
+  padding-left: 22px;
+  padding-right: 22px;
+  margin: 0;
+  width: 320px;
+  height: 290px;
+  background: #ffffff;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    box-sizing: border-box;
+    padding-top: 25px;
+    padding-bottom: 49px;
+    padding-left: 22px;
+    padding-right: 22px;
+    height: 290px;
+    width: 320px;
+    background: #ffffff;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    box-sizing: border-box;
+    padding-top: 25px;
+    padding-bottom: 49px;
+    padding-left: 22px;
+    padding-right: 22px;
+    height: 290px;
+    width: 480px;
+    background: #ffffff;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    height: 340px;
+    width: 704px;
+    padding-top: 35px;
+    padding-bottom: 60px;
+    padding-left: 46px;
+    padding-right: 46px;
+    background: #ffffff;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    height: 340px;
+    width: 928px;
+    padding-left: 40px;
+    padding-right: 77px;
+    background: #ffffff;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+  }
+}
+
+.chart__title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+  margin-bottom: 21px;
+}
+
+.trainigPlan__title {
+  margin-left: 12px;
+  font-weight: 600;
+}
