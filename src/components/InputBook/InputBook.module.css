@@ -134,8 +134,7 @@ input:focus {
   position: absolute;
   top: 80%;
   right: 2%;
-  font-size: 15px;
   color: var(--accent-color);
   text-align: center;
-  font-style: italic;
+  font-size: 8px;
 }
