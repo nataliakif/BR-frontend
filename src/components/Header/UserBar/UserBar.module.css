@@ -3,9 +3,17 @@
     align-items: center;
     position: absolute;
     top: 50%;
-    right: 74px;
+    right: 81px;
     transform: translateY(-50%);
-};
+}
+
+@media screen and (min-width: 768px) {
+    .userBar {
+        right: 50%;
+        display: flex;
+        transform: translate(50%, -50%);
+    }
+}
 
 .firstLetter {
     font-family: 'Montserrat';
@@ -13,21 +21,33 @@
     font-size: 14px;
     line-height: 2.71;
     text-transform: capitalize;
-    color: #242a37;
+    color: var(--primary-text-color);
     width: 33px;
     height: 33px;
-    background-color: #F5F7FA;
+    background-color: var(--goals-bg-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-};
+}
+
+@media screen and (min-width:768px) {
+    .firstLetter {
+        margin-right: 11px;
+    }
+}
 
 .userName {
     font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 300;
     line-height: 2.71;
-    color: #242a37;
+    color: var(--primary-text-color);
     display: none;
+}
+
+@media screen and (min-width:768px) {
+    .userName {
+        display: inline;
+    }
 }
