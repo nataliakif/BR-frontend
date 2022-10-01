@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { logOut, setError } from '../authUser/authUserSlice';
+import { setError } from '../authUser/authUserSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://br-backend.herokuapp.com/',
