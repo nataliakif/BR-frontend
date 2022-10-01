@@ -4,6 +4,7 @@ import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
 import s from './TrainingVieew.module.css';
 import { useState } from 'react';
 import { useFetchBooksQuery } from 'redux/books/booksApi';
+import TrainingList from 'components/Training/TrainingList/TrainingList';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -34,6 +35,7 @@ const TrainingView = () => {
             />
           </div>
         </div>
+        <TrainingList trainingBooks={goingToReadBooks} />
       </Container>
     </>
   );
