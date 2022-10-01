@@ -1,11 +1,11 @@
 import s from './TrainingList.module.css';
 import sprite from './sprite.svg';
 
-const TrainingList = ({ trainingBooks, isActiveTraining, deleteBook }) => {
-  console.log(trainingBooks);
-  const onDeleteClick = id => {
-    deleteBook(id);
-  };
+const TrainingList = ({
+  trainingBooks,
+  isActiveTraining,
+  deleteBookFromList,
+}) => {
   const headerList = ['Title', 'Author', 'Year', 'Pages'];
   return (
     <div className={s.trainingWrapper}>
@@ -37,7 +37,9 @@ const TrainingList = ({ trainingBooks, isActiveTraining, deleteBook }) => {
               <p>{pages}</p>{' '}
               <button
                 type="button"
-                onClick={onDeleteClick}
+                onClick={() => {
+                  deleteBookFromList(id);
+                }}
                 className={s.delete}
               >
                 <svg className={s.icon} width="22" height="17">
