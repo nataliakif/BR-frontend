@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
-import {
-  useFetchTrainingQuery,
-  // useDeleteTrainingMutation,
-  // useEditTrainingMutation,
-} from '../../redux/training/trainingApi';
+// import {
+//   useFetchTrainingQuery,
+//   // useDeleteTrainingMutation,
+//   // useEditTrainingMutation,
+// } from '../../redux/training/trainingApi';
 import * as yup from 'yup';
 
 const AddResult = () => {
