@@ -20,7 +20,9 @@
     width: 288px;
   }
 }
-
+.error {
+  color: red !important;
+}
 .title {
   font-weight: 600;
   font-size: 12px;
