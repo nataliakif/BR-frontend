@@ -17,7 +17,6 @@
   padding: 10px;
   padding-top: 40px;
   padding-bottom: 30px;
-  border-top: 1px solid var(--icon-color);
   border-bottom: 1px solid var(--icon-color);
 }
 .itemBook {
@@ -40,19 +39,6 @@
   margin-left: 50px;
 }
 
-@media screen and (min-width: 1280px) {
-  .trainingWrapper {
-    margin-top: 23px;
-  }
-  .header {
-    grid-template-columns: 345px 340px 100px 100px;
-  }
-
-  .item {
-    grid-template-columns: 345px 340px 100px 60px 40px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .listHeader {
     margin-top: 40px;
@@ -65,7 +51,7 @@
     border-top: 1px solid var(--icon-color);
     border-bottom: 1px solid var(--icon-color);
   }
-  .list {
+  .item {
     margin: 0;
     padding: 12px 0px;
     display: grid;
@@ -76,15 +62,14 @@
     display: none;
   }
 }
-
 @media screen and (min-width: 1280px) {
-  .listHeader {
+  .trainingWrapper {
     margin-top: 23px;
   }
   .header {
     grid-template-columns: 345px 340px 100px 100px;
   }
-  .list {
-    grid-template-columns: 345px 340px;
+  .item {
+    grid-template-columns: 345px 340px 100px 60px 40px;
   }
 }

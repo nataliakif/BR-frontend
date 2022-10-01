@@ -88,8 +88,6 @@ const TrainingForm = ({
           </Form>
         )}
       </Formik>
-
-      <TrainingList className={s.arrow} />
     </div>
   );
 };
