@@ -2,10 +2,11 @@ import Container from 'components/Container';
 import MyGoals from 'components/MyGoals';
 import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
 import s from './TrainingVieew.module.css';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { useFetchBooksQuery } from 'redux/books/booksApi';
-import { useEffect } from 'react';
 import { Chart } from 'components/Chart/Chart';
+import TrainingList from 'components/Training/TrainingList/TrainingList';
+
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -46,6 +47,7 @@ const TrainingView = () => {
             {/*  <Chart plan={datesAmount} readingStatistics={[]} /> */}
           </div>
         </div>
+        <TrainingList trainingBooks={goingToReadBooks} />
       </Container>
     </>
   );
