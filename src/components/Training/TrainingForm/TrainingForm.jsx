@@ -4,12 +4,8 @@ import DatePickerInput from '../DatePicker/DatePicker';
 import { TiArrowSortedDown } from 'react-icons/ti';
 import s from './TrainingForm.module.css';
 import TrainingList from '../TrainingList/TrainingList';
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-// import {
-//   useCreateTrainingMutation,
-//   useFetchTrainingQuery,
-// } from 'redux/training/trainingApi';
 
 const initialValues = {
   startDate: '',
@@ -17,63 +13,84 @@ const initialValues = {
   books: '',
 };
 
-const TrainingForm = ({ onStartDateChange, onFinishDateChange }) => {
-  // const [data, { isLoading }] = useFetchTrainingQuery();
-
+const TrainingForm = ({
+  onStartDateChange,
+  onFinishDateChange,
+  goingToReadBooks,
+  onBtnAddClick,
+}) => {
   const TrainingFormSchema = Yup.object().shape({
     start: Yup.date().required('Enter the first day of training'),
     finish: Yup.date().required('Enter the last day of training'),
     book: Yup.object().required('Choose one book'),
   });
-  console.log(onStartDateChange);
-  const handleSubmit = () => {};
+
   return (
-    <form className={s.form} autoComplete="off" onSubmit={handleSubmit}>
+    <div className={s.form} autoComplete="off">
       <h1 className={s.title}> My training</h1>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={TrainingFormSchema}
-      >
+      <Formik initialValues={initialValues}>
         {({ values, setFieldValue }) => (
-          <div className={s.dateContainer}>
-            <DatePickerInput
-              name="start"
-              minDate={new Date()}
-              onChange={onStartDateChange}
-              dateFormat="dd-MM-yyyy"
-              placeholderText="Start"
-              autoComplete="off"
-              required
-            />
-            <DatePickerInput
-              name="finish"
-              minDate={Date.now()}
-              onChange={() => {}}
-              dateFormat="dd-MM-yyyy"
-              placeholderText="Finish"
-              autoComplete="off"
-              required
-            />
-          </div>
+          <Form
+            onSubmit={() => {
+              console.log(values);
+            }}
+          >
+            <div className={s.dateContainer}>
+              <DatePickerInput
+                name="start"
+                minDate={new Date()}
+                onChange={onStartDateChange}
+                dateFormat="dd-MM-yyyy"
+                placeholderText="Start"
+                autoComplete="off"
+                required
+              />
+              <DatePickerInput
+                name="finish"
+                minDate={Date.now()}
+                onChange={onFinishDateChange}
+                dateFormat="dd-MM-yyyy"
+                placeholderText="Finish"
+                autoComplete="off"
+                required
+              />
+            </div>
+            <div className={s.bookLabel}>
+              <Field
+                as="select"
+                name="book"
+                className={s.bookInput}
+                placeholder=" Select one book of your library"
+              >
+                {goingToReadBooks?.map(({ _id: id, bookTitle }) => (
+                  <option value={bookTitle} key={id}>
+                    {bookTitle}
+                  </option>
+                ))}
+              </Field>
+              <button
+                type="button"
+                className={s.btnAdd}
+                onClick={() => {
+                  console.log(values);
+
+                  onBtnAddClick(
+                    goingToReadBooks.find(
+                      book => book.bookTitle === values.book
+                    )
+                  );
+                }}
+              >
+                Add
+              </button>
+            </div>
+          </Form>
         )}
       </Formik>
-      <Formik>
-        <div className={s.bookLabel}>
-          <div className={s.bookInput}>
-            <span className={s.bookPlaceholder}>
-              Select one book of your library
-            </span>
-            <TiArrowSortedDown width="20" height="20" className={s.arrow} />
-          </div>
-          <button type="button" className={s.btnAdd} onClick={() => {}}>
-            Add
-          </button>
-        </div>
-      </Formik>
+
       <TrainingList className={s.arrow} />
-      <Formik />
-    </form>
+    </div>
   );
 };
 export default TrainingForm;
