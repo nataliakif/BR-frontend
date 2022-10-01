@@ -30,10 +30,22 @@ export const booksApi = apiSlice.injectEndpoints({
       invalidatesTags: [tag],
     }),
     editBook: builder.mutation({
-      query: ({ id, review, rating }) => ({
-        url: `/api/books/${id}/review`,
-        method: 'PATCH',
+      query: ({
+        id,
+        bookTitle,
+        author,
+        publicationDate,
+        amountOfPages,
+        review,
+        rating,
+      }) => ({
+        url: `/api/books/${id}`,
+        method: 'PUT',
         body: {
+          bookTitle,
+          author,
+          publicationDate,
+          amountOfPages,
           review,
           rating,
         },
