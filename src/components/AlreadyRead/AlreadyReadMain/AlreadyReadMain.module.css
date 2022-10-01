@@ -1,0 +1,100 @@
+.title {
+  /* margin-top: 40px; */
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.21;
+}
+
+.titleBookWrapper {
+  display: flex;
+  /* padding-top: 14px;
+  padding-bottom: 14px; */
+  height: 60px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.titleBook {
+  display: flex;
+    align-items: center;
+  font-style: normal;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
+}
+
+.icon {
+  fill: var(--library-color);
+}
+.table {
+  width: 100%;
+  border-spacing: 0 8px;
+  border-collapse: separate;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+.tableTitleCell {
+  text-align: start;
+  font-style: normal;
+
+
+  color: var(--secondary-text-color);
+}
+
+.tableRow {
+  background-color: var(--main-color);
+}
+.styleTitleBook {
+  width: 216px;
+}
+@media screen and (min-width: 768px) {
+  
+    .styleTitleBook {
+        width: 30%;
+      }
+    
+      .styleAuthor {
+        width:16%;
+      }
+    
+      .styleColums {
+        width: 10%;
+      }
+    
+      .styleRating {
+        width: 17%;
+      }
+    
+      .stylyResume {
+        width: 16%;
+      }
+}
+
+@media screen and (min-width: 1280px) {
+  .tableRow{
+      height: 62px;
+  }
+  .styleTitleBook {
+    width: 30%;
+  }
+  .styleAuthor{
+    width: 28%;
+  }
+  .styleColums{
+    width: 10%;
+  }
+  .styleRating{
+    width:14% ;
+  }
+  .stylyResume{
+    width:18%;
+  }
+}
+

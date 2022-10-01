@@ -1,0 +1,32 @@
+.training {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .training {
+    flex-direction: row-reverse;
+  }
+}
+.wrapperContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+@media screen and (min-width: 768px) {
+  .wrapperContainer {
+    padding-bottom: 60px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapperContainer {
+    flex-direction: row;
+    margin-right: 32px;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

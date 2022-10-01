@@ -1,47 +1,64 @@
-  [
-    {
-    "id": "u9kgwNWGi3uUUwh0b8V49",
-    "title": "Eloquent JavaScript, Third Edition",
+[
+  {
+    "_id": "u9kgwNWGi3uUUwh0b8V49",
+    "bookTitle": "Eloquent JavaScript, Third Edition Eloquent JavaScript, Third Edition",
     "author": "Marijn Haverbeke",
-    "year": "2014",
-    "pages": "35",
+    "publicationDate": "2014",
+    "amountOfPages": "35",
     "rating": "3",
-    "status": "Already read"
+    "status": "finished",
+    "review": "null"
   },
   {
-    "id": "YxhM4QDxPeA3SmPHcEZPJ",
-    "title": "Practical Modern JavaScript",
+    "_id": "YxhM4QDxPeA3SmPHcEZPJ",
+    "bookTitle": "Practical Modern JavaScript Eloquent JavaScript, Third Edition",
     "author": "Nicolas Bevacqua",
-    "year": "1985",
-    "pages": "128",
+    "publicationDate": "1985",
+    "amountOfPages": "128",
+
     "rating": "2",
-    "status": "Reading now"
+    "status": "reading_now",
+    "review": "null"
   },
-    {
-    "id": "ck89qe3HriUDHe09TBoJ8",
-    "title": "Speaking about JavaScript",
+  {
+    "_id": "ck89qe3HriUDHe06TBoJ8",
+    "bookTitle": "Speaking about JavaScript Eloquent JavaScript, Third Edition",
     "author": "Axel Rahmayer",
-    "year": "2011",
-    "pages": "204",
+    "publicationDate": "2011",
+    "amountOfPages": "204",
+
     "rating": "43",
-    "status": "Going to read"
+    "status": "going_to_read",
+    "review": "null"
   },
   {
-    "id": "zCd_RioNMOBaQwAXnc8Px",
-    "title": "Understanding ECMAScript 6",
+    "_id": "zCd_RioNMOBaQwAXnc8Px",
+    "bookTitle": "Understanding ECMAScript 6 Eloquent JavaScript, Third Edition",
     "author": "Nicholas C. Zakas",
-    "year": "2020",
-    "pages": "356",
+    "publicationDate": "2020",
+    "amountOfPages": "356",
     "rating": "5",
-    "status": "Going to read"
+    "status": "going_to_read",
+    "review": "null"
   },
   {
-    "id": "ck89qe3HriUDHe09TBoJ8",
-    "title": "Speaking JavaScript",
+    "_id": "ck89qe6HriUD6e09TBoJ8",
+    "bookTitle": "Speaking JavaScript Eloquent JavaScript, Third Edition",
     "author": "Axel Rauschmayer",
-    "year": "2000",
-    "pages": "200",
-    "rating": "4",
-    "status": "Going to read"
+    "publicationDate": "2000",
+    "amountOfPages": "200",
+    "rating": "4.5",
+    "status": "finished",
+    "review": "null"
+  },
+  {
+    "_id": "zCd_RioNMOghQwAXnc8Px",
+    "bookTitle": "ECMAScript 6 Eloquent JavaScript, Third Edition Eloquent JavaScript, Third Edition",
+    "author": "Nicholas  Zakas",
+    "publicationDate": "2010",
+    "amountOfPages": "351",
+    "rating": "0",
+    "status": "finished",
+    "review": "null"
   }
 ]

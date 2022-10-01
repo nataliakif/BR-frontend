@@ -1,0 +1,26 @@
+.modal {
+  width: calc(100vw - 40px);
+  min-height: 204px;
+  background-color: var(--main-color);
+  overflow: hidden;
+  box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+}
+
+@media screen and (min-width: 480px) {
+  .modal {
+    width: 394px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--modal-overlay);
+  z-index: 1000;
+}

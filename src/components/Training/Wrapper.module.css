@@ -1,0 +1,26 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.wrapperContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+@media screen and (min-width: 768px) {
+  .wrapperContainer {
+    padding-bottom: 60px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapperContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

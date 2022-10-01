@@ -1,0 +1,41 @@
+.dateWrapper {
+  min-width: 280px;
+  position: relative;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  background-color: var(--main-color);
+  border: solid 1px var(--icon-color);
+}
+
+
+.dateInput {
+  height: 42px;
+  padding: 5px 47px;
+  border: none;
+  outline: none;
+  font-weight: inherit;
+  line-height: 2.71;
+}
+
+.dateInput::placeholder {
+    color: var(--icon-color);
+}
+
+.dateIcon {
+position: absolute;
+top: 50%;
+left: 6%;
+transform: translateY(-50%);
+width: 20px;
+height: 20px;
+color: var(--icon-color);
+}
+
+.dateArrow {
+position: absolute;
+top: 50%;
+right: 6%;
+transform: translateY(-50%);
+width: 20px;
+height: 20px;
+}
