@@ -11,7 +11,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { breadcrumbsClasses } from '@mui/material';
 
 ChartJS.register(
   CategoryScale,
@@ -54,7 +53,6 @@ export const Chart = ({ plan, readingStatistics }) => {
   let maxPagesValue = Math.max(...actPages.flatMap(item => item));
 
   let labels = [plan, plan];
-  //dates.length > 1 ? dates : [...dates, ...dates];
 
   if (dates.length === 1) {
     labels = [...dates, ...dates];
@@ -78,7 +76,7 @@ export const Chart = ({ plan, readingStatistics }) => {
     scales: {
       x: { ticks: { display: false } },
       y: {
-        min: 1,
+        min: plan === 0 ? -5 : 1,
         max: maxChartValue,
         ticks: { display: false },
         grid: { display: false },
@@ -113,7 +111,7 @@ export const Chart = ({ plan, readingStatistics }) => {
       tension: 0.3,
     });
   }
-  console.log(data);
+
   return (
     <div className={s.container}>
       <p className={s.chart__title}>

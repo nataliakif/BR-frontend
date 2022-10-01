@@ -23,7 +23,8 @@ const DatePickerInput = ({ onChange, ...props }) => {
           const year = selectedDate.getFullYear();
           const date = selectedDate.getDate();
           const month = selectedDate.getMonth();
-          onChange(date + ' ' + (parseInt(month) + 1) + ' ' + year);
+          console.log(selectedDate.getUTCDay());
+          onChange(year + ',' + month + ',' + date);
         }}
       />
       <RiCalendar2Line className={s.dateIcon} />
