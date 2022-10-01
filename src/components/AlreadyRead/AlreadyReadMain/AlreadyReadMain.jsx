@@ -11,8 +11,7 @@ import sprite from '../../../images/sprite.svg';
 import s from '../AlreadyReadMain/AlreadyReadMain.module.css';
 import stringMax from 'helpers/stringMax';
 
-
-const AlreadyReadMain = ({alreadyReadListBooks}) => {
+const AlreadyReadMain = ({ alreadyReadListBooks }) => {
   // const AlreadyReadMain = () => {
   const data = alreadyReadListBooks;
   const columnHelper = createColumnHelper(alreadyReadListBooks);
@@ -78,9 +77,6 @@ const AlreadyReadMain = ({alreadyReadListBooks}) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  //   useFetchBooksQuery();
-  // console.log(useFetchBooksQuery())
 
   return (
     <>

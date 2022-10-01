@@ -8,27 +8,29 @@ import Logout from './Logout/Logout';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
-    const isLoggedIn = useSelector(getCurrentStatus);
-    const headerStyles = [s.container];
+  const isLoggedIn = useSelector(getCurrentStatus);
+  const headerStyles = [s.container];
 
-    if (isLoggedIn) {
-        headerStyles.push(s.loggedIn);
-    }
+  if (isLoggedIn) {
+    headerStyles.push(s.loggedIn);
+  }
 
-    return (
-        <header className={s.header}>
-            <div className={headerStyles.join(' ')}>
-                <NavLink to="/library" className={s.logo}>BR</NavLink>
-                {isLoggedIn && (
-                <>
-                    <UserBar/>
-                    <Navigation />
-                    <Logout/>
-                </>
-                )}
-            </div>
-        </header>
-    );
-}
+  return (
+    <header className={s.header}>
+      <div className={headerStyles.join(' ')}>
+        <NavLink to="/library" className={s.logo}>
+          BR
+        </NavLink>
+        {isLoggedIn && (
+          <>
+            <UserBar />
+            <Navigation />
+            <Logout />
+          </>
+        )}
+      </div>
+    </header>
+  );
+};
 
 export default Header;

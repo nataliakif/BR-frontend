@@ -5,15 +5,14 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
-import { useFetchCurrentUserQuery } from '../../redux/authUser/authUserApiSlice';
-import {
-  useFetchTrainingQuery,
-  // useDeleteTrainingMutation,
-  // useEditTrainingMutation,
-} from '../../redux/training/trainingApi';
+// import {
+//   useFetchTrainingQuery,
+//   // useDeleteTrainingMutation,
+//   // useEditTrainingMutation,
+// } from '../../redux/training/trainingApi';
+import * as yup from 'yup';
+
 const AddResult = () => {
-  const { data, error } = useFetchCurrentUserQuery();
-  console.log(data, error);
   const [doingFineModal, setDoingFineModal] = useState(false);
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
@@ -21,12 +20,22 @@ const AddResult = () => {
   const onSubmit = async () => {
     setDoingFineModal(true);
   };
+  let schema = yup.object().shape({
+    pages: yup
+      .number()
+      .integer('Enter an integer.')
+      .positive('The number of pages is more than 1')
+      .min(1, 'May not be less then 1')
+      .max(1000, 'Enter a number from 1 to 1000') //добавить кол-во страниц в планинге
+      .required('Fill the number of read pages.')
+      .typeError('The number of pages must be from 1 to 1000'),
+  });
   return (
     <>
       <Formik
         initialValues={{ date: new Date(), pages: '' }}
         onSubmit={onSubmit}
-        // validationSchema={schema(translation['AddReesultValidation'])}
+        validationSchema={schema}
       >
         <Form className={s.form}>
           <h2 className={s.title}>Result</h2>
