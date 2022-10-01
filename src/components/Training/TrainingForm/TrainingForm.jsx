@@ -1,9 +1,8 @@
 import React from 'react';
 import DatePickerInput from '../DatePicker/DatePicker';
-//import { useState } from "react";
-import { TiArrowSortedDown } from 'react-icons/ti';
+
 import s from './TrainingForm.module.css';
-import TrainingList from '../TrainingList/TrainingList';
+
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
