@@ -1,35 +1,55 @@
-import s from "./TrainingList.module.css";
-import BookIcon from "../Icons/bookIcon";
+import s from './TrainingList.module.css';
+import sprite from './sprite.svg';
 
-
-const TrainingList = () => {
-    return (
-        <div className={s.listHeader}>
-        <div className={s.header}>
-            <p className={s.item}>Title</p>
-            <p className={s.item}>Author</p>
-            <p className={s.item}>Year</p>
-            <p className={s.item}>Pages</p>
-        </div >
-        <ul className={s.list}>
-            <li className={s.itemBook}><BookIcon/>
-            <span className={s.dots}>...</span>
+const TrainingList = ({ trainingBooks, isActiveTraining, deleteBook }) => {
+  console.log(trainingBooks);
+  const onDeleteClick = id => {
+    deleteBook(id);
+  };
+  const headerList = ['Title', 'Author', 'Year', 'Pages'];
+  return (
+    <div className={s.trainingWrapper}>
+      <ul className={s.header}>
+        {headerList.map(title => (
+          <li className={s.header_item} key={title}>
+            {title}
+          </li>
+        ))}
+      </ul>
+      <ul className={s.list}>
+        {trainingBooks?.map(
+          ({
+            _id: id,
+            bookTitle: title,
+            author,
+            amountOfPages: pages,
+            publicationDate: date,
+          }) => (
+            <li className={s.item} key={id}>
+              <p>
+                <svg className={s.icon} width="22" height="17">
+                  <use href={`${sprite}#icon-grey-book`}></use>
+                </svg>
+                {title}
+              </p>
+              <p>{author}</p>
+              <p>{date}</p>
+              <p>{pages}</p>{' '}
+              <button
+                type="button"
+                onClick={onDeleteClick}
+                className={s.delete}
+              >
+                <svg className={s.icon} width="22" height="17">
+                  <use href={`${sprite}#icon-delete`}></use>
+                </svg>
+              </button>
             </li>
-            <li className={s.itemBook}>
-            <p className={s.author}>Author</p>
-            <span className={s.dots}>...</span>
-            </li>
-            <li className={s.itemBook}>
-            <p className={s.year}>Year</p>
-            <span className={s.dots}>...</span>
-            </li>
-            <li className={s.itemBook}>
-            <p className={s.pages}>Pages</p>
-            <span className={s.dots}>...</span>
-            </li>
-        </ul>
-        </div>
-    )
-}
+          )
+        )}
+      </ul>
+    </div>
+  );
+};
 
 export default TrainingList;
