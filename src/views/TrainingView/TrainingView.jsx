@@ -43,7 +43,7 @@ const TrainingView = () => {
   }, [finishDate, startDate]);
 
   useEffect(() => {
-    if (selectedBooks.length > 0) {
+    if (selectedBooks.length > 0 && trainingDaysAmount > 0) {
       setPlanedPagesPerDay(
         Math.round(getTotalPageAmount(selectedBooks) / trainingDaysAmount)
       );
