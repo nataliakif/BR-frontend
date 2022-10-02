@@ -1,16 +1,13 @@
-.addResult {
-  margin-top: 32px;
-}
 @media screen and (min-width: 768px) {
-  .addResult {
-    margin-top: 40px;
+  .statistics {
+    display: flex;
+    flex-direction: row;
   }
 }
-
 @media screen and (min-width: 768px) {
-  .addResult {
-    margin-top: 17px;
-    grid-column: 2/3;
-    grid-row: 3/4;
+  .leftWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-right: 32px;
   }
 }

@@ -8,7 +8,7 @@ import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 
 import * as yup from 'yup';
 
-const AddResult = ({ data, updateResult, plan = 30 }) => {
+const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
   const { startDate, readStatistics: results } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
