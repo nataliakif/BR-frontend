@@ -92,6 +92,7 @@ const LoginForm = () => {
               type="email"
               name="email"
               placeholder="your@email.com"
+              autoFocus={true}
             />
             <ErrorMessage
               name="email"

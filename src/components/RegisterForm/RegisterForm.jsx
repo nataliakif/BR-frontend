@@ -87,6 +87,7 @@ const RegisterForm = () => {
               type="text"
               name="name"
               placeholder="..."
+              autoFocus={true}
             />
             <ErrorMessage
               name="name"
