@@ -9,8 +9,8 @@
     position: relative;
 }
 
-.loggedIn{
-    justify-content: space-between;
+.loggedIn {
+  justify-content: space-between;
 }
  
 @media screen and (min-width: 1248px) {
@@ -27,22 +27,18 @@
     } 
 }
 
-
-
-
-
 @media screen and (min-width: 1248px) {
-    .container {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        padding-left: 32px;
-        padding-right: 32px;
-    }
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 .header {
@@ -64,3 +60,4 @@
     text-decoration: none;
     cursor: pointer;
 }
+

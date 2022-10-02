@@ -1,21 +1,30 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { useLoginUserMutation } from 'redux/authUser/authUserApiSlice';
-import { setCredentials } from 'redux/authUser/authUserSlice';
+import {
+  useLoginUserMutation,
+  useRestorePasswordMutation,
+} from 'redux/authUser/authUserApiSlice';
+import LoginTimer from 'components/LoginTimer';
+import { setCredentials, getCurrentUser } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
 import s from './LoginForm.module.css';
 
 const schema = yup.object().shape({
   email: yup
     .string()
-    .matches(/^[\w.]+@[\w]+.[\w]+$/, 'Incorrect email')
+    .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, 'Incorrect email')
+    .min(10, 'Email is too short, min character is 10.')
+    .max(63, 'Maximum 63 characters!')
     .required('Email is required'),
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'Password is too short, min character is 6')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .matches(/^[^.-]\S*$/, 'Incorrect password')
+    .min(5, 'Password is too short, min character is 5.')
+    .max(30, 'Maximum 30 characters!'),
 });
 
 const initialValues = {
@@ -25,19 +34,46 @@ const initialValues = {
 
 const LoginForm = () => {
   const [loginUser] = useLoginUserMutation();
+  const [restorePassword] = useRestorePasswordMutation();
+  const email = useSelector(getCurrentUser);
+  const [searchParams] = useSearchParams();
+  const emailGoogle = searchParams.get('email');
+  const nameGoogle = searchParams.get('name');
+  const accessToken = searchParams.get('accessToken');
 
   const dispatch = useDispatch();
 
-  const handleSubmit = async ({ email, password }, { resetForm }) => {
-    const userData = await loginUser({ email, password }).unwrap();
-    //console.log(userData);
-    dispatch(setCredentials({ ...userData.data }));
-    resetForm();
+  const handleSubmit = async ({ email, password }) => {
+    try {
+      const userData = await loginUser({ email, password }).unwrap();
+      dispatch(setCredentials({ ...userData.data }));
+    } catch (error) {
+      console.log(55, error, error.data.message);
+      dispatch(
+        setCredentials({
+          user: { email },
+        })
+      );
+    }
+
   };
+
+  useEffect(() => {
+    emailGoogle &&
+      dispatch(
+        setCredentials({
+          user: { name: nameGoogle, email: emailGoogle, token: accessToken },
+        })
+      );
+  }, [accessToken, dispatch, emailGoogle, loginUser, nameGoogle]);
 
   return (
     <div className={s.container}>
-      <a className={s.googleLink} href="/">
+      <a
+        className={s.googleLink}
+        // href="https://br-backend.herokuapp.com/auth/google"
+        href="http://localhost:3001/auth/google"
+      >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
       </a>
@@ -46,7 +82,7 @@ const LoginForm = () => {
         initialValues={initialValues}
         validationSchema={schema}
       >
-        {({ isValid, dirty }) => (
+        {() => (
           <Form className={s.form}>
             <label className={s.label} htmlFor="email">
               Email
@@ -84,19 +120,37 @@ const LoginForm = () => {
               )}
             />
 
-            <button
-              className={s.btn}
-              type="submit"
-              disabled={!(isValid && dirty)}
-            >
+            <button className={s.btn} type="submit">
               Login
             </button>
           </Form>
         )}
       </Formik>
-      <a className={s.signupLink} href="/BR-frontend/register">
-        Register
-      </a>
+      {email ? (
+        <>
+          {' '}
+          <p className={s.text}>
+            <span
+              onClick={() => restorePassword({ email })}
+              className={s.signupLink}
+            >
+              <LoginTimer />
+            </span>
+            {' for '}
+            {email}
+          </p>
+          <p className={s.text}>
+            or new registration{' '}
+            <Link to="/register" className={s.signupLink}>
+              Register
+            </Link>
+          </p>
+        </>
+      ) : (
+        <Link to="/register" className={s.signupLink}>
+          Register
+        </Link>
+      )}
     </div>
   );
 };
