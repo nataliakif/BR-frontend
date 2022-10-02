@@ -2,6 +2,7 @@ import Container from 'components/Container';
 import CountdownTimers from 'components/CountdownTimers';
 import MyGoals from 'components/MyGoals';
 import AddResult from 'components/AddResult/AddResult';
+import s from './StatisticView.module.css';
 import {
   useDeleteTrainingMutation,
   useFetchTrainingQuery,
@@ -10,12 +11,9 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Progress from 'components/Progress/Progress';
-
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormLabel from '@mui/material/FormLabel';
+// import FormControl from '@mui/material/FormControl';
+import StatisticsList from 'components/StatisticsList/StatisticsList';
 import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
 import { Chart } from 'components/Chart/Chart';
 import calculateStatistics from 'services/calculateStatistics';
@@ -30,7 +28,7 @@ const StatisticView = () => {
   const navigate = useNavigate();
 
   const [currentTraining, setCurrentTraining] = useState(null);
-  
+
   const [updateResult] = useEditTrainingMutation();
 
   useEffect(() => {
@@ -54,29 +52,28 @@ const StatisticView = () => {
     }
   }, [navigate, userTraining]);
 
-  const handleChange = event => {
-    alert('Меняем статус книги на Прочитано');
-  };
-
   return isFetchingTraining ? (
     <Progress />
   ) : (
     currentTraining && (
       <>
         <Container>
-          <CountdownTimers
-            targetDate={new Date(userTraining.finishDate).getTime()}
-          />
-          <MyGoals
-            bookAmount={currentTraining.books.length}
-            daysAmount={currentTraining.trainingDaysAmount}
-            booksLeft={currentTraining.notFinishedBooksAmount}
-          />
+          <div className={s.statistics}>
+            <div className={s.leftWrapper}>
+              <CountdownTimers
+                targetDate={new Date(userTraining.finishDate).getTime()}
+              />
+              <StatisticsList books={currentTraining.books} />
+            </div>
+            <MyGoals
+              bookAmount={currentTraining.books.length}
+              daysAmount={currentTraining.trainingDaysAmount}
+              booksLeft={currentTraining.notFinishedBooksAmount}
+            />
+          </div>
         </Container>
-
         <Container>
-          {/* Контрол с чек-боксом */}
-          <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+          {/* <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
             <FormLabel component="legend">
               Current training from {currentTraining.startDate} till{' '}
               {currentTraining.finishDate} ({currentTraining.trainingDaysAmount}{' '}
@@ -84,40 +81,21 @@ const StatisticView = () => {
               {currentTraining.trainingPagesAmount} Your daily goal ={' '}
               {currentTraining.goalPerDay} pages/day
             </FormLabel>
-            <FormGroup>
-              {currentTraining.books.map(book => {
-                return (
-                  <FormControlLabel
-                    key={book._id}
-                    control={
-                      <Checkbox
-                        checked={book.status === 'finished' ?? false}
-                        onChange={handleChange}
-                        name={book._id}
-                      />
-                    }
-                    label={
-                      book.bookTitle + ' size:' + book.amountOfPages + ' pages'
-                    }
-                  />
-                );
-              })}
-            </FormGroup>
-          </FormControl>
-
-          <Chart
-            plan={currentTraining.goalPerDay}
-            readingStatistics={
-              currentTraining.readingStatistics
-                ? calculateStatistics(currentTraining.readingStatistics)
-                : []
-            }
-          />
+          </FormControl> */}
+          <div className={s.statistics}>
+            <div className={s.leftWrapper}>
+              <Chart
+                plan={currentTraining.goalPerDay}
+                readingStatistics={
+                  currentTraining.readingStatistics
+                    ? calculateStatistics(currentTraining.readingStatistics)
+                    : []
+                }
+              />
+            </div>
+            <AddResult data={userTraining} updateResult={updateResult} />
+          </div>
         </Container>
-
-       <Container>
-         <AddResult data={userTraining} updateResult={updateResult} />
-        </Container>;
 
         <button
           type="button"
