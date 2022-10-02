@@ -72,8 +72,7 @@ const TrainingForm = ({
                 type="button"
                 className={s.btnAdd}
                 onClick={() => {
-                  console.log(values);
-
+                  //             console.log(values);
                   onBtnAddClick(
                     goingToReadBooks.find(
                       book => book.bookTitle === values.book

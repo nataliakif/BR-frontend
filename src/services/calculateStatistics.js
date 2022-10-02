@@ -1,21 +1,12 @@
-const calculateStatistics = books => {
-  const readingStatistics = books
-    .map(book => book.readStatistics)
-    .map(item => item.flatMap(item => item))
-    .flatMap(item => item);
+const calculateStatistics = readStatistics => {
   const uniqueDatesOfReading = [
-    ...new Set(
-      books
-        .map(book => book.readStatistics)
-        .map(item => item.flatMap(item => item.dateTime))
-        .flatMap(item => item)
-    ),
+    ...new Set(readStatistics.map(item => item.flatMap(item => item.dateTime))),
   ];
 
   const result = uniqueDatesOfReading.map(date => {
     return {
       date: date,
-      pageAmount: readingStatistics
+      pageAmount: readStatistics
         .filter(stat => stat.dateTime === date)
         .reduce(
           (totalSum, stat) => (totalSum += Number.parseInt(stat.pageAmount)),
@@ -23,7 +14,8 @@ const calculateStatistics = books => {
         ),
     };
   });
-  return result;
+
+  return result ?? [];
 };
 
 export default calculateStatistics;
