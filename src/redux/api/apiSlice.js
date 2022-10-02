@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setError } from '../authUser/authUserSlice';
+import { setError, logOut } from '../authUser/authUserSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://br-backend.herokuapp.com/',
@@ -29,7 +29,7 @@ const baseQueryWithErrorHandler = async (args, api, extraOptions) => {
       default:
         errorMessage = 'Something went wrong! Try again!';
     }
-    // api.dispatch(logOut());  Перевести ошибки на человеческий язык
+    api.dispatch(logOut());
     api.dispatch(setError(errorMessage));
   }
   return result;

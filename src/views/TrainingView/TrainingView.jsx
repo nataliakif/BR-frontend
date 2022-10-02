@@ -12,6 +12,7 @@ import { useCreateTrainingMutation } from 'redux/training/trainingApi';
 import { useFetchTrainingQuery } from 'redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
+import Button from 'components/Button/Button';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -107,11 +108,16 @@ const TrainingView = () => {
           trainingBooks={selectedBooks}
           deleteBookFromList={onSelectedBookDelete}
         />
-        {showStButton ? (
-          <button type="button" onClick={onStartClick} onEnded={isLoading}>
-            Start training
-          </button>
-        ) : undefined}
+
+        {showStButton && (
+          <Button
+            id="startTraining"
+            className="main"
+            text="Start training"
+            onClick={onStartClick}
+            onEnded={isLoading}
+          />
+        )}
         <Chart plan={planedPagesPerDay} readingStatistics={[]} />
       </Container>
     </>

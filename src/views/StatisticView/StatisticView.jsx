@@ -5,6 +5,7 @@ import AddResult from 'components/AddResult/AddResult';
 import {
   useDeleteTrainingMutation,
   useFetchTrainingQuery,
+  useEditTrainingMutation,
 } from '../../redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -29,6 +30,8 @@ const StatisticView = () => {
   const navigate = useNavigate();
 
   const [currentTraining, setCurrentTraining] = useState(null);
+  
+  const [updateResult] = useEditTrainingMutation();
 
   useEffect(() => {
     if (!userTraining) {
@@ -112,9 +115,10 @@ const StatisticView = () => {
           />
         </Container>
 
-        <Container>
-          <AddResult />
-        </Container>
+       <Container>
+         <AddResult data={userTraining} updateResult={updateResult} />
+        </Container>;
+
         <button
           type="button"
           onClick={() => {

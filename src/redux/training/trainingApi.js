@@ -29,13 +29,20 @@ export const trainingApi = apiSlice.injectEndpoints({
       invalidatesTags: [tag],
     }),
     editTraining: builder.mutation({
-      query: ({ trainingId, books, startDate, finishDate }) => ({
+      query: ({
+        trainingId,
+        books,
+        startDate,
+        finishDate,
+        readStatistics,
+      }) => ({
         url: `/api/planning/${trainingId}`,
-        method: 'PATCH',
+        method: 'PUT',
         body: {
           books,
           startDate,
           finishDate,
+          readStatistics,
         },
       }),
       invalidatesTags: [tag],
