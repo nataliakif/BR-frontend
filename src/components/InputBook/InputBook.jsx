@@ -119,7 +119,7 @@ function InputBook() {
               className={s.button}
               type="submit"
               disabled={isLoading}
-              onClick={() => resetForm()}
+              /* onClick={() => resetForm()} */
             >
               Add
             </button>
