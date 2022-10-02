@@ -9,14 +9,14 @@ import {
   useEditTrainingMutation,
 } from '../../redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Progress from 'components/Progress/Progress';
 import StatisticsList from 'components/StatisticsList/StatisticsList';
 import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
 import { Chart } from 'components/Chart/Chart';
 import calculateStatistics from 'services/calculateStatistics';
-import { useState } from 'react';
 import { useEditBookMutation } from 'redux/books/booksApi';
+import TrainingExecutedModal from 'components/modals/TrainingExecutedModal/TrainingExecutedModal';
 
 const findAlreadyReadBook = (books, alreadyReadPages) => {
   let readPagesLeft = alreadyReadPages;
@@ -139,13 +139,10 @@ const StatisticView = () => {
           </div>
         </Container>
         {isTrainingExecuted && (
-          <button
-            type="button"
-            onClick={handleCloseOfTraining}
-            disabled={isLoading}
-          >
-            Временная кнопка "Удалить тренировку"
-          </button>
+          <TrainingExecutedModal
+            handleCloseOfTraining={handleCloseOfTraining}
+            isLoading={isLoading}
+          />
         )}{' '}
       </>
     )

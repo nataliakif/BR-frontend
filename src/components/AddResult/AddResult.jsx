@@ -86,15 +86,18 @@ const AddResult = ({
             <h2 className={s.statisticsTitle}>STATISTICS</h2>
             {results && (
               <ul className={s.statistics}>
-                {results.map(({ pageAmount, dateTime }) => (
-                  <li className={s.item} key={dateTime}>
-                    <span className={s.day}>
+                {results.map(({ pageAmount, dateTime }, index) => (
+                  <li className={s.item} key={index}>
+                    <p className={s.day}>
                       {new Date(dateTime).toLocaleDateString()}
-                    </span>
-                    <span className={s.data}>
+                    </p>
+                    <p className={s.data}>
                       {new Date(dateTime).toLocaleTimeString()}
-                    </span>
-                    <span className={s.pages}>{pageAmount}</span>
+                    </p>
+                    <p className={s.pages}>
+                      {pageAmount}
+                      <span>pages</span>
+                    </p>
                   </li>
                 ))}
               </ul>
