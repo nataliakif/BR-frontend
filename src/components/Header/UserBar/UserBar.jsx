@@ -1,9 +1,9 @@
 import s from './UserBar.module.css';
-import { getCurrentUser } from 'redux/authUser/authUserSlice';
+import { getCurrentUserName } from 'redux/authUser/authUserSlice';
 import { useSelector } from 'react-redux';
 
 const UserBar = () => {
-  const userName = useSelector(getCurrentUser);
+  const userName = useSelector(getCurrentUserName);
 
   const [firstName] = userName.split(' ');
   const [letter] = firstName.split('');
