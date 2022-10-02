@@ -89,6 +89,8 @@ const TrainingForm = ({
         )}
       </Formik>
     </div>
+
+
   );
 };
 export default TrainingForm;
