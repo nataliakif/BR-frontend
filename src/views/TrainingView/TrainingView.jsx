@@ -11,6 +11,7 @@ import getTotalPageAmount from 'helpers/getTotalPageAmount';
 import { useCreateTrainingMutation } from 'redux/training/trainingApi';
 import { useFetchTrainingQuery } from 'redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
+import Progress from 'components/Progress/Progress';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -19,7 +20,8 @@ const TrainingView = () => {
   const [planedPagesPerDay, setPlanedPagesPerDay] = useState(0);
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
 
-  const { data: userTraining } = useFetchTrainingQuery();
+  const { data: userTraining, isLoading: isFetchingTraining } =
+    useFetchTrainingQuery();
 
   const navigate = useNavigate();
 
@@ -78,7 +80,11 @@ const TrainingView = () => {
     return false;
   };
 
-  return (
+  const showStButton = showStartButton();
+
+  return isFetchingTraining ? (
+    <Progress />
+  ) : (
     <>
       <Container>
         <div className={s.training}>
@@ -101,11 +107,11 @@ const TrainingView = () => {
           trainingBooks={selectedBooks}
           deleteBookFromList={onSelectedBookDelete}
         />
-        {showStartButton() && (
+        {showStButton ? (
           <button type="button" onClick={onStartClick} onEnded={isLoading}>
             Start training
           </button>
-        )}
+        ) : undefined}
         <Chart plan={planedPagesPerDay} readingStatistics={[]} />
       </Container>
     </>
