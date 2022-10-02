@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
+import { toast } from 'react-toastify';
 import s from './RegisterForm.module.css';
 
 const schema = yup.object({
@@ -47,14 +48,18 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async ({ name, email, password, confirmPassword }) => {
-    console.log(49, name, email, password, confirmPassword);
-    const userData = await registerUser({
-      name,
-      email,
-      password,
-      confirmPassword,
-    }).unwrap();
-    dispatch(setCredentials({ ...userData.data }));
+    try {
+      const userData = await registerUser({
+        name,
+        email,
+        password,
+        confirmPassword,
+      }).unwrap();
+      dispatch(setCredentials({ ...userData.data }));
+      toast.success('Registration was successful');
+    } catch (error) {
+      toast.error(error.data.message);
+    }
   };
 
   return (
@@ -68,7 +73,7 @@ const RegisterForm = () => {
         Google
       </a>
       <Formik
-        onSubmit={v => handleSubmit(v)}
+        onSubmit={handleSubmit}
         initialValues={initialValues}
         validationSchema={schema}
       >

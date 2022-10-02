@@ -10,6 +10,7 @@ import {
 import LoginTimer from 'components/LoginTimer';
 import { setCredentials, getCurrentUser } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
+import { toast } from 'react-toastify';
 import s from './LoginForm.module.css';
 
 const schema = yup.object().shape({
@@ -48,14 +49,13 @@ const LoginForm = () => {
       const userData = await loginUser({ email, password }).unwrap();
       dispatch(setCredentials({ ...userData.data }));
     } catch (error) {
-      console.log(55, error, error.data.message);
+      toast.error(error.data.message);
       dispatch(
         setCredentials({
           user: { email },
         })
       );
     }
-
   };
 
   useEffect(() => {
