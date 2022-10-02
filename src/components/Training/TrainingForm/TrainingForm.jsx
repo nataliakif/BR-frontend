@@ -25,71 +25,65 @@ const TrainingForm = ({
   });
 
   return (
-    <div className={s.form} autoComplete="off">
-      <h1 className={s.title}> My training</h1>
-
-      <Formik
-        initialValues={initialValues}
-        validationSchema={TrainingFormSchema}
-      >
-        {({ values, setFieldValue }) => (
-          <Form
-            onSubmit={() => {
-              console.log(values);
-            }}
-          >
-            <div className={s.dateContainer}>
-              <DatePickerInput
-                name="start"
-                minDate={new Date()}
-                onChange={onStartDateChange}
-                dateFormat="dd-MM-yyyy"
-                placeholderText="Start"
-                autoComplete="off"
-                required
-              />
-              <DatePickerInput
-                name="finish"
-                minDate={Date.now()}
-                onChange={onFinishDateChange}
-                dateFormat="dd-MM-yyyy"
-                placeholderText="Finish"
-                autoComplete="off"
-                required
-              />
-            </div>
-            <div className={s.bookLabel}>
-              <Field
-                as="select"
-                name="book"
-                className={s.bookInput}
-                placeholder=" Select one book of your library"
-              >
-                {goingToReadBooks?.map(({ _id: id, bookTitle }) => (
-                  <option value={bookTitle} key={id}>
-                    {bookTitle}
-                  </option>
-                ))}
-              </Field>
-              <button
-                type="button"
-                className={s.btnAdd}
-                onClick={() => {
-                  //             console.log(values);
-                  onBtnAddClick(
-                    goingToReadBooks.find(
-                      book => book.bookTitle === values.book
-                    )
-                  );
-                }}
-              >
-                Add
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+    <Formik initialValues={initialValues} validationSchema={TrainingFormSchema}>
+      {({ values, setFieldValue }) => (
+        <Form
+          onSubmit={() => {
+            console.log(values);
+          }}
+        >
+          <div className={s.form} autoComplete="off">
+            <h1 className={s.title}> My training</h1>
+          </div>
+          <div className={s.dateContainer}>
+            <DatePickerInput
+              name="start"
+              minDate={new Date()}
+              onChange={onStartDateChange}
+              dateFormat="dd-MM-yyyy"
+              placeholderText="Start"
+              autoComplete="off"
+              required
+            />
+            <DatePickerInput
+              name="finish"
+              minDate={Date.now()}
+              onChange={onFinishDateChange}
+              dateFormat="dd-MM-yyyy"
+              placeholderText="Finish"
+              autoComplete="off"
+              required
+            />
+          </div>
+          <div className={s.bookLabel}>
+            <Field
+              as="select"
+              name="book"
+              className={s.bookInput}
+              placeholder=" Select one book of your library"
+            >
+              {goingToReadBooks?.map(({ _id: id, bookTitle }) => (
+                <option value={bookTitle} key={id}>
+                  {bookTitle}
+                </option>
+              ))}
+            </Field>
+            <button
+              type="button"
+              className={s.btnAdd}
+              onClick={() => {
+                //             console.log(values);
+                onBtnAddClick(
+                  goingToReadBooks.find(book => book.bookTitle === values.book)
+                );
+              }}
+            >
+              Add
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 };
 export default TrainingForm;
