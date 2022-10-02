@@ -4,19 +4,19 @@
   align-items: center;
   position: absolute;
   top: 50%;
-  right: 121px;
+  right: 124px;
   transform: translateY(-50%);
 }
 
 @media screen and (min-width: 768px) {
   .nav {
-    right: 100px;
+    right: 93px;
   }
 }
 
-@media screen and (min-width: 1248px) {
+@media screen and (min-width: 1280px) {
   .nav {
-    right: 100px;
+    right: 79px;
   }
 }
 
@@ -32,7 +32,6 @@
   align-items: center;
   width: 33px;
   height: 33px;
-  margin-right: 5px;
   border-radius: 50%;
   outline: none;
 }
