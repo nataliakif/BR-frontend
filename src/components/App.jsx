@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 // import { useDispatch, useSelector } from 'react-redux';
 import PublicRoute from './PublicRoute';
@@ -89,6 +90,18 @@ const App = () => {
           </Routes>
         </Suspense>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggablePercent={60}
+        pauseOnHover
+        limit={3}
+      />
     </>
   );
 };
