@@ -111,13 +111,14 @@ const TrainingView = () => {
               onFinishDateChange={setFinishDate}
               onBtnAddClick={selectBook}
             />
+            <TrainingList
+              trainingBooks={selectedBooks}
+              deleteBookFromList={onSelectedBookDelete}
+            />
           </div>
         </div>
-        <TrainingList
-          trainingBooks={selectedBooks}
-          deleteBookFromList={onSelectedBookDelete}
-        />
-
+      </Container>
+      <Container>
         {showStButton && (
           <Button
             id="startTraining"
