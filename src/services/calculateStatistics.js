@@ -1,4 +1,5 @@
 const calculateStatistics = readStatistics => {
+  console.log();
   const uniqueDatesOfReading = [
     ...new Set(readStatistics.map(item => item.flatMap(item => item.dateTime))),
   ];

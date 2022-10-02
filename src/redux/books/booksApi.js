@@ -36,6 +36,7 @@ export const booksApi = apiSlice.injectEndpoints({
         author,
         publicationDate,
         amountOfPages,
+        status,
         review,
         rating,
       }) => ({
@@ -46,6 +47,7 @@ export const booksApi = apiSlice.injectEndpoints({
           author,
           publicationDate,
           amountOfPages,
+          status,
           review,
           rating,
         },

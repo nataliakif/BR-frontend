@@ -13,6 +13,7 @@ import { useFetchTrainingQuery } from 'redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
+import { useEditBookMutation } from 'redux/books/booksApi';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -20,6 +21,7 @@ const TrainingView = () => {
   const [selectedBooks, setSelectedGoingToReadBooks] = useState([]);
   const [planedPagesPerDay, setPlanedPagesPerDay] = useState(0);
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
+  const [editBook] = useEditBookMutation();
 
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
@@ -66,6 +68,13 @@ const TrainingView = () => {
       books: selectedBooks.map(book => book._id),
       startDate,
       finishDate,
+    });
+    selectedBooks.forEach(book => {
+      editBook({
+        ...book,
+        id: book._id,
+        status: 'reading_now',
+      });
     });
   };
 

@@ -19,12 +19,7 @@ const DatePickerInput = ({ onChange, ...props }) => {
         selected={(field.value && new Date(field.value)) || null}
         onChange={value => {
           setFieldValue(field.name, value);
-          const selectedDate = new Date(value);
-          const year = selectedDate.getFullYear();
-          const date = selectedDate.getDate();
-          const month = selectedDate.getMonth();
-          console.log(selectedDate.getUTCDay());
-          onChange(year + ',' + month + ',' + date);
+          onChange(value.toDateString());
         }}
       />
       <RiCalendar2Line className={s.dateIcon} />
