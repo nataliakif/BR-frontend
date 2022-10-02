@@ -9,15 +9,28 @@ import {
   useEditTrainingMutation,
 } from '../../redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Progress from 'components/Progress/Progress';
-// import FormLabel from '@mui/material/FormLabel';
-// import FormControl from '@mui/material/FormControl';
 import StatisticsList from 'components/StatisticsList/StatisticsList';
 import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
 import { Chart } from 'components/Chart/Chart';
 import calculateStatistics from 'services/calculateStatistics';
 import { useState } from 'react';
+import { useEditBookMutation } from 'redux/books/booksApi';
+
+const findAlreadyReadBook = (books, alreadyReadPages) => {
+  let readPagesLeft = alreadyReadPages;
+  const result = books.map(book => {
+    return { ...book, alreadyFinished: false };
+  });
+  for (let i = 0; i < result.length; i += 1) {
+    if (result[i].amountOfPages <= readPagesLeft) {
+      result[i].alreadyFinished = true;
+    }
+    readPagesLeft = readPagesLeft - result[i].amountOfPages;
+  }
+  return result;
+};
 
 const StatisticView = () => {
   const { data: userTraining, isLoading: isFetchingTraining } =
@@ -25,32 +38,67 @@ const StatisticView = () => {
 
   const [deleteTraining, { isLoading }] = useDeleteTrainingMutation();
 
+  const [editBook] = useEditBookMutation();
+
   const navigate = useNavigate();
 
   const [currentTraining, setCurrentTraining] = useState(null);
 
   const [updateResult] = useEditTrainingMutation();
 
+  const isTrainingExecuted =
+    currentTraining?.alreadyReadPages >= currentTraining?.trainingPagesAmount ??
+    false;
+
   useEffect(() => {
     if (!userTraining) {
       navigate('/training');
     } else {
-      const { startDate, finishDate, books } = userTraining;
+      const { startDate, finishDate, books, readStatistics, _id } =
+        userTraining;
       const trainingDaysAmount = getTrainingDaysAmount(startDate, finishDate);
       const trainingPagesAmount =
         books.reduce((currentValue, book) => {
           return (currentValue += Number.parseInt(book.amountOfPages));
         }, 0) ?? 0;
-      setCurrentTraining({
-        ...userTraining,
+      const alreadyReadPages = userTraining.readStatistics.reduce(
+        (prevVal, stat) => (prevVal += Number.parseInt(stat.pageAmount)),
+        0
+      );
+      const booksWithCurrentStatus = findAlreadyReadBook(
+        books,
+        alreadyReadPages
+      );
+      const notFinishedBooksAmount = booksWithCurrentStatus.filter(
+        book => !book.alreadyFinished
+      ).length;
+      setCurrentTraining(prevState => ({
+        _id,
+        startDate,
+        finishDate,
+        readStatistics,
         trainingDaysAmount,
         trainingPagesAmount,
         goalPerDay: Math.round(trainingPagesAmount / trainingDaysAmount),
-        notFinishedBooksAmount: books.filter(book => book.status === 'finished')
-          .length,
-      });
+        alreadyReadPages,
+        books: booksWithCurrentStatus,
+        notFinishedBooksAmount,
+        userHadReadNewBook:
+          notFinishedBooksAmount < prevState?.notFinishedBooksAmount,
+      }));
     }
   }, [navigate, userTraining]);
+
+  const handleCloseOfTraining = () => {
+    currentTraining.books.forEach(book => {
+      editBook({
+        ...book,
+        id: book._id,
+        status: 'finished',
+      });
+    });
+    deleteTraining(userTraining._id);
+  };
 
   return isFetchingTraining ? (
     <Progress />
@@ -61,7 +109,7 @@ const StatisticView = () => {
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <CountdownTimers
-                targetDate={new Date(userTraining.finishDate).getTime()}
+                targetDate={new Date(currentTraining.finishDate).getTime()}
               />
               <StatisticsList books={currentTraining.books} />
             </div>
@@ -69,43 +117,36 @@ const StatisticView = () => {
               bookAmount={currentTraining.books.length}
               daysAmount={currentTraining.trainingDaysAmount}
               booksLeft={currentTraining.notFinishedBooksAmount}
+              showBooksLeft={true}
             />
           </div>
         </Container>
         <Container>
-          {/* <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-            <FormLabel component="legend">
-              Current training from {currentTraining.startDate} till{' '}
-              {currentTraining.finishDate} ({currentTraining.trainingDaysAmount}{' '}
-              days) Total pages in this training:{' '}
-              {currentTraining.trainingPagesAmount} Your daily goal ={' '}
-              {currentTraining.goalPerDay} pages/day
-            </FormLabel>
-          </FormControl> */}
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <Chart
                 plan={currentTraining.goalPerDay}
-                readingStatistics={
-                  currentTraining.readingStatistics
-                    ? calculateStatistics(currentTraining.readingStatistics)
-                    : []
-                }
+                readingStatistics={calculateStatistics(
+                  currentTraining.readStatistics ?? []
+                )}
               />
             </div>
-            <AddResult data={userTraining} updateResult={updateResult} />
+            <AddResult
+              data={currentTraining}
+              updateResult={updateResult}
+              hideAddBtn={isTrainingExecuted}
+            />
           </div>
         </Container>
-
-        <button
-          type="button"
-          onClick={() => {
-            deleteTraining(userTraining._id);
-          }}
-          disabled={isLoading}
-        >
-          Временная кнопка "Удалить тренировку"
-        </button>
+        {isTrainingExecuted && (
+          <button
+            type="button"
+            onClick={handleCloseOfTraining}
+            disabled={isLoading}
+          >
+            Временная кнопка "Удалить тренировку"
+          </button>
+        )}{' '}
       </>
     )
   );

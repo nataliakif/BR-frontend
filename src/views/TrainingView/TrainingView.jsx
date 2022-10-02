@@ -81,7 +81,11 @@ const TrainingView = () => {
   const { data } = useFetchBooksQuery();
 
   const goingToReadBooks =
-    data?.filter(book => book.status === 'going_to_read') ?? [];
+    data
+      ?.filter(book => book.status === 'going_to_read')
+      .map(book => {
+        return { ...book, isSelected: false };
+      }) ?? [];
 
   const showStartButton = () => {
     if (startDate && finishDate && selectedBooks.length > 0) {
@@ -105,7 +109,7 @@ const TrainingView = () => {
           <div className={s.wrapperContainer}>
             <TrainingForm
               goingToReadBooks={goingToReadBooks.filter(
-                book => book.isSelected !== true
+                book => !selectedBooks.map(book => book._id).includes(book._id)
               )}
               onStartDateChange={setStartDate}
               onFinishDateChange={setFinishDate}
