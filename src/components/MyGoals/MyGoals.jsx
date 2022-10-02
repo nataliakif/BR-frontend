@@ -1,7 +1,5 @@
 import s from './MyGoals.module.css';
 
-const booksLeft = 2; // for example
-
 const TwoGoals = ({ header, amount }) => {
   return (
     <div className={s.twoGoals}>
@@ -20,7 +18,7 @@ const ThreeGoals = ({ header, amount }) => {
   );
 };
 
-const MyGoals = () => {
+const MyGoals = ({ bookAmount = 0, daysAmount = 0, booksLeft = 0 }) => {
   const container = booksLeft > 0 ? 'containerThreeGoals' : 'containerTwoGoals';
   const allGoals = booksLeft > 0 ? 'allThreeGoals' : 'allTwoGoals';
 
@@ -30,14 +28,14 @@ const MyGoals = () => {
       <div className={s[allGoals]}>
         {booksLeft > 0 ? (
           <>
-            <ThreeGoals header={'Amount of books'} amount={0} />
-            <ThreeGoals header={'Amount of days'} amount={1} />
+            <ThreeGoals header={'Amount of books'} amount={bookAmount} />
+            <ThreeGoals header={'Amount of days'} amount={daysAmount} />
             <ThreeGoals header={'Books left'} amount={booksLeft} />
           </>
         ) : (
           <>
-            <TwoGoals header={'Amount of books'} amount={0} />
-            <TwoGoals header={'Amount of days'} amount={1} />
+            <TwoGoals header={'Amount of books'} amount={bookAmount} />
+            <TwoGoals header={'Amount of days'} amount={daysAmount} />
           </>
         )}
       </div>

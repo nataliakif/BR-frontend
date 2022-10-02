@@ -2,35 +2,40 @@ import { useState } from 'react';
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
+import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
-// import TextField from '@mui/material/TextField';
-// import { useFormik } from 'formik';
-import RatingControlled from 'components/RatingControlled';
+
+import { useEditBookMutation } from '../../../redux/books/booksApi';
 
 import s from './ResumeModal.module.css';
 
- const MyInput = ({ field, form, ...props }) => {
-   return <textarea {...field} {...props} />;
- };
+const MyInput = ({ field, form, ...props }) => {
+  return <textarea {...field} {...props} />;
+};
 
-function ResumeModal() {
+const ResumeModal = ({ row }) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  // const onChangeRaring = () => {
-  //   console.log('first');
-  // };
+  const [openedBook, setOpenedBook] = useState();
+
+  const [editBook] = useEditBookMutation();
+
+  const onHandleModalOpen = () => {
+    setOpen(true);
+    setOpenedBook(row.row.original);
+  };
+  const onHandleModalClose = () => {
+    setOpen(false);
+    setOpenedBook({});
+  };
 
   return (
     <div className={s.buttonWrapper}>
-      <button className={s.buttonOpen} onClick={handleOpen}>
+      <button className={s.buttonOpen} onClick={onHandleModalOpen}>
         Resume
       </button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={onHandleModalClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -40,43 +45,59 @@ function ResumeModal() {
             <Formik
               initialValues={{
                 rating: 2,
-                text: '',
               }}
               onSubmit={values => {
-                // same shape as initial values
-                console.log(values);
+                const {
+                  _id,
+                  bookTitle,
+                  author,
+                  publicationDate,
+                  amountOfPages,
+                  review,
+                  rating,
+                } = openedBook;
+                editBook({
+                  id: _id,
+                  bookTitle,
+                  author,
+                  publicationDate,
+                  amountOfPages,
+                  review,
+                  rating,
+                });
+
+                setOpen(false);
               }}
             >
               {({ errors, touched, isValidating }) => (
                 <Form>
-                  <RatingControlled step={1} />
+                  <Rating
+                    name="rating"
+                    value={openedBook.rating}
+                    size="small"
+                    onChange={(event, newValue) => {
+                      setOpenedBook({ ...openedBook, rating: newValue });
+                    }}
+                    precision={1}
+                  />
                   <p className={s.titleTextarea}>Resume</p>
-                  {/* <TextField name="text" className={s.textAreaBox} /> */}
-                  <Field name="lastName" placeholder="..."  className={s.textAreaBox} component={MyInput} />
-                  {/* {errors.rating && touched.rating && <div>{errors.rating}</div>} */}
-
-                  {/* <Field name="lastName">
-                    {({
-                      field, // { name, value, onChange, onBlur }
-                      form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                      meta,
-                    }) => (
-                      <div>
-                        <textarea type="text" placeholder="..." {...field} className={s.textAreaBox}/>
-                        {meta.touched && meta.error && (
-                          <div className="error">{meta.error}</div>
-                        )}
-                      </div>
-                    )}
-                  </Field> */}
-
+                  <Field
+                    value={openedBook.review}
+                    name="review"
+                    placeholder="..."
+                    className={s.textAreaBox}
+                    component={MyInput}
+                    onChange={e => {
+                      setOpenedBook({ ...openedBook, review: e.target.value });
+                    }}
+                  />
 
                   <ul className={s.buttonList}>
                     <li>
                       <button
                         className={s.buttonBack}
                         type="submit"
-                        onClick={handleClose}
+                        onClick={onHandleModalClose}
                       >
                         Back
                       </button>
@@ -95,6 +116,6 @@ function ResumeModal() {
       </Modal>
     </div>
   );
-}
+};
 
 export default ResumeModal;

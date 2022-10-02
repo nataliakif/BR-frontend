@@ -4,12 +4,12 @@ import useIsMobile from "../../helpers/useIsMobile";
 
 // import s from "./AlreadyRead.module.css"
 
-const AlreadyRead = () => {
+const AlreadyRead = ({alreadyReadListBooks}) => {
   const isMobile = useIsMobile();
   return (
     <>
-      
-      { isMobile ? <AlreadyReadMobile /> : <AlreadyReadMain/>}
+      {/* <AlreadyReadMain/> */}
+      {isMobile ? <AlreadyReadMobile alreadyReadListBooks={alreadyReadListBooks} /> : <AlreadyReadMain alreadyReadListBooks={alreadyReadListBooks} />}
     </>
   );
 };

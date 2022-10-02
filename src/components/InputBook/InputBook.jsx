@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { Field, Form, Formik, ErrorMessage, useFormik } from 'formik';
 import s from './InputBook.module.css';
 import InputAddSchema from './ErrorInput';
 import {
@@ -18,21 +18,22 @@ function InputBook() {
   // const { data } = useFetchBooksQuery(); console.log(data);
   return (
     <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={InputAddSchema}
-        onSubmit={(values, { resetForm }) => {
-          createBook({
-            bookTitle: values.title,
-            author: values.author,
-            publicationDate: values.publishYear,
-            amountOfPages: values.pagesTotal,
-          });
-          resetForm();
-        }}
-      >
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
-          <Form onSubmit={handleSubmit} className={s.form} action="submit">
+      <Formik initialValues={initialValues} validationSchema={InputAddSchema}>
+        {({ values, handleChange, handleBlur, resetForm, isValid }) => (
+          <Form
+            className={s.form}
+            action="submit"
+            onSubmit={e => {
+              e.preventDefault();
+              createBook({
+                bookTitle: values.title,
+                author: values.author,
+                publicationDate: values.publishYear,
+                amountOfPages: values.pagesTotal,
+              });
+              resetForm();
+            }}
+          >
             <div className={s.form__container}>
               <label className={s.label}>
                 Book title
@@ -114,7 +115,12 @@ function InputBook() {
                 />
               </label>
             </div>
-            <button className={s.button} type="submit" disabled={isLoading}>
+            <button
+              className={s.button}
+              type="submit"
+              disabled={isLoading}
+              /* onClick={() => resetForm()} */
+            >
               Add
             </button>
           </Form>
