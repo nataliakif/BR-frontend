@@ -47,23 +47,9 @@ const ResumeModal = ({ row }) => {
                 rating: 2,
               }}
               onSubmit={values => {
-                const {
-                  _id,
-                  bookTitle,
-                  author,
-                  publicationDate,
-                  amountOfPages,
-                  review,
-                  rating,
-                } = openedBook;
                 editBook({
-                  id: _id,
-                  bookTitle,
-                  author,
-                  publicationDate,
-                  amountOfPages,
-                  review,
-                  rating,
+                  ...openedBook,
+                  id: openedBook._id,
                 });
 
                 setOpen(false);
