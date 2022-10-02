@@ -28,7 +28,9 @@ const TrainingForm = ({
     <div className={s.form} autoComplete="off">
       <h1 className={s.title}> My training</h1>
 
-      <Formik initialValues={initialValues}>
+      <Formik initialValues={initialValues}
+      validationSchema={TrainingFormSchema}
+      >
         {({ values, setFieldValue }) => (
           <Form
             onSubmit={() => {
