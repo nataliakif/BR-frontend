@@ -3,10 +3,6 @@ import Checkbox from '@mui/material/Checkbox';
 
 const StatisticsList = ({ books }) => {
   const headerList = ['Title', 'Author', 'Year', 'Pages'];
-
-  const handleChange = event => {
-    alert('Меняем статус книги на Прочитано');
-  };
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.header}>
@@ -22,17 +18,13 @@ const StatisticsList = ({ books }) => {
             _id: id,
             bookTitle: title,
             author,
-            status,
+            alreadyFinished,
             amountOfPages: pages,
             publicationDate: date,
           }) => (
             <li className={s.item} key={id}>
               <div className={s.title}>
-                <Checkbox
-                  checked={status === 'finished' ?? false}
-                  onChange={handleChange}
-                  name={id}
-                />
+                <Checkbox checked={alreadyFinished} name={id} />
                 <p>{title}</p>
               </div>
               <p>{author}</p>

@@ -18,15 +18,20 @@ const ThreeGoals = ({ header, amount }) => {
   );
 };
 
-const MyGoals = ({ bookAmount = 0, daysAmount = 0, booksLeft = 0 }) => {
+const MyGoals = ({
+  bookAmount = 0,
+  daysAmount = 0,
+  booksLeft = 0,
+  showBooksLeft = false,
+}) => {
   const container = booksLeft > 0 ? 'containerThreeGoals' : 'containerTwoGoals';
-  const allGoals = booksLeft > 0 ? 'allThreeGoals' : 'allTwoGoals';
+  const allGoals = showBooksLeft ? 'allThreeGoals' : 'allTwoGoals';
 
   return (
     <div className={s[container]}>
       <h2>My goals</h2>
       <div className={s[allGoals]}>
-        {booksLeft > 0 ? (
+        {showBooksLeft ? (
           <>
             <ThreeGoals header={'Amount of books'} amount={bookAmount} />
             <ThreeGoals header={'Amount of days'} amount={daysAmount} />

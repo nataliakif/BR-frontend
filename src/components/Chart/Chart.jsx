@@ -46,12 +46,13 @@ const customLegend = {
 
 export const Chart = ({ plan, readingStatistics }) => {
   const dates = readingStatistics.map(stat => stat.date);
+  //console.log('dates', dates);
   const pages = readingStatistics.map(stat => stat.pageAmount);
+  //console.log('pages', pages);
+  let actPages = pages.length === 1 ? [...pages, ...pages] : pages;
 
-  let actPages = pages.length === 1 ? [pages, pages] : pages;
-
-  let maxPagesValue = Math.max(...actPages.flatMap(item => item));
-
+  let maxPagesValue = Math.max(...actPages);
+  //console.log('Max page value', maxPagesValue);
   let labels = [plan, plan];
 
   if (dates.length === 1) {
@@ -60,7 +61,7 @@ export const Chart = ({ plan, readingStatistics }) => {
   if (dates.length > 1) {
     labels = dates;
   }
-
+  //console.log('labels', labels);
   let maxChartValue =
     plan * 2 > maxPagesValue
       ? plan * 2
@@ -77,7 +78,7 @@ export const Chart = ({ plan, readingStatistics }) => {
       x: { ticks: { display: false } },
       y: {
         min: plan === 0 ? -5 : 1,
-        max: maxChartValue,
+        max: plan === 0 ? 5 : maxChartValue,
         ticks: { display: false },
         grid: { display: false },
       },

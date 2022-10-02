@@ -8,7 +8,12 @@ import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 
 import * as yup from 'yup';
 
-const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
+const AddResult = ({
+  data,
+  updateResult,
+  plan = data.goalPerDay,
+  hideAddBtn = false,
+}) => {
   const { startDate, readStatistics: results } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
@@ -71,7 +76,12 @@ const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
               </div>
             </div>
             <div className={s.button}>
-              <Button type="submit" className="main" text="AddResult" />
+              <Button
+                type="submit"
+                disabled={hideAddBtn}
+                className="main"
+                text="AddResult"
+              />
             </div>
             <h2 className={s.statisticsTitle}>STATISTICS</h2>
             {results && (
