@@ -10,16 +10,9 @@ import stringMax from 'helpers/stringMax';
 import s from './ReadingNowMain.module.css';
 import sprite from '../../../images/sprite.svg';
 
-// import books from '../../../dataFiles/book.json';
-
-// const readingNowListBooks = books.filter(book => book.status === 'reading_now');
-// console.log(readingNowListBooks);
-
-
 const ReadingNowMain = ({readingNowListBooks}) => {
   const data = readingNowListBooks;
 const columnHelper = createColumnHelper(readingNowListBooks);
-  // console.log(readingNowListBooks)
 const columns = [
   columnHelper.accessor('bookTitle', {
     cell: info => (
@@ -64,13 +57,11 @@ const columns = [
   return (
     <>
       <h2 className={s.title}>Reading now</h2>
-      {/* {!goingToReadBooks && ( */}
       <div>
         <table className={s.table}>
           <colgroup>
             <col
               span="1"
-              // style="width: 200px"
               className={s.style}
             />
           </colgroup>
@@ -102,9 +93,8 @@ const columns = [
             ))}
           </tbody>
         </table>
-        <div className="h-4" />
+        <div/>
       </div>
-      {/* )} */}
     </>
   );
 };
