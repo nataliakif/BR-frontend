@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
+import sprite from '../../images/sprite.svg';
 import { toast } from 'react-toastify';
 import s from './RegisterForm.module.css';
 
@@ -44,6 +46,8 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
   const [registerUser] = useRegisterUserMutation();
   const dispatch = useDispatch();
 
@@ -66,8 +70,8 @@ const RegisterForm = () => {
     <div className={s.container}>
       <a
         className={s.googleLink}
-        // href="https://br-backend.herokuapp.com/auth/google"
-        href="http://localhost:3001/auth/google"
+        href="https://br-backend.herokuapp.com/auth/google"
+        // href="http://localhost:3001/auth/google"
       >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
@@ -118,10 +122,18 @@ const RegisterForm = () => {
 
             <label className={s.label} htmlFor="password">
               Password
+              <svg
+                className={s.icon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <use
+                  href={sprite + (showPassword ? '#icon-noeye' : '#icon-eye')}
+                />
+              </svg>
             </label>
             <Field
               className={s.input}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               maxLength={30}
               placeholder="..."
@@ -136,16 +148,24 @@ const RegisterForm = () => {
             />
             <label className={s.label} htmlFor="confirmPassword">
               Confirm password
+              <svg
+                className={s.icon}
+                onClick={() => setShowCPassword(!showCPassword)}
+              >
+                <use
+                  href={sprite + (showCPassword ? '#icon-noeye' : '#icon-eye')}
+                />
+              </svg>
             </label>
             <Field
               className={s.input}
-              type="password"
+              type={showCPassword ? 'text' : 'password'}
               name="confirmPassword"
               maxLength={30}
               placeholder="..."
               onPaste={e => e.preventDefault()}
             />
-            <img src="../../images/" />
+
             <ErrorMessage
               name="confirmPassword"
               render={msg => (
