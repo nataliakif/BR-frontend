@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -10,6 +10,7 @@ import {
 import LoginTimer from 'components/LoginTimer';
 import { setCredentials, getCurrentUser } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
+import sprite from '../../images/sprite.svg';
 import { toast } from 'react-toastify';
 import s from './LoginForm.module.css';
 
@@ -34,6 +35,7 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [loginUser] = useLoginUserMutation();
   const [restorePassword] = useRestorePasswordMutation();
   const email = useSelector(getCurrentUser);
@@ -71,8 +73,8 @@ const LoginForm = () => {
     <div className={s.container}>
       <a
         className={s.googleLink}
-        // href="https://br-backend.herokuapp.com/auth/google"
-        href="http://localhost:3001/auth/google"
+        href="https://br-backend.herokuapp.com/auth/google"
+        // href="http://localhost:3001/auth/google"
       >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
@@ -105,10 +107,18 @@ const LoginForm = () => {
 
             <label className={s.label} htmlFor="password">
               Password
+              <svg
+                className={s.icon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <use
+                  href={sprite + (showPassword ? '#icon-noeye' : '#icon-eye')}
+                />
+              </svg>
             </label>
             <Field
               className={s.input}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Password"
             />
