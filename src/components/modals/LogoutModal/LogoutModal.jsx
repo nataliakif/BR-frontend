@@ -1,38 +1,28 @@
 import PropTypes from 'prop-types';
-
-import Button from 'components/Button/Button';
 import Modal from '../../Modal/Modal';
+import Button from '../../Button/Button';
 import s from './LogoutModal.module.css';
 
-
-const LogoutModal = ({ onOpen, onClose, logoutFunc }) => {
-    return (
-        <Modal onOpen={onOpen} onClose={onClose}>
-            <div className={s.modal}>
-                <p className={s.text}>If you leave the programm your data may be lost</p>
-                <div className={s.box}>
-                    <Button
-                        className={s.button}
-                        type={'button'}
-                        text={'Cancel'}
-                        onClick={onClose}
-                    />
-                    <Button
-                        className={s.button}
-                        type={'button'}
-                        text={'Exit'}
-                        onClick={() => logoutFunc()}
-                    />
-                </div>
-            </div>
-        </Modal>
-    );
+const LogoutModal = ({ open, onClose, logoutFunc }) => {
+  return (
+    <Modal className={s.modal} open={open} onClose={onClose}>
+      <div className={s.wrapper}>
+        <p className={s.wrapper_text}>
+          If you leave the program your data can be lost
+        </p>
+        <div className={s.buttons}>
+          <Button className="transparent" text="Cancel" onClick={onClose} />
+          <Button className="main" text="Log Out" onClick={logoutFunc} />
+        </div>
+      </div>
+    </Modal>
+  );
 };
 
-Modal.propTypes = {
-    onOpen: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-    logoutFunc: PropTypes.func.isRequired,
-}
+LogoutModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  logoutFunc: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default LogoutModal;

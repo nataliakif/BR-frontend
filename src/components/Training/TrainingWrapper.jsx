@@ -3,11 +3,15 @@ import TrainingForm from "./TrainingForm/TrainingForm";
 
 import s from "./Wrapper.module.css"
 
-const TrainingWrapper = () => {
+const TrainingWrapper = ({onStartDateChange, onFinishDateChange}) => {
+    console.log(onStartDateChange);
     return (
         <section className={s.container}>
         <div className={s.wrapperContainer}>
-            <TrainingForm/>
+            <TrainingForm
+            onStartDateChange={onStartDateChange}
+             onFinishDateChange={onFinishDateChange}
+            />
         </div>
         </section>
     )

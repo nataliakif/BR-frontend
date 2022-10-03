@@ -10,7 +10,7 @@ export const authUserApi = apiSlice.injectEndpoints({
       }),
     }),
     fetchCurrentUser: builder.query({
-      query: () => '/users/current',
+      query: () => '/auth/user',
       method: 'GET',
     }),
     registerUser: builder.mutation({
@@ -20,11 +20,19 @@ export const authUserApi = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
     }),
+    restorePassword: builder.mutation({
+      query: credentials => ({
+        url: '/auth/restorePassword',
+        method: 'POST',
+        body: { ...credentials },
+      }),
+    }),
   }),
 });
 export const {
   useLoginUserMutation,
   useRegisterUserMutation,
+  useRestorePasswordMutation,
   useLogoutUserQuery,
   useFetchCurrentUserQuery,
 } = authUserApi;

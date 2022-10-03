@@ -14,9 +14,12 @@ const DoingFineModal = ({ open, onClose, onNewTraining }) => {
           Well done! but you need to be a little bit faster. You can do it
         </p>
         <div className={s.buttons}>
+          <Button className="main" text="Ok" onClick={onClose} />
+        </div>
+        {/* <div className={s.buttons}>
           <Button className="main" text="NewTraining" onClick={onNewTraining} />
           <Button className="transparent" text="Back" onClick={onClose} />
-        </div>
+        </div> */}
       </div>
     </Modal>
   );
@@ -24,7 +27,7 @@ const DoingFineModal = ({ open, onClose, onNewTraining }) => {
 
 DoingFineModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onNewTraining: PropTypes.func.isRequired,
+  onNewTraining: PropTypes.func,
   onClose: PropTypes.func.isRequired,
 };
 
