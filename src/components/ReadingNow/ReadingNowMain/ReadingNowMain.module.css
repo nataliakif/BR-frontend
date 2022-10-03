@@ -7,10 +7,8 @@
 }
 
 .titleBookWrapper {
-    display: flex;
-      align-items: center;
-  /* padding-top: 14px;
-  padding-bottom: 14px; */
+  display: flex;
+  align-items: center;
   padding-left: 20px;
   height: 60px;
 }
@@ -40,8 +38,6 @@
 
 .tableTitleCell {
   text-align: start;
-  /* width: 368;
-  /* padding-bottom: 8px; */
   color: var(--secondary-text-color);
 }
 
