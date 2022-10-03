@@ -27,21 +27,22 @@ const TrainingForm = ({
   return (
     <div className={s.form} autoComplete="off">
       <h1 className={s.title}> My training</h1>
-
       <Formik initialValues={initialValues}
-      validationSchema={TrainingFormSchema}
+      
       >
         {({ values, setFieldValue }) => (
           <Form
             onSubmit={() => {
               console.log(values);
             }}
+            validationSchema={TrainingFormSchema}
           >
             <div className={s.dateContainer}>
               <DatePickerInput
                 name="start"
                 minDate={new Date()}
                 onChange={onStartDateChange}
+                values={values.startDate}
                 dateFormat="dd-MM-yyyy"
                 placeholderText="Start"
                 autoComplete="off"
