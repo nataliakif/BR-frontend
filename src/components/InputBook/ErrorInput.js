@@ -19,7 +19,7 @@ const InputAddSchema = Yup.object().shape({
   publishYear: Yup.number()
     .integer('Enter an integer.')
     .min(1000, 'Are you reading the manuscript?')
-    .max(2023, 'This book has not yet appeared.')
+    .max(2022, 'This book has not yet appeared.')
     .typeError('Enter the year of publication of the book from 1000 to 2022.'),
   pagesTotal: Yup.number('Enter a number')
     .integer('Enter an integer.')

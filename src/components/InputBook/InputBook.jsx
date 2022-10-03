@@ -1,10 +1,8 @@
 import React from 'react';
-import { Field, Form, Formik, ErrorMessage, useFormik } from 'formik';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './InputBook.module.css';
 import InputAddSchema from './ErrorInput';
-import {
-  useCreateBookMutation /*  useFetchBooksQuery */,
-} from 'redux/books/booksApi';
+import { useCreateBookMutation } from 'redux/books/booksApi';
 
 const initialValues = {
   title: '',
@@ -15,11 +13,10 @@ const initialValues = {
 
 function InputBook() {
   const [createBook, { isLoading }] = useCreateBookMutation();
-  // const { data } = useFetchBooksQuery(); console.log(data);
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={InputAddSchema}>
-        {({ values, handleChange, handleBlur, resetForm, isValid }) => (
+        {({ values, handleChange, handleBlur, resetForm }) => (
           <Form
             className={s.form}
             action="submit"
@@ -115,12 +112,7 @@ function InputBook() {
                 />
               </label>
             </div>
-            <button
-              className={s.button}
-              type="submit"
-              disabled={isLoading}
-              /* onClick={() => resetForm()} */
-            >
+            <button className={s.button} type="submit" disabled={isLoading}>
               Add
             </button>
           </Form>
