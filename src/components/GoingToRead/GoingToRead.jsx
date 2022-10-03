@@ -4,11 +4,9 @@ import GoingToReadMobile from './GoingToReadMobile/GoingToReadMobile';
 import GoingToReadMain from './GoingToReadMain/GoingToReadMain';
 import useIsMobile from "../../helpers/useIsMobile";
 
-// import s from "./GoingToRead.module.css"
-
 const GoingToRead = ({goingToReadListBooks}) => {
   const isMobile = useIsMobile();
-  // console.log(goingToReadListBooks)
+  
   return (
     <>
       

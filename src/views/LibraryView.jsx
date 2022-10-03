@@ -9,6 +9,13 @@ import AlreadyRead from '../components/AlreadyRead/AlreadyRead';
 
 const LibraryView = () => {
   const { data, isLoading } = useFetchBooksQuery();
+  const alreadyReadListBooks = data?.filter(book => book.status === 'finished');
+  const readingNowListBooks = data?.filter(
+    book => book.status === 'reading_now'
+  );
+  const goingToReadListBooks = data?.filter(
+    book => book.status === 'going_to_read'
+  );
   return (
     <>
       <Container>
@@ -18,21 +25,15 @@ const LibraryView = () => {
 
       {data && (
         <ContainerLibrary>
-          <AlreadyRead
-            alreadyReadListBooks={data.filter(
-              book => book.status === 'finished'
-            )}
-          />
-          <ReadingNow
-            readingNowListBooks={data.filter(
-              book => book.status === 'reading_now'
-            )}
-          />
-          <GoingToRead
-            goingToReadListBooks={data.filter(
-              book => book.status === 'going_to_read'
-            )}
-          />
+          {alreadyReadListBooks.length >0 && <AlreadyRead
+            alreadyReadListBooks={alreadyReadListBooks}
+          />}
+          {readingNowListBooks.length > 0 && (
+            <ReadingNow readingNowListBooks={readingNowListBooks} />
+          )}
+          {goingToReadListBooks.length > 0 && (
+            <GoingToRead goingToReadListBooks={goingToReadListBooks} />
+          )}
         </ContainerLibrary>
       )}
     </>
