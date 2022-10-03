@@ -8,7 +8,15 @@ import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 
 import * as yup from 'yup';
 
-const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
+const AddResult = ({
+  data,
+  updateResult,
+  plan = data.goalPerDay,
+  hideAddBtn = false,
+  start = data.startDate,
+  finish = data.finishDate,
+}) => {
+  console.log(data);
   const { startDate, readStatistics: results } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
@@ -23,6 +31,13 @@ const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
     });
     plan && plan > values.pages && setDoingFineModal(true);
   };
+
+  const sortResults = [...results].sort(
+    (a, b) => new Date(b.dateTime) - new Date(a.dateTime)
+  );
+
+  console.log(results);
+
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
   };
@@ -33,7 +48,7 @@ const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
       .integer('Enter an integer.')
       .positive('The number of pages is more than 1')
       .min(1, 'May not be less then 1')
-      .max(1000, 'Enter a number from 1 to 1000') //добавить кол-во страниц в планинге
+      .max(data.trainingPagesAmount, 'More then the pages in training')
       .required('Fill the number of read pages.')
       .typeError('The number of pages must be from 1 to 1000'),
   });
@@ -54,8 +69,7 @@ const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
                 <DatePickerField
                   name="date"
                   className={s.input}
-                  maxDate={Date.now()}
-                  minDate={new Date(startDate)}
+                  minDate={new Date(start)}
                 />
 
                 <svg className={s.iconSvg} style={{ width: '24px' }}>
@@ -71,20 +85,28 @@ const AddResult = ({ data, updateResult, plan = data.goalPerDay }) => {
               </div>
             </div>
             <div className={s.button}>
-              <Button type="submit" className="main" text="AddResult" />
+              <Button
+                type="submit"
+                disabled={hideAddBtn}
+                className="main"
+                text="AddResult"
+              />
             </div>
             <h2 className={s.statisticsTitle}>STATISTICS</h2>
             {results && (
               <ul className={s.statistics}>
-                {results.map(({ pageAmount, dateTime }) => (
-                  <li className={s.item} key={dateTime}>
-                    <span className={s.day}>
+                {sortResults.map(({ pageAmount, dateTime }, index) => (
+                  <li className={s.item} key={index}>
+                    <p className={s.day}>
                       {new Date(dateTime).toLocaleDateString()}
-                    </span>
-                    <span className={s.data}>
+                    </p>
+                    <p className={s.data}>
                       {new Date(dateTime).toLocaleTimeString()}
-                    </span>
-                    <span className={s.pages}>{pageAmount}</span>
+                    </p>
+                    <p className={s.pages}>
+                      {pageAmount}
+                      <span>pages</span>
+                    </p>
                   </li>
                 ))}
               </ul>

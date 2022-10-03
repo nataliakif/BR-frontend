@@ -18,14 +18,17 @@ const TrainingList = ({
       </ul>
       <ul className={s.list}>
         {trainingBooks?.map(
-          ({
-            _id: id,
-            bookTitle: title,
-            author,
-            amountOfPages: pages,
-            publicationDate: date,
-          }) => (
-            <li className={s.item} key={id}>
+          (
+            {
+              _id: id,
+              bookTitle: title,
+              author,
+              amountOfPages: pages,
+              publicationDate: date,
+            },
+            index
+          ) => (
+            <li className={s.item} key={index}>
               <p>
                 <svg className={s.icon} width="22" height="17">
                   <use href={`${sprite}#icon-grey-book`}></use>
