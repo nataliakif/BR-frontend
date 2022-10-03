@@ -1,8 +1,6 @@
-// import books from '../../../dataFiles/book.json';
+
 
 import s from './ReadingNowMobile.module.css';
-
-// const readingNowBooks = books.filter(book => book.status === 'reading_now');
 
 const ReadingNowMobile = ({readingNowListBooks}) => {
   return (

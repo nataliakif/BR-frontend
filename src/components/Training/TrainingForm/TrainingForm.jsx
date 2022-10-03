@@ -1,12 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DatePickerInput from '../DatePicker/DatePicker';
-//import { useState } from "react";
-import { TiArrowSortedDown } from 'react-icons/ti';
 import s from './TrainingForm.module.css';
-import TrainingList from '../TrainingList/TrainingList';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-// import { useCreateTrainingMutation, useFetchTrainingQuery} from "redux/training/trainingApi";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 
 const initialValues = {
   startDate: '',
@@ -14,63 +10,96 @@ const initialValues = {
   books: '',
 };
 
-const TrainingForm = ({ onStartDateChange, onFinishDateChange }) => {
-  // const [data, { isLoading }] = useFetchTrainingQuery();
-
-  const TrainingFormSchema = Yup.object().shape({
-    start: Yup.date().required('Enter the first day of training'),
-    finish: Yup.date().required('Enter the last day of training'),
-    book: Yup.object().required('Choose one book'),
+const TrainingForm = ({
+  onStartDateChange,
+  onFinishDateChange,
+  goingToReadBooks,
+  onBtnAddClick,
+}) => {
+  const schema = yup.object().shape({
+    start: yup.date().required('Enter the first day of training'),
+    finish: yup.date().required('Enter the last day of training'),
+    book: yup.object().required('Choose one book'),
   });
-  console.log(onStartDateChange);
-  const handleSubmit = () => {};
-  return (
-    <form className={s.form} autoComplete="off" onSubmit={handleSubmit}>
-      <h1 className={s.title}> My training</h1>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={TrainingFormSchema}
-      >
-        {({ values, setFieldValue }) => (
+  const [startDate, setStartDate] = useState(null);
+  return (
+    <Formik initialValues={initialValues} validationSchema={schema}>
+      {({ values, handleChange }) => (
+        <Form
+          onChange={() => {
+            console.log(values);
+          }}
+        >
+          <div className={s.form} autoComplete="off">
+            <h1 className={s.title}> My training</h1>
+          </div>
           <div className={s.dateContainer}>
             <DatePickerInput
               name="start"
               minDate={new Date()}
-              onChange={onStartDateChange}
+              onChange={e => {
+                handleChange(e);
+                setStartDate(e);
+                onStartDateChange(e);
+              }}
               dateFormat="dd-MM-yyyy"
               placeholderText="Start"
               autoComplete="off"
               required
-            />
+            ></DatePickerInput>
+            <ErrorMessage name="start" />
+
             <DatePickerInput
               name="finish"
-              minDate={Date.now()}
-              onChange={() => {}}
+              minDate={new Date(startDate).setDate(
+                new Date(startDate).getDate() + 1
+              )}
+              maxDate={new Date(startDate).setDate(
+                new Date(startDate).getDate() + 32
+              )}
+              onChange={onFinishDateChange}
               dateFormat="dd-MM-yyyy"
               placeholderText="Finish"
               autoComplete="off"
               required
-            />
+            ></DatePickerInput>
+            <ErrorMessage name="finish" />
           </div>
-        )}
-      </Formik>
-      <Formik>
-        <div className={s.bookLabel}>
-          <div className={s.bookInput}>
-            <span className={s.bookPlaceholder}>
-              Select one book of your library
-            </span>
-            <TiArrowSortedDown width="20" height="20" className={s.arrow} />
+          <div className={s.bookLabel}>
+            <Field
+              as="select"
+              name="book"
+              className={s.bookInput}
+              defaultValue={'default'}
+            >
+              <option value="default" className={s.selectOption} disabled>
+                Choose books from the library
+              </option>
+              {goingToReadBooks?.map(({ _id: id, bookTitle }) => (
+                <option value={bookTitle} key={id}>
+                  {bookTitle}
+                </option>
+              ))}
+            </Field>
+
+            <ErrorMessage name="pages" />
+
+            <button
+              type="button"
+              className={s.btnAdd}
+              onClick={() => {
+                onBtnAddClick(
+                  goingToReadBooks.find(book => book.bookTitle === values.book)
+                );
+              }}
+            >
+              Add
+            </button>
           </div>
-          <button type="button" className={s.btnAdd} onClick={() => {}}>
-            Add
-          </button>
-        </div>
-      </Formik>
-      <TrainingList className={s.arrow} />
-      <Formik />
-    </form>
+        </Form>
+      )}
+    </Formik>
   );
 };
 export default TrainingForm;

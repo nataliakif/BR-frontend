@@ -64,12 +64,17 @@
 }
 @media screen and (min-width: 1280px) {
   .trainingWrapper {
-    margin-top: 23px;
+    margin-top: 44px;
   }
   .header {
     grid-template-columns: 345px 340px 100px 100px;
   }
   .item {
-    grid-template-columns: 345px 340px 100px 60px 40px;
+    grid-template-columns: 345px 340px 100px 100px;
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }

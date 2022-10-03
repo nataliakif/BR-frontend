@@ -5,28 +5,47 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
-// import {
-//   useFetchTrainingQuery,
-//   // useDeleteTrainingMutation,
-//   // useEditTrainingMutation,
-// } from '../../redux/training/trainingApi';
 import * as yup from 'yup';
 
-const AddResult = () => {
+const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
+  console.log(data);
+  const {
+    goalPerDay: plan,
+    startDate,
+    finishDate,
+    readStatistics: results,
+  } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
+
+  const onSubmit = values => {
+    updateResult({
+      ...data,
+      trainingId: data._id,
+      readStatistics: [
+        ...data.readStatistics,
+        { dateTime: values.date, pageAmount: values.pages },
+      ],
+    });
+    plan && plan > values.pages && setDoingFineModal(true);
+  };
+
+  const sortResults = [...results].sort(
+    (a, b) => new Date(b.dateTime) - new Date(a.dateTime)
+  );
+
+  console.log(results);
+
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
   };
-  const onSubmit = async () => {
-    setDoingFineModal(true);
-  };
+
   let schema = yup.object().shape({
     pages: yup
       .number()
       .integer('Enter an integer.')
       .positive('The number of pages is more than 1')
       .min(1, 'May not be less then 1')
-      .max(1000, 'Enter a number from 1 to 1000') //добавить кол-во страниц в планинге
+      .max(data.trainingPagesAmount, 'More then the pages in training')
       .required('Fill the number of read pages.')
       .typeError('The number of pages must be from 1 to 1000'),
   });
@@ -37,40 +56,61 @@ const AddResult = () => {
         onSubmit={onSubmit}
         validationSchema={schema}
       >
-        <Form className={s.form}>
-          <h2 className={s.title}>Result</h2>
-          <div className={s.wrapper}>
-            <div className={s.fieldWrapper}>
-              <p className={s.name}>Date</p>
+        {({ values }) => (
+          <Form className={s.form}>
+            <h2 className={s.title}>Result</h2>
+            <div className={s.wrapper}>
+              <div className={s.fieldWrapper}>
+                <p className={s.name}>Date</p>
 
-              <DatePickerField
-                name="date"
-                className={s.input}
-                maxDate={Date.now()}
+                <DatePickerField
+                  name="date"
+                  className={s.input}
+                  minDate={new Date(startDate)}
+                  maxDate={new Date(finishDate)}
+                />
+
+                <svg className={s.iconSvg} style={{ width: '24px' }}>
+                  <use href={`${sprite}#icon-Polygon`}></use>
+                </svg>
+              </div>
+              <div className={s.fieldWrapper}>
+                <p className={s.name}>Amount of pages</p>
+                <Field className={s.input} type="number" name="pages" />
+                <span className={s.error}>
+                  <ErrorMessage name="pages" />
+                </span>
+              </div>
+            </div>
+            <div className={s.button}>
+              <Button
+                type="submit"
+                disabled={hideAddBtn}
+                className="main"
+                text="AddResult"
               />
-
-              <svg className={s.iconSvg} style={{ width: '24px' }}>
-                <use href={`${sprite}#icon-Polygon`}></use>
-              </svg>
             </div>
-            <div className={s.fieldWrapper}>
-              <p className={s.name}>Amount of pages</p>
-              <Field className={s.input} type="number" name="pages" />
-              <span className={s.error}>
-                <ErrorMessage name="pages" />
-              </span>
-            </div>
-          </div>
-          <div className={s.button}>
-            <Button type="submit" className="main" text="AddResult" />
-          </div>
-          <h2 className={s.statisticsTitle}>STATISTICS</h2>
-          {/* {data && (
-            <ul className={s.statistics}>
-              
-            </ul> */}
-          {/* )} */}
-        </Form>
+            <h2 className={s.statisticsTitle}>STATISTICS</h2>
+            {results && (
+              <ul className={s.statistics}>
+                {sortResults.map(({ pageAmount, dateTime }, index) => (
+                  <li className={s.item} key={index}>
+                    <p className={s.day}>
+                      {new Date(dateTime).toLocaleDateString()}
+                    </p>
+                    <p className={s.data}>
+                      {new Date(dateTime).toLocaleTimeString()}
+                    </p>
+                    <p className={s.pages}>
+                      {pageAmount}
+                      <span>pages</span>
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Form>
+        )}
       </Formik>
       <DoingFineModal open={doingFineModal} onClose={closeDoingFineModal} />
     </>

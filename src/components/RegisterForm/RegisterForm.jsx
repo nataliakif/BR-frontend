@@ -1,29 +1,37 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
+import sprite from '../../images/sprite.svg';
+import { toast } from 'react-toastify';
 import s from './RegisterForm.module.css';
 
-const schema = yup.object().shape({
+const schema = yup.object({
   name: yup
     .string()
     .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      'Name can only contain letters.'
+      /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/,
+      'Name can only begin with a letter or a number'
     )
-    .min(5, 'Name is too short, min character is 5.')
+    .min(3, 'Name is too short, min character is 3.')
+    .max(100, 'Maximum 100 characters!')
     .required('Name is required'),
   email: yup
     .string()
-    .matches(/^[\w.]+@[\w]+.[\w]+$/, 'Incorrect email')
+    .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, 'Incorrect email')
+    .min(10, 'Email is too short, min character is 10.')
+    .max(63, 'Maximum 63 characters!')
     .required('Email is required'),
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'Password is too short, min character is 6.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .matches(/^[^.-]\S*$/, 'Incorrect password')
+    .min(5, 'Password is too short, min character is 5.')
+    .max(30, 'Maximum 30 characters!'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'Passwords must match')
@@ -38,26 +46,33 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
   const [registerUser] = useRegisterUserMutation();
   const dispatch = useDispatch();
 
-  const handleSubmit = async (
-    { name, email, password, confirmPassword },
-    { resetForm }
-  ) => {
-    const userData = await registerUser({
-      name,
-      email,
-      password,
-      confirmPassword,
-    }).unwrap();
-    dispatch(setCredentials({ ...userData.data }));
-    resetForm();
+  const handleSubmit = async ({ name, email, password, confirmPassword }) => {
+    try {
+      const userData = await registerUser({
+        name,
+        email,
+        password,
+        confirmPassword,
+      }).unwrap();
+      dispatch(setCredentials({ ...userData.data }));
+      toast.success('Registration was successful');
+    } catch (error) {
+      toast.error(error.data.message);
+    }
   };
 
   return (
     <div className={s.container}>
-      <a className={s.googleLink} href="/">
+      <a
+        className={s.googleLink}
+        href="https://br-backend.herokuapp.com/auth/google"
+        // href="http://localhost:3001/auth/google"
+      >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
       </a>
@@ -66,7 +81,7 @@ const RegisterForm = () => {
         initialValues={initialValues}
         validationSchema={schema}
       >
-        {({ isValid, dirty }) => (
+        {() => (
           <Form className={s.form}>
             <label className={s.label} htmlFor="name">
               Name
@@ -76,6 +91,7 @@ const RegisterForm = () => {
               type="text"
               name="name"
               placeholder="..."
+              autoFocus={true}
             />
             <ErrorMessage
               name="name"
@@ -106,11 +122,20 @@ const RegisterForm = () => {
 
             <label className={s.label} htmlFor="password">
               Password
+              <svg
+                className={s.icon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <use
+                  href={sprite + (showPassword ? '#icon-noeye' : '#icon-eye')}
+                />
+              </svg>
             </label>
             <Field
               className={s.input}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
+              maxLength={30}
               placeholder="..."
             />
             <ErrorMessage
@@ -123,13 +148,24 @@ const RegisterForm = () => {
             />
             <label className={s.label} htmlFor="confirmPassword">
               Confirm password
+              <svg
+                className={s.icon}
+                onClick={() => setShowCPassword(!showCPassword)}
+              >
+                <use
+                  href={sprite + (showCPassword ? '#icon-noeye' : '#icon-eye')}
+                />
+              </svg>
             </label>
             <Field
               className={s.input}
-              type="password"
+              type={showCPassword ? 'text' : 'password'}
               name="confirmPassword"
+              maxLength={30}
               placeholder="..."
+              onPaste={e => e.preventDefault()}
             />
+
             <ErrorMessage
               name="confirmPassword"
               render={msg => (
@@ -139,11 +175,7 @@ const RegisterForm = () => {
               )}
             />
 
-            <button
-              className={s.btn}
-              type="submit"
-              disabled={!(isValid && dirty)}
-            >
+            <button className={s.btn} type="submit">
               Register
             </button>
           </Form>
@@ -151,9 +183,9 @@ const RegisterForm = () => {
       </Formik>
       <p className={s.text}>
         Already have an account?{' '}
-        <a className={s.signupLink} href="/BR-frontend/login">
-          Login
-        </a>
+        <Link to="/login" className={s.signupLink}>
+          Log in
+        </Link>
       </p>
     </div>
   );

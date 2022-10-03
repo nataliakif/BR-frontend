@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { Field, Form, Formik, ErrorMessage, useFormik } from 'formik';
 import s from './InputBook.module.css';
 import InputAddSchema from './ErrorInput';
 import {
@@ -19,7 +19,7 @@ function InputBook() {
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={InputAddSchema}>
-        {({ values, handleChange, handleBlur, resetForm }) => (
+        {({ values, handleChange, handleBlur, resetForm, isValid }) => (
           <Form
             className={s.form}
             action="submit"
@@ -119,7 +119,7 @@ function InputBook() {
               className={s.button}
               type="submit"
               disabled={isLoading}
-              onClick={() => resetForm()}
+              /* onClick={() => resetForm()} */
             >
               Add
             </button>

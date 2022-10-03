@@ -21,7 +21,7 @@ const ResumeModal = ({ row }) => {
 
   const onHandleModalOpen = () => {
     setOpen(true);
-    setOpenedBook(row.row.original);
+    setOpenedBook(row);
   };
   const onHandleModalClose = () => {
     setOpen(false);
@@ -48,9 +48,8 @@ const ResumeModal = ({ row }) => {
               }}
               onSubmit={values => {
                 editBook({
+                  ...openedBook,
                   id: openedBook._id,
-                  rating: openedBook.rating,
-                  review: openedBook.review,
                 });
 
                 setOpen(false);
@@ -78,7 +77,6 @@ const ResumeModal = ({ row }) => {
                       setOpenedBook({ ...openedBook, review: e.target.value });
                     }}
                   />
-
                   <ul className={s.buttonList}>
                     <li>
                       <button
