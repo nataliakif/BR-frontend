@@ -24,7 +24,7 @@ ReadingNow.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  ).isRequired,
+  )
 };
 
 export default ReadingNow;

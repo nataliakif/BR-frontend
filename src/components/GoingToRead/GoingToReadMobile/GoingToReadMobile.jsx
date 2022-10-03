@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import s from './GoingToReadMobile.module.css';
 
-// const readingNowBooks = books.filter(book => book.status === 'Going to read');
-
 const GoingToReadMobile=({goingToReadListBooks})=> {
   return (
     <section className={s.goingToReadMobilesection}>
