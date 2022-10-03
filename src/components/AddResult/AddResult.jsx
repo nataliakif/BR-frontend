@@ -5,19 +5,16 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
-
 import * as yup from 'yup';
 
-const AddResult = ({
-  data,
-  updateResult,
-  plan = data.goalPerDay,
-  hideAddBtn = false,
-  start = data.startDate,
-  finish = data.finishDate,
-}) => {
+const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
   console.log(data);
-  const { startDate, readStatistics: results } = data;
+  const {
+    goalPerDay: plan,
+    startDate,
+    finishDate,
+    readStatistics: results,
+  } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
   const onSubmit = values => {
@@ -69,7 +66,8 @@ const AddResult = ({
                 <DatePickerField
                   name="date"
                   className={s.input}
-                  minDate={new Date(start)}
+                  minDate={new Date(startDate)}
+                  maxDate={new Date(finishDate)}
                 />
 
                 <svg className={s.iconSvg} style={{ width: '24px' }}>
