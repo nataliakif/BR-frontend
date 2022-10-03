@@ -27,7 +27,7 @@ GoingToRead.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  ).isRequired,
+  )
 };
 
 export default GoingToRead;
