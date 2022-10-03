@@ -13,7 +13,10 @@ const AddResult = ({
   updateResult,
   plan = data.goalPerDay,
   hideAddBtn = false,
+  start = data.startDate,
+  finish = data.finishDate,
 }) => {
+  console.log(data);
   const { startDate, readStatistics: results } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
@@ -28,6 +31,13 @@ const AddResult = ({
     });
     plan && plan > values.pages && setDoingFineModal(true);
   };
+
+  const sortResults = [...results].sort(
+    (a, b) => new Date(b.dateTime) - new Date(a.dateTime)
+  );
+
+  console.log(results);
+
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
   };
@@ -38,7 +48,7 @@ const AddResult = ({
       .integer('Enter an integer.')
       .positive('The number of pages is more than 1')
       .min(1, 'May not be less then 1')
-      .max(1000, 'Enter a number from 1 to 1000') //добавить кол-во страниц в планинге
+      .max(data.trainingPagesAmount, 'More then the pages in training')
       .required('Fill the number of read pages.')
       .typeError('The number of pages must be from 1 to 1000'),
   });
@@ -59,8 +69,7 @@ const AddResult = ({
                 <DatePickerField
                   name="date"
                   className={s.input}
-                  maxDate={Date.now()}
-                  minDate={new Date(startDate)}
+                  minDate={new Date(start)}
                 />
 
                 <svg className={s.iconSvg} style={{ width: '24px' }}>
@@ -86,7 +95,7 @@ const AddResult = ({
             <h2 className={s.statisticsTitle}>STATISTICS</h2>
             {results && (
               <ul className={s.statistics}>
-                {results.map(({ pageAmount, dateTime }, index) => (
+                {sortResults.map(({ pageAmount, dateTime }, index) => (
                   <li className={s.item} key={index}>
                     <p className={s.day}>
                       {new Date(dateTime).toLocaleDateString()}
