@@ -4,15 +4,14 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import Rating from '@mui/material/Rating';
 
-import ResumeModal from 'components/modals/ResumeModal';
+import ResumeModal from '../../modals/ResumeModal/ResumeModal';
 import sprite from '../../../images/sprite.svg';
 import s from '../AlreadyReadMain/AlreadyReadMain.module.css';
 import stringMax from 'helpers/stringMax';
-
+import RatingControlled from "../../RatingControlled"
 const AlreadyReadMain = ({ alreadyReadListBooks }) => {
-  // const AlreadyReadMain = () => {
+
   const data = alreadyReadListBooks;
   const columnHelper = createColumnHelper(alreadyReadListBooks);
 
@@ -50,13 +49,9 @@ const AlreadyReadMain = ({ alreadyReadListBooks }) => {
       header: () => <span>Pages</span>,
     }),
     columnHelper.accessor('rating', {
-      cell: info => (
+      cell: row => (
         <i>
-          <Rating
-            name="read-only"
-            value={+info.getValue()}
-            size="small"
-            readOnly
+          <RatingControlled step={0.5} openedBook={row.row.original}
           />
         </i>
       ),
@@ -65,7 +60,7 @@ const AlreadyReadMain = ({ alreadyReadListBooks }) => {
     columnHelper.accessor('action', {
       cell: row => (
         <i>
-          <ResumeModal row={row} />
+          <ResumeModal row={row.row.original} />
         </i>
       ),
       header: '',

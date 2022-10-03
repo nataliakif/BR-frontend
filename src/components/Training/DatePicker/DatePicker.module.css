@@ -1,7 +1,6 @@
 .dateWrapper {
   min-width: 280px;
   position: relative;
-  margin-right: 30px;
   margin-bottom: 20px;
   background-color: var(--main-color);
   border: solid 1px var(--icon-color);
@@ -9,6 +8,8 @@
 
 
 .dateInput {
+  margin: 0
+  ;
   height: 42px;
   padding: 5px 47px;
   border: none;
@@ -38,4 +39,10 @@ right: 6%;
 transform: translateY(-50%);
 width: 20px;
 height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .dateWrapper {
+    margin-right: 30px;;
+  }
 }

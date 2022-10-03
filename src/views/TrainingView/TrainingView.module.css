@@ -4,6 +4,7 @@
   justify-content: center;
 }
 
+
 @media screen and (min-width: 1280px) {
   .training {
     flex-direction: row-reverse;
@@ -13,17 +14,20 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding: 10px;
 }
 @media screen and (min-width: 768px) {
   .wrapperContainer {
+    display: flex;
     padding-bottom: 60px;
+  }
+  .trainingBookList {
+    display: grid;
+    grid-template-columns: 345px 340px 100px 100px;
   }
 }
 @media screen and (min-width: 1280px) {
   .wrapperContainer {
-    flex-direction: row;
     margin-right: 32px;
     justify-content: space-between;
     padding-top: 0;

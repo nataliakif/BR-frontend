@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DatePickerInput from '../DatePicker/DatePicker';
-
 import s from './TrainingForm.module.css';
-
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 
 const initialValues = {
   startDate: '',
@@ -18,24 +16,24 @@ const TrainingForm = ({
   goingToReadBooks,
   onBtnAddClick,
 }) => {
-  const TrainingFormSchema = Yup.object().shape({
-    start: Yup.date().required('Enter the first day of training'),
-    finish: Yup.date().required('Enter the last day of training'),
-    book: Yup.object().required('Choose one book'),
+  const schema = yup.object().shape({
+    start: yup.date().required('Enter the first day of training'),
+    finish: yup.date().required('Enter the last day of training'),
+    book: yup.object().required('Choose one book'),
   });
 
+  const [startDate, setStartDate] = useState(null);
   return (
     <div className={s.form} autoComplete="off">
       <h1 className={s.title}> My training</h1>
       <Formik initialValues={initialValues}
-      
+      validatinoSchema={schema}
       >
-        {({ values, setFieldValue }) => (
+        {({ values, setFieldValue, ErrorMessage}) => (
           <Form
             onSubmit={() => {
               console.log(values);
             }}
-            validationSchema={TrainingFormSchema}
           >
             <div className={s.dateContainer}>
               <DatePickerInput
@@ -90,8 +88,7 @@ const TrainingForm = ({
         )}
       </Formik>
     </div>
-
-
+    
   );
 };
 export default TrainingForm;
