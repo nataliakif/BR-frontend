@@ -145,6 +145,7 @@ const RegisterForm = () => {
               placeholder="..."
               onPaste={e => e.preventDefault()}
             />
+            <img src="../../images/" />
             <ErrorMessage
               name="confirmPassword"
               render={msg => (
