@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DatePickerInput from '../DatePicker/DatePicker';
 import s from './TrainingForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+
 const initialValues = {
   startDate: '',
   finishDate: '',
@@ -21,11 +22,12 @@ const TrainingForm = ({
     book: yup.object().required('Choose one book'),
   });
 
+  const [startDate, setStartDate] = useState(null);
   return (
     <Formik initialValues={initialValues} validationSchema={schema}>
-      {({ values, setFieldValue }) => (
+      {({ values, handleChange }) => (
         <Form
-          onSubmit={() => {
+          onChange={() => {
             console.log(values);
           }}
         >
@@ -36,26 +38,33 @@ const TrainingForm = ({
             <DatePickerInput
               name="start"
               minDate={new Date()}
-              onChange={onStartDateChange}
+              onChange={e => {
+                handleChange(e);
+                setStartDate(e);
+                onStartDateChange(e);
+              }}
               dateFormat="dd-MM-yyyy"
               placeholderText="Start"
               autoComplete="off"
               required
-            />
-
-            <ErrorMessage name="pages" />
+            ></DatePickerInput>
+            <ErrorMessage name="start" />
 
             <DatePickerInput
               name="finish"
-              minDate={Date.now()}
+              minDate={new Date(startDate).setDate(
+                new Date(startDate).getDate() + 1
+              )}
+              maxDate={new Date(startDate).setDate(
+                new Date(startDate).getDate() + 32
+              )}
               onChange={onFinishDateChange}
               dateFormat="dd-MM-yyyy"
               placeholderText="Finish"
               autoComplete="off"
               required
-            />
-
-            <ErrorMessage name="pages" />
+            ></DatePickerInput>
+            <ErrorMessage name="finish" />
           </div>
           <div className={s.bookLabel}>
             <Field
@@ -80,7 +89,6 @@ const TrainingForm = ({
               type="button"
               className={s.btnAdd}
               onClick={() => {
-                //             console.log(values);
                 onBtnAddClick(
                   goingToReadBooks.find(book => book.bookTitle === values.book)
                 );
