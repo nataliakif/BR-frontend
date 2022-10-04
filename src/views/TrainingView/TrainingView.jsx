@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
 import { useEditBookMutation } from 'redux/books/booksApi';
+import {isMobile} from 'react-device-detect';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -22,6 +23,7 @@ const TrainingView = () => {
   const [planedPagesPerDay, setPlanedPagesPerDay] = useState(0);
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
   const [editBook] = useEditBookMutation();
+  const [clickButton, setClickButton] = useState(false);
 
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
@@ -107,6 +109,7 @@ const TrainingView = () => {
             daysAmount={trainingDaysAmount}
           />
           <div className={s.wrapperContainer}>
+            {(!isMobile && clickButton) && (
             <TrainingForm
             className={s.trainigFormWrapper}
               goingToReadBooks={goingToReadBooks.filter(
@@ -116,6 +119,7 @@ const TrainingView = () => {
               onFinishDateChange={setFinishDate}
               onBtnAddClick={selectBook}
             />
+            )}
             <TrainingList
             className={s.trainingBooksList}
               trainingBooks={selectedBooks}
@@ -135,6 +139,14 @@ const TrainingView = () => {
           />
         )}
         <Chart plan={planedPagesPerDay} readingStatistics={[]} />
+        {isMobile &&
+        <button
+        onSubmit={() => setClickButton(true)}
+        className={s.addPageBtn}>
+          +
+    
+        </button>
+        }
       </Container>
     </>
   );

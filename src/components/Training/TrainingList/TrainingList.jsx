@@ -43,9 +43,9 @@ const TrainingList = ({
                 onClick={() => {
                   deleteBookFromList(id);
                 }}
-                className={s.delete}
+                className={s.btnDelete}
               >
-                <svg className={s.icon} width="22" height="17">
+                <svg className={s.iconDelete} width="22" height="17">
                   <use href={`${sprite}#icon-delete`}></use>
                 </svg>
               </button>
