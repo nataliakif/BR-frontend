@@ -134,7 +134,7 @@ const StatisticView = () => {
             <AddResult
               data={currentTraining}
               updateResult={updateResult}
-              hideAddBtn={isTrainingExecuted}
+              isTrainingExecuted={isTrainingExecuted}
             />
           </div>
         </Container>
