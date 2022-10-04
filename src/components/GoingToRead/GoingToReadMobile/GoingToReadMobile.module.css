@@ -65,26 +65,3 @@
   line-height: 1.25;
   padding: 8px;
 }
-
-@media screen and (min-width: 768px) {
-
-  .styleTitleBook {
-    width: 30%;
-  }
-
-  .styleAuthor {
-    width: 16%;
-  }
-
-  .styleColums {
-    width: 10%;
-  }
-
-  .styleRating {
-    width: 17%;
-  }
-
-  .stylyResume {
-    width: 16%;
-  }
-}
