@@ -1,5 +1,6 @@
 import s from './StatisticsList.module.css';
 import Checkbox from '@mui/material/Checkbox';
+import PropTypes from 'prop-types';
 
 const StatisticsList = ({ books }) => {
   const headerList = ['Title', 'Author', 'Year', 'Pages'];
@@ -37,5 +38,16 @@ const StatisticsList = ({ books }) => {
     </div>
   );
 };
-
+StatisticsList.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      alreadyFinished: PropTypes.bool.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+    })
+  ),
+};
 export default StatisticsList;
