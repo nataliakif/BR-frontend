@@ -14,13 +14,6 @@
   padding-bottom: 40px;
 }
 
-@media screen and (min-width: 768px) {
-  .box {
-    width: 608px;
-    height: 399px;
-  }
-}
-
 .title {
   margin-bottom: 20px;
   font-weight: 500;
@@ -36,29 +29,23 @@
   width: 240px;
   height: 170px;
   resize: none;
-  margin-top: 8px;
+  /* margin-top: 8px; */
   padding: 8px;
   outline: none;
 }
 
-@media screen and (min-width: 768px) {
-  .textAreaBox {
-    width: 568px;
-    height: 170px;
-  }
-}
 .buttonList {
   display: flex;
   justify-content: space-around;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .titleTextarea {
   font-size: 14px;
   line-height: 17px;
   border-radius: 0;
   margin-top: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 3px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -84,39 +71,13 @@
 .buttonOpen:hover,
 .buttonOpen:focus {
   box-shadow: none;
-  background:var(--accent-color)
+  background: var(--accent-color);
 }
 
-
-@media screen and (min-width: 768px) {
-  .buttonWrapper {
-    padding-right: 5px;
-  }
-  .buttonWrapper > .buttonOpen {
-    width: 80px;
-  }
-  .buttonBack,
-  .buttonSave {
-    width: 130px;
-    height: 40px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .buttonWrapper {
-padding-top: 11px;
-padding-bottom: 11px;
-padding-right: 80px;
-padding-left: 10px;
-  }
-    .buttonWrapper>.buttonOpen {
-    width: 130px;
-    
-  }
-}
 .buttonBack {
-  min-width: 99px;
+  min-width: 98px;
   padding-top: 11px;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
@@ -126,9 +87,9 @@ padding-left: 10px;
 }
 
 .buttonSave {
-  min-width: 99px;
+  min-width: 98px;
   padding-top: 11px;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
   text-align: center;
   margin-left: 16px;
   font-weight: 500;
@@ -144,4 +105,39 @@ padding-left: 10px;
 .buttonSave:focus {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   background: var(--library-color);
+}
+
+@media screen and (min-width: 768px) {
+  .box {
+    width: 608px;
+    height: 399px;
+  }
+  .textAreaBox {
+    width: 568px;
+    height: 170px;
+  }
+
+  .buttonWrapper {
+    padding-right: 5px;
+  }
+  .buttonWrapper > .buttonOpen {
+    width: 80px;
+  }
+  .buttonBack,
+  .buttonSave {
+    width: 130px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .buttonWrapper {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-right: 80px;
+    padding-left: 10px;
+  }
+  .buttonWrapper > .buttonOpen {
+    width: 130px;
+  }
 }

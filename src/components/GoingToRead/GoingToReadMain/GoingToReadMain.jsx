@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import stringMax from 'helpers/stringMax';
 import s from './GoingToReadMain.module.css';
@@ -60,7 +60,9 @@ const GoingToReadMain = ({ goingToReadListBooks }) => {
       <div>
         <table className={s.table}>
           <colgroup>
-            <col span="1" className={s.style} />
+            <col span="1" className={s.styleTitleBook} />
+            <col span="1" className={s.styleAuthor} />
+            <col span="2" className={s.styleColums} />
           </colgroup>
 
           <thead>
@@ -95,6 +97,21 @@ const GoingToReadMain = ({ goingToReadListBooks }) => {
       </div>
     </>
   );
+};
+
+GoingToReadMain.propTypes = {
+  goingToReadListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  ),
 };
 
 export default GoingToReadMain;

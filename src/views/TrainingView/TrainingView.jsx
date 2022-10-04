@@ -14,7 +14,9 @@ import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
 import { useEditBookMutation } from 'redux/books/booksApi';
+
 import {isMobile} from 'react-device-detect';
+import useIsMobile from '../../helpers/useIsMobile';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -24,6 +26,8 @@ const TrainingView = () => {
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
   const [editBook] = useEditBookMutation();
   const [clickButton, setClickButton] = useState(false);
+  const [showElement, setShowElement] = useState(false);
+
 
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
@@ -95,7 +99,7 @@ const TrainingView = () => {
     }
     return false;
   };
-
+  const isMobile = useIsMobile();
   const showStButton = showStartButton();
 
   return isFetchingTraining ? (
@@ -104,32 +108,36 @@ const TrainingView = () => {
     <>
       <Container>
         <div className={s.training}>
-          <MyGoals
-            bookAmount={selectedBooks.length}
-            daysAmount={trainingDaysAmount}
-          />
+          {!showElement && (
+            <MyGoals
+              bookAmount={selectedBooks.length}
+              daysAmount={trainingDaysAmount}
+            />
+          )}
           <div className={s.wrapperContainer}>
-            {(!isMobile && clickButton) && (
-            <TrainingForm
-            className={s.trainigFormWrapper}
-              goingToReadBooks={goingToReadBooks.filter(
-                book => !selectedBooks.map(book => book._id).includes(book._id)
-              )}
-              onStartDateChange={setStartDate}
-              onFinishDateChange={setFinishDate}
-              onBtnAddClick={selectBook}
-            />
+
+            {(!isMobile || showElement) && (
+              <TrainingForm
+                goingToReadBooks={goingToReadBooks.filter(
+                  book =>
+                    !selectedBooks.map(book => book._id).includes(book._id)
+                )}
+                onStartDateChange={setStartDate}
+                onFinishDateChange={setFinishDate}
+                onBtnAddClick={selectBook}
+              />
             )}
-            <TrainingList
-            className={s.trainingBooksList}
-              trainingBooks={selectedBooks}
-              deleteBookFromList={onSelectedBookDelete}
-            />
+            {!showElement && (
+              <TrainingList
+                trainingBooks={selectedBooks}
+                deleteBookFromList={onSelectedBookDelete}
+              />
+            )}
           </div>
         </div>
       </Container>
       <Container>
-        {showStButton && (
+        {showStButton && !showElement && (
           <Button
             id="startTraining"
             className="main"
@@ -144,9 +152,16 @@ const TrainingView = () => {
         onSubmit={() => setClickButton(true)}
         className={s.addPageBtn}>
           +
-    
         </button>
         }
+        {!showElement && (
+          <Chart plan={planedPagesPerDay} readingStatistics={[]} />
+        )}
+        {isMobile && (
+          <button type="button" onClick={() => setShowElement(true)}>
+            Add
+          </button>
+        )}
       </Container>
     </>
   );
