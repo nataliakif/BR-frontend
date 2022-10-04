@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { useEditBookMutation } from '../../../redux/books/booksApi';
 import s from './ResumeModal.module.css';
 
-const MyInput = ({ field,  ...props }) => {
+const MyInput = ({ field, ...props }) => {
   return <textarea {...field} {...props} />;
 };
 
@@ -107,20 +107,19 @@ const ResumeModal = ({ row }) => {
 MyInput.propTypes = {
   field: PropTypes.object,
   props: PropTypes.object,
-
 };
 
 ResumeModal.propTypes = {
   row: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      bookTitle: PropTypes.string,
-      author: PropTypes.string,
-      publicationDate: PropTypes.number,
-      amountOfPages: PropTypes.number,
-      status: PropTypes.string,
-      rating: PropTypes.number,
-      review: PropTypes.string,
-    })
+    _id: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string,
+    author: PropTypes.string,
+    publicationDate: PropTypes.number,
+    amountOfPages: PropTypes.number,
+    status: PropTypes.string,
+    rating: PropTypes.number,
+    review: PropTypes.string,
+  }),
 };
 
 export default ResumeModal;
