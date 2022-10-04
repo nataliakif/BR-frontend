@@ -1,12 +1,26 @@
-.listHeader {
-  margin-top: 20px;
+.trainingWrapper {
+  display: flex;
+  position: relative;
+  margin-top: 320px;
+  padding: 10px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
   color: var(--secondary-text-color);
+  border-top: 1px solid var(--icon-color);
+  border-bottom: 1px solid var(--icon-color);
+  
 }
-.header {
-  display: none;
+
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 60px;
+
+}
+.header:nth-last-child() {
+  margin-bottom: 15px;
 }
 .item {
   margin: 0;
@@ -14,42 +28,63 @@
   color: var(--main-text-color);
 }
 .list {
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--icon-color);
+  padding: 20px;
 }
-.itemBook {
+.item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
-
   font-weight: 500;
   color: var(--main-text-color);
 }
+
 .icon {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  transform: translateY(-90%);
   margin-right: 5px;
 }
-.dots {
-  display: block;
-  margin: 0;
-  padding-left: 21px;
+.iconDelete {
+  position: absolute;
+  transform: translateY(-90%);
+  top: 30%;
+  right: 30%;
 }
-.author {
-  margin-left: 50px;
+.btnDelete {
+  display: block;
+  position: absolute;
+  transform: translateY(-90%);
+  top: 30%;
+  right: 35%;
+}
+.title {
+  color: var(--primary-text-color)
+}
+.itemsName {
+  color: var(--secondary-text-color);
 }
 
 @media screen and (min-width: 768px) {
+  .trainingWrapper {
+    margin-top: 185px;
+    flex-direction: column;
+  }
   .listHeader {
     margin-top: 40px;
   }
   .header {
-    padding-top: 12px;
-    padding-bottom: 12px;
     display: grid;
-    grid-template-columns: 242px 232px 100px 100px;
-    border-top: 1px solid var(--icon-color);
-    border-bottom: 1px solid var(--icon-color);
+    grid-template-columns: 217px 162px 61px 50px;
+    padding-left: 0;
+  }
+  .list {
+    display: grid;
+    grid-template-columns: 217px 162px 61px 50px;
+    padding: 0;
+  }
+  .icon {
+    display: none;
   }
   .item {
     margin: 0;
@@ -64,12 +99,12 @@
 }
 @media screen and (min-width: 1280px) {
   .trainingWrapper {
-    margin-top: 23px;
+    margin-top: 173px;
   }
   .header {
-    grid-template-columns: 345px 340px 100px 100px;
+    grid-template-columns: 300px 180px 65px 65pxpx;
   }
   .item {
-    grid-template-columns: 345px 340px 100px 60px 40px;
+    grid-template-columns: 345px 340px 100px 60px;
   }
 }

@@ -108,6 +108,7 @@ const TrainingView = () => {
           />
           <div className={s.wrapperContainer}>
             <TrainingForm
+            className={s.trainigFormWrapper}
               goingToReadBooks={goingToReadBooks.filter(
                 book => !selectedBooks.map(book => book._id).includes(book._id)
               )}
@@ -116,6 +117,7 @@ const TrainingView = () => {
               onBtnAddClick={selectBook}
             />
             <TrainingList
+            className={s.trainingBooksList}
               trainingBooks={selectedBooks}
               deleteBookFromList={onSelectedBookDelete}
             />
