@@ -23,6 +23,7 @@
 .title {
   font-weight: 600;
   font-size: 12px;
+  text-align: center;
   text-transform: uppercase;
   color: var(--primary-text-color);
 }
@@ -58,7 +59,7 @@
 }
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .button {
-    margin-top: 44px;
+    margin-top: 50px;
   }
 }
 
