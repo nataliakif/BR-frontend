@@ -1,12 +1,14 @@
+
 import ResumeModal from 'components/modals/ResumeModal';
-// import RatingControlled from 'components/RatingControlled';
-// import books from '../../../dataFiles/book.json';
 import Rating from '@mui/material/Rating';
 import s from './AlreadyReadMobile.module.css';
 
-// const alreadyReadListBooks = books.filter(book => book.status === 'finished');
+import { useEditBookMutation } from '../../../redux/books/booksApi';
 
 const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
+
+  const [editBook] = useEditBookMutation();
+
   return (
     <section className={s.listAlreadyRead}>
       <h2 className={s.title}>Already read</h2>
@@ -18,8 +20,18 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
             author,
             publicationDate,
             amountOfPages,
+            review,
             rating,
           }) => {
+            const book = {
+              _id,
+              bookTitle,
+              author,
+              publicationDate,
+              amountOfPages,
+              review,
+              rating,
+            };
             return (
               <li className={s.cardBook} key={_id}>
                 <div className={s.cardBookWrapper}>
@@ -42,12 +54,21 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                         <tr className={s.cardTableBody}>
                           <th className={s.tableTitle}>Rating:</th>
                           <td className={s.tableContent}>
-                            {/* <RatingControlled step={0.5} status={rating} /> */}
                             <Rating
-                              name="read-only"
+                              name="simple-controlled"
                               value={rating}
-                              size="small"
-                              readOnly
+                              precision={0.5}
+                              onChange={(event, newValue) => {
+                                editBook({
+                                  id: _id,
+                                  bookTitle,
+                                  author,
+                                  publicationDate,
+                                  amountOfPages,
+                                  review,
+                                  rating: newValue,
+                                });
+                              }}
                             />
                           </td>
                         </tr>
@@ -56,7 +77,7 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                   </div>
                 </div>
                 <div className={s.buttonWrapper}>
-                  <ResumeModal />
+                  <ResumeModal row={book} />
                 </div>
               </li>
             );

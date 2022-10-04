@@ -1,156 +1,155 @@
 {
-    "headerLogOut" : {
-        "logOut" : "Goout",
-        "cancel" : "Cancel",
-        "text" : "If you go out, data will be lost",
-        "goout": "Go out"
-    },
-    "signInForm":{
-       "emailLabel" : "Email Address",
-       "passwordLabel" : "Password",
-       "button" : "Login",
-        "link" : "Registration"
-    },
-    "signUpForm":{
-        "name" : "Name",
-        "confirmPasswordLabel" : "Confirm password",
-        "button" : "Register",
-        "link" : "Login",
-        "question":"Already with us? "
-    },
-    "validation":{
-        "requiredEmail" : "Email is required",
-        "requiredPassword" : "Password is required",
-        "wrongEmail" : "Email is wrong",
-        "passwordLenght" : "Password must be at least 8 characters",
+  "headerLogOut": {
+    "logOut": "Goout",
+    "cancel": "Cancel",
+    "text": "If you go out, data will be lost",
+    "goout": "Go out"
+  },
+  "signInForm": {
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "button": "Login",
+    "link": "Registration"
+  },
+  "signUpForm": {
+    "name": "Name",
+    "confirmPasswordLabel": "Confirm password",
+    "button": "Register",
+    "link": "Log in",
+    "question": "Already have an account? "
+  },
+  "validation": {
+    "requiredEmail": "Email is required",
+    "requiredPassword": "Password is required",
+    "wrongEmail": "Email is wrong",
+    "passwordLenght": "Password must be at least 8 characters",
 
-        "requiredName" : "Name is required",
-        "nameMinLenght" : "Field should have more than 1 letter",
-        "nameMaxLenght" : "Field should have less than 255 letter",
+    "requiredName": "Name is required",
+    "nameMinLenght": "Field should have more than 1 letter",
+    "nameMaxLenght": "Field should have less than 255 letter",
 
-        "confirmPassword" : "Confirm password is required",
-        "matchPassword" : "Passwords must match",
+    "confirmPassword": "Confirm password is required",
+    "matchPassword": "Passwords must match",
 
-        "required" : "required",
-        "length" : "* more than 1 letter",
-        "year" : "* max year - current",
-        "pages" : "* max number - 5000"
-    },
-    "backMsgLogUp":{
-        "success" : "Registration was successful !",
-        "error" : "A user with this email already exists"
-    },
-    "backMsgLogIn":{
-        "error" : "Incorrect email or password"
-    },
-    "quotation": {
-        "quote" : "Books are the ships of thought, wandering through the waves of time and carefully carrying their precious cargo from generation to generation. ",
-        "author" : "F. Bacon"
-    },
-    "description" : {
-        "firstSubTitle" : "Helps you",
+    "required": "required",
+    "length": "* more than 1 letter",
+    "year": "* max year - current",
+    "pages": "* max number - 5000"
+  },
+  "backMsgLogUp": {
+    "success": "Registration was successful !",
+    "error": "A user with this email already exists"
+  },
+  "backMsgLogIn": {
+    "error": "Incorrect email or password"
+  },
+  "quotation": {
+    "quote": "Books are the ships of thought, wandering through the waves of time and carefully carrying their precious cargo from generation to generation. ",
+    "author": "F. Bacon"
+  },
+  "description": {
+    "firstSubTitle": "Helps you",
 
-        "goal" : "Formulate your goal faster and start reading",
-        "load" : "Proportionally distribute the load on each day",
-        "success" : "Track personal success",
+    "goal": "Formulate your goal faster and start reading",
+    "load": "Proportionally distribute the load on each day",
+    "success": "Track personal success",
 
-        "secondSubTitle" : "You can too",
+    "secondSubTitle": "You can too",
 
-        "form" : "To form a personal opinion independent of others",
-        "skills" : "Improve your professional skills based on new knowledge",
-        "interlocutor" : "Become an interesting interlocutor",
+    "form": "To form a personal opinion independent of others",
+    "skills": "Improve your professional skills based on new knowledge",
+    "interlocutor": "Become an interesting interlocutor",
 
-        "signUp" : "Registr" 
-    },
-    "addingBookForm" : {
-        "title" : "Book title",    
-        "author" : "Author of the book",    
-        "year" : "Year of publish",    
-        "pages" : "Total pages",    
-        "button" : "Add Book"       
-    },
-    "GoToRead":{
-        "header" : "I Intend to Read",
-        "year" : "Year",
-        "pages" : "Pages",
-        "author" : "Author",
-        "title" : "Book title",
-        "button" : "Forward"
-    },
-    "GoToReadMobile":{
-        "year" : "Year :",
-        "pages" : "Pages :",
-        "author" : "Author :"
-    },
-    "finishedReading" : {
-        "header" : "Finished Reading", 
-        "rating" : "Rating :", 
-        "bookRating" : "Rating", 
-        "button" : "Resume"
-    },
-    "currentlyReading" : {
-        "header" : "Currently Reading"   
-    },
-    "alltimer" : {
-        "yearEnd": "Left before the end of the year",
-        "goalEnd" : "Left before achieving the goal"
-    },
-    "mytimer" : {
-        "days" : "DAYS",
-        "hours" : "HOURS",
-        "min" : "MIN",
-        "sec" : "SEC"
-    },
-    "startgoals":{
-        "goal" : "My goal is to read",
-        "books" : "Number of books",
-        "days" : "Number of days"
-    },
-    "resultGoal" : {
-        "left" : "There are books left"
-    },
-    "alldatePicker": {
-        "note": "Start date is more than end date!",
-        "start": "Start date",
-        "end": "End date",
-        "header": "My training",
-        "input": "Select books from library"
-    },
-    "all":{
-        "pages" : "pages",
-        "year" : "year",
-        "author" : "Author "
-    },
-    "chart" : {
-        "plan" : "PLAN",
-        "fact" : "FACT",
-        "title" : "NUMBER OF PAGES / DAY"
-    },
-    "training": {
-        "button": "Start Training",
-        "warningStart": "Select start date",
-        "warningEnd": "Select end date",
-        "select": "Select a book",
-        "done": "Book has been added to list"
-    },
-    "motivationExellent": {
-        "exellent": "Excellent result! The goal has been achieved"
-    },
-    "libraryModal": {
-        "stepOne": "Step 1.",
-        "create": "Create a personal library",
-        "add": "Add books to it that you intend to read.",
-        "atepTwo": "Step 2.",
-        "firstTraining": "Create your first workout",
-        "goal": "Set a goal, choose a period, start training.",
-        "ok": "Ok"
-    },
-    "statistics": {
-        "results": "Results",
-        "date": "Date",
-        "pages": "Pages Quantity",
-        "addResult": "Add Result",
-        "statistic": "Statistic"
-    }
-
+    "signUp": "Registr"
+  },
+  "addingBookForm": {
+    "title": "Book title",
+    "author": "Author of the book",
+    "year": "Year of publish",
+    "pages": "Total pages",
+    "button": "Add Book"
+  },
+  "GoToRead": {
+    "header": "I Intend to Read",
+    "year": "Year",
+    "pages": "Pages",
+    "author": "Author",
+    "title": "Book title",
+    "button": "Forward"
+  },
+  "GoToReadMobile": {
+    "year": "Year :",
+    "pages": "Pages :",
+    "author": "Author :"
+  },
+  "finishedReading": {
+    "header": "Finished Reading",
+    "rating": "Rating :",
+    "bookRating": "Rating",
+    "button": "Resume"
+  },
+  "currentlyReading": {
+    "header": "Currently Reading"
+  },
+  "alltimer": {
+    "yearEnd": "Left before the end of the year",
+    "goalEnd": "Left before achieving the goal"
+  },
+  "mytimer": {
+    "days": "DAYS",
+    "hours": "HOURS",
+    "min": "MIN",
+    "sec": "SEC"
+  },
+  "startgoals": {
+    "goal": "My goal is to read",
+    "books": "Number of books",
+    "days": "Number of days"
+  },
+  "resultGoal": {
+    "left": "There are books left"
+  },
+  "alldatePicker": {
+    "note": "Start date is more than end date!",
+    "start": "Start date",
+    "end": "End date",
+    "header": "My training",
+    "input": "Select books from library"
+  },
+  "all": {
+    "pages": "pages",
+    "year": "year",
+    "author": "Author "
+  },
+  "chart": {
+    "plan": "PLAN",
+    "fact": "FACT",
+    "title": "NUMBER OF PAGES / DAY"
+  },
+  "training": {
+    "button": "Start Training",
+    "warningStart": "Select start date",
+    "warningEnd": "Select end date",
+    "select": "Select a book",
+    "done": "Book has been added to list"
+  },
+  "motivationExellent": {
+    "exellent": "Excellent result! The goal has been achieved"
+  },
+  "libraryModal": {
+    "stepOne": "Step 1.",
+    "create": "Create a personal library",
+    "add": "Add books to it that you intend to read.",
+    "atepTwo": "Step 2.",
+    "firstTraining": "Create your first workout",
+    "goal": "Set a goal, choose a period, start training.",
+    "ok": "Ok"
+  },
+  "statistics": {
+    "results": "Results",
+    "date": "Date",
+    "pages": "Pages Quantity",
+    "addResult": "Add Result",
+    "statistic": "Statistic"
+  }
 }
