@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import stringMax from 'helpers/stringMax';
 import s from './ReadingNowMain.module.css';
@@ -53,7 +53,6 @@ const columns = [
     getCoreRowModel: getCoreRowModel(),
   });
 
-
   return (
     <>
       <h2 className={s.title}>Reading now</h2>
@@ -97,6 +96,21 @@ const columns = [
       </div>
     </>
   );
+};
+
+ReadingNowMain.propTypes = {
+  readingNowListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  )
 };
 
 export default ReadingNowMain;

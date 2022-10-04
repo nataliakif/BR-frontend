@@ -21,6 +21,7 @@
 }
 
 .nav::after {
+  margin-left: 4px;
   content: '';
   height: 33px;
   border-right: 1px solid #e0e5eb;
@@ -42,8 +43,8 @@
 
 .nav_link:hover,
 .nav_link:focus {
-  transition: background-color 500ms cubic-bezier(0.61, 0.36, 0.46, 0.9);
-  background-color: var(--goals-bg-color);
+  transition: background-color 1000ms cubic-bezier(0.61, 0.36, 0.46, 0.9);
+  background-color: #e4e3e3;
 }
 
 .activeLink {

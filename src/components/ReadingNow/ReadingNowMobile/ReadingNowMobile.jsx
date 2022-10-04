@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 import s from './ReadingNowMobile.module.css';
 
@@ -36,6 +36,21 @@ const ReadingNowMobile = ({readingNowListBooks}) => {
       </ul>
     </section>
   );
+};
+
+ReadingNowMobile.propTypes = {
+  readingNowListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  )
 };
 
 export default ReadingNowMobile;
