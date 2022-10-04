@@ -111,7 +111,7 @@ GoingToReadMain.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
 
 export default GoingToReadMain;
