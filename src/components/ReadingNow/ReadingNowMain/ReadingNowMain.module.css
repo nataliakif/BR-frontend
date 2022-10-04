@@ -49,8 +49,23 @@
   width: 368px;
 }
 
-@media screen and (min-width: 1280px) {
-  .style {
+/* @media screen and (min-width: 1280px) {
+  .styleTitleBook {
     width: 640px;
   }
+} */
+
+@media screen and (min-width: 768px) {
+  .styleTitleBook {
+    width: 50%;
+  }
+
+  .styleAuthor {
+    width: 30%;
+  }
+
+  .styleColums {
+    width: 10%;
+  }
+
 }

@@ -59,10 +59,9 @@ const columns = [
       <div>
         <table className={s.table}>
           <colgroup>
-            <col
-              span="1"
-              className={s.style}
-            />
+            <col span="1" className={s.styleTitleBook} />
+            <col span="1" className={s.styleAuthor} />
+            <col span="2" className={s.styleColums} />
           </colgroup>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (

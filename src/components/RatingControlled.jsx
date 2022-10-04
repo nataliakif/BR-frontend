@@ -20,6 +20,7 @@ const RatingControlled = ({ step, openedBook }) => {
       name="simple-controlled"
       value={openedBook.rating}
       precision={step}
+      size="small"
       onChange={(event, newValue) => {
         editBook({
           id: _id,
