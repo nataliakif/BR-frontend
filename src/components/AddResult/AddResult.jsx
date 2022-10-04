@@ -8,8 +8,16 @@ import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
 
-const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
-  const { goalPerDay, startDate, finishDate, readStatistics: results } = data;
+const AddResult = ({ data, updateResult }) => {
+  const {
+    goalPerDay: plan,
+    startDate,
+    finishDate,
+    readStatistics: results,
+    alreadyReadPages,
+    isTrainingExecuted,
+    trainingPagesAmount,
+  } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
   const onSubmit = values => {
@@ -21,10 +29,12 @@ const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
         { dateTime: values.date, pageAmount: values.pages },
       ],
     });
-    goalPerDay &&
-      goalPerDay > values.pages &&
-      (isTrainingExecuted = false) &&
+    if (
+      plan > values.pages &&
+      alreadyReadPages + values.pages < trainingPagesAmount
+    ) {
       setDoingFineModal(true);
+    }
   };
 
   const sortResults = [...results].sort(

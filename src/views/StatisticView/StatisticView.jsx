@@ -131,11 +131,7 @@ const StatisticView = () => {
                 )}
               />
             </div>
-            <AddResult
-              data={currentTraining}
-              updateResult={updateResult}
-              isTrainingExecuted={isTrainingExecuted}
-            />
+            <AddResult data={currentTraining} updateResult={updateResult} />
           </div>
         </Container>
         {isTrainingExecuted && (

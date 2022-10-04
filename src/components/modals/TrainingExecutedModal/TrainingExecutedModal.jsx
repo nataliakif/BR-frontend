@@ -35,7 +35,7 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
 TrainingExecutedModal.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   handleCloseOfTraining: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
 
 export default TrainingExecutedModal;
