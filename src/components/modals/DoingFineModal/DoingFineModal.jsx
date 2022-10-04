@@ -3,7 +3,7 @@ import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import sprite from './sprite.svg';
 import s from './DoingFineModal.module.css';
-const DoingFineModal = ({ open, onClose, onNewTraining }) => {
+const DoingFineModal = ({ open, onClose }) => {
   return (
     <Modal open={open} onClose={onClose}>
       <div className={s.wrapper}>
@@ -16,10 +16,6 @@ const DoingFineModal = ({ open, onClose, onNewTraining }) => {
         <div className={s.buttons}>
           <Button className="main" text="Ok" onClick={onClose} />
         </div>
-        {/* <div className={s.buttons}>
-          <Button className="main" text="NewTraining" onClick={onNewTraining} />
-          <Button className="transparent" text="Back" onClick={onClose} />
-        </div> */}
       </div>
     </Modal>
   );
@@ -27,7 +23,6 @@ const DoingFineModal = ({ open, onClose, onNewTraining }) => {
 
 DoingFineModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onNewTraining: PropTypes.func,
   onClose: PropTypes.func.isRequired,
 };
 

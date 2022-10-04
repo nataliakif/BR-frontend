@@ -1,4 +1,5 @@
 import s from './AddResult.module.css';
+import PropTypes from 'prop-types';
 import Button from 'components/Button/Button';
 import sprite from './sprite.svg';
 import { useState } from 'react';
@@ -110,6 +111,17 @@ const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
       <DoingFineModal open={doingFineModal} onClose={closeDoingFineModal} />
     </>
   );
+};
+
+AddResult.propTypes = {
+  data: PropTypes.shape({
+    readStatistics: PropTypes.arrayOf(PropTypes.object),
+    goalPerDay: PropTypes.number.isRequired,
+    startDate: PropTypes.string.isRequired,
+    finishDate: PropTypes.string.isRequired,
+  }),
+  isTrainingExecuted: PropTypes.bool.isRequired,
+  updateResult: PropTypes.func.isRequired,
 };
 
 export default AddResult;
