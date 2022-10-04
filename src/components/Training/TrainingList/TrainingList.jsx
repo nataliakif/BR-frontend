@@ -45,7 +45,7 @@ const TrainingList = ({
                 }}
                 className={s.btnDelete}
               >
-                <svg className={s.iconDelete} width="22" height="17">
+                <svg className={s.iconDelete} width="22" height="19">
                   <use href={`${sprite}#icon-delete`}></use>
                 </svg>
               </button>

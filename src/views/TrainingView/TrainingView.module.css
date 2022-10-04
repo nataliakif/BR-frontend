@@ -14,12 +14,19 @@
   width: 52px;
   height: 52px;
   left: 45%;
-  top: 160%;
   transform: translateY(50%);
   color: var(--main-color);
   background-color: var(--accent-color);
   border: none;
   border-radius: 50%;
+}
+
+.arrowButton {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  color: var(--accent-color);
+
 }
 @media screen and (min-width: 1280px) {
   .training {

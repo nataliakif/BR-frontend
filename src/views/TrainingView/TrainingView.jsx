@@ -14,9 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
 import { useEditBookMutation } from 'redux/books/booksApi';
-
-import {isMobile} from 'react-device-detect';
 import useIsMobile from '../../helpers/useIsMobile';
+import {  BsArrowLeft } from 'react-icons/bs';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -25,7 +24,6 @@ const TrainingView = () => {
   const [planedPagesPerDay, setPlanedPagesPerDay] = useState(0);
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
   const [editBook] = useEditBookMutation();
-  const [clickButton, setClickButton] = useState(false);
   const [showElement, setShowElement] = useState(false);
 
 
@@ -115,7 +113,6 @@ const TrainingView = () => {
             />
           )}
           <div className={s.wrapperContainer}>
-
             {(!isMobile || showElement) && (
               <TrainingForm
                 goingToReadBooks={goingToReadBooks.filter(
@@ -133,6 +130,11 @@ const TrainingView = () => {
                 deleteBookFromList={onSelectedBookDelete}
               />
             )}
+            {showElement && (
+              <BsArrowLeft
+              className={s.arrowButton}
+              onClick={() => setShowElement(false)}/>
+            )}
           </div>
         </div>
       </Container>
@@ -140,28 +142,23 @@ const TrainingView = () => {
         {showStButton && !showElement && (
           <Button
             id="startTraining"
-            className="main"
+            className={s.startTrainingBtn}
             text="Start training"
             onClick={onStartClick}
             onEnded={isLoading}
           />
         )}
-        <Chart plan={planedPagesPerDay} readingStatistics={[]} />
-        {isMobile &&
-        <button
-        onSubmit={() => setClickButton(true)}
-        className={s.addPageBtn}>
-          +
-        </button>
-        }
         {!showElement && (
           <Chart plan={planedPagesPerDay} readingStatistics={[]} />
         )}
         {isMobile && (
-          <button type="button" onClick={() => setShowElement(true)}>
-            Add
+          <button type="button"
+          className={s.addPageBtn} 
+          onClick={() => setShowElement(true)}>
+            +
           </button>
         )}
+        
       </Container>
     </>
   );

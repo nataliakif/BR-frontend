@@ -1,9 +1,7 @@
 .trainingWrapper {
   display: flex;
   position: relative;
-  margin-top: 20px;
-  margin-top: 320px;
-  padding: 10px;
+  margin-top: 40px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
@@ -15,13 +13,13 @@
 .header{
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
   justify-content: center;
-  padding-left: 60px;
+  padding-left: 70px;
 
 }
-.header:nth-last-child() {
-  margin-bottom: 15px;
-}
+
 .item {
   margin: 0;
   font-weight: 500;
@@ -48,15 +46,19 @@
 .iconDelete {
   position: absolute;
   transform: translateY(-90%);
-  top: 30%;
-  right: 30%;
+  top: 90%;
+  left: 8%;
+  z-index: 22;
 }
 .btnDelete {
-  display: block;
+  color: var(--bg-color);
+  border: none;
+  width: 20px;
+  height: 20px;
   position: absolute;
   transform: translateY(-90%);
   top: 30%;
-  right: 35%;
+  left: 95%;
 }
 .title {
   color: var(--primary-text-color)
@@ -67,30 +69,53 @@
 
 @media screen and (min-width: 768px) {
   .trainingWrapper {
-    margin-top: 185px;
     flex-direction: column;
   }
   .listHeader {
     margin-top: 40px;
   }
   .header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    justify-content: flex-start;
     display: grid;
     grid-template-columns: 217px 162px 61px 50px;
     padding-left: 0;
+    border-bottom: 1px solid var(--icon-color);
   }
   .list {
     display: grid;
-    grid-template-columns: 217px 162px 61px 50px;
-    padding: 0;
   }
   .icon {
-    display: none;
+    display: grid;
+    position: absolute;
+    transform: translatex(-90%);
+    top: 66%;
+    left: 3%;
+
+  }
+  .iconDelete {
+    position: absolute;
+    transform: translateY(-90%);
+    top: 40%;
+    right: 5%;
+    z-index: 22;
+  }
+  .btnDelete {
+    color: transparent;
+    border: none;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    transform: translateY(-90%);
+    top: 90%;
+    left: 95%;
   }
   .item {
     margin: 0;
-    padding: 12px 0px;
+    padding-left: 20px;
     display: grid;
-    grid-template-columns: 242px 232px;
+    grid-template-columns: 179px 162px 61px 50px;
     border-top: none;
   }
   .itemBook:not(:first-child) {
@@ -99,12 +124,16 @@
 }
 @media screen and (min-width: 1280px) {
   .trainingWrapper {
-    margin-top: 173px;
+    margin-top: 23px;
   }
   .header {
-    grid-template-columns: 300px 180px 65px 65pxpx;
+    padding-top: 10px;
+    padding-left: 12px;
+    grid-template-columns: 300px 180px 65px 65px;
   }
   .item {
-    grid-template-columns: 345px 340px 100px 60px;
+    padding-top: 10px;
+    padding-left: 12px;
+    grid-template-columns: 280px 180px 65px 65px;
   }
 }
