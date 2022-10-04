@@ -1,5 +1,5 @@
 .title {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   font-weight: 600;
   font-size: 19px;
   line-height: 1.21;
@@ -75,6 +75,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .title {
+    margin-bottom: 20px;
+  }
   .tableRow{
       height: 62px;
   }

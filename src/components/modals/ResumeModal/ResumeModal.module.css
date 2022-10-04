@@ -36,7 +36,7 @@
   width: 240px;
   height: 170px;
   resize: none;
-  margin-top: 8px;
+  /* margin-top: 8px; */
   padding: 8px;
   outline: none;
 }
@@ -51,14 +51,14 @@
   display: flex;
   justify-content: space-around;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .titleTextarea {
   font-size: 14px;
   line-height: 17px;
   border-radius: 0;
   margin-top: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 3px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -114,9 +114,9 @@ padding-left: 10px;
   }
 }
 .buttonBack {
-  min-width: 99px;
+  min-width: 98px;
   padding-top: 11px;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
@@ -126,9 +126,9 @@ padding-left: 10px;
 }
 
 .buttonSave {
-  min-width: 99px;
+  min-width: 98px;
   padding-top: 11px;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
   text-align: center;
   margin-left: 16px;
   font-weight: 500;

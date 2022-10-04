@@ -59,6 +59,7 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                               name="simple-controlled"
                               value={rating}
                               precision={0.5}
+                              size='small'
                               onChange={(event, newValue) => {
                                 editBook({
                                   id: _id,

@@ -46,7 +46,35 @@
   width: 368px;
 }
 @media screen and (min-width: 1280px) {
-  .style {
-    width: 640px;
-  }
+    .title {
+        margin-top: 32px;
+        margin-bottom: 20px;
+      }
+  .styleTitleBook {
+      width: 60%;
+    }
+  
+    .styleAuthor {
+      width: 20%;
+    }
+  
+    .styleColums {
+      width: 10%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+
+  .styleTitleBook {
+      width: 52%;
+    }
+  
+    .styleAuthor {
+      width: 28%;
+    }
+  
+    .styleColums {
+      width: 10%;
+    }
 }
