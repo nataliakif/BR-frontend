@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import PropTypes from 'prop-types';
 
 import ResumeModal from '../../modals/ResumeModal/ResumeModal';
 import sprite from '../../../images/sprite.svg';
@@ -118,6 +119,20 @@ const AlreadyReadMain = ({ alreadyReadListBooks }) => {
       </div>
     </>
   );
+};
+AlreadyReadMain.propTypes = {
+  alreadyReadListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  )
 };
 
 export default AlreadyReadMain;

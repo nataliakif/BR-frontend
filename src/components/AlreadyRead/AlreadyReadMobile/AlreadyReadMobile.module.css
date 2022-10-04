@@ -8,9 +8,9 @@
     position: absolute;
     top: 27px;
     left: 20px;
-    content: url('../../../images/open-book.svg');
-    /* z-index: 1; */
+    content: url('../../../images/library/open-book.svg');
 }
+
 .title {
     font-weight: 600;
     font-size: 19px;
