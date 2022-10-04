@@ -9,7 +9,6 @@
 }
 @media screen and (min-width: 768px) {
   .form {
-    padding: 28px 96px 32px;
     width: 704px;
   }
 }
@@ -24,8 +23,6 @@
 .title {
   font-weight: 600;
   font-size: 12px;
-  line-height: 1.25;
-  text-align: center;
   text-transform: uppercase;
   color: var(--primary-text-color);
 }
@@ -55,7 +52,6 @@
     margin-right: 32px;
   }
 }
-
 .button {
   display: flex;
   justify-content: center;
@@ -88,11 +84,6 @@
 
 .statisticsTitle::before {
   content: '';
-  position: absolute;
-  top: 7px;
-  display: block;
-  width: 71px;
-  margin-right: 12px;
   border-bottom: 1px solid #e0e5eb;
   background-color: #e0e5eb;
 }

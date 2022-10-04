@@ -57,7 +57,6 @@ const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
               <div className={s.wrapper}>
                 <div className={s.fieldWrapper}>
                   <label className={s.name}>Date</label>
-
                   <DatePickerField
                     name="date"
                     className={s.input}
@@ -72,6 +71,7 @@ const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
                 </div>
                 <div className={s.fieldWrapper}>
                   <label className={s.name}>Amount of pages</label>
+
                   <Field className={s.input} type="number" name="pages" />
                   <span className={s.error}>
                     <ErrorMessage name="pages" />
