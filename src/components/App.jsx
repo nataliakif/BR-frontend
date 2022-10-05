@@ -4,6 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
 
+import Progress from 'components/Progress/Progress';
+
 // import { useDispatch, useSelector } from 'react-redux';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
@@ -23,7 +25,6 @@ const StatisticView = lazy(() => import('../views/StatisticView'));
 // const NotFoundView = lazy(() => import('../views/NotFoundView.jsx'));
 
 const App = () => {
-  const { t } = useTranslation();
   // const currentToken = useSelector(getCurrentToken);
   // const dispatch = useDispatch();
   // const { data, isLoading: isFetchingCurUser } = useFetchCurrentUserQuery(
@@ -41,9 +42,9 @@ const App = () => {
   return (
     <>
       {false ? (
-        <>{t('header.loading')}</>
+        <Progress />
       ) : (
-        <Suspense fallback={<p>{t('header.loading')}...</p>}>
+        <Suspense fallback={<Progress />}>
           <Header />
           <Routes>
             <Route path="*" element={<Navigate to="/library" />} />
