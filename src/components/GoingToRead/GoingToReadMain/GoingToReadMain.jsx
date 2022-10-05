@@ -60,7 +60,9 @@ const GoingToReadMain = ({ goingToReadListBooks }) => {
       <div>
         <table className={s.table}>
           <colgroup>
-            <col span="1" className={s.style} />
+            <col span="1" className={s.styleTitleBook} />
+            <col span="1" className={s.styleAuthor} />
+            <col span="2" className={s.styleColums} />
           </colgroup>
 
           <thead>
@@ -109,7 +111,7 @@ GoingToReadMain.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
 
 export default GoingToReadMain;

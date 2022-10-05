@@ -1,4 +1,5 @@
 import s from './AddResult.module.css';
+import PropTypes from 'prop-types';
 import Button from 'components/Button/Button';
 import sprite from './sprite.svg';
 import { useState } from 'react';
@@ -7,8 +8,16 @@ import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
 
-const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
-  const { goalPerDay, startDate, finishDate, readStatistics: results } = data;
+const AddResult = ({ data, updateResult }) => {
+  const {
+    goalPerDay: plan,
+    startDate,
+    finishDate,
+    readStatistics: results,
+    alreadyReadPages,
+    isTrainingExecuted,
+    trainingPagesAmount,
+  } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
   const onSubmit = values => {
@@ -20,10 +29,12 @@ const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
         { dateTime: values.date, pageAmount: values.pages },
       ],
     });
-    goalPerDay &&
-      goalPerDay > values.pages &&
-      (isTrainingExecuted = false) &&
+    if (
+      plan > values.pages &&
+      alreadyReadPages + values.pages < trainingPagesAmount
+    ) {
       setDoingFineModal(true);
+    }
   };
 
   const sortResults = [...results].sort(
@@ -110,6 +121,17 @@ const AddResult = ({ data, updateResult, isTrainingExecuted }) => {
       <DoingFineModal open={doingFineModal} onClose={closeDoingFineModal} />
     </>
   );
+};
+
+AddResult.propTypes = {
+  data: PropTypes.shape({
+    readStatistics: PropTypes.arrayOf(PropTypes.object),
+    goalPerDay: PropTypes.number.isRequired,
+    startDate: PropTypes.string.isRequired,
+    finishDate: PropTypes.string.isRequired,
+  }),
+  isTrainingExecuted: PropTypes.bool.isRequired,
+  updateResult: PropTypes.func.isRequired,
 };
 
 export default AddResult;

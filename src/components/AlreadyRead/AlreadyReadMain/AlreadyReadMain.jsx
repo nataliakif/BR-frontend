@@ -10,9 +10,8 @@ import ResumeModal from '../../modals/ResumeModal/ResumeModal';
 import sprite from '../../../images/sprite.svg';
 import s from '../AlreadyReadMain/AlreadyReadMain.module.css';
 import stringMax from 'helpers/stringMax';
-import RatingControlled from "../../RatingControlled"
+import RatingControlled from '../../RatingControlled';
 const AlreadyReadMain = ({ alreadyReadListBooks }) => {
-
   const data = alreadyReadListBooks;
   const columnHelper = createColumnHelper(alreadyReadListBooks);
 
@@ -52,8 +51,7 @@ const AlreadyReadMain = ({ alreadyReadListBooks }) => {
     columnHelper.accessor('rating', {
       cell: row => (
         <i>
-          <RatingControlled step={0.5} openedBook={row.row.original}
-          />
+          <RatingControlled step={0.5} openedBook={row.row.original} />
         </i>
       ),
       header: 'Rating',
@@ -132,7 +130,7 @@ AlreadyReadMain.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
 
 export default AlreadyReadMain;

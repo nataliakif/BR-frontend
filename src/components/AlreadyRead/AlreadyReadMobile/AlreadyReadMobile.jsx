@@ -7,7 +7,6 @@ import s from './AlreadyReadMobile.module.css';
 import { useEditBookMutation } from '../../../redux/books/booksApi';
 
 const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
-
   const [editBook] = useEditBookMutation();
 
   return (
@@ -59,6 +58,7 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                               name="simple-controlled"
                               value={rating}
                               precision={0.5}
+                              size="small"
                               onChange={(event, newValue) => {
                                 editBook({
                                   id: _id,
@@ -101,7 +101,7 @@ AlreadyReadMobile.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
 
 export default AlreadyReadMobile;

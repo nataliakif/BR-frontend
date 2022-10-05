@@ -1,5 +1,5 @@
 .title {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   font-weight: 600;
   font-size: 19px;
   line-height: 1.21;
@@ -14,7 +14,7 @@
 
 .titleBook {
   display: flex;
-    align-items: center;
+  align-items: center;
   font-style: normal;
 }
 
@@ -41,7 +41,6 @@
   text-align: start;
   font-style: normal;
 
-
   color: var(--secondary-text-color);
 }
 
@@ -52,46 +51,47 @@
   width: 216px;
 }
 @media screen and (min-width: 768px) {
-  
-    .styleTitleBook {
-        width: 30%;
-      }
-    
-      .styleAuthor {
-        width:16%;
-      }
-    
-      .styleColums {
-        width: 10%;
-      }
-    
-      .styleRating {
-        width: 17%;
-      }
-    
-      .stylyResume {
-        width: 16%;
-      }
+  .styleTitleBook {
+    width: 30%;
+  }
+
+  .styleAuthor {
+    width: 16%;
+  }
+
+  .styleColums {
+    width: 10%;
+  }
+
+  .styleRating {
+    width: 17%;
+  }
+
+  .stylyResume {
+    width: 16%;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-  .tableRow{
-      height: 62px;
+  .title {
+    margin-bottom: 20px;
+  }
+  .tableRow {
+    height: 62px;
   }
   .styleTitleBook {
     width: 30%;
   }
-  .styleAuthor{
+  .styleAuthor {
     width: 28%;
   }
-  .styleColums{
+  .styleColums {
     width: 10%;
   }
-  .styleRating{
-    width:14% ;
+  .styleRating {
+    width: 14%;
   }
-  .stylyResume{
-    width:18%;
+  .stylyResume {
+    width: 18%;
   }
 }
-

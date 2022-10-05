@@ -1,9 +1,33 @@
 .training {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.addPageBtn {
+  position: absolute;
+  display: inline-block;
+  z-index: 999;
+  text-align: center;
+  font-size: 38px;
+  width: 52px;
+  height: 52px;
+  left: 45%;
+  transform: translateY(50%);
+  color: var(--main-color);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+}
+
+.arrowButton {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  color: var(--accent-color);
+
+}
 @media screen and (min-width: 1280px) {
   .training {
     flex-direction: row-reverse;
@@ -13,17 +37,20 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding: 10px;
 }
 @media screen and (min-width: 768px) {
   .wrapperContainer {
+    display: flex;
     padding-bottom: 60px;
+  }
+  .trainingBookList {
+    display: grid;
+    grid-template-columns: 345px 340px 100px 100px;
   }
 }
 @media screen and (min-width: 1280px) {
   .wrapperContainer {
-    flex-direction: row;
     margin-right: 32px;
     justify-content: space-between;
     padding-top: 0;

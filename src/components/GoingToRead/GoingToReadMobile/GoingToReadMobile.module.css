@@ -10,10 +10,6 @@
   margin-bottom: 20px;
 }
 
-.card {
-  /* max-width: 280px; */
-}
-
 .cardBook {
   position: relative;
   background-color: var(--main-color);
