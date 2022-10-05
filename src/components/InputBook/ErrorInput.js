@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const titleRules = /\S\w/;
+const titleRules = /^[^\s-]/;
 const authorRules =
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
@@ -19,14 +19,12 @@ const schema = t => {
       .max(50, t('validation.authorMax'))
       .typeError(t('validation.authorCharacters')),
     publishYear: Yup.number()
-      .integer(t('validation.enterYear'))
-      .min(1000, t('validation.yearMin'))
+      .min(1890, t('validation.yearMin'))
       .max(2022, t('validation.yearMax'))
       .typeError(t('validation.yearError')),
-    pagesTotal: Yup.number(t('validation.pagesNumber'))
-      .integer(t('validation.enterYear'))
+    pagesTotal: Yup.number()
       .min(1, t('validation.pagesMin'))
-      .max(1000, t('validation.pagesMax'))
+      .max(2000, t('validation.pagesMax'))
       .required(t('validation.pagesFill'))
       .typeError(t('validation.pagesError')),
   });
