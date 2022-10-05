@@ -1,17 +1,19 @@
+import Checkbox from '@mui/material/Checkbox';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import Checkbox from '@mui/material/Checkbox';
 import { grey, orange } from '@mui/material/colors';
-import PropTypes from 'prop-types';
-
 import stringMax from 'helpers/stringMax';
 import s from './StatisticsList.module.css';
 
 const StatisticsList = ({ books }) => {
+  const { t } = useTranslation();
+
   const data = books;
   const columnHelper = createColumnHelper(books);
 
@@ -20,41 +22,41 @@ const StatisticsList = ({ books }) => {
       cell: info => (
         <i>
           <div className={s.titleBookWrapper}>
-                <div className={s.checkBoxWrapper}>
-                  <Checkbox
-                    checked={books.alreadyFinished}
-                    name={books._id}
-                    sx={{
-                      '& .MuiSvgIcon-root': { fontSize: 15 },
-                        color: grey[500],
-                      '&.Mui-checked': {
-                        color: orange[800],
-                      },
-                    }}
-                  />
-                </div>
+            <div className={s.checkBoxWrapper}>
+              <Checkbox
+                checked={books.alreadyFinished}
+                name={books._id}
+                sx={{
+                  '& .MuiSvgIcon-root': { fontSize: 15 },
+                  color: grey[500],
+                  '&.Mui-checked': {
+                    color: orange[800],
+                  },
+                }}
+              />
+            </div>
             <div className={s.titleBook}>{stringMax(info.getValue(), 33)}</div>
           </div>
         </i>
       ),
       header: () => (
         <div>
-          <span>Book title</span>
+          <span>{t('library.title')}</span>
         </div>
       ),
     }),
     columnHelper.accessor('author', {
       id: 'author',
       cell: info => info.getValue(),
-      header: () => <span>Author</span>,
+      header: () => <span>{t('library.author')}</span>,
     }),
     columnHelper.accessor('publicationDate', {
-      header: () => <span>Year</span>,
+      header: () => <span>{t('library.year')}</span>,
       cell: info => info.renderValue(),
     }),
     columnHelper.accessor('amountOfPages', {
       cell: info => info.getValue(),
-      header: () => <span>Pages</span>,
+      header: () => <span>{t('library.pages')}</span>,
     }),
   ];
   const table = useReactTable({
@@ -119,8 +121,7 @@ StatisticsList.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
-
 
 export default StatisticsList;

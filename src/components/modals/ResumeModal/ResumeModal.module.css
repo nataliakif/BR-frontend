@@ -14,7 +14,6 @@
   padding-bottom: 40px;
 }
 
-
 .title {
   margin-bottom: 20px;
   font-weight: 500;
@@ -41,8 +40,6 @@
   composes: textAreaEmpty;
   border: 1px solid var(--accent-color);
 }
-
-
 .buttonList {
   display: flex;
   justify-content: space-around;
@@ -83,7 +80,6 @@
   background: var(--accent-color);
 }
 
-
 .buttonBack {
   min-width: 98px;
   padding-top: 11px;
@@ -122,12 +118,10 @@
     width: 608px;
     height: 399px;
   }
-
   .textAreaBox {
     width: 568px;
     height: 170px;
   }
-
   .textAreaEmpty {
     width: 568px;
     height: 170px;
@@ -136,8 +130,7 @@
   .buttonWrapper {
     padding-right: 5px;
   }
-
-  .buttonWrapper>.buttonOpen {
+  .buttonWrapper > .buttonOpen {
     width: 80px;
   }
 
@@ -155,8 +148,7 @@
     padding-right: 80px;
     padding-left: 10px;
   }
-
-  .buttonWrapper>.buttonOpen {
+  .buttonWrapper > .buttonOpen {
     width: 130px;
   }
 }
