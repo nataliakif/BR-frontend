@@ -44,7 +44,13 @@ function StartModal() {
             <p className={s.secondStepDesc}>{t('modal.setAGoal')}</p>
           </div>
 
-          <button onClose={handleClose} className={s.okBtn}>
+
+          <button
+            onClose={handleClose}
+            className={s.okBtn}
+            tabIndex={0}
+            autoFocus={true}
+          >
             {t('modal.ok')}
           </button>
         </Box>

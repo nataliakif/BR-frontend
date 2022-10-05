@@ -90,8 +90,15 @@ const ResumeModal = ({ row }) => {
                       </button>
                     </li>
                     <li>
-                      <button className={s.buttonSave} type="submit">
-                        {t('library.save')}
+
+                      <button
+                        className={s.buttonSave}
+                        type="submit"
+                        tabIndex={0}
+                        autoFocus={true}
+                      >
+                          {t('library.save')}
+
                       </button>
                     </li>
                   </ul>

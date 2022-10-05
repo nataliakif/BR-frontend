@@ -27,7 +27,9 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
             disabled={isLoading}
           />
           <Button
-            className="transparent"
+            className="transparent"           
+            tabIndex={0}
+            autoFocus={true}
             text={t('modal.back')}
             onClick={handleClose}
           />
