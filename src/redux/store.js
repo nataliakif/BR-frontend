@@ -18,7 +18,7 @@ import { trainingApi } from './training/trainingApi';
 const authPersistConfig = {
   key: 'booksReadApp',
   storage,
-  whitelist: ['token', 'user', 'isLoggedIn'], //убрать user и isLoggedIn когда заработает isFetchingCurUser
+  whitelist: ['token', 'user', 'isLoggedIn', 'language'], //убрать user и isLoggedIn когда заработает isFetchingCurUser
 };
 
 const middleware = [

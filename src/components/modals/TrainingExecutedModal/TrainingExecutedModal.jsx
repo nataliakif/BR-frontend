@@ -4,10 +4,12 @@ import Button from '../../Button/Button';
 import sprite from '../DoingFineModal/sprite.svg';
 import s from './TrainingExecutedModal.module.css';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
   const [open, setOpen] = useState(true);
   const handleClose = () => setOpen(false);
+  const { t } = useTranslation();
 
   return (
     <Modal onClose={handleClose} open={open}>
@@ -15,18 +17,20 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
         <svg className={s.wrapper_svg}>
           <use href={`${sprite}#icon-thumb_up`} />
         </svg>
-        <p className={s.wrapper_text}>
-          Congratulations! All books have been read!
-        </p>
+        <p className={s.wrapper_text}>{t('modal.congratulations')}</p>
 
         <div className={s.buttons}>
           <Button
             className="main"
-            text="NewTraining"
+            text={t('modal.newTraining')}
             onClick={handleCloseOfTraining}
             disabled={isLoading}
           />
-          <Button className="transparent" text="Back" onClick={handleClose} />
+          <Button
+            className="transparent"
+            text={t('modal.back')}
+            onClick={handleClose}
+          />
         </div>
       </div>
     </Modal>

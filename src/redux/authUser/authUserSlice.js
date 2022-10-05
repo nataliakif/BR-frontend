@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const authUserSlice = createSlice({
   name: 'auth',
-  initialState: { user: null, token: null },
+  initialState: { user: null, token: null, language: 'en' },
   reducers: {
     setCredentials: (state, { payload }) => {
       //console.log(payload);
@@ -22,12 +22,17 @@ const authUserSlice = createSlice({
     setError: (state, { payload }) => {
       state.errorMsg = payload;
     },
+    setLang: (state, { payload }) => {
+      state.language = payload;
+    },
   },
 });
-export const { logOut, setCredentials, setError } = authUserSlice.actions;
+export const { logOut, setCredentials, setError, setLang } =
+  authUserSlice.actions;
 export default authUserSlice.reducer;
 
 export const getCurrentUser = state => state.auth.user?.email;
 export const getCurrentUserName = state => state.auth.user?.name;
 export const getCurrentToken = state => state.auth.token;
 export const getCurrentStatus = state => state.auth.isLoggedIn;
+export const getLang = state => state.auth.language;

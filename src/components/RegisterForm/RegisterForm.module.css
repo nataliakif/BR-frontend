@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--accent-font);
+  font-family: var(--accent-color);
   font-weight: 700;
   width: 150px;
   font-size: 16px;
@@ -93,7 +93,8 @@
 .btn {
   box-sizing: border-box;
   border: none;
-  padding: 20px 113px;
+  width: 280px;
+  height: 60px;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.25;
@@ -142,6 +143,10 @@
     margin: 0 auto;
     padding: 40px;
     background-color: var(--main-color);
+  }
+
+  .btn {
+    width: 320px;
   }
 
   .googleLink {

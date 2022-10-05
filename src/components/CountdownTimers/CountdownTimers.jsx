@@ -1,6 +1,7 @@
 import { useCountdown } from 'services/hooks/useCountdown';
 import PropTypes from 'prop-types';
 import s from './CountdownTimers.module.css';
+import { useTranslation } from 'react-i18next';
 
 const DateTimeDisplay = ({ value, type }) => {
   const minTwoDigits = value => {
@@ -16,23 +17,25 @@ const DateTimeDisplay = ({ value, type }) => {
 };
 
 const ShowCounter = ({ header, days, hours, minutes, seconds }) => {
+  const { t } = useTranslation();
   return (
     <div className={s.countdownTimer}>
       <h3>{header}</h3>
       <div className={s.showCounter}>
-        <DateTimeDisplay value={days} type={'DAYS'} />
+        <DateTimeDisplay value={days} type={t('statistics.days')} />
         <p>:</p>
-        <DateTimeDisplay value={hours} type={'HRS'} />
+        <DateTimeDisplay value={hours} type={t('statistics.hrs')} />
         <p>:</p>
-        <DateTimeDisplay value={minutes} type={'MINS'} />
+        <DateTimeDisplay value={minutes} type={t('statistics.mins')} />
         <p>:</p>
-        <DateTimeDisplay value={seconds} type={'SECS'} />
+        <DateTimeDisplay value={seconds} type={t('statistics.secs')} />
       </div>
     </div>
   );
 };
 
 const CountdownTimers = ({ targetDate }) => {
+  const { t } = useTranslation();
   const [
     daysUntilNextYear,
     hoursUntilNextYear,
@@ -49,14 +52,14 @@ const CountdownTimers = ({ targetDate }) => {
   return (
     <div className={s.countdownTimers}>
       <ShowCounter
-        header={'Years countdown'}
+        header={t('statistics.yearsCountdown')}
         days={daysUntilNextYear}
         hours={hoursUntilNextYear}
         minutes={minutesUntilNextYear}
         seconds={secondsUntilNextYear}
       />
       <ShowCounter
-        header={'Goals countdown'}
+        header={t('statistics.goalsCountdown')}
         days={daysUntilTargetDate}
         hours={hoursUntilTargetDate}
         minutes={minutesUntilTargetDate}

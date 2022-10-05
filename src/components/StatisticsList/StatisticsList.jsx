@@ -1,4 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
+import { useTranslation } from 'react-i18next';
 import { grey, orange } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 import {
@@ -12,6 +13,8 @@ import stringMax from 'helpers/stringMax';
 import s from './StatisticsList.module.css';
 
 const StatisticsList = ({ books }) => {
+  const { t } = useTranslation();
+
   const data = books;
   const columnHelper = createColumnHelper(books);
 
@@ -39,22 +42,22 @@ const StatisticsList = ({ books }) => {
       ),
       header: () => (
         <div>
-          <span>Book title</span>
+          <span>{t('library.title')}</span>
         </div>
       ),
     }),
     columnHelper.accessor('author', {
       id: 'author',
       cell: info => info.getValue(),
-      header: () => <span>Author</span>,
+      header: () => <span>{ t('library.author')}</span>,
     }),
     columnHelper.accessor('publicationDate', {
-      header: () => <span>Year</span>,
+      header: () => <span>{t('library.year')}</span>,
       cell: info => info.renderValue(),
     }),
     columnHelper.accessor('amountOfPages', {
       cell: info => info.getValue(),
-      header: () => <span>Pages</span>,
+      header: () => <span>{t('library.pages')}</span>,
     }),
   ];
   const table = useReactTable({
