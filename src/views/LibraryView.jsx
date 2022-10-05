@@ -19,15 +19,15 @@ const LibraryView = () => {
   return (
     <>
       <Container>
-        <InputBook />
+        <InputBook addedBookTitles={data.map(book => book.bookTitle)} />
       </Container>
       {!data?.length && !isLoading && <StartModal />}
 
       {data && (
         <ContainerLibrary>
-          {alreadyReadListBooks.length >0 && <AlreadyRead
-            alreadyReadListBooks={alreadyReadListBooks}
-          />}
+          {alreadyReadListBooks.length > 0 && (
+            <AlreadyRead alreadyReadListBooks={alreadyReadListBooks} />
+          )}
           {readingNowListBooks.length > 0 && (
             <ReadingNow readingNowListBooks={readingNowListBooks} />
           )}
