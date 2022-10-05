@@ -1,26 +1,25 @@
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 22px;
-    padding-right: 20px;
-    display: flex;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 22px;
+  padding-right: 20px;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .loggedIn {
   justify-content: space-between;
 }
 
-
 @media screen and (min-width: 768px) {
-    .container {
-        padding-left: 32px;
-        padding-right: 32px;
-        justify-content: space-between;
-    } 
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -31,24 +30,22 @@
   }
 }
 
-
 .header {
-    height: 60px;
-    border-bottom: 1px solid var(--main-color);
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--main-color);
+  height: 60px;
+  border-bottom: 1px solid var(--main-color);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
 }
 
 .logo {
-    font-family: "Abril Fatface";
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 27px;
-    color: var(--primary-text-color);
-    text-decoration: none;
-    cursor: pointer;
+  font-family: 'Abril Fatface';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  cursor: pointer;
 }
-

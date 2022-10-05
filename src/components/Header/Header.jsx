@@ -1,5 +1,6 @@
 import Navigation from './Navigation/Navigation';
 import UserBar from './UserBar/UserBar';
+import LanguageSwitcher from 'components/LanguageSwitcher';
 import { getCurrentStatus } from 'redux/authUser/authUserSlice';
 import { NavLink } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ const Header = () => {
         <NavLink to="/library" className={s.logo}>
           BR
         </NavLink>
+        <LanguageSwitcher isLoggedIn={isLoggedIn} />
         {isLoggedIn && (
           <>
             <UserBar />

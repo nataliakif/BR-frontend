@@ -3,6 +3,7 @@ import DatePickerInput from '../DatePicker/DatePicker';
 import s from './TrainingForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   startDate: '',
@@ -21,6 +22,7 @@ const TrainingForm = ({
     finish: yup.date().required('Enter the last day of training'),
     book: yup.object().required('Choose one book'),
   });
+  const { t } = useTranslation();
 
   const [startDate, setStartDate] = useState(null);
   return (
@@ -32,7 +34,7 @@ const TrainingForm = ({
           }}
         >
           <div className={s.form} autoComplete="off">
-            <h1 className={s.title}> My training</h1>
+            <h1 className={s.title}>{t('training.myTraining')}</h1>
           </div>
           <div className={s.dateContainer}>
             <DatePickerInput
@@ -44,7 +46,7 @@ const TrainingForm = ({
                 onStartDateChange(e);
               }}
               dateFormat="dd-MM-yyyy"
-              placeholderText="Start"
+              placeholderText={t('training.start')}
               autoComplete="off"
               required
             ></DatePickerInput>
@@ -60,7 +62,7 @@ const TrainingForm = ({
               )}
               onChange={onFinishDateChange}
               dateFormat="dd-MM-yyyy"
-              placeholderText="Finish"
+              placeholderText={t('training.finish')}
               autoComplete="off"
               required
             ></DatePickerInput>
@@ -74,7 +76,7 @@ const TrainingForm = ({
               defaultValue={'default'}
             >
               <option value="default" className={s.selectOption} disabled>
-                Choose books from the library
+                {t('training.chooseBooks')}
               </option>
               {goingToReadBooks?.map(({ _id: id, bookTitle }) => (
                 <option value={bookTitle} key={id}>
@@ -94,7 +96,7 @@ const TrainingForm = ({
                 );
               }}
             >
-              Add
+              {t('library.add')}
             </button>
           </div>
         </Form>
