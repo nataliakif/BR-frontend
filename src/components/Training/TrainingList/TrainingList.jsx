@@ -1,11 +1,13 @@
 import s from './TrainingList.module.css';
 import sprite from './sprite.svg';
+import useIsMobile from '../../../helpers/useIsMobile';
 
 const TrainingList = ({
   trainingBooks,
   isActiveTraining,
   deleteBookFromList,
 }) => {
+  const isMobile = useIsMobile();
   const headerList = ['Title', 'Author', 'Year', 'Pages'];
   return (
     <div className={s.trainingWrapper}>
@@ -24,20 +26,29 @@ const TrainingList = ({
               bookTitle: title,
               author,
               amountOfPages: pages,
-              publicationDate: date,
+              publicationDate: year,
             },
             index
           ) => (
             <li className={s.item} key={index}>
-              <p className={s.title}>
-                <svg className={s.icon} width="22" height="17">
-                  <use href={`${sprite}#icon-grey-book`}></use>
-                </svg>
-                {title}
+              <svg className={s.icon} width="22" height="17">
+                <use href={`${sprite}#icon-grey-book`}></use>
+              </svg>
+
+              <p className={s.title}>{title}</p>
+              <p>
+                {isMobile && <span className={s.subtitle}>Author:</span>}
+                {author}
               </p>
-              <p>{author}</p>
-              <p>{date}</p>
-              <p>{pages}</p>{' '}
+              <p>
+                {isMobile && <span className={s.subtitle}>Year:</span>}
+                {year}
+              </p>
+              <p>
+                {isMobile && <span className={s.subtitle}>Pages:</span>}
+                {pages}
+              </p>
+
               <svg
                 type="button"
                 id="delete_button"

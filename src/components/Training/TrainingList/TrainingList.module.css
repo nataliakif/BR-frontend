@@ -38,10 +38,17 @@
   font-weight: 500;
   color: var(--main-text-color);
 }
+
 .icon::before {
   position: absolute;
   margin-right: 5px;
   margin-bottom: -3px;
+}
+.subtitle {
+  display: inline-block;
+  width: 70px;
+  color: var(--secondary-text-color);
+
 }
 
 
@@ -85,6 +92,6 @@
     grid-template-columns: 345px 340px 100px 100px;
   }
   .item {
-    grid-template-columns: 345px 340px 100px 60px 40px;
+    grid-template-columns: 30px 315px 340px 100px 60px 40px;
   }
 }
