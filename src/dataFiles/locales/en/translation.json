@@ -141,8 +141,26 @@
     "become": "Become an interesting interlocutor"
   },
 
-  "quote": {
-    "books": "Books are the ships of thoughts, wandering through the waves of time.",
-    "bacon": "Francis Bacon"
+  "quotes": {
+    "quote0": "Books are the ships of thoughts, wandering through the waves of time.",
+    "author0": "Francis Bacon",
+    "quote1": "So many books, so little time.",
+    "author1": "Frank Zappa",
+    "quote2": "A room without books is like a body without a soul.",
+    "author2": "Marcus Tullius Cicero",
+    "quote3": "If you only read the books that everyone else is reading, you can only think what everyone else is thinking.",
+    "author3": "Haruki Murakami",
+    "quote4": "One must always be careful of books, and what is inside them, for words have the power to change us.",
+    "author4": "Cassandra Clare",
+    "quote5": "If there's a book that you want to read, but it hasn't been written yet, then you must write it.",
+    "author5": "Toni Morrison",
+    "quote6": "The world is a book and those who do not travel read only one page.",
+    "author6": "St. Augustine",
+    "quote7": "Books are mirrors: you only see in them what you already have inside you.",
+    "author7": "Carlos Ruiz Zafón",
+    "quote8": "Think before you speak. Read before you think.",
+    "author8": "Fran Lebowitz",
+    "quote9": "That's the thing about books. They let you travel without moving your feet.",
+    "author9": "Jhumpa Lahiri"
   }
 }
