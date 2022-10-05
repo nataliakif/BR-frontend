@@ -17,16 +17,25 @@ import s from './LoginForm.module.css';
 const schema = yup.object().shape({
   email: yup
     .string()
-    .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, 'Incorrect email')
-    .min(10, 'Email is too short, min character is 10.')
-    .max(63, 'Maximum 63 characters!')
-    .required('Email is required'),
+    .email('Incorrect email')
+    .matches(
+      /^[0-9a-z_@.]*[a-z][0-9a-z_@.]*$/i,
+      'Email must contain Latin letters'
+    )
+    .min(10, 'Email is too short, min character is 10')
+    .max(63, 'Maximum 63 characters')
+    .required('Email is required!'),
   password: yup
     .string()
-    .required('Password is required')
-    .matches(/^[^.-]\S*$/, 'Incorrect password')
-    .min(5, 'Password is too short, min character is 5.')
-    .max(30, 'Maximum 30 characters!'),
+    .matches(
+      /^[0-9a-z.]*[a-z][0-9a-z.]*$/i,
+      'Password must contain Latin letters.'
+    )
+    .matches(/[a-z]/, 'at least one lowercase char')
+    .matches(/[A-Z]/, 'at least one uppercase char')
+    .min(5, 'Password is too short, min character is 5')
+    .max(30, 'Maximum 30 characters')
+    .required('Password is required!'),
 });
 
 const initialValues = {
@@ -90,6 +99,7 @@ const LoginForm = () => {
               Email
             </label>
             <Field
+              //   onFocus={e => (e.target.placeholder = '')}
               className={s.input}
               type="email"
               name="email"
@@ -120,6 +130,7 @@ const LoginForm = () => {
               className={s.input}
               type={showPassword ? 'text' : 'password'}
               name="password"
+              maxLength={30}
               placeholder="Password"
             />
             <ErrorMessage

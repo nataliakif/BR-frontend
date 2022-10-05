@@ -14,28 +14,37 @@ const schema = yup.object({
   name: yup
     .string()
     .matches(
-      /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/,
-      'Name can only begin with a letter or a number'
+      /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
+      'Name must contain Latin letters.'
     )
     .min(3, 'Name is too short, min character is 3.')
-    .max(100, 'Maximum 100 characters!')
-    .required('Name is required'),
+    .max(100, 'Maximum 100 characters')
+    .required('Name is required!'),
   email: yup
     .string()
-    .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, 'Incorrect email')
-    .min(10, 'Email is too short, min character is 10.')
-    .max(63, 'Maximum 63 characters!')
-    .required('Email is required'),
+    .email('Incorrect email')
+    .matches(
+      /^[0-9a-z_@.]*[a-z][0-9a-z_@.]*$/i,
+      'Email must contain Latin letters'
+    )
+    .min(10, 'Email is too short, min character is 10')
+    .max(63, 'Maximum 63 characters')
+    .required('Email is required!'),
   password: yup
     .string()
-    .required('Password is required')
-    .matches(/^[^.-]\S*$/, 'Incorrect password')
-    .min(5, 'Password is too short, min character is 5.')
-    .max(30, 'Maximum 30 characters!'),
+    .required('Password is required!')
+    .matches(
+      /^[0-9a-z.]*[a-z][0-9a-z.]*$/i,
+      'Password must contain Latin letters.'
+    )
+    .matches(/[a-z]/, 'at least one lowercase char')
+    .matches(/[A-Z]/, 'at least one uppercase char')
+    .min(5, 'Password is too short, min character is 5')
+    .max(30, 'Maximum 30 characters'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm password is required'),
+    .required('Confirm password is required!'),
 });
 
 const initialValues = {
