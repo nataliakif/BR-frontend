@@ -1,0 +1,83 @@
+.booksMobilesection {
+  margin-top: 20px;
+  margin-bottom: 32px;
+
+}
+
+/* .title {
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.21;
+
+    margin-bottom: 20px;
+} */
+
+.checkBoxWrapper {
+  width: 34px;
+}
+.checkBoxWrapper > span:first-child {
+  padding: 0;
+}
+
+.cardBook {
+  display: flex;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.21;
+
+  padding-top: 20px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E0E5EB;
+
+}
+
+.cardBook:first-child {
+    border-top: 1px solid #E0E5EB;
+    }
+
+.cardBookWrapper {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  margin-left: 19px;
+}
+
+/* .cardBookWrapper::before {
+    position: absolute;
+    top: 27px;
+    left: 20px; */
+/* content: url('../../../images/library/open-book.svg'); */
+/* z-index: 1; */
+/* } */
+
+/* .cardTitle {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    margin-bottom: 4px;
+} */
+/* .cardTableBody{
+  padding-right: 35px;
+} */
+.cardTableBody > th {
+  /* padding-right: 35px; */
+  color: var(--secondary-text-color);
+}
+
+.tableTitle {
+  /* font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    color: var(--secondary-text-color); */
+}
+
+.tableContent {
+  /* font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    padding: 5px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* padding: 35px; */
+}
