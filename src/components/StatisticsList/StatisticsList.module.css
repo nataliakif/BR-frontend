@@ -1,80 +1,82 @@
-.listHeader {
+.tableBox {
   margin-top: 20px;
+  margin-bottom: 32px;
+}
+
+.titleBookWrapper {
+  display: flex;
+  height: 60px;
+}
+
+.titleBook {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  padding-left: 9px;
+  padding-right: 74px;
+}
+
+.checkBoxWrapper {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.icon {
+  fill: var(--library-color);
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0 8px;
+  border-collapse: separate;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 1.25;
+  font-size: 14px;
+  line-height: 1.21;
+  border-top: 1px solid #e0e5eb;
+  border-bottom: 1px solid #e0e5eb;
+}
+
+.tableTitleCell {
+  text-align: start;
   color: var(--secondary-text-color);
 }
-.header {
-  display: none;
-}
-.item {
-  margin: 0;
-  font-weight: 500;
-  color: var(--main-text-color);
-}
-.list {
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--icon-color);
-}
-.itemBook {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-
-  font-weight: 500;
-  color: var(--main-text-color);
-}
-.icon {
-  margin-right: 5px;
-}
-.dots {
-  display: block;
-  margin: 0;
-  padding-left: 21px;
-}
-.author {
-  margin-left: 50px;
+.tableTBody > tr {
+  border: 1px solid #e0e5eb;
 }
 
-@media screen and (min-width: 768px) {
-  .listHeader {
-    margin-top: 40px;
-  }
-  .header {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    display: grid;
-    grid-template-columns: 242px 232px 100px 100px;
-    border-top: 1px solid var(--icon-color);
-    border-bottom: 1px solid var(--icon-color);
-  }
-  .item {
-    margin: 0;
-    padding: 12px 0px;
-    display: grid;
-    grid-template-columns: 242px 232px;
-    border-top: none;
-  }
-  .itemBook:not(:first-child) {
-    display: none;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .trainingWrapper {
-    margin-top: 44px;
-  }
-  .header {
-    grid-template-columns: 345px 340px 100px 100px;
-  }
-  .item {
-    grid-template-columns: 345px 340px 100px 100px;
-  }
+/* .tableRow { */
+/* background-color: var(--main-color); */
+/* border-bottom: 1px solid black; */
+/* } */
+
+/* @media screen and (min-width: 1280px) {
   .title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 20px;
   }
+
+  .styleTitleBook {
+    width: 60%;
+  }
+
+  .styleAuthor {
+    width: 20%;
+  }
+
+  .styleColums {
+    width: 10%;
+  }
+} */
+
+.styleTitleBook {
+  width: 40%;
+}
+
+.styleAuthor {
+  width: 34%;
+}
+
+.styleColums {
+  width: 13%;
 }
