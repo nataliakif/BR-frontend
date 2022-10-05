@@ -1,4 +1,6 @@
 import s from './MyGoals.module.css';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 const TwoGoals = ({ header, amount }) => {
   return (
@@ -24,23 +26,24 @@ const MyGoals = ({
   booksLeft = 0,
   showBooksLeft = false,
 }) => {
+  const { t } = useTranslation();
   const container = booksLeft > 0 ? 'containerThreeGoals' : 'containerTwoGoals';
   const allGoals = showBooksLeft ? 'allThreeGoals' : 'allTwoGoals';
 
   return (
     <div className={s[container]}>
-      <h2>My goals</h2>
+      <h2>{t('training.myGoals')}</h2>
       <div className={s[allGoals]}>
         {showBooksLeft ? (
           <>
-            <ThreeGoals header={'Amount of books'} amount={bookAmount} />
-            <ThreeGoals header={'Amount of days'} amount={daysAmount} />
-            <ThreeGoals header={'Books left'} amount={booksLeft} />
+            <ThreeGoals header={t('training.books')} amount={bookAmount} />
+            <ThreeGoals header={t('training.days')} amount={daysAmount} />
+            <ThreeGoals header={t('training.booksLeft')} amount={booksLeft} />
           </>
         ) : (
           <>
-            <TwoGoals header={'Amount of books'} amount={bookAmount} />
-            <TwoGoals header={'Amount of days'} amount={daysAmount} />
+            <TwoGoals header={t('training.books')} amount={bookAmount} />
+            <TwoGoals header={t('training.days')} amount={daysAmount} />
           </>
         )}
       </div>
@@ -49,3 +52,10 @@ const MyGoals = ({
 };
 
 export default MyGoals;
+
+MyGoals.propTypes = {
+  bookAmount: PropTypes.number,
+  daysAmount: PropTypes.number,
+  booksLeft: PropTypes.number,
+  showBooksLeft: PropTypes.bool,
+};

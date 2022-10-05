@@ -12,31 +12,8 @@ import { setCredentials, getCurrentUser } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
 import sprite from '../../images/sprite.svg';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import s from './LoginForm.module.css';
-
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Incorrect email')
-    .matches(
-      /^[0-9a-z_@.]*[a-z][0-9a-z_@.]*$/i,
-      'Email must contain Latin letters'
-    )
-    .min(10, 'Email is too short, min character is 10')
-    .max(63, 'Maximum 63 characters')
-    .required('Email is required!'),
-  password: yup
-    .string()
-    .matches(
-      /^[0-9a-z.]*[a-z][0-9a-z.]*$/i,
-      'Password must contain Latin letters.'
-    )
-    .matches(/[a-z]/, 'at least one lowercase char')
-    .matches(/[A-Z]/, 'at least one uppercase char')
-    .min(5, 'Password is too short, min character is 5')
-    .max(30, 'Maximum 30 characters')
-    .required('Password is required!'),
-});
 
 const initialValues = {
   email: '',
@@ -48,12 +25,27 @@ const LoginForm = () => {
   const [loginUser] = useLoginUserMutation();
   const [restorePassword] = useRestorePasswordMutation();
   const email = useSelector(getCurrentUser);
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const emailGoogle = searchParams.get('email');
   const nameGoogle = searchParams.get('name');
   const accessToken = searchParams.get('accessToken');
-
   const dispatch = useDispatch();
+
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, t('validation.incorrectEmail'))
+      .min(10, t('validation.emailMin'))
+      .max(63, t('validation.emailMax'))
+      .required(t('validation.emailRequired')),
+    password: yup
+      .string()
+      .required(t('validation.passwordRequired'))
+      .matches(/^[^.-]\S*$/, t('validation.incorrectPassword'))
+      .min(5, t('validation.passwordMin'))
+      .max(30, t('validation.passwordMax')),
+  });
 
   const handleSubmit = async ({ email, password }) => {
     try {
@@ -83,7 +75,6 @@ const LoginForm = () => {
       <a
         className={s.googleLink}
         href="https://br-backend.herokuapp.com/auth/google"
-        // href="http://localhost:3001/auth/google"
       >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
@@ -96,7 +87,7 @@ const LoginForm = () => {
         {() => (
           <Form className={s.form}>
             <label className={s.label} htmlFor="email">
-              Email
+              {t('RegisterForm.emailLabel')}
             </label>
             <Field
               //   onFocus={e => (e.target.placeholder = '')}
@@ -116,7 +107,7 @@ const LoginForm = () => {
             />
 
             <label className={s.label} htmlFor="password">
-              Password
+              {t('RegisterForm.passwordLabel')}
               <svg
                 className={s.icon}
                 onClick={() => setShowPassword(!showPassword)}
@@ -143,7 +134,7 @@ const LoginForm = () => {
             />
 
             <button className={s.btn} type="submit">
-              Login
+              {t('LoginForm.button')}
             </button>
           </Form>
         )}
@@ -158,19 +149,19 @@ const LoginForm = () => {
             >
               <LoginTimer />
             </span>
-            {' for '}
+            {t('LoginForm.for')}
             {email}
           </p>
           <p className={s.text}>
-            or new registration{' '}
+            {t('LoginForm.orNew')}
             <Link to="/register" className={s.signupLink}>
-              Register
+              {t('LoginForm.registration')}
             </Link>
           </p>
         </>
       ) : (
         <Link to="/register" className={s.signupLink}>
-          Register
+          {t('RegisterForm.button')}
         </Link>
       )}
     </div>

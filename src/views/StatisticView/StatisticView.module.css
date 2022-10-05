@@ -1,6 +1,11 @@
+.myGoals{
+padding: 20px;
+
+}
 .statistics {
   display: flex;
   flex-direction: column;
+  margin-bottom: 32px;
 }
 
 @media screen and (min-width: 1280px) {

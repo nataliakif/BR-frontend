@@ -1,10 +1,12 @@
 import React from 'react';
-import { Field, Form, Formik, ErrorMessage, useFormik } from 'formik';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './InputBook.module.css';
-import InputAddSchema from './ErrorInput';
+import schema from './ErrorInput';
+import PropTypes from 'prop-types';
 import {
   useCreateBookMutation /*  useFetchBooksQuery */,
 } from 'redux/books/booksApi';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   title: '',
@@ -14,11 +16,12 @@ const initialValues = {
 };
 
 function InputBook() {
-  const [createBook, { isLoading }] = useCreateBookMutation();
-  // const { data } = useFetchBooksQuery(); console.log(data);
+  const { t } = useTranslation();
+  const [createBook] = useCreateBookMutation();
+
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={InputAddSchema}>
+      <Formik initialValues={initialValues} validationSchema={schema(t)}>
         {({ values, handleChange, handleBlur, resetForm, isValid }) => (
           <Form
             className={s.form}
@@ -36,7 +39,7 @@ function InputBook() {
           >
             <div className={s.form__container}>
               <label className={s.label}>
-                Book title
+                {t('library.bookTitle')}
                 <Field
                   id="title"
                   className={s.title}
@@ -56,13 +59,14 @@ function InputBook() {
                 />
               </label>
               <label className={s.label}>
-                Author
+                {t('library.author')}
                 <Field
                   id="author"
                   className={s.author}
                   type="text"
                   name="author"
                   autoComplete="off"
+                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="..."
@@ -76,7 +80,7 @@ function InputBook() {
                 />
               </label>
               <label className={s.label}>
-                Publication date
+                {t('library.publicationDate')}
                 <Field
                   id="year"
                   className={s.yearPages}
@@ -95,7 +99,7 @@ function InputBook() {
                 />
               </label>
               <label className={s.label}>
-                Amount of page
+                {t('library.amount')}
                 <Field
                   id="pages"
                   className={s.yearPages}
@@ -115,13 +119,8 @@ function InputBook() {
                 />
               </label>
             </div>
-            <button
-              className={s.button}
-              type="submit"
-              disabled={isLoading}
-              /* onClick={() => resetForm()} */
-            >
-              Add
+            <button className={s.button} type="submit" disabled={!isValid}>
+              {t('library.add')}
             </button>
           </Form>
         )}
@@ -129,4 +128,11 @@ function InputBook() {
     </>
   );
 }
+
+InputBook.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  publishYear: PropTypes.number,
+  amountOfPages: PropTypes.number,
+};
 export default InputBook;

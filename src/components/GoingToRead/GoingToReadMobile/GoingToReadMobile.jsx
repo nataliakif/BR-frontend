@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import s from './GoingToReadMobile.module.css';
+import { useTranslation } from 'react-i18next';
 
 const GoingToReadMobile = ({ goingToReadListBooks }) => {
+  const { t } = useTranslation();
+
   return (
     <section className={s.goingToReadMobilesection}>
-      <h2 className={s.title}>Going to read </h2>
+      <h2 className={s.title}>{t('library.going')}</h2>
       <ul className={s.card}>
         {goingToReadListBooks.map(
           ({ _id, bookTitle, author, publicationDate, amountOfPages }) => {
@@ -16,15 +19,15 @@ const GoingToReadMobile = ({ goingToReadListBooks }) => {
                   <table className={s.cardTable}>
                     <tbody>
                       <tr className={s.cardTableBody}>
-                        <th className={s.tableTitle}>Author:</th>
+                        <th className={s.tableTitle}>{t('library.author')}:</th>
                         <td className={s.tableContent}>{author}</td>
                       </tr>
                       <tr className={s.cardTableBody}>
-                        <th className={s.tableTitle}>Year:</th>
+                        <th className={s.tableTitle}>{t('library.year')}:</th>
                         <td className={s.tableContent}>{publicationDate}</td>
                       </tr>
                       <tr className={s.cardTableBody}>
-                        <th className={s.tableTitle}>Pages:</th>
+                        <th className={s.tableTitle}>{t('library.pages')}:</th>
                         <td className={s.tableContent}>{amountOfPages}</td>
                       </tr>
                     </tbody>
