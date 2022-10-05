@@ -7,6 +7,7 @@ import {
   useCreateBookMutation /*  useFetchBooksQuery */,
 } from 'redux/books/booksApi';
 
+
 const initialValues = {
   title: '',
   author: '',
@@ -16,7 +17,6 @@ const initialValues = {
 
 function InputBook() {
   const [createBook, { isLoading }] = useCreateBookMutation();
-  // const { data } = useFetchBooksQuery(); console.log(data);
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={InputAddSchema}>
@@ -117,12 +117,7 @@ function InputBook() {
                 />
               </label>
             </div>
-            <button
-              className={s.button}
-              type="submit"
-              disabled={isLoading}
-              /* onClick={() => resetForm()} */
-            >
+            <button className={s.button} type="submit" disabled={isLoading}>
               Add
             </button>
           </Form>
