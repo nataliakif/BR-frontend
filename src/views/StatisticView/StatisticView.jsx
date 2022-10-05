@@ -17,8 +17,6 @@ import { Chart } from 'components/Chart/Chart';
 import calculateStatistics from 'services/calculateStatistics';
 import { useEditBookMutation } from 'redux/books/booksApi';
 import TrainingExecutedModal from 'components/modals/TrainingExecutedModal/TrainingExecutedModal';
-import StatisticsListMobile from 'components/StatisticsList/StatisticsListMobile';
-import useIsMobile from 'helpers/useIsMobile';
 
 const findAlreadyReadBook = (books, alreadyReadPages) => {
   let readPagesLeft = alreadyReadPages;
@@ -47,8 +45,6 @@ const StatisticView = () => {
   const [currentTraining, setCurrentTraining] = useState(null);
 
   const [updateResult] = useEditTrainingMutation();
-
-  const isMobile = useIsMobile();
 
   const isTrainingExecuted =
     currentTraining?.alreadyReadPages >= currentTraining?.trainingPagesAmount ??
@@ -109,27 +105,21 @@ const StatisticView = () => {
   ) : (
     currentTraining && (
       <>
-        <div className={s.statistics}>
-          <div className={s.leftWrapper}>
-            <CountdownTimers
-              targetDate={new Date(currentTraining.finishDate).getTime()}
+        <Container>
+          <div className={s.statistics}>
+            <div className={s.leftWrapper}>
+              <CountdownTimers
+                targetDate={new Date(currentTraining.finishDate).getTime()}
+              />
+              <StatisticsList books={currentTraining.books} />
+            </div>
+            <MyGoals
+              bookAmount={currentTraining.books.length}
+              daysAmount={currentTraining.trainingDaysAmount}
+              booksLeft={currentTraining.notFinishedBooksAmount}
+              showBooksLeft={true}
             />
           </div>
-        </div>
-        <Container>
-          <MyGoals
-            bookAmount={currentTraining.books.length}
-            daysAmount={currentTraining.trainingDaysAmount}
-            booksLeft={currentTraining.notFinishedBooksAmount}
-            showBooksLeft={true}
-          />
-        </Container>
-        <Container>
-          {isMobile ? (
-            <StatisticsListMobile books={currentTraining.books} />
-          ) : (
-            <StatisticsList books={currentTraining.books} />
-          )}
         </Container>
         <Container>
           <div className={s.statistics}>
