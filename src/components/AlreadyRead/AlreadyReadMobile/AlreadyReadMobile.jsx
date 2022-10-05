@@ -1,17 +1,17 @@
-
 import ResumeModal from 'components/modals/ResumeModal';
 import Rating from '@mui/material/Rating';
 import s from './AlreadyReadMobile.module.css';
+import { useTranslation } from 'react-i18next';
 
 import { useEditBookMutation } from '../../../redux/books/booksApi';
 
 const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
-
   const [editBook] = useEditBookMutation();
+  const { t } = useTranslation();
 
   return (
     <section className={s.listAlreadyRead}>
-      <h2 className={s.title}>Already read</h2>
+      <h2 className={s.title}>{t('library.already')}</h2>
       <ul className={s.card}>
         {alreadyReadListBooks.map(
           ({
@@ -40,19 +40,25 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                     <table className={s.cardTable}>
                       <tbody>
                         <tr className={s.cardTableBody}>
-                          <th className={s.tableTitle}>Author:</th>
+                          <th className={s.tableTitle}>
+                            {t('library.author')}:
+                          </th>
                           <td className={s.tableContent}>{author}</td>
                         </tr>
                         <tr className={s.cardTableBody}>
-                          <th className={s.tableTitle}>Year:</th>
+                          <th className={s.tableTitle}>{t('library.year')}:</th>
                           <td className={s.tableContent}>{publicationDate}</td>
                         </tr>
                         <tr className={s.cardTableBody}>
-                          <th className={s.tableTitle}>Pages:</th>
+                          <th className={s.tableTitle}>
+                            {t('library.pages')}:
+                          </th>
                           <td className={s.tableContent}>{amountOfPages}</td>
                         </tr>
                         <tr className={s.cardTableBody}>
-                          <th className={s.tableTitle}>Rating:</th>
+                          <th className={s.tableTitle}>
+                            {t('library.rating')}:
+                          </th>
                           <td className={s.tableContent}>
                             <Rating
                               name="simple-controlled"

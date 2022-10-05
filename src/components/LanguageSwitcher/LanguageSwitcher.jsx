@@ -2,24 +2,25 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLang, getLang } from 'redux/authUser/authUserSlice';
+import PropTypes from 'prop-types';
 import sprite from '../../images/sprite.svg';
 import s from './LanguageSwitcher.module.css';
 
 const LANGUAGES = ['ua', 'en', 'pl'];
 
-const LanguageSwitcher = () => {
-  const [language, setLanguage] = useState('en');
+const LanguageSwitcher = ({ isLoggedIn }) => {
+  const currentLang = useSelector(getLang);
+  const [language, setLanguage] = useState(currentLang);
   const dispatch = useDispatch();
   const { i18n } = useTranslation();
-  const currentLang = useSelector(getLang);
-  console.log(currentLang);
+  const classLang = isLoggedIn ? 'langIsLoggedIn' : 'lang';
 
   useEffect(() => {
     currentLang && i18n.changeLanguage(currentLang);
   }, [currentLang, i18n]);
 
   return (
-    <div className={s.lang}>
+    <div className={s[classLang]}>
       <svg className={s.currentFlag} width="21" height="14">
         <use href={sprite + '#flag-' + language}></use>
       </svg>
@@ -48,3 +49,7 @@ const LanguageSwitcher = () => {
 };
 
 export default LanguageSwitcher;
+
+LanguageSwitcher.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};

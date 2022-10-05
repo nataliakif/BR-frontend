@@ -6,9 +6,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerField from 'components/DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
   console.log(data);
+  const { t } = useTranslation();
   const {
     goalPerDay: plan,
     startDate,
@@ -42,12 +44,12 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
   let schema = yup.object().shape({
     pages: yup
       .number()
-      .integer('Enter an integer.')
-      .positive('The number of pages is more than 1')
-      .min(1, 'May not be less then 1')
-      .max(data.trainingPagesAmount, 'More then the pages in training')
-      .required('Fill the number of read pages.')
-      .typeError('The number of pages must be from 1 to 1000'),
+      .integer(t('validation.enterYear'))
+      .positive(t('validation.pagesMin'))
+      .min(1, t('validation.pagesMin1'))
+      .max(data.trainingPagesAmount, t('validation.pagesMore'))
+      .required(t('validation.fillPages'))
+      .typeError(t('validation.pages1000')),
   });
   return (
     <>
@@ -58,10 +60,10 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
       >
         {({ values }) => (
           <Form className={s.form}>
-            <h2 className={s.title}>Result</h2>
+            <h2 className={s.title}>{t('statistics.result')}</h2>
             <div className={s.wrapper}>
               <div className={s.fieldWrapper}>
-                <p className={s.name}>Date</p>
+                <p className={s.name}>{t('statistics.date')}</p>
 
                 <DatePickerField
                   name="date"
@@ -75,7 +77,7 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
                 </svg>
               </div>
               <div className={s.fieldWrapper}>
-                <p className={s.name}>Amount of pages</p>
+                <p className={s.name}>{t('statistics.amountPages')}</p>
                 <Field className={s.input} type="number" name="pages" />
                 <span className={s.error}>
                   <ErrorMessage name="pages" />
@@ -87,10 +89,10 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
                 type="submit"
                 disabled={hideAddBtn}
                 className="main"
-                text="AddResult"
+                text={t('statistics.addResult')}
               />
             </div>
-            <h2 className={s.statisticsTitle}>STATISTICS</h2>
+            <h2 className={s.statisticsTitle}>{t('statistics.statistics')}</h2>
             {results && (
               <ul className={s.statistics}>
                 {sortResults.map(({ pageAmount, dateTime }, index) => (
@@ -103,7 +105,7 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
                     </p>
                     <p className={s.pages}>
                       {pageAmount}
-                      <span>pages</span>
+                      <span>{t('statistics.pages')}</span>
                     </p>
                   </li>
                 ))}

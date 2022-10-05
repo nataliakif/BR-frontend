@@ -1,12 +1,19 @@
 import s from './TrainingList.module.css';
 import sprite from './sprite.svg';
+import { useTranslation } from 'react-i18next';
 
 const TrainingList = ({
   trainingBooks,
   isActiveTraining,
   deleteBookFromList,
 }) => {
-  const headerList = ['Title', 'Author', 'Year', 'Pages'];
+  const { t } = useTranslation();
+  const headerList = [
+    t('library.title'),
+    t('library.author'),
+    t('library.year'),
+    t('library.pages'),
+  ];
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.header}>

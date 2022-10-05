@@ -6,64 +6,62 @@ import {
 } from '@tanstack/react-table';
 // import PropTypes from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
 import stringMax from 'helpers/stringMax';
 import s from './ReadingNowMain.module.css';
 import sprite from '../../../images/sprite.svg';
 
-const ReadingNowMain = ({readingNowListBooks}) => {
+const ReadingNowMain = ({ readingNowListBooks }) => {
+  const { t } = useTranslation();
   const data = readingNowListBooks;
-const columnHelper = createColumnHelper(readingNowListBooks);
-const columns = [
-  columnHelper.accessor('bookTitle', {
-    cell: info => (
-      <i>
-        <div className={s.titleBookWrapper}>
-          <div className={s.iconWrapper}>
-            <svg className={s.icon} width="22" height="17">
-              <use href={sprite + '#icon-open-book'} />{' '}
-            </svg>
+  const columnHelper = createColumnHelper(readingNowListBooks);
+  const columns = [
+    columnHelper.accessor('bookTitle', {
+      cell: info => (
+        <i>
+          <div className={s.titleBookWrapper}>
+            <div className={s.iconWrapper}>
+              <svg className={s.icon} width="22" height="17">
+                <use href={sprite + '#icon-open-book'} />{' '}
+              </svg>
+            </div>
+            <div className={s.titleBook}>{stringMax(info.getValue(), 77)}</div>
           </div>
-          <div className={s.titleBook}>{stringMax(info.getValue(), 77)}</div>
+        </i>
+      ),
+      header: () => (
+        <div>
+          <span>{t('library.bookTitle')}</span>
         </div>
-      </i>
-    ),
-    header: () => (
-      <div>
-        <span>Book title</span>
-      </div>
-    ),
-  }),
-  columnHelper.accessor('author', {
-    id: 'author',
-    cell: info => info.getValue(),
-    header: () => <span>Author</span>,
-  }),
-  columnHelper.accessor('publicationDate', {
-    header: () => <span>Year</span>,
-    cell: info => info.renderValue(),
-  }),
-  columnHelper.accessor('amountOfPages', {
-    cell: info => info.getValue(),
-    header: () => <span>Pages</span>,
-  }),
-];
+      ),
+    }),
+    columnHelper.accessor('author', {
+      id: 'author',
+      cell: info => info.getValue(),
+      header: () => <span>{t('library.author')}</span>,
+    }),
+    columnHelper.accessor('publicationDate', {
+      header: () => <span>{t('library.year')}</span>,
+      cell: info => info.renderValue(),
+    }),
+    columnHelper.accessor('amountOfPages', {
+      cell: info => info.getValue(),
+      header: () => <span>{t('library.pages')}</span>,
+    }),
+  ];
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
 
-
   return (
     <>
-      <h2 className={s.title}>Reading now</h2>
+      <h2 className={s.title}>{t('library.reading')}</h2>
       <div>
         <table className={s.table}>
           <colgroup>
-            <col
-              span="1"
-              className={s.style}
-            />
+            <col span="1" className={s.style} />
           </colgroup>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
@@ -93,7 +91,7 @@ const columns = [
             ))}
           </tbody>
         </table>
-        <div/>
+        <div />
       </div>
     </>
   );

@@ -22,7 +22,7 @@ const Header = () => {
         <NavLink to="/library" className={s.logo}>
           BR
         </NavLink>
-        <LanguageSwitcher />
+        <LanguageSwitcher isLoggedIn={isLoggedIn} />
         {isLoggedIn && (
           <>
             <UserBar />

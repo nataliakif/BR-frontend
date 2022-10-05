@@ -4,10 +4,12 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import s from './StartModal.module.css';
 import Icons from '../../../images/symbol-defs.svg';
+import { useTranslation } from 'react-i18next';
 
 function StartModal() {
   const [open, setOpen] = useState(true);
   const handleClose = () => setOpen(false);
+  const { t } = useTranslation();
 
   return (
     <div className={s.buttonWrapper}>
@@ -19,34 +21,30 @@ function StartModal() {
       >
         <Box onClose={handleClose} className={s.modal}>
           <div className={s.firstStepWrapper}>
-            <p className={s.firstTitle}>Step1.</p>
+            <p className={s.firstTitle}>{t('modal.step')}1.</p>
             <svg className={s.firstStepIcon} width="22px" height="17px">
               <use href={`${Icons}#icon-flat-grey`} />
             </svg>
-            <p className={s.firstStep}>Create your own library</p>
+            <p className={s.firstStep}>{t('modal.createLibrary')}</p>
             <svg className={s.firstStepIconDesc} width="10px" height="12px">
               <use href={`${Icons}#icon-Vector`} />
             </svg>
-            <p className={s.firstDesc}>
-              Add there books which you are going to read
-            </p>
+            <p className={s.firstDesc}>{t('modal.addBooks')}</p>
           </div>
           <div className={s.stepWrapper}>
-            <p className={s.secondTitle}>Step2.</p>
+            <p className={s.secondTitle}>{t('modal.step')}2.</p>
             <svg className={s.secondStepIcon} width="22px" height="17px">
               <use href={`${Icons}#icon-flag`} />
             </svg>
-            <p className={s.secondStep}>Create your first training</p>
+            <p className={s.secondStep}>{t('modal.createTraining')}</p>
             <svg className={s.secondStepIconDesc} width="10px" height="12px">
               <use href={`${Icons}#icon-Vector`} />
             </svg>
-            <p className={s.secondStepDesc}>
-              Set a goal, choose period, start training
-            </p>
+            <p className={s.secondStepDesc}>{t('modal.setAGoal')}</p>
           </div>
 
           <button onClose={handleClose} className={s.okBtn}>
-            Ok
+            {t('modal.ok')}
           </button>
         </Box>
       </Modal>
