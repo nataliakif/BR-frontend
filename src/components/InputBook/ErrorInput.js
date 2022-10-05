@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 
 const titleRules = /\S\w/;
-const authorRules = /\S\D/;
+const authorRules =
+  /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
 const InputAddSchema = Yup.object().shape({
   title: Yup.string()
@@ -24,9 +25,9 @@ const InputAddSchema = Yup.object().shape({
   pagesTotal: Yup.number('Enter a number')
     .integer('Enter an integer.')
     .min(1, 'The number of pages is more than 1.')
-    .max(99999, 'The number of pages is less than 99999.')
+    .max(4, 'The number of pages is less than 4.')
     .required('Fill in the number of pages.')
-    .typeError('Enter the number of pages from 1 to 99999.'),
+    .typeError('Enter the number of pages from 1 to 4.'),
 });
 
 export default InputAddSchema;
