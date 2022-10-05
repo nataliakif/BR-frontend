@@ -2,7 +2,11 @@ import React from 'react';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './InputBook.module.css';
 import InputAddSchema from './ErrorInput';
-import { useCreateBookMutation } from 'redux/books/booksApi';
+import PropTypes from 'prop-types';
+import {
+  useCreateBookMutation /*  useFetchBooksQuery */,
+} from 'redux/books/booksApi';
+
 
 const initialValues = {
   title: '',
@@ -60,6 +64,7 @@ function InputBook() {
                   type="text"
                   name="author"
                   autoComplete="off"
+                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="..."
@@ -121,4 +126,12 @@ function InputBook() {
     </>
   );
 }
+
+InputBook.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  publishYear: PropTypes.number,
+  amountOfPages: PropTypes.number,
+  isLoading: PropTypes.bool.isRequired,
+};
 export default InputBook;

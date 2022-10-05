@@ -55,4 +55,13 @@
 .navSvg {
   width: 20px;
   height: 17px;
+  fill: #a6abb9;
+  transition-property: fill;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.61, 0.36, 0.46, 0.9);
+}
+
+.navSvg:hover,
+.navSvg:focus {
+ fill: var(--accent-color);
 }
