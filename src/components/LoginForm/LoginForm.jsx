@@ -90,6 +90,7 @@ const LoginForm = () => {
               {t('RegisterForm.emailLabel')}
             </label>
             <Field
+              //   onFocus={e => (e.target.placeholder = '')}
               className={s.input}
               type="email"
               name="email"
@@ -120,6 +121,7 @@ const LoginForm = () => {
               className={s.input}
               type={showPassword ? 'text' : 'password'}
               name="password"
+              maxLength={30}
               placeholder="Password"
             />
             <ErrorMessage
