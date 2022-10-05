@@ -8,12 +8,11 @@ import PropTypes from 'prop-types';
 
 import { useTranslation } from 'react-i18next';
 import stringMax from 'helpers/stringMax';
-import s from './ReadingNowMain.module.css';
 import sprite from '../../../images/sprite.svg';
+import s from './ReadingNowMain.module.css';
 
 const ReadingNowMain = ({ readingNowListBooks }) => {
   const { t } = useTranslation();
-
   const data = readingNowListBooks;
   const columnHelper = createColumnHelper(readingNowListBooks);
   const columns = [
@@ -43,10 +42,12 @@ const ReadingNowMain = ({ readingNowListBooks }) => {
     }),
     columnHelper.accessor('publicationDate', {
       header: () => <span>{t('library.year')}</span>,
+
       cell: info => info.renderValue(),
     }),
     columnHelper.accessor('amountOfPages', {
       cell: info => info.getValue(),
+
       header: () => <span>{t('library.pages')}</span>,
     }),
   ];

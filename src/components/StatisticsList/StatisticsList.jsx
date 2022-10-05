@@ -1,6 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
 import { useTranslation } from 'react-i18next';
-import { grey, orange } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 import {
   createColumnHelper,
@@ -8,7 +7,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-
+import { grey, orange } from '@mui/material/colors';
 import stringMax from 'helpers/stringMax';
 import s from './StatisticsList.module.css';
 
@@ -23,20 +22,20 @@ const StatisticsList = ({ books }) => {
       cell: info => (
         <i>
           <div className={s.titleBookWrapper}>
-                <div className={s.checkBoxWrapper}>
-                  <Checkbox
-                    checked={books.alreadyFinished}
-                    name={books._id}
-                    sx={{
-                      '& .MuiSvgIcon-root': { fontSize: 15 },
-                        color: grey[500],
-                      '&.Mui-checked': {
-                        color: orange[800],
-                      },
-                    }}
-                  />
-                </div>
-            <div className={s.titleBook}>{stringMax(info.getValue(), 50)}</div>
+            <div className={s.checkBoxWrapper}>
+              <Checkbox
+                checked={books.alreadyFinished}
+                name={books._id}
+                sx={{
+                  '& .MuiSvgIcon-root': { fontSize: 15 },
+                  color: grey[500],
+                  '&.Mui-checked': {
+                    color: orange[800],
+                  },
+                }}
+              />
+            </div>
+            <div className={s.titleBook}>{stringMax(info.getValue(), 33)}</div>
           </div>
         </i>
       ),
@@ -49,7 +48,7 @@ const StatisticsList = ({ books }) => {
     columnHelper.accessor('author', {
       id: 'author',
       cell: info => info.getValue(),
-      header: () => <span>{ t('library.author')}</span>,
+      header: () => <span>{t('library.author')}</span>,
     }),
     columnHelper.accessor('publicationDate', {
       header: () => <span>{t('library.year')}</span>,
@@ -122,8 +121,7 @@ StatisticsList.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
-
 
 export default StatisticsList;

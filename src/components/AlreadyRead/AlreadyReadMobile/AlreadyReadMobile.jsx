@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import ResumeModal from 'components/modals/ResumeModal';
 import Rating from '@mui/material/Rating';
+import ResumeModal from 'components/modals/ResumeModal';
 import s from './AlreadyReadMobile.module.css';
 import { useTranslation } from 'react-i18next';
-
-import { useEditBookMutation } from '../../../redux/books/booksApi';
+import { useEditBookMutation } from 'redux/books/booksApi';
 
 const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
   const [editBook] = useEditBookMutation();
@@ -64,8 +63,9 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                             <Rating
                               name="simple-controlled"
                               value={rating}
-                              precision={0.5}
                               size="small"
+                              readOnly
+                              precision={0.5}
                               onChange={(event, newValue) => {
                                 editBook({
                                   id: _id,

@@ -5,7 +5,7 @@ import sprite from './sprite.svg';
 import s from './DoingFineModal.module.css';
 import { useTranslation } from 'react-i18next';
 
-const DoingFineModal = ({ open, onClose, onNewTraining }) => {
+const DoingFineModal = ({ open, onClose }) => {
   const { t } = useTranslation();
 
   return (
@@ -16,11 +16,9 @@ const DoingFineModal = ({ open, onClose, onNewTraining }) => {
         </svg>
         <p className={s.wrapper_text}>{t('statistics.wellDone')}</p>
         <div className={s.buttons}>
-
           <Button
-          text={t('modal.ok')} 
+            text={t('modal.ok')}
             className="main"
-            text="Ok"
             onClick={onClose}
             tabIndex={0}
             autoFocus={true}

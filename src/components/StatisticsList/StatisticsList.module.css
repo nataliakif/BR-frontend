@@ -27,47 +27,26 @@
 }
 
 .table {
-  width: 100%;
-  border-spacing: 0 8px;
-  border-collapse: separate;
+  border-collapse: collapse;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
   border-top: 1px solid #e0e5eb;
   border-bottom: 1px solid #e0e5eb;
+
+  table-layout: fixed;
 }
 
 .tableTitleCell {
   text-align: start;
   color: var(--secondary-text-color);
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
+
 .tableTBody > tr {
-  border: 1px solid #e0e5eb;
+  border-top: 1px solid #e0e5eb;
 }
-
-/* .tableRow { */
-/* background-color: var(--main-color); */
-/* border-bottom: 1px solid black; */
-/* } */
-
-/* @media screen and (min-width: 1280px) {
-  .title {
-    margin-top: 32px;
-    margin-bottom: 20px;
-  }
-
-  .styleTitleBook {
-    width: 60%;
-  }
-
-  .styleAuthor {
-    width: 20%;
-  }
-
-  .styleColums {
-    width: 10%;
-  }
-} */
 
 .styleTitleBook {
   width: 40%;
