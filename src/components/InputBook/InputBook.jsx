@@ -1,7 +1,8 @@
 import React from 'react';
-import { Field, Form, Formik, ErrorMessage, useFormik } from 'formik';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './InputBook.module.css';
 import InputAddSchema from './ErrorInput';
+import PropTypes from 'prop-types';
 import {
   useCreateBookMutation /*  useFetchBooksQuery */,
 } from 'redux/books/booksApi';
@@ -19,7 +20,7 @@ function InputBook() {
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={InputAddSchema}>
-        {({ values, handleChange, handleBlur, resetForm, isValid }) => (
+        {({ values, handleChange, handleBlur, resetForm }) => (
           <Form
             className={s.form}
             action="submit"
@@ -63,6 +64,7 @@ function InputBook() {
                   type="text"
                   name="author"
                   autoComplete="off"
+                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="..."
@@ -129,4 +131,12 @@ function InputBook() {
     </>
   );
 }
+
+InputBook.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  publishYear: PropTypes.number,
+  amountOfPages: PropTypes.number,
+  isLoading: PropTypes.bool.isRequired,
+};
 export default InputBook;
