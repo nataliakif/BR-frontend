@@ -4,6 +4,8 @@ import s from './TrainingForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 const initialValues = {
   startDate: '',
@@ -25,14 +27,12 @@ const TrainingForm = ({
   const { t } = useTranslation();
 
   const [startDate, setStartDate] = useState(null);
+  const booksRef = useRef();
+  //useEffect(() => {}, [goingToReadBooks]);
   return (
     <Formik initialValues={initialValues} validationSchema={schema}>
       {({ values, handleChange }) => (
-        <Form
-          onChange={() => {
-            console.log(values);
-          }}
-        >
+        <Form>
           <div className={s.form} autoComplete="off">
             <h1 className={s.title}>{t('training.myTraining')}</h1>
           </div>
@@ -74,6 +74,7 @@ const TrainingForm = ({
               name="book"
               className={s.bookInput}
               defaultValue={'default'}
+              innerRef={booksRef}
             >
               <option value="default" className={s.selectOption} disabled>
                 {t('training.chooseBooks')}
@@ -91,9 +92,14 @@ const TrainingForm = ({
               type="button"
               className={s.btnAdd}
               onClick={() => {
-                onBtnAddClick(
-                  goingToReadBooks.find(book => book.bookTitle === values.book)
-                );
+                const title = booksRef.current.value;
+                if (title !== 'default' && title) {
+                  onBtnAddClick(
+                    goingToReadBooks.find(
+                      book => book.bookTitle === booksRef.current.value
+                    )
+                  );
+                }
               }}
             >
               {t('library.add')}
