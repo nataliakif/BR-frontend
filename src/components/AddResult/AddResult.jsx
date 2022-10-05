@@ -4,7 +4,7 @@ import Button from 'components/Button/Button';
 import sprite from './sprite.svg';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import DatePickerField from 'components/DatePicker';
+import DatePickerField from '../DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
@@ -15,7 +15,6 @@ const AddResult = ({ data, updateResult }) => {
   const {
     goalPerDay: plan,
     startDate,
-    finishDate,
     readStatistics: results,
     alreadyReadPages,
     isTrainingExecuted,
@@ -64,7 +63,7 @@ const AddResult = ({ data, updateResult }) => {
         validationSchema={schema}
         onSubmit={onSubmit}
       >
-        {({ values }) => (
+        {({ values, isValid }) => (
           <Form className={s.form}>
             <h2 className={s.title}>{t('statistics.result')}</h2>
             <div className={s.resultsWrapper}>
@@ -74,9 +73,13 @@ const AddResult = ({ data, updateResult }) => {
                   <DatePickerField
                     name="date"
                     className={s.input}
-                    value={new Date(startDate)}
                     minDate={new Date(startDate)}
-                    maxDate={new Date(finishDate)}
+                    maxDate={new Date()}
+                    dateFormat="dd-MM-yyyy"
+                    placeholderText="Choose date"
+                    autoComplete="off"
+                    readonly={true}
+                    required
                   />
 
                   <svg className={s.iconSvg} style={{ width: '24px' }}>
@@ -97,7 +100,7 @@ const AddResult = ({ data, updateResult }) => {
               <div className={s.button}>
                 <Button
                   type="submit"
-                  disabled={isTrainingExecuted}
+                  disabled={!isValid || isTrainingExecuted}
                   className="main"
                   text={t('statistics.addResult')}
                 />
