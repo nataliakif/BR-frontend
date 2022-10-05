@@ -1,4 +1,5 @@
 import s from './MyGoals.module.css';
+import PropTypes from 'prop-types';
 
 const TwoGoals = ({ header, amount }) => {
   return (
@@ -49,3 +50,10 @@ const MyGoals = ({
 };
 
 export default MyGoals;
+
+MyGoals.propTypes = {
+  bookAmount: PropTypes.number,
+  daysAmount: PropTypes.number,
+  booksLeft: PropTypes.number,
+  showBooksLeft: PropTypes.bool,
+};

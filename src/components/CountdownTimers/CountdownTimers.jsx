@@ -1,4 +1,5 @@
 import { useCountdown } from 'services/hooks/useCountdown';
+import PropTypes from 'prop-types';
 import s from './CountdownTimers.module.css';
 
 const DateTimeDisplay = ({ value, type }) => {
@@ -66,3 +67,7 @@ const CountdownTimers = ({ targetDate }) => {
 };
 
 export default CountdownTimers;
+
+CountdownTimers.propTypes = {
+  targetDate: PropTypes.string,
+};
