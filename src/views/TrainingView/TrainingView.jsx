@@ -15,7 +15,7 @@ import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
 import { useEditBookMutation } from 'redux/books/booksApi';
 import useIsMobile from '../../helpers/useIsMobile';
-import {  BsArrowLeft } from 'react-icons/bs';
+import { BsArrowLeft } from 'react-icons/bs';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -25,7 +25,6 @@ const TrainingView = () => {
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
   const [editBook] = useEditBookMutation();
   const [showElement, setShowElement] = useState(false);
-
 
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
@@ -132,8 +131,9 @@ const TrainingView = () => {
             )}
             {showElement && (
               <BsArrowLeft
-              className={s.arrowButton}
-              onClick={() => setShowElement(false)}/>
+                className={s.arrowButton}
+                onClick={() => setShowElement(false)}
+              />
             )}
           </div>
         </div>
@@ -142,7 +142,7 @@ const TrainingView = () => {
         {showStButton && !showElement && (
           <Button
             id="startTraining"
-            className={s.startTrainingBtn}
+            className="main"
             text="Start training"
             onClick={onStartClick}
             onEnded={isLoading}
@@ -152,13 +152,14 @@ const TrainingView = () => {
           <Chart plan={planedPagesPerDay} readingStatistics={[]} />
         )}
         {isMobile && (
-          <button type="button"
-          className={s.addPageBtn} 
-          onClick={() => setShowElement(true)}>
+          <button
+            type="button"
+            className={s.addPageBtn}
+            onClick={() => setShowElement(true)}
+          >
             +
           </button>
         )}
-        
       </Container>
     </>
   );
