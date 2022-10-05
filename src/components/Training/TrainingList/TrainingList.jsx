@@ -9,9 +9,6 @@ const TrainingList = ({
   const headerList = ['Title', 'Author', 'Year', 'Pages'];
   return (
     <div className={s.trainingWrapper}>
-      <svg className={s.icon} width="22" height="17">
-                  <use href={`${sprite}#icon-grey-book`}></use>
-                </svg>
       <ul className={s.header}>
         {headerList.map(title => (
           <li className={s.header_item} key={title}>
@@ -33,22 +30,26 @@ const TrainingList = ({
           ) => (
             <li className={s.item} key={index}>
               <p className={s.title}>
+                <svg className={s.icon} width="22" height="17">
+                  <use href={`${sprite}#icon-grey-book`}></use>
+                </svg>
                 {title}
               </p>
-              <p className={s.itemsName}>{author}</p>
-              <p className={s.itemsName}>{date}</p>
-              <p className={s.itemsName}>{pages}</p>{' '}
-              <button
+              <p>{author}</p>
+              <p>{date}</p>
+              <p>{pages}</p>{' '}
+              <svg
                 type="button"
+                id="delete_button"
                 onClick={() => {
                   deleteBookFromList(id);
                 }}
-                className={s.btnDelete}
+                className={s.icon}
+                width="22"
+                height="17"
               >
-                <svg className={s.iconDelete} width="22" height="19">
-                  <use href={`${sprite}#icon-delete`}></use>
-                </svg>
-              </button>
+                <use href={`${sprite}#icon-delete`}></use>
+              </svg>
             </li>
           )
         )}
