@@ -4,7 +4,7 @@ import Button from 'components/Button/Button';
 import sprite from './sprite.svg';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import DatePickerInput from '../DatePicker';
+import DatePickerField from '../DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
