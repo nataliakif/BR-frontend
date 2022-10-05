@@ -105,6 +105,8 @@ const StatisticView = () => {
     deleteTraining(userTraining._id);
   };
 
+  console.log(new Date(currentTraining?.finishDate).getTime());
+
   return isFetchingTraining ? (
     <Progress />
   ) : (
@@ -124,13 +126,16 @@ const StatisticView = () => {
             booksLeft={currentTraining.notFinishedBooksAmount}
             showBooksLeft={true}
           />
-          </Container>
-          
-          {/* <Container>
+        </Container>
+        {/* <Container>
             <TrainingForm/>
           </Container> */}
-          <Container>
-            {isMobile ? <StatisticsListMobile books={currentTraining.books} /> : <StatisticsList books={currentTraining.books} />}
+        <Container>
+          {isMobile ? (
+            <StatisticsListMobile books={currentTraining.books} />
+          ) : (
+            <StatisticsList books={currentTraining.books} />
+          )}
         </Container>
         <Container>
           <div className={s.statistics}>

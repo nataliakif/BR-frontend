@@ -19,7 +19,7 @@ const LibraryView = () => {
   return (
     <>
       <Container>
-        <InputBook addedBookTitles={data.map(book => book.bookTitle)} />
+        <InputBook addedBookTitles={data?.map(book => book.bookTitle)} />
       </Container>
       {!data?.length && !isLoading && <StartModal />}
 

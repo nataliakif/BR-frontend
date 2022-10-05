@@ -69,6 +69,10 @@
   }
 } */
 
+.styleCheckBox {
+  width: 1%;
+}
+
 .styleTitleBook {
   width: 40%;
 }

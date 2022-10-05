@@ -19,25 +19,23 @@ const StatisticsList = ({ books }) => {
   const columnHelper = createColumnHelper(books);
 
   const columns = [
-    columnHelper.accessor('bookTitle', {
+    columnHelper.accessor('alreadyFinished', {
       cell: info => (
         <i>
-          <div className={s.titleBookWrapper}>
-                <div className={s.checkBoxWrapper}>
-                  <Checkbox
-                    checked={books.alreadyFinished}
-                    name={books._id}
-                    sx={{
-                      '& .MuiSvgIcon-root': { fontSize: 15 },
-                        color: grey[500],
-                      '&.Mui-checked': {
-                        color: orange[800],
-                      },
-                    }}
-                  />
-                </div>
-            <div className={s.titleBook}>{stringMax(info.getValue(), 50)}</div>
-          </div>
+          <Checkbox
+            checked={info.getValue()}
+            sx={{
+              '& .MuiSvgIcon-root': { fontSize: 15 },
+              color: grey[500],
+              '&.Mui-checked': {
+                color: orange[800],
+              },
+            }}
+            onClick={e => {
+              e.preventDefault();
+              return false;
+            }}
+          />
         </i>
       ),
       header: () => (
@@ -46,10 +44,20 @@ const StatisticsList = ({ books }) => {
         </div>
       ),
     }),
+    columnHelper.accessor('bookTitle', {
+      cell: info => (
+        <i>
+          <div className={s.titleBookWrapper}>
+            <div className={s.titleBook}>{stringMax(info.getValue(), 50)}</div>
+          </div>
+        </i>
+      ),
+      header: () => <div></div>,
+    }),
     columnHelper.accessor('author', {
       id: 'author',
       cell: info => info.getValue(),
-      header: () => <span>{ t('library.author')}</span>,
+      header: () => <span>{t('library.author')}</span>,
     }),
     columnHelper.accessor('publicationDate', {
       header: () => <span>{t('library.year')}</span>,
@@ -71,6 +79,7 @@ const StatisticsList = ({ books }) => {
       <div className={s.tableBox}>
         <table className={s.table}>
           <colgroup>
+            <col span="1" className={s.styleCheckBox} />
             <col span="1" className={s.styleTitleBook} />
             <col span="1" className={s.styleAuthor} />
             <col span="2" className={s.styleColums} />
@@ -122,8 +131,7 @@ StatisticsList.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  )
+  ),
 };
-
 
 export default StatisticsList;
