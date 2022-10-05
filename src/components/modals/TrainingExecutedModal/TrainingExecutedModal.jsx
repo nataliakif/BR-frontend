@@ -23,7 +23,7 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
           <Button
             className="main"
             text={t('modal.newTraining')}
-            onClick={handleCloseOfTraining}
+            onClick={() => handleCloseOfTraining()}
             disabled={isLoading}
           />
           <Button

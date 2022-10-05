@@ -32,6 +32,10 @@ const StatisticsListMobile = ({ books }) => {
                           color: orange[800],
                         },
                       }}
+                      onClick={e => {
+                        e.preventDefault();
+                        return false;
+                      }}
                     />
                   </div>
                   <div className={s.cardBookWrapper}>

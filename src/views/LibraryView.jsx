@@ -6,6 +6,7 @@ import GoingToRead from 'components/GoingToRead';
 import { useFetchBooksQuery } from 'redux/books/booksApi';
 import ReadingNow from 'components/ReadingNow';
 import AlreadyRead from '../components/AlreadyRead/AlreadyRead';
+import Progress from 'components/Progress/Progress';
 
 const LibraryView = () => {
   const { data, isLoading } = useFetchBooksQuery();
@@ -16,7 +17,9 @@ const LibraryView = () => {
   const goingToReadListBooks = data?.filter(
     book => book.status === 'going_to_read'
   );
-  return (
+  return isLoading ? (
+    <Progress />
+  ) : (
     <>
       <Container>
         <InputBook addedBookTitles={data?.map(book => book.bookTitle)} />
