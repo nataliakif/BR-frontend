@@ -19,7 +19,6 @@ import { useEditBookMutation } from 'redux/books/booksApi';
 import TrainingExecutedModal from 'components/modals/TrainingExecutedModal/TrainingExecutedModal';
 import StatisticsListMobile from 'components/StatisticsList/StatisticsListMobile';
 import useIsMobile from 'helpers/useIsMobile';
-import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
 
 const findAlreadyReadBook = (books, alreadyReadPages) => {
   let readPagesLeft = alreadyReadPages;
@@ -124,13 +123,13 @@ const StatisticView = () => {
             booksLeft={currentTraining.notFinishedBooksAmount}
             showBooksLeft={true}
           />
-          </Container>
-          
-          {/* <Container>
-            <TrainingForm/>
-          </Container> */}
-          <Container>
-            {isMobile ? <StatisticsListMobile books={currentTraining.books} /> : <StatisticsList books={currentTraining.books} />}
+        </Container>
+        <Container>
+          {isMobile ? (
+            <StatisticsListMobile books={currentTraining.books} />
+          ) : (
+            <StatisticsList books={currentTraining.books} />
+          )}
         </Container>
         <Container>
           <div className={s.statistics}>

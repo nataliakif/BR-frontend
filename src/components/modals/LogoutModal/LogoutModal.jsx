@@ -11,7 +11,13 @@ const LogoutModal = ({ open, onClose, logoutFunc }) => {
           If you leave the program your data can be lost
         </p>
         <div className={s.buttons}>
-          <Button className="transparent" text="Cancel" onClick={onClose} />
+          <Button
+            className="transparent"
+            text="Cancel"
+            onClick={onClose}
+            tabIndex={0}
+            autoFocus={true}
+          />
           <Button className="main" text="Log Out" onClick={logoutFunc} />
         </div>
       </div>

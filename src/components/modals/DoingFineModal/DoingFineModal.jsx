@@ -14,7 +14,13 @@ const DoingFineModal = ({ open, onClose }) => {
           Well done! but you need to be a little bit faster. You can do it
         </p>
         <div className={s.buttons}>
-          <Button className="main" text="Ok" onClick={onClose} />
+          <Button
+            className="main"
+            text="Ok"
+            onClick={onClose}
+            tabIndex={0}
+            autoFocus={true}
+          />
         </div>
       </div>
     </Modal>

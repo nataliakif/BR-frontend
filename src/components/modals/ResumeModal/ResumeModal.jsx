@@ -89,7 +89,12 @@ const ResumeModal = ({ row }) => {
                       </button>
                     </li>
                     <li>
-                      <button className={s.buttonSave} type="submit">
+                      <button
+                        className={s.buttonSave}
+                        type="submit"
+                        tabIndex={0}
+                        autoFocus={true}
+                      >
                         Save
                       </button>
                     </li>

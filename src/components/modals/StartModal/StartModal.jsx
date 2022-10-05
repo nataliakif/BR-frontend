@@ -46,7 +46,12 @@ function StartModal() {
             </p>
           </div>
 
-          <button onClose={handleClose} className={s.okBtn}>
+          <button
+            onClose={handleClose}
+            className={s.okBtn}
+            tabIndex={0}
+            autoFocus={true}
+          >
             Ok
           </button>
         </Box>
