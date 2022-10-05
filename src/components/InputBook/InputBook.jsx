@@ -131,6 +131,5 @@ InputBook.propTypes = {
   author: PropTypes.string,
   publishYear: PropTypes.number,
   amountOfPages: PropTypes.number,
-  isLoading: PropTypes.bool.isRequired,
 };
 export default InputBook;
