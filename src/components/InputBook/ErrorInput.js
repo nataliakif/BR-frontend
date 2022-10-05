@@ -21,12 +21,12 @@ const schema = t => {
     publishYear: Yup.number()
       .integer(t('validation.enterYear'))
       .min(1000, t('validation.yearMin'))
-      .max(2023, t('validation.yearMax'))
+      .max(2022, t('validation.yearMax'))
       .typeError(t('validation.yearError')),
     pagesTotal: Yup.number(t('validation.pagesNumber'))
       .integer(t('validation.enterYear'))
       .min(1, t('validation.pagesMin'))
-      .max(99999, t('validation.pagesMax'))
+      .max(1000, t('validation.pagesMax'))
       .required(t('validation.pagesFill'))
       .typeError(t('validation.pagesError')),
   });

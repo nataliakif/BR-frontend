@@ -135,7 +135,7 @@ AddResult.propTypes = {
     startDate: PropTypes.string.isRequired,
     finishDate: PropTypes.string.isRequired,
   }),
-  isTrainingExecuted: PropTypes.bool.isRequired,
+  isTrainingExecuted: PropTypes.bool,
   updateResult: PropTypes.func.isRequired,
 };
 
