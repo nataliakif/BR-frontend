@@ -1,18 +1,30 @@
-.listHeader {
+.trainingWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: 20px;
+  border-top: 1px solid var(--icon-color);
+}
+.listHeader {
+  margin-top: 0px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
   color: var(--secondary-text-color);
 }
-.header {
-  display: none;
-}
+
 .item {
   margin: 0;
   font-weight: 500;
   color: var(--main-text-color);
 }
+.icon {
+  margin-right: 12px;
+}
+
 .list {
   padding: 10px;
   padding-top: 40px;
@@ -23,42 +35,44 @@
   display: flex;
   flex-direction: row;
   align-items: baseline;
-
   font-weight: 500;
   color: var(--main-text-color);
 }
-.icon {
+.icon::before {
+  position: absolute;
   margin-right: 5px;
   margin-bottom: -3px;
 }
-.dots {
-  display: block;
-  margin: 0;
-  padding-left: 21px;
-}
-.author {
-  margin-left: 50px;
-}
+
 
 @media screen and (min-width: 768px) {
+  .trainingWrapper {
+    border: none;
+  }
   .listHeader {
     margin-top: 40px;
   }
+  .list {
+    display: inline-block;
+    padding: 0;
+  }
   .header {
+    display: grid;
     padding-top: 12px;
     padding-bottom: 12px;
-    display: grid;
-    grid-template-columns: 242px 232px 100px 100px;
+    grid-template-columns: 242px 232px 100px 100px 100px;
     border-top: 1px solid var(--icon-color);
-    border-bottom: 1px solid var(--icon-color);
+
   }
   .item {
+    display: grid;
+    grid-template-columns: 220px 200px 140px 60px 40px 53px;
     margin: 0;
     padding: 12px 0px;
-    display: grid;
-    grid-template-columns: 242px 232px;
     border-top: none;
   }
+
+
   .itemBook:not(:first-child) {
     display: none;
   }

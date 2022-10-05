@@ -48,7 +48,8 @@ const TrainingList = ({
                 width="22"
                 height="17"
               >
-                <use href={`${sprite}#icon-delete`}></use>
+                <use href={`${sprite}#icon-delete`}
+                className={s.deleteIcon}></use>
               </svg>
             </li>
           )

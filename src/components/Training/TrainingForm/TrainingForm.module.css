@@ -81,11 +81,12 @@
     margin-top: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: start;
   }
   .bookLabel {
     flex-direction: row;
     flex-grow: 1;
+    justify-content: start;
   }
   .bookInput {
     margin: 0;
