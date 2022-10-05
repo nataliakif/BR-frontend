@@ -1,5 +1,6 @@
 import s from './TrainingList.module.css';
 import sprite from './sprite.svg';
+import { useTranslation } from 'react-i18next';
 import useIsMobile from '../../../helpers/useIsMobile';
 
 const TrainingList = ({
@@ -7,8 +8,14 @@ const TrainingList = ({
   isActiveTraining,
   deleteBookFromList,
 }) => {
+  const { t } = useTranslation();
+  const headerList = [
+    t('library.title'),
+    t('library.author'),
+    t('library.year'),
+    t('library.pages'),
+  ];
   const isMobile = useIsMobile();
-  const headerList = ['Title', 'Author', 'Year', 'Pages'];
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.header}>
@@ -37,15 +44,21 @@ const TrainingList = ({
 
               <p className={s.title}>{title}</p>
               <p>
-                {isMobile && <span className={s.subtitle}>Author:</span>}
+                {isMobile && (
+                  <span className={s.subtitle}>{t('library.author')}:</span>
+                )}
                 {author}
               </p>
               <p>
-                {isMobile && <span className={s.subtitle}>Year:</span>}
+                {isMobile && (
+                  <span className={s.subtitle}>{t('library.year')}:</span>
+                )}
                 {year}
               </p>
               <p>
-                {isMobile && <span className={s.subtitle}>Pages:</span>}
+                {isMobile && (
+                  <span className={s.subtitle}>{t('library.pages')}:</span>
+                )}
                 {pages}
               </p>
 

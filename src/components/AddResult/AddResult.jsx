@@ -7,8 +7,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePickerInput from '../DatePicker';
 import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 const AddResult = ({ data, updateResult }) => {
+  const { t } = useTranslation();
+
   const {
     goalPerDay: plan,
     startDate,
@@ -46,12 +49,12 @@ const AddResult = ({ data, updateResult }) => {
   let schema = yup.object().shape({
     pages: yup
       .number()
-      .integer('Enter an integer.')
-      .positive('The number of pages is more than 1')
-      .min(1, 'May not be less then 1')
-      .max(data.trainingPagesAmount, 'More then the pages in training')
-      .required('Fill the number of read pages.')
-      .typeError('The number of pages must be from 1 to 1000'),
+      .integer(t('validation.enterYear'))
+      .positive(t('validation.pagesMin'))
+      .min(1, t('validation.pagesMin1'))
+      .max(data.trainingPagesAmount, t('validation.pagesMore'))
+      .required(t('validation.fillPages'))
+      .typeError(t('validation.pages1000')),
   });
   return (
     <>
@@ -62,12 +65,12 @@ const AddResult = ({ data, updateResult }) => {
       >
         {({ values, isValid }) => (
           <Form className={s.form}>
-            <h2 className={s.title}>Result</h2>
+            <h2 className={s.title}>{t('statistics.result')}</h2>
             <div className={s.resultsWrapper}>
               <div className={s.wrapper}>
                 <div className={s.fieldWrapper}>
-                  <label className={s.name}>Date</label>
-                  <DatePickerInput
+                  <label className={s.name}>{t('statistics.date')}</label>
+                  <DatePickerField
                     name="date"
                     className={s.input}
                     minDate={new Date(startDate)}
@@ -84,7 +87,9 @@ const AddResult = ({ data, updateResult }) => {
                   </svg>
                 </div>
                 <div className={s.fieldWrapper}>
-                  <label className={s.name}>Amount of pages</label>
+                  <label className={s.name}>
+                    {t('statistics.amountPages')}
+                  </label>
 
                   <Field className={s.input} type="number" name="pages" />
                   <span className={s.error}>
@@ -97,11 +102,11 @@ const AddResult = ({ data, updateResult }) => {
                   type="submit"
                   disabled={!isValid || isTrainingExecuted}
                   className="main"
-                  text="AddResult"
+                  text={t('statistics.addResult')}
                 />
               </div>
             </div>
-            <h2 className={s.statisticsTitle}>STATISTICS</h2>
+            <h2 className={s.statisticsTitle}>{t('statistics.statistics')}</h2>
             <ul className={s.statistics}>
               {sortResults.map(({ pageAmount, dateTime }, index) => (
                 <li className={s.item} key={index}>
@@ -113,7 +118,7 @@ const AddResult = ({ data, updateResult }) => {
                   </p>
                   <p>
                     {pageAmount}
-                    <span className={s.pages}>pages</span>
+                    <span className={s.pages}>{t('statistics.pages')}</span>
                   </p>
                 </li>
               ))}

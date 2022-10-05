@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
 import { useEditBookMutation } from 'redux/books/booksApi';
+import { useTranslation } from 'react-i18next';
 import useIsMobile from '../../helpers/useIsMobile';
 import { BsArrowLeft } from 'react-icons/bs';
 
@@ -24,6 +25,7 @@ const TrainingView = () => {
   const [planedPagesPerDay, setPlanedPagesPerDay] = useState(0);
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
   const [editBook] = useEditBookMutation();
+  const { t } = useTranslation();
   const [showElement, setShowElement] = useState(false);
 
   const { data: userTraining, isLoading: isFetchingTraining } =
@@ -143,7 +145,7 @@ const TrainingView = () => {
           <Button
             id="startTraining"
             className="main"
-            text="Start training"
+            text={t('training.startTraining')}
             onClick={onStartClick}
             onEnded={isLoading}
           />

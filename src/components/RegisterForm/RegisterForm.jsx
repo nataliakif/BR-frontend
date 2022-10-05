@@ -1,42 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
 import sprite from '../../images/sprite.svg';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import s from './RegisterForm.module.css';
-
-const schema = yup.object({
-  name: yup
-    .string()
-    .matches(
-      /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/,
-      'Name can only begin with a letter or a number'
-    )
-    .min(3, 'Name is too short, min character is 3.')
-    .max(100, 'Maximum 100 characters!')
-    .required('Name is required'),
-  email: yup
-    .string()
-    .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, 'Incorrect email')
-    .min(10, 'Email is too short, min character is 10.')
-    .max(63, 'Maximum 63 characters!')
-    .required('Email is required'),
-  password: yup
-    .string()
-    .required('Password is required')
-    .matches(/^[^.-]\S*$/, 'Incorrect password')
-    .min(5, 'Password is too short, min character is 5.')
-    .max(30, 'Maximum 30 characters!'),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm password is required'),
-});
 
 const initialValues = {
   name: '',
@@ -50,6 +23,32 @@ const RegisterForm = () => {
   const [showCPassword, setShowCPassword] = useState(false);
   const [registerUser] = useRegisterUserMutation();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  const schema = yup.object().shape({
+    name: yup
+      .string()
+      .matches(/^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/, t('validation.nameLetter'))
+      .min(3, t('validation.nameMin'))
+      .max(100, t('validation.nameMax'))
+      .required(t('validation.requiredName')),
+    email: yup
+      .string()
+      .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, t('validation.incorrectEmail'))
+      .min(10, t('validation.emailMin'))
+      .max(63, t('validation.emailMax'))
+      .required(t('validation.emailRequired')),
+    password: yup
+      .string()
+      .required(t('validation.passwordRequired'))
+      .matches(/^[^.-]\S*$/, t('validation.incorrectPassword'))
+      .min(5, t('validation.passwordMin'))
+      .max(30, t('validation.passwordMax')),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password'), null], t('validation.passwordMatch'))
+      .required(t('validation.confirmPassword')),
+  });
 
   const handleSubmit = async ({ name, email, password, confirmPassword }) => {
     try {
@@ -60,18 +59,26 @@ const RegisterForm = () => {
         confirmPassword,
       }).unwrap();
       dispatch(setCredentials({ ...userData.data }));
-      toast.success('Registration was successful');
+      toast.success(t('toast.regSuccess'));
     } catch (error) {
       toast.error(error.data.message);
     }
   };
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+  });
 
   return (
     <div className={s.container}>
       <a
         className={s.googleLink}
         href="https://br-backend.herokuapp.com/auth/google"
-        // href="http://localhost:3001/auth/google"
       >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
@@ -84,7 +91,7 @@ const RegisterForm = () => {
         {() => (
           <Form className={s.form}>
             <label className={s.label} htmlFor="name">
-              Name
+              {t('RegisterForm.name')}
             </label>
             <Field
               className={s.input}
@@ -103,7 +110,7 @@ const RegisterForm = () => {
             />
 
             <label className={s.label} htmlFor="email">
-              Email
+              {t('RegisterForm.emailLabel')}
             </label>
             <Field
               className={s.input}
@@ -121,7 +128,7 @@ const RegisterForm = () => {
             />
 
             <label className={s.label} htmlFor="password">
-              Password
+              {t('RegisterForm.passwordLabel')}
               <svg
                 className={s.icon}
                 onClick={() => setShowPassword(!showPassword)}
@@ -147,7 +154,8 @@ const RegisterForm = () => {
               )}
             />
             <label className={s.label} htmlFor="confirmPassword">
-              Confirm password
+              {t('RegisterForm.confirmPasswordLabel')}
+
               <svg
                 className={s.icon}
                 onClick={() => setShowCPassword(!showCPassword)}
@@ -176,15 +184,15 @@ const RegisterForm = () => {
             />
 
             <button className={s.btn} type="submit">
-              Register
+              {t('RegisterForm.button')}
             </button>
           </Form>
         )}
       </Formik>
       <p className={s.text}>
-        Already have an account?{' '}
+        {t('RegisterForm.question')}
         <Link to="/login" className={s.signupLink}>
-          Log in
+          {t('RegisterForm.link')}
         </Link>
       </p>
     </div>
