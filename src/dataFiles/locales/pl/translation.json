@@ -78,7 +78,10 @@
     "going": "Idę czytać",
     "already": "Już przeczytałem",
     "reading": "Czytam teraz",
-    "rating": "Ocena"
+    "rating": "Ocena",
+    "resume": "Wznów",
+    "choose": "Wybierz ocenę książki",
+    "save": "Zapisz"
   },
 
   "training": {

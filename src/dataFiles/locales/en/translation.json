@@ -78,7 +78,10 @@
     "going": "Going to read",
     "already": "Already read",
     "reading": "Reading now",
-    "rating": "Rating"
+    "rating": "Rating",
+    "resume": "Resume",
+    "choose": "Choose rating of the book",
+    "save": "Save"
   },
 
   "training": {

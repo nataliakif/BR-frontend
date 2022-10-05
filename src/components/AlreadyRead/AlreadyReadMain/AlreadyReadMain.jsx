@@ -57,7 +57,7 @@ const AlreadyReadMain = ({ alreadyReadListBooks }) => {
           <RatingControlled step={0.5} openedBook={row.row.original} />
         </i>
       ),
-      header: 'Rating',
+      header: t('library.rating'),
     }),
     columnHelper.accessor('action', {
       cell: row => (
