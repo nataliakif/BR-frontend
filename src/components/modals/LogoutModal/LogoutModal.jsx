@@ -13,14 +13,16 @@ const LogoutModal = ({ open, onClose, logoutFunc }) => {
         <div className={s.buttons}>
           <Button
             className="transparent"
-
-             text={t('modal.cancel')}
+            text={t('modal.cancel')}
             onClick={onClose}
             tabIndex={0}
             autoFocus={true}
           />
-          <Button className="main"  text={t('header.logOut')} onClick={logoutFunc} />
-
+          <Button
+            className="main"
+            text={t('header.logOut')}
+            onClick={logoutFunc}
+          />
         </div>
       </div>
     </Modal>
