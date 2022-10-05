@@ -34,6 +34,7 @@ const RegisterForm = () => {
       .required(t('validation.requiredName')),
     email: yup
       .string()
+      .matches(/^[^ ]*$/, t('validation.incorrectEmail'))
       .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, t('validation.incorrectEmail'))
       .min(10, t('validation.emailMin'))
       .max(63, t('validation.emailMax'))
