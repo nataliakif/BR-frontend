@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 
 const titleRules = /\S\w/;
-const authorRules = /\S\D/;
+const authorRules =
+  /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
 const schema = t => {
   const InputAddSchema = Yup.object().shape({

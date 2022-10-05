@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import ResumeModal from '../../modals/ResumeModal/ResumeModal';
 import sprite from '../../../images/sprite.svg';
@@ -14,6 +14,7 @@ import RatingControlled from '../../RatingControlled';
 
 const AlreadyReadMain = ({ alreadyReadListBooks }) => {
   const { t } = useTranslation();
+
   const data = alreadyReadListBooks;
   const columnHelper = createColumnHelper(alreadyReadListBooks);
 
@@ -119,6 +120,20 @@ const AlreadyReadMain = ({ alreadyReadListBooks }) => {
       </div>
     </>
   );
+};
+AlreadyReadMain.propTypes = {
+  alreadyReadListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  ),
 };
 
 export default AlreadyReadMain;

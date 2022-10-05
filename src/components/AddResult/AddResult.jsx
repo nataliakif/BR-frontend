@@ -1,4 +1,5 @@
 import s from './AddResult.module.css';
+import PropTypes from 'prop-types';
 import Button from 'components/Button/Button';
 import sprite from './sprite.svg';
 import { useState } from 'react';
@@ -8,14 +9,17 @@ import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 
-const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
-  console.log(data);
+const AddResult = ({ data, updateResult }) => {
   const { t } = useTranslation();
+
   const {
     goalPerDay: plan,
     startDate,
     finishDate,
     readStatistics: results,
+    alreadyReadPages,
+    isTrainingExecuted,
+    trainingPagesAmount,
   } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
@@ -28,15 +32,17 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
         { dateTime: values.date, pageAmount: values.pages },
       ],
     });
-    plan && plan > values.pages && setDoingFineModal(true);
+    if (
+      plan > values.pages &&
+      alreadyReadPages + values.pages < trainingPagesAmount
+    ) {
+      setDoingFineModal(true);
+    }
   };
 
   const sortResults = [...results].sort(
     (a, b) => new Date(b.dateTime) - new Date(a.dateTime)
   );
-
-  console.log(results);
-
   const closeDoingFineModal = () => {
     setDoingFineModal(false);
   };
@@ -55,68 +61,82 @@ const AddResult = ({ data, updateResult, hideAddBtn = false }) => {
     <>
       <Formik
         initialValues={{ date: new Date(), pages: '' }}
-        onSubmit={onSubmit}
         validationSchema={schema}
+        onSubmit={onSubmit}
       >
         {({ values }) => (
           <Form className={s.form}>
             <h2 className={s.title}>{t('statistics.result')}</h2>
-            <div className={s.wrapper}>
-              <div className={s.fieldWrapper}>
-                <p className={s.name}>{t('statistics.date')}</p>
+            <div className={s.resultsWrapper}>
+              <div className={s.wrapper}>
+                <div className={s.fieldWrapper}>
+                  <label className={s.name}>{t('statistics.date')}</label>
+                  <DatePickerField
+                    name="date"
+                    className={s.input}
+                    value={new Date(startDate)}
+                    minDate={new Date(startDate)}
+                    maxDate={new Date(finishDate)}
+                  />
 
-                <DatePickerField
-                  name="date"
-                  className={s.input}
-                  minDate={new Date(startDate)}
-                  maxDate={new Date(finishDate)}
+                  <svg className={s.iconSvg} style={{ width: '24px' }}>
+                    <use href={`${sprite}#icon-Polygon`}></use>
+                  </svg>
+                </div>
+                <div className={s.fieldWrapper}>
+                  <label className={s.name}>
+                    {t('statistics.amountPages')}
+                  </label>
+
+                  <Field className={s.input} type="number" name="pages" />
+                  <span className={s.error}>
+                    <ErrorMessage name="pages" />
+                  </span>
+                </div>
+              </div>
+              <div className={s.button}>
+                <Button
+                  type="submit"
+                  disabled={isTrainingExecuted}
+                  className="main"
+                  text={t('statistics.addResult')}
                 />
-
-                <svg className={s.iconSvg} style={{ width: '24px' }}>
-                  <use href={`${sprite}#icon-Polygon`}></use>
-                </svg>
               </div>
-              <div className={s.fieldWrapper}>
-                <p className={s.name}>{t('statistics.amountPages')}</p>
-                <Field className={s.input} type="number" name="pages" />
-                <span className={s.error}>
-                  <ErrorMessage name="pages" />
-                </span>
-              </div>
-            </div>
-            <div className={s.button}>
-              <Button
-                type="submit"
-                disabled={hideAddBtn}
-                className="main"
-                text={t('statistics.addResult')}
-              />
             </div>
             <h2 className={s.statisticsTitle}>{t('statistics.statistics')}</h2>
-            {results && (
-              <ul className={s.statistics}>
-                {sortResults.map(({ pageAmount, dateTime }, index) => (
-                  <li className={s.item} key={index}>
-                    <p className={s.day}>
-                      {new Date(dateTime).toLocaleDateString()}
-                    </p>
-                    <p className={s.data}>
-                      {new Date(dateTime).toLocaleTimeString()}
-                    </p>
-                    <p className={s.pages}>
-                      {pageAmount}
-                      <span>{t('statistics.pages')}</span>
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <ul className={s.statistics}>
+              {sortResults.map(({ pageAmount, dateTime }, index) => (
+                <li className={s.item} key={index}>
+                  <p className={s.day}>
+                    {new Date(dateTime).toLocaleDateString()}
+                  </p>
+                  <p className={s.time}>
+                    {new Date(dateTime).toLocaleTimeString()}
+                  </p>
+                  <p>
+                    {pageAmount}
+                    <span className={s.pages}>{t('statistics.pages')}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
           </Form>
         )}
       </Formik>
       <DoingFineModal open={doingFineModal} onClose={closeDoingFineModal} />
     </>
   );
+};
+
+AddResult.propTypes = {
+  data: PropTypes.shape({
+    readStatistics: PropTypes.arrayOf(PropTypes.object),
+    goalPerDay: PropTypes.number.isRequired,
+    startDate: PropTypes.string.isRequired,
+    finishDate: PropTypes.string.isRequired,
+  }),
+  isTrainingExecuted: PropTypes.bool.isRequired,
+  updateResult: PropTypes.func.isRequired,
 };
 
 export default AddResult;

@@ -4,12 +4,18 @@ import ReadingNowMobile from './ReadingNowMobile/ReadingNowMobile';
 import ReadingNowMain from './ReadingNowMain/ReadingNowMain';
 import useIsMobile from '../../helpers/useIsMobile';
 
-
-const ReadingNow = ({readingNowListBooks}) => {
+const ReadingNow = ({ readingNowListBooks }) => {
   const isMobile = useIsMobile();
-  
-  return <>{isMobile ? <ReadingNowMobile readingNowListBooks={readingNowListBooks} /> : <ReadingNowMain readingNowListBooks={readingNowListBooks} />}</>;
 
+  return (
+    <>
+      {isMobile ? (
+        <ReadingNowMobile readingNowListBooks={readingNowListBooks} />
+      ) : (
+        <ReadingNowMain readingNowListBooks={readingNowListBooks} />
+      )}
+    </>
+  );
 };
 
 ReadingNow.propTypes = {
@@ -24,7 +30,7 @@ ReadingNow.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  ).isRequired,
+  ),
 };
 
 export default ReadingNow;

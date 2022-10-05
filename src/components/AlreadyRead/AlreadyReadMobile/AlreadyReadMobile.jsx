@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ResumeModal from 'components/modals/ResumeModal';
 import Rating from '@mui/material/Rating';
 import s from './AlreadyReadMobile.module.css';
@@ -64,6 +65,7 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
                               name="simple-controlled"
                               value={rating}
                               precision={0.5}
+                              size="small"
                               onChange={(event, newValue) => {
                                 editBook({
                                   id: _id,
@@ -92,6 +94,21 @@ const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
       </ul>
     </section>
   );
+};
+
+AlreadyReadMobile.propTypes = {
+  alreadyReadListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  ),
 };
 
 export default AlreadyReadMobile;

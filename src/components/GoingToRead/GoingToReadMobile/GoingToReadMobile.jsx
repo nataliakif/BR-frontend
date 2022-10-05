@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import s from './GoingToReadMobile.module.css';
 import { useTranslation } from 'react-i18next';
 
-// const readingNowBooks = books.filter(book => book.status === 'Going to read');
-
 const GoingToReadMobile = ({ goingToReadListBooks }) => {
   const { t } = useTranslation();
+
   return (
     <section className={s.goingToReadMobilesection}>
       <h2 className={s.title}>{t('library.going')}</h2>

@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import s from './StartModal.module.css';
 import Icons from '../../../images/symbol-defs.svg';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 function StartModal() {
   const [open, setOpen] = useState(true);
@@ -51,5 +52,10 @@ function StartModal() {
     </div>
   );
 }
+
+StartModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default StartModal;

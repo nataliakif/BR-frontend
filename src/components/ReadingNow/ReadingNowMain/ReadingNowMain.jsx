@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { useTranslation } from 'react-i18next';
 import stringMax from 'helpers/stringMax';
@@ -13,6 +13,7 @@ import sprite from '../../../images/sprite.svg';
 
 const ReadingNowMain = ({ readingNowListBooks }) => {
   const { t } = useTranslation();
+
   const data = readingNowListBooks;
   const columnHelper = createColumnHelper(readingNowListBooks);
   const columns = [
@@ -61,7 +62,9 @@ const ReadingNowMain = ({ readingNowListBooks }) => {
       <div>
         <table className={s.table}>
           <colgroup>
-            <col span="1" className={s.style} />
+            <col span="1" className={s.styleTitleBook} />
+            <col span="1" className={s.styleAuthor} />
+            <col span="2" className={s.styleColums} />
           </colgroup>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
@@ -95,6 +98,21 @@ const ReadingNowMain = ({ readingNowListBooks }) => {
       </div>
     </>
   );
+};
+
+ReadingNowMain.propTypes = {
+  readingNowListBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      bookTitle: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publicationDate: PropTypes.number.isRequired,
+      amountOfPages: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      rating: PropTypes.number,
+      review: PropTypes.string,
+    })
+  ),
 };
 
 export default ReadingNowMain;

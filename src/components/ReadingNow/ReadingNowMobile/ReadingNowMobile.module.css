@@ -15,7 +15,7 @@
   padding-top: 20px;
   padding-bottom: 32px;
   padding-left: 54px;
-  padding-right: 35px;
+  padding-right: 32px;
 }
 
 .cardBook:not(:last-child) {
@@ -34,8 +34,7 @@
   left: 20px;
   width: 22px;
   height: 17px;
-  content: url('../../../images/open-book-going-to-read.svg');
-  /* content: url('../../../images/sprite.svg#icon-open-book'); */
+  content: url('../../../images/library/open-book-going-to-read.svg');
 }
 
 .cardTitle {
@@ -60,5 +59,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
-  padding: 8px;
+  /* padding: 5px; */
+  padding-top: 4px;
+  padding-bottom: 4px;
 }

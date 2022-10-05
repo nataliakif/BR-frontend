@@ -5,11 +5,12 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
 
-import { useEditBookMutation } from '../../../redux/books/booksApi';
+import PropTypes from 'prop-types';
 
+import { useEditBookMutation } from '../../../redux/books/booksApi';
 import s from './ResumeModal.module.css';
 
-const MyInput = ({ field, form, ...props }) => {
+const MyInput = ({ field, ...props }) => {
   return <textarea {...field} {...props} />;
 };
 
@@ -101,6 +102,24 @@ const ResumeModal = ({ row }) => {
       </Modal>
     </div>
   );
+};
+
+MyInput.propTypes = {
+  field: PropTypes.object,
+  props: PropTypes.object,
+};
+
+ResumeModal.propTypes = {
+  row: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string,
+    author: PropTypes.string,
+    publicationDate: PropTypes.number,
+    amountOfPages: PropTypes.number,
+    status: PropTypes.string,
+    rating: PropTypes.number,
+    review: PropTypes.string,
+  }),
 };
 
 export default ResumeModal;

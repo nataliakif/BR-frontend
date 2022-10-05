@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import sprite from '../DoingFineModal/sprite.svg';
@@ -34,6 +35,11 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
       </div>
     </Modal>
   );
+};
+TrainingExecutedModal.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  handleCloseOfTraining: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
 
 export default TrainingExecutedModal;

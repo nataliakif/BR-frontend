@@ -1,4 +1,5 @@
 import { useCountdown } from 'services/hooks/useCountdown';
+import PropTypes from 'prop-types';
 import s from './CountdownTimers.module.css';
 import { useTranslation } from 'react-i18next';
 
@@ -69,3 +70,7 @@ const CountdownTimers = ({ targetDate }) => {
 };
 
 export default CountdownTimers;
+
+CountdownTimers.propTypes = {
+  targetDate: PropTypes.string,
+};

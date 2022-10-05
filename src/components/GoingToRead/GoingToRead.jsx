@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 
 import GoingToReadMobile from './GoingToReadMobile/GoingToReadMobile';
 import GoingToReadMain from './GoingToReadMain/GoingToReadMain';
-import useIsMobile from "../../helpers/useIsMobile";
+import useIsMobile from '../../helpers/useIsMobile';
 
-const GoingToRead = ({goingToReadListBooks}) => {
+const GoingToRead = ({ goingToReadListBooks }) => {
   const isMobile = useIsMobile();
-  
+
   return (
     <>
-      
-      {isMobile ? <GoingToReadMobile goingToReadListBooks={goingToReadListBooks} /> : <GoingToReadMain goingToReadListBooks={goingToReadListBooks} />}
+      {isMobile ? (
+        <GoingToReadMobile goingToReadListBooks={goingToReadListBooks} />
+      ) : (
+        <GoingToReadMain goingToReadListBooks={goingToReadListBooks} />
+      )}
     </>
   );
 };
@@ -27,9 +30,7 @@ GoingToRead.propTypes = {
       rating: PropTypes.number,
       review: PropTypes.string,
     })
-  ).isRequired,
+  ),
 };
 
 export default GoingToRead;
-
-

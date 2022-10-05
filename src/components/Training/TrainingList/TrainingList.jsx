@@ -1,6 +1,7 @@
 import s from './TrainingList.module.css';
 import sprite from './sprite.svg';
 import { useTranslation } from 'react-i18next';
+import useIsMobile from '../../../helpers/useIsMobile';
 
 const TrainingList = ({
   trainingBooks,
@@ -14,6 +15,7 @@ const TrainingList = ({
     t('library.year'),
     t('library.pages'),
   ];
+  const isMobile = useIsMobile();
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.header}>
@@ -31,31 +33,47 @@ const TrainingList = ({
               bookTitle: title,
               author,
               amountOfPages: pages,
-              publicationDate: date,
+              publicationDate: year,
             },
             index
           ) => (
             <li className={s.item} key={index}>
+              <svg className={s.icon} width="22" height="17">
+                <use href={`${sprite}#icon-grey-book`}></use>
+              </svg>
+
+              <p className={s.title}>{title}</p>
               <p>
-                <svg className={s.icon} width="22" height="17">
-                  <use href={`${sprite}#icon-grey-book`}></use>
-                </svg>
-                {title}
+                {isMobile && (
+                  <span className={s.subtitle}>{t('library.author')}:</span>
+                )}
+                {author}
               </p>
-              <p>{author}</p>
-              <p>{date}</p>
-              <p>{pages}</p>{' '}
-              <button
+              <p>
+                {isMobile && (
+                  <span className={s.subtitle}>{t('library.year')}:</span>
+                )}
+                {year}
+              </p>
+              <p>
+                {isMobile && (
+                  <span className={s.subtitle}>{t('library.pages')}:</span>
+                )}
+                {pages}
+              </p>
+
+              <svg
                 type="button"
+                id="delete_button"
                 onClick={() => {
                   deleteBookFromList(id);
                 }}
-                className={s.delete}
+                className={s.icon}
+                width="22"
+                height="17"
               >
-                <svg className={s.icon} width="22" height="17">
-                  <use href={`${sprite}#icon-delete`}></use>
-                </svg>
-              </button>
+                <use href={`${sprite}#icon-delete`}></use>
+              </svg>
             </li>
           )
         )}
