@@ -1,12 +1,12 @@
-import Checkbox from '@mui/material/Checkbox';
-import { grey, orange } from '@mui/material/colors';
-import PropTypes from 'prop-types';
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import Checkbox from '@mui/material/Checkbox';
+import { grey, orange } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
 import stringMax from 'helpers/stringMax';
 import s from './StatisticsList.module.css';
@@ -33,7 +33,7 @@ const StatisticsList = ({ books }) => {
                     }}
                   />
                 </div>
-            <div className={s.titleBook}>{stringMax(info.getValue(), 50)}</div>
+            <div className={s.titleBook}>{stringMax(info.getValue(), 33)}</div>
           </div>
         </i>
       ),

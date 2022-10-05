@@ -10,10 +10,6 @@
   margin-bottom: 20px;
 }
 
-.card {
-  /* max-width: 280px; */
-}
-
 .cardBook {
   position: relative;
   background-color: var(--main-color);
@@ -38,7 +34,6 @@
   top: 27px;
   left: 20px;
   content: url('../../../images/library/open-book.svg');
-  /* z-index: 1; */
 }
 
 .cardTitle {

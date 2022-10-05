@@ -14,12 +14,6 @@
   padding-bottom: 40px;
 }
 
-@media screen and (min-width: 768px) {
-  .box {
-    width: 608px;
-    height: 399px;
-  }
-}
 
 .title {
   margin-bottom: 20px;
@@ -32,21 +26,23 @@
 
   display: block;
 }
-.textAreaBox {
+
+.textAreaEmpty {
   width: 240px;
   height: 170px;
   resize: none;
-  /* margin-top: 8px; */
+  margin-top: 8px;
   padding: 8px;
   outline: none;
+  border: 1px solid var(--icon-color);
 }
 
-@media screen and (min-width: 768px) {
-  .textAreaBox {
-    width: 568px;
-    height: 170px;
-  }
+.textAreaFilled {
+  composes: textAreaEmpty;
+  border: 1px solid var(--accent-color);
 }
+
+
 .buttonList {
   display: flex;
   justify-content: space-around;
@@ -84,35 +80,10 @@
 .buttonOpen:hover,
 .buttonOpen:focus {
   box-shadow: none;
-  background:var(--accent-color)
+  background: var(--accent-color);
 }
 
 
-@media screen and (min-width: 768px) {
-  .buttonWrapper {
-    padding-right: 5px;
-  }
-  .buttonWrapper > .buttonOpen {
-    width: 80px;
-  }
-  .buttonBack,
-  .buttonSave {
-    width: 130px;
-    height: 40px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .buttonWrapper {
-padding-top: 11px;
-padding-bottom: 11px;
-padding-right: 80px;
-padding-left: 10px;
-  }
-    .buttonWrapper>.buttonOpen {
-    width: 130px;
-    
-  }
-}
 .buttonBack {
   min-width: 98px;
   padding-top: 11px;
@@ -144,4 +115,48 @@ padding-left: 10px;
 .buttonSave:focus {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   background: var(--library-color);
+}
+
+@media screen and (min-width: 768px) {
+  .box {
+    width: 608px;
+    height: 399px;
+  }
+
+  .textAreaBox {
+    width: 568px;
+    height: 170px;
+  }
+
+  .textAreaEmpty {
+    width: 568px;
+    height: 170px;
+  }
+
+  .buttonWrapper {
+    padding-right: 5px;
+  }
+
+  .buttonWrapper>.buttonOpen {
+    width: 80px;
+  }
+
+  .buttonBack,
+  .buttonSave {
+    width: 130px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .buttonWrapper {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-right: 80px;
+    padding-left: 10px;
+  }
+
+  .buttonWrapper>.buttonOpen {
+    width: 130px;
+  }
 }

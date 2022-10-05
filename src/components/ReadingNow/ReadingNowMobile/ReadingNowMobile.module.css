@@ -35,7 +35,6 @@
   width: 22px;
   height: 17px;
   content: url('../../../images/library/open-book-going-to-read.svg');
-  /* content: url('../../../images/sprite.svg#icon-open-book'); */
 }
 
 .cardTitle {
@@ -60,8 +59,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
-  /* padding: 5px; */
   padding-top: 4px;
   padding-bottom: 4px;
-
 }

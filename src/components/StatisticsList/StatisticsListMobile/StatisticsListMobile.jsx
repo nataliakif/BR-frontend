@@ -1,14 +1,13 @@
+import Checkbox from '@mui/material/Checkbox';
+import { grey, orange } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 
-import Checkbox from '@mui/material/Checkbox';
 import s from './StatisticsListMobile.module.css';
-import { grey, orange } from '@mui/material/colors';
 
 const StatisticsListMobile = ({ books }) => {
     return (
   <>
     <section className={s.booksMobilesection}>
-      {/* <h2 className={s.title}>Going to read </h2> */}
       <ul className={s.card}>
         {books?.map(
           ({

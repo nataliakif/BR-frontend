@@ -4,19 +4,19 @@ import { Formik, Form, Field } from 'formik';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
-
 import PropTypes from 'prop-types';
 
 import { useEditBookMutation } from '../../../redux/books/booksApi';
 import s from './ResumeModal.module.css';
 
-const MyInput = ({ field,  ...props }) => {
+const MyInput = ({ field, ...props }) => {
   return <textarea {...field} {...props} />;
 };
 
 const ResumeModal = ({ row }) => {
   const [open, setOpen] = useState(false);
   const [openedBook, setOpenedBook] = useState();
+  const [textArea, setTextArea] = useState('textAreaEmpty');
 
   const [editBook] = useEditBookMutation();
 
@@ -52,7 +52,6 @@ const ResumeModal = ({ row }) => {
                   ...openedBook,
                   id: openedBook._id,
                 });
-
                 setOpen(false);
               }}
             >
@@ -71,10 +70,15 @@ const ResumeModal = ({ row }) => {
                   <Field
                     value={openedBook.review}
                     name="review"
+                    maxlength="1000"
                     placeholder="..."
-                    className={s.textAreaBox}
+                    className={s[textArea]}
                     component={MyInput}
                     onChange={e => {
+                      e.preventDefault();
+                      setTextArea(
+                        !!e.target.value ? 'textAreaFilled' : 'textAreaEmpty'
+                      );
                       setOpenedBook({ ...openedBook, review: e.target.value });
                     }}
                   />
@@ -107,20 +111,19 @@ const ResumeModal = ({ row }) => {
 MyInput.propTypes = {
   field: PropTypes.object,
   props: PropTypes.object,
-
 };
 
 ResumeModal.propTypes = {
   row: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      bookTitle: PropTypes.string,
-      author: PropTypes.string,
-      publicationDate: PropTypes.number,
-      amountOfPages: PropTypes.number,
-      status: PropTypes.string,
-      rating: PropTypes.number,
-      review: PropTypes.string,
-    })
+    _id: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string,
+    author: PropTypes.string,
+    publicationDate: PropTypes.number,
+    amountOfPages: PropTypes.number,
+    status: PropTypes.string,
+    rating: PropTypes.number,
+    review: PropTypes.string,
+  }),
 };
 
 export default ResumeModal;
