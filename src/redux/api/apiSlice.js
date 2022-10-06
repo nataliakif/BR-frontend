@@ -3,7 +3,6 @@ import { setError, logOut } from '../authUser/authUserSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://br-backend.herokuapp.com/',
-  // baseUrl: 'http://localhost:3001/',
 
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -23,15 +22,18 @@ const baseQueryWithErrorHandler = async (args, api, extraOptions) => {
     switch (result.meta.response.status) {
       case 400:
         errorMessage = 'Email or password is incorrect';
+        api.dispatch(logOut());
+        api.dispatch(setError(errorMessage));
         break;
       case 401:
         errorMessage = 'Email or password is incorrect';
+        api.dispatch(logOut());
+        api.dispatch(setError(errorMessage));
         break;
       default:
         errorMessage = 'Something went wrong! Try again!';
+        api.dispatch(setError(errorMessage));
     }
-    api.dispatch(logOut());
-    api.dispatch(setError(errorMessage));
   }
   return result;
 };

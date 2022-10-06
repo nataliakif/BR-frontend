@@ -1,4 +1,4 @@
-
+import Container from 'components/Container';
 import CountdownTimers from 'components/CountdownTimers';
 import MyGoals from 'components/MyGoals';
 import AddResult from 'components/AddResult/AddResult';
@@ -57,6 +57,15 @@ const StatisticView = () => {
     if (!userTraining) {
       navigate('/training');
     } else {
+      const changeBookStatusToFinished = booksToChange => {
+        booksToChange.forEach(book => {
+          editBook({
+            ...book,
+            id: book._id,
+            status: 'finished',
+          });
+        });
+      };
       const { startDate, finishDate, books, readStatistics, _id } =
         userTraining;
       const trainingDaysAmount = getTrainingDaysAmount(startDate, finishDate);
@@ -89,17 +98,15 @@ const StatisticView = () => {
         userHadReadNewBook:
           notFinishedBooksAmount < prevState?.notFinishedBooksAmount,
       }));
+      changeBookStatusToFinished(
+        booksWithCurrentStatus.filter(
+          book => book.status !== 'finished' && book.alreadyFinished
+        )
+      );
     }
-  }, [navigate, userTraining]);
+  }, [editBook, navigate, userTraining]);
 
   const handleCloseOfTraining = () => {
-    currentTraining.books.forEach(book => {
-      editBook({
-        ...book,
-        id: book._id,
-        status: 'finished',
-      });
-    });
     deleteTraining(userTraining._id);
   };
 
@@ -108,27 +115,25 @@ const StatisticView = () => {
   ) : (
     currentTraining && (
       <>
-        <section className={s.sectionStatistic}>
-          <div className={s.statisticsWrapper}>
-            {/* <div className={s.timerWrapper}> */}
-              <CountdownTimers
-                targetDate={new Date(currentTraining.finishDate).getTime()}
-              />
-                <MyGoals
-                  bookAmount={currentTraining.books.length}
-                  daysAmount={currentTraining.trainingDaysAmount}
-                  booksLeft={currentTraining.notFinishedBooksAmount}
-                  showBooksLeft={true}
-                />
+        <Container>
+          <div className={s.statistics}>
+            <div className={s.leftWrapper}>
+              <CountdownTimers targetDate={currentTraining.finishDate} />
               {isMobile ? (
                 <StatisticsListMobile books={currentTraining.books} />
               ) : (
                 <StatisticsList books={currentTraining.books} />
               )}
-            {/* </div> */}
+            </div>
+            <MyGoals
+              bookAmount={currentTraining.books.length}
+              daysAmount={currentTraining.trainingDaysAmount}
+              booksLeft={currentTraining.notFinishedBooksAmount}
+              showBooksLeft={true}
+            />
           </div>
-        </section>
-        <section className={s.sectionStatistic}>
+        </Container>
+        <Container>
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <Chart
@@ -140,7 +145,7 @@ const StatisticView = () => {
             </div>
             <AddResult data={currentTraining} updateResult={updateResult} />
           </div>
-        </section>
+        </Container>
         {isTrainingExecuted && (
           <TrainingExecutedModal
             handleCloseOfTraining={handleCloseOfTraining}

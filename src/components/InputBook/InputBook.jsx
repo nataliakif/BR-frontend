@@ -5,6 +5,7 @@ import schema from './ErrorInput';
 import PropTypes from 'prop-types';
 import { useCreateBookMutation } from 'redux/books/booksApi';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 const initialValues = {
   title: '',
@@ -13,7 +14,7 @@ const initialValues = {
   pagesTotal: '',
 };
 
-function InputBook() {
+function InputBook({ addedBookTitles }) {
   const { t } = useTranslation();
   const [createBook] = useCreateBookMutation();
 
@@ -26,6 +27,12 @@ function InputBook() {
             action="submit"
             onSubmit={e => {
               e.preventDefault();
+              if (addedBookTitles.includes(values.title)) {
+                toast.warning(
+                  `You have already added book with title - ${values.title}`
+                );
+                return;
+              }
               createBook({
                 bookTitle: values.title,
                 author: values.author,
