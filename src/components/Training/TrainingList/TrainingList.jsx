@@ -1,7 +1,6 @@
 import s from './TrainingList.module.css';
 import sprite from './sprite.svg';
 import { useTranslation } from 'react-i18next';
-import useIsMobile from '../../../helpers/useIsMobile';
 
 const TrainingList = ({
   trainingBooks,
@@ -15,7 +14,6 @@ const TrainingList = ({
     t('library.year'),
     t('library.pages'),
   ];
-  const isMobile = useIsMobile();
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.header}>
@@ -42,24 +40,9 @@ const TrainingList = ({
                 <use href={`${sprite}#icon-grey-book`}></use>
               </svg>
               <p className={s.title}>{title}</p>
-              <p>
-                {isMobile && (
-                  <span className={s.subtitle}>{t('library.author')}:</span>
-                )}
-                {author}
-              </p>
-              <p>
-                {isMobile && (
-                  <span className={s.subtitle}>{t('library.year')}:</span>
-                )}
-                {year}
-              </p>
-              <p>
-                {isMobile && (
-                  <span className={s.subtitle}>{t('library.pages')}:</span>
-                )}
-                {pages}
-              </p>
+              <p>{author}</p>
+              <p>{year}</p>
+              <p>{pages}</p>
 
               <svg
                 type="button"
