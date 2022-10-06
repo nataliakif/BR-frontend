@@ -9,15 +9,12 @@
   display: none;
 }
 .item {
-  margin: 0;
   font-weight: 500;
   color: var(--main-text-color);
 }
+
 .list {
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--icon-color);
+  padding: 20px 0;
 }
 .itemBook {
   display: flex;
@@ -27,6 +24,7 @@
   font-weight: 500;
   color: var(--main-text-color);
 }
+
 .subtitle {
   display: inline-block;
   width: 70px;
@@ -40,16 +38,22 @@
 .author {
   margin-left: 50px;
 }
+.plug {
+  display: none;
+}
 
 @media screen and (min-width: 768px) {
   .listHeader {
     margin-top: 40px;
   }
+  .list {
+    padding: 0;
+  }
   .header {
     padding-top: 12px;
     padding-bottom: 12px;
     display: grid;
-    grid-template-columns: 242px 232px 100px 100px;
+    grid-template-columns: 242px 180px 110px 100px;
     border-top: 1px solid var(--icon-color);
     border-bottom: 1px solid var(--icon-color);
   }
@@ -57,11 +61,19 @@
     margin: 0;
     padding: 12px 0px;
     display: grid;
-    grid-template-columns: 242px 232px;
+    grid-template-columns: 30px 200px 180px 125px 100px 10px;
     border-top: none;
   }
   .itemBook:not(:first-child) {
     display: none;
+  }
+  .trainingWrapper {
+    margin-top: 40px;
+  }
+
+  .plug {
+    composes: item;
+    border-bottom: none;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -73,5 +85,11 @@
   }
   .item {
     grid-template-columns: 30px 315px 340px 100px 60px 40px;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .list {
+    padding-top: 23px;
   }
 }

@@ -31,41 +31,43 @@ const TrainingForm = ({
   return (
     <Formik initialValues={initialValues} validationSchema={schema}>
       {({ values, handleChange }) => (
-        <Form>
-          <div className={s.form} autoComplete="off">
-            <h1 className={s.title}>{t('training.myTraining')}</h1>
-          </div>
-          <div className={s.dateContainer}>
-            <DatePickerInput
-              name="start"
-              minDate={new Date()}
-              onChange={e => {
-                handleChange(e);
-                setStartDate(e);
-                onStartDateChange(e);
-              }}
-              dateFormat="dd-MM-yyyy"
-              placeholderText={t('training.start')}
-              autoComplete="off"
-              required
-            ></DatePickerInput>
-            <ErrorMessage name="start" />
+        <Form autoComplete="off">
+          <h1 className={s.title}>{t('training.myTraining')}</h1>
 
-            <DatePickerInput
-              name="finish"
-              minDate={new Date(startDate).setDate(
-                new Date(startDate).getDate() + 1
-              )}
-              maxDate={new Date(startDate).setDate(
-                new Date(startDate).getDate() + 32
-              )}
-              onChange={onFinishDateChange}
-              dateFormat="dd-MM-yyyy"
-              placeholderText={t('training.finish')}
-              autoComplete="off"
-              required
-            ></DatePickerInput>
-            <ErrorMessage name="finish" />
+          <div className={s.dateContainer}>
+            <div className={s.date}>
+              <DatePickerInput
+                name="start"
+                minDate={new Date()}
+                onChange={e => {
+                  handleChange(e);
+                  setStartDate(e);
+                  onStartDateChange(e);
+                }}
+                dateFormat="dd-MM-yyyy"
+                placeholderText={t('training.start')}
+                autoComplete="off"
+                required
+              ></DatePickerInput>
+              <ErrorMessage className={s.eerror} name="start" />
+            </div>
+            <div className={s.date}>
+              <DatePickerInput
+                name="finish"
+                minDate={new Date(startDate).setDate(
+                  new Date(startDate).getDate() + 1
+                )}
+                maxDate={new Date(startDate).setDate(
+                  new Date(startDate).getDate() + 32
+                )}
+                onChange={onFinishDateChange}
+                dateFormat="dd-MM-yyyy"
+                placeholderText={t('training.finish')}
+                autoComplete="off"
+                required
+              ></DatePickerInput>
+              <ErrorMessage name="finish" className={s.error} />
+            </div>
           </div>
           <div className={s.bookLabel}>
             <Field
@@ -85,7 +87,7 @@ const TrainingForm = ({
               ))}
             </Field>
 
-            <ErrorMessage name="pages" />
+            <ErrorMessage name="pages" className={s.error} />
 
             <button
               type="button"

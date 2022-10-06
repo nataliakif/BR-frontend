@@ -1,20 +1,14 @@
-.form {
-  min-width: 280px;
-  margin-top: 68px;
-  height: 60px;
-  background: var(--training-bg-color);
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  align-items: center;
-}
 .bookPlaceholder {
   position: absolute;
   color: var(--icon-color);
   padding: 10px;
 }
 .title {
-  margin: 0;
+  display: block;
+  margin-top: 68px;
+  background: var(--training-bg-color);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   padding: 18px 81px;
-  font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
@@ -25,6 +19,7 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .bookLabel {
@@ -33,15 +28,29 @@
   justify-content: center;
   margin-top: 32px;
 }
-
+.date {
+  display: block;
+  margin-bottom: 20px;
+}
+.error {
+  color: red !important;
+  font-size: 12px;
+  margin-top: 2px;
+}
 .bookInput {
   position: relative;
   display: flex;
-  min-width: 280px;
+  width: 280px;
   height: 42px;
   margin-bottom: 32px;
   background: var(--main-color);
   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+}
+.bookLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
 }
 
 .arrow {
@@ -68,22 +77,30 @@
 .selectOption {
   color: var(--icon-color) !important;
 }
+
 @media screen and (min-width: 768px) {
   .form {
-    max-width: 690px;
+    width: 690px;
     margin-top: 40px;
     height: 60px;
     left: 32px;
     top: 374px;
   }
-  
+  .title {
+    width: 704px;
+    margin-top: 40px;
+  }
+
   .dateContainer {
-    margin-top: 20px;
-    display: flex;
+    margin-top: 28px;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+  .date {
+    margin-bottom: 0;
   }
   .bookLabel {
+    margin-top: 24px;
     flex-direction: row;
     flex-grow: 1;
   }
@@ -93,9 +110,6 @@
     width: 483px;
     height: 42px;
   }
-  .btnAdd {
-    margin: 0;
-  }
 }
 @media screen and (min-width: 1280px) {
   .form {
@@ -103,8 +117,26 @@
     margin-top: 0;
     width: 928px;
     height: 60px;
-    left: 16px;
-    top: 100px;
   }
-  
+  .title {
+    width: 928px;
+    margin-top: 0;
+  }
+  .dateContainer {
+    justify-content: center;
+  }
+  .date {
+    margin-bottom: 0;
+  }
+  .bookLabel {
+    margin-top: 24px;
+    justify-content: flex-start;
+  }
+  .bookInput {
+    width: 715px;
+    margin-right: 32px;
+  }
+  .btnAdd {
+    width: 181px;
+  }
 }

@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .addPageBtn {
@@ -26,7 +27,6 @@
   height: 30px;
   position: absolute;
   color: var(--accent-color);
-
 }
 @media screen and (min-width: 1280px) {
   .training {
@@ -37,23 +37,32 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 10px;
 }
 @media screen and (min-width: 768px) {
   .wrapperContainer {
     display: flex;
+
     padding-bottom: 60px;
   }
   .trainingBookList {
     display: grid;
     grid-template-columns: 345px 340px 100px 100px;
   }
+  .training {
+    padding-top: 32px;
+  }
+  .buttonWrapper {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+  }
 }
 @media screen and (min-width: 1280px) {
   .wrapperContainer {
     margin-right: 32px;
     justify-content: space-between;
+  }
+  .training {
     padding-top: 0;
-    padding-bottom: 0;
   }
 }

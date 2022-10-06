@@ -38,10 +38,9 @@ const TrainingList = ({
             index
           ) => (
             <li className={s.item} key={index}>
-              <svg className={s.icon} width="22" height="17">
+              <svg className={s.icon_book} width="22" height="17">
                 <use href={`${sprite}#icon-grey-book`}></use>
               </svg>
-
               <p className={s.title}>{title}</p>
               <p>
                 {isMobile && (
@@ -68,7 +67,7 @@ const TrainingList = ({
                 onClick={() => {
                   deleteBookFromList(id);
                 }}
-                className={s.icon}
+                className={s.icon_delete}
                 width="22"
                 height="17"
               >
@@ -77,6 +76,12 @@ const TrainingList = ({
             </li>
           )
         )}
+        <li className={s.plug}>
+          <svg className={s.icon} width="22" height="17">
+            <use href={`${sprite}#icon-grey-book`}></use>
+          </svg>
+          <p>...</p>
+        </li>
       </ul>
     </div>
   );

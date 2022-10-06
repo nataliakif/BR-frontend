@@ -139,19 +139,20 @@ const TrainingView = () => {
                 onClick={() => setShowElement(false)}
               />
             )}
+            {showStButton && !showElement && (
+              <div className={s.buttonWrapper}>
+                <Button
+                  id="startTraining"
+                  className="main"
+                  text={t('training.startTraining')}
+                  onClick={onStartClick}
+                  onEnded={isLoading}
+                />
+              </div>
+            )}
           </div>
         </div>
-      </Container>
-      <Container>
-        {showStButton && !showElement && (
-          <Button
-            id="startTraining"
-            className="main"
-            text={t('training.startTraining')}
-            onClick={onStartClick}
-            onEnded={isLoading}
-          />
-        )}
+
         {!showElement && (
           <Chart plan={planedPagesPerDay} readingStatistics={[]} />
         )}
