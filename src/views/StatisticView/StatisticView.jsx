@@ -1,4 +1,4 @@
-import Container from 'components/Container';
+
 import CountdownTimers from 'components/CountdownTimers';
 import MyGoals from 'components/MyGoals';
 import AddResult from 'components/AddResult/AddResult';
@@ -108,27 +108,27 @@ const StatisticView = () => {
   ) : (
     currentTraining && (
       <>
-        <Container>
-          <div className={s.statistics}>
-            <div className={s.leftWrapper}>
+        <section className={s.sectionStatistic}>
+          <div className={s.statisticsWrapper}>
+            {/* <div className={s.timerWrapper}> */}
               <CountdownTimers
                 targetDate={new Date(currentTraining.finishDate).getTime()}
               />
+                <MyGoals
+                  bookAmount={currentTraining.books.length}
+                  daysAmount={currentTraining.trainingDaysAmount}
+                  booksLeft={currentTraining.notFinishedBooksAmount}
+                  showBooksLeft={true}
+                />
               {isMobile ? (
                 <StatisticsListMobile books={currentTraining.books} />
               ) : (
                 <StatisticsList books={currentTraining.books} />
               )}
-            </div>
-            <MyGoals
-              bookAmount={currentTraining.books.length}
-              daysAmount={currentTraining.trainingDaysAmount}
-              booksLeft={currentTraining.notFinishedBooksAmount}
-              showBooksLeft={true}
-            />
+            {/* </div> */}
           </div>
-        </Container>
-        <Container>
+        </section>
+        <section className={s.sectionStatistic}>
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <Chart
@@ -140,7 +140,7 @@ const StatisticView = () => {
             </div>
             <AddResult data={currentTraining} updateResult={updateResult} />
           </div>
-        </Container>
+        </section>
         {isTrainingExecuted && (
           <TrainingExecutedModal
             handleCloseOfTraining={handleCloseOfTraining}
