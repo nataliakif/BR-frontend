@@ -12,14 +12,13 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Progress from 'components/Progress/Progress';
 import StatisticsList from 'components/StatisticsList/StatisticsList';
+import StatisticsListMobile from 'components/StatisticsList/StatisticsListMobile';
+import useIsMobile from 'helpers/useIsMobile';
 import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
 import { Chart } from 'components/Chart/Chart';
 import calculateStatistics from 'services/calculateStatistics';
 import { useEditBookMutation } from 'redux/books/booksApi';
 import TrainingExecutedModal from 'components/modals/TrainingExecutedModal/TrainingExecutedModal';
-import StatisticsListMobile from 'components/StatisticsList/StatisticsListMobile';
-import useIsMobile from 'helpers/useIsMobile';
-import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
 
 const findAlreadyReadBook = (books, alreadyReadPages) => {
   let readPagesLeft = alreadyReadPages;
@@ -36,6 +35,7 @@ const findAlreadyReadBook = (books, alreadyReadPages) => {
 };
 
 const StatisticView = () => {
+  const isMobile = useIsMobile();
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
 
@@ -48,8 +48,6 @@ const StatisticView = () => {
   const [currentTraining, setCurrentTraining] = useState(null);
 
   const [updateResult] = useEditTrainingMutation();
-
-  const isMobile = useIsMobile();
 
   const isTrainingExecuted =
     currentTraining?.alreadyReadPages >= currentTraining?.trainingPagesAmount ??
@@ -109,43 +107,33 @@ const StatisticView = () => {
   }, [editBook, navigate, userTraining]);
 
   const handleCloseOfTraining = () => {
-    /*     currentTraining.books.forEach(book => {
-      editBook({
-        ...book,
-        id: book._id,
-        status: 'finished',
-      });
-    }); */
     deleteTraining(userTraining._id);
   };
 
-  return isFetchingTraining ? (
+ return isFetchingTraining ? (
     <Progress />
   ) : (
     currentTraining && (
       <>
-        <div className={s.statistics}>
-          <div className={s.leftWrapper}>
-            <CountdownTimers targetDate={currentTraining.finishDate} />
+        <Container>
+          <div className={s.statistics}>
+            <div className={s.leftWrapper}>
+              <CountdownTimers
+                targetDate={currentTraining.finishDate}
+              />
+              {isMobile ? (
+                <StatisticsListMobile books={currentTraining.books} />
+              ) : (
+                <StatisticsList books={currentTraining.books} />
+              )}
+            </div>
+            <MyGoals
+              bookAmount={currentTraining.books.length}
+              daysAmount={currentTraining.trainingDaysAmount}
+              booksLeft={currentTraining.notFinishedBooksAmount}
+              showBooksLeft={true}
+            />
           </div>
-        </div>
-        <Container>
-          <MyGoals
-            bookAmount={currentTraining.books.length}
-            daysAmount={currentTraining.trainingDaysAmount}
-            booksLeft={currentTraining.notFinishedBooksAmount}
-            showBooksLeft={true}
-          />
-        </Container>
-        {/* <Container>
-            <TrainingForm/>
-          </Container> */}
-        <Container>
-          {isMobile ? (
-            <StatisticsListMobile books={currentTraining.books} />
-          ) : (
-            <StatisticsList books={currentTraining.books} />
-          )}
         </Container>
         <Container>
           <div className={s.statistics}>

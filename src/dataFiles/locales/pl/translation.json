@@ -141,8 +141,26 @@
     "become": "Zostań interesującym rozmówcą"
   },
 
-  "quote": {
-    "books": "Książki to statki myśli, wędrujące przez fale czasu.",
-    "bacon": "Franciszek Bekon"
+  "quotes": {
+    "quote0": "Książki to statki myśli, wędrujące przez fale czasu.",
+    "author0": "Franciszek Bacon",
+    "quote1": "Tyle książek, tak mało czasu.",
+    "author1": "Frank Zappa",
+    "quote2": "Pokój bez książek jest jak ciało bez duszy.",
+    "author2": "Marcus Tullius Cicero",
+    "quote3": "Jeśli czytasz tylko książki, które czytają wszyscy inni, możesz myśleć tylko o tym, co myślą wszyscy inni.",
+    "author3": "Haruki Murakami",
+    "quote4": "Trzeba zawsze uważać na książki i to, co jest w nich, bo słowa mają moc, aby nas zmienić.",
+    "author4": "Cassandra Clare",
+    "quote5": "Jeśli jest książka, którą chcesz przeczytać, ale nie została jeszcze napisana, musisz ją napisać.",
+    "author5": "Toni Morrison",
+    "quote6": "Świat jest książką, a ci, którzy nie podróżują, czytają tylko jedną stronę.",
+    "author6": "Św. Augustyn",
+    "quote7": "Książki to lustra: widzisz w nich tylko to, co już masz w sobie.",
+    "author7": "Carlos Ruiz Zafón",
+    "quote8": "Pomyśl zanim powiesz. Przeczytaj zanim pomyślisz.",
+    "author8": "Fran Lebowitz",
+    "quote9": "Tak właśnie jest z książkami. Pozwalają podróżować bez poruszania stopami.",
+    "author9": "Jhumpa Lahiri"
   }
 }

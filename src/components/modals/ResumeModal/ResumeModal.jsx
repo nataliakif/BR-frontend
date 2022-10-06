@@ -17,6 +17,7 @@ const MyInput = ({ field, ...props }) => {
 const ResumeModal = ({ row }) => {
   const [open, setOpen] = useState(false);
   const [openedBook, setOpenedBook] = useState();
+  const [textArea, setTextArea] = useState('textAreaEmpty');
 
   const { t } = useTranslation();
   const [editBook] = useEditBookMutation();
@@ -53,7 +54,6 @@ const ResumeModal = ({ row }) => {
                   ...openedBook,
                   id: openedBook._id,
                 });
-
                 setOpen(false);
               }}
             >
@@ -72,10 +72,15 @@ const ResumeModal = ({ row }) => {
                   <Field
                     value={openedBook.review}
                     name="review"
+                    maxlength="1000"
                     placeholder="..."
-                    className={s.textAreaBox}
+                    className={s[textArea]}
                     component={MyInput}
                     onChange={e => {
+                      e.preventDefault();
+                      setTextArea(
+                        !!e.target.value ? 'textAreaFilled' : 'textAreaEmpty'
+                      );
                       setOpenedBook({ ...openedBook, review: e.target.value });
                     }}
                   />
@@ -90,7 +95,12 @@ const ResumeModal = ({ row }) => {
                       </button>
                     </li>
                     <li>
-                      <button className={s.buttonSave} type="submit">
+                      <button
+                        className={s.buttonSave}
+                        type="submit"
+                        tabIndex={0}
+                        autoFocus={true}
+                      >
                         {t('library.save')}
                       </button>
                     </li>

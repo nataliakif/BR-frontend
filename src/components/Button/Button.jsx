@@ -7,6 +7,8 @@ const Button = ({
   text,
   onClick,
   disabled = false,
+  tabIndex,
+  autoFocus,
 }) => {
   return (
     <button
@@ -14,6 +16,8 @@ const Button = ({
       type={type}
       onClick={onClick ? onClick : null}
       disabled={disabled}
+      tabIndex={tabIndex}
+      autoFocus={autoFocus}
     >
       {text}
     </button>

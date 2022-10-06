@@ -1,6 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
 import { useTranslation } from 'react-i18next';
-import { grey, orange } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 import {
   createColumnHelper,
@@ -8,7 +7,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-
+import { grey, orange } from '@mui/material/colors';
 import stringMax from 'helpers/stringMax';
 import s from './StatisticsList.module.css';
 

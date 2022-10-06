@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
@@ -34,6 +34,7 @@ const RegisterForm = () => {
       .required(t('validation.requiredName')),
     email: yup
       .string()
+      .matches(/^[^ ]*$/, t('validation.incorrectEmail'))
       .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, t('validation.incorrectEmail'))
       .min(10, t('validation.emailMin'))
       .max(63, t('validation.emailMax'))
@@ -64,15 +65,6 @@ const RegisterForm = () => {
       toast.error(error.data.message);
     }
   };
-
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
-  });
 
   return (
     <div className={s.container}>

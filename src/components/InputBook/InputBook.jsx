@@ -3,9 +3,7 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './InputBook.module.css';
 import schema from './ErrorInput';
 import PropTypes from 'prop-types';
-import {
-  useCreateBookMutation /*  useFetchBooksQuery */,
-} from 'redux/books/booksApi';
+import { useCreateBookMutation } from 'redux/books/booksApi';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
@@ -142,4 +140,5 @@ InputBook.propTypes = {
   publishYear: PropTypes.number,
   amountOfPages: PropTypes.number,
 };
+
 export default InputBook;

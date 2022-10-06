@@ -12,7 +12,7 @@ const UserBar = () => {
   return userName ? (
     <div className={s.userBar}>
       <span className={s.firstLetter}>{`${letter}`}</span>
-      <EllipsisText text={`${firstName}`} className={s.userName} length={30} />
+      <EllipsisText text={`${firstName}`} className={s.userName} length={20} />
     </div>
   ) : null;
 };

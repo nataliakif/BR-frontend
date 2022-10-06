@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 const GoingToReadMobile = ({ goingToReadListBooks }) => {
   const { t } = useTranslation();
-
   return (
     <section className={s.goingToReadMobilesection}>
       <h2 className={s.title}>{t('library.going')}</h2>
@@ -28,6 +27,7 @@ const GoingToReadMobile = ({ goingToReadListBooks }) => {
                       </tr>
                       <tr className={s.cardTableBody}>
                         <th className={s.tableTitle}>{t('library.pages')}:</th>
+
                         <td className={s.tableContent}>{amountOfPages}</td>
                       </tr>
                     </tbody>

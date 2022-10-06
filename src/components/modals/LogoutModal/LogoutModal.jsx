@@ -15,6 +15,8 @@ const LogoutModal = ({ open, onClose, logoutFunc }) => {
             className="transparent"
             text={t('modal.cancel')}
             onClick={onClose}
+            tabIndex={0}
+            autoFocus={true}
           />
           <Button
             className="main"
