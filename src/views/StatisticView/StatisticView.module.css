@@ -1,6 +1,5 @@
-.myGoals{
-padding: 20px;
-
+.myGoals {
+  padding: 20px;
 }
 .statistics {
   display: flex;
@@ -17,5 +16,6 @@ padding: 20px;
     display: flex;
     flex-direction: column;
     margin-right: 32px;
+    width: 928px;
   }
 }

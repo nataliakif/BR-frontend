@@ -110,7 +110,7 @@ const StatisticView = () => {
     deleteTraining(userTraining._id);
   };
 
- return isFetchingTraining ? (
+  return isFetchingTraining ? (
     <Progress />
   ) : (
     currentTraining && (
@@ -118,9 +118,7 @@ const StatisticView = () => {
         <Container>
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
-              <CountdownTimers
-                targetDate={currentTraining.finishDate}
-              />
+              <CountdownTimers targetDate={currentTraining.finishDate} />
               {isMobile ? (
                 <StatisticsListMobile books={currentTraining.books} />
               ) : (
