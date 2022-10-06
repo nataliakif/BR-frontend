@@ -1,6 +1,5 @@
 .tableBox {
   margin-top: 20px;
-  margin-bottom: 32px;
 }
 
 .titleBookWrapper {
@@ -62,4 +61,15 @@
 
 .styleColums {
   width: 13%;
+}
+
+@media screen and (min-width: 1280px) {
+  .tableTBody{
+    overflow-x: hidden;
+    max-height: 213px;
+  }
+.tableBox{
+  width: 923px;
+  grid-column: 1;
+}
 }
