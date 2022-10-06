@@ -123,6 +123,7 @@
   .containerThreeGoals {
     composes: containerTwoGoals;
     height: 125px;
+    align-items: baseline;
   }
 
   .containerTwoGoals h2 {
