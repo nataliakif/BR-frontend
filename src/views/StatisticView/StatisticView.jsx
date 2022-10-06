@@ -115,25 +115,25 @@ const StatisticView = () => {
   ) : (
     currentTraining && (
       <>
-        <Container>
-          <div className={s.statistics}>
-            <div className={s.leftWrapper}>
+        <section className={s.sectionStatistic}>
+          {/* <div className={s.sectionStatistic}> */}
+            <div className={s.statisticsWrapper}>
               <CountdownTimers targetDate={currentTraining.finishDate} />
-              {isMobile ? (
-                <StatisticsListMobile books={currentTraining.books} />
-              ) : (
-                <StatisticsList books={currentTraining.books} />
-              )}
-            </div>
             <MyGoals
               bookAmount={currentTraining.books.length}
               daysAmount={currentTraining.trainingDaysAmount}
               booksLeft={currentTraining.notFinishedBooksAmount}
               showBooksLeft={true}
-            />
-          </div>
-        </Container>
-        <Container>
+              />
+              {isMobile ? (
+                <StatisticsListMobile books={currentTraining.books} />
+              ) : (
+                <StatisticsList books={currentTraining.books} />
+              )}
+              </div>
+          {/* </div> */}
+        </section>
+        <section className={s.sectionStatistic}>
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <Chart
@@ -145,7 +145,7 @@ const StatisticView = () => {
             </div>
             <AddResult data={currentTraining} updateResult={updateResult} />
           </div>
-        </Container>
+        </section>
         {isTrainingExecuted && (
           <TrainingExecutedModal
             handleCloseOfTraining={handleCloseOfTraining}
