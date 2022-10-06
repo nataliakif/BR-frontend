@@ -48,6 +48,10 @@
   border-top: 1px solid #e0e5eb;
 }
 
+.styleCheckBox {
+  width: 1%;
+}
+
 .styleTitleBook {
   width: 40%;
 }

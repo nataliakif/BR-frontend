@@ -57,6 +57,15 @@ const StatisticView = () => {
     if (!userTraining) {
       navigate('/training');
     } else {
+      const changeBookStatusToFinished = booksToChange => {
+        booksToChange.forEach(book => {
+          editBook({
+            ...book,
+            id: book._id,
+            status: 'finished',
+          });
+        });
+      };
       const { startDate, finishDate, books, readStatistics, _id } =
         userTraining;
       const trainingDaysAmount = getTrainingDaysAmount(startDate, finishDate);
@@ -89,21 +98,19 @@ const StatisticView = () => {
         userHadReadNewBook:
           notFinishedBooksAmount < prevState?.notFinishedBooksAmount,
       }));
+      changeBookStatusToFinished(
+        booksWithCurrentStatus.filter(
+          book => book.status !== 'finished' && book.alreadyFinished
+        )
+      );
     }
-  }, [navigate, userTraining]);
+  }, [editBook, navigate, userTraining]);
 
   const handleCloseOfTraining = () => {
-    currentTraining.books.forEach(book => {
-      editBook({
-        ...book,
-        id: book._id,
-        status: 'finished',
-      });
-    });
     deleteTraining(userTraining._id);
   };
 
-  return isFetchingTraining ? (
+ return isFetchingTraining ? (
     <Progress />
   ) : (
     currentTraining && (
@@ -112,7 +119,7 @@ const StatisticView = () => {
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <CountdownTimers
-                targetDate={new Date(currentTraining.finishDate).getTime()}
+                targetDate={currentTraining.finishDate}
               />
               {isMobile ? (
                 <StatisticsListMobile books={currentTraining.books} />
