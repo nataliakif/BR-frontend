@@ -22,7 +22,7 @@ const AddResult = ({ data, updateResult }) => {
   } = data;
   const [doingFineModal, setDoingFineModal] = useState(false);
 
-  const onSubmit = values => {
+  const onSubmit = (values, actions) => {
     updateResult({
       ...data,
       trainingId: data._id,
@@ -37,6 +37,7 @@ const AddResult = ({ data, updateResult }) => {
     ) {
       setDoingFineModal(true);
     }
+    actions.resetForm();
   };
 
   const sortResults = [...results].sort(
