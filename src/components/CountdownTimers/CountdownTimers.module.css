@@ -1,5 +1,6 @@
 .countdownTimers {
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .countdownTimer {
@@ -71,9 +72,11 @@
   }
 }
 
-@media screen and (min-width: 1248px) {
+@media screen and (min-width: 1280px) {
   .countdownTimers {
-    margin-top: 28px;
+    margin:0;
+    grid-column: 1;
+      grid-row: 1;
   }
 
   .countdownTimer:not(:last-child) {

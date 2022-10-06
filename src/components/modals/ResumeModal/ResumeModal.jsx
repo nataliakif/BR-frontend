@@ -72,7 +72,7 @@ const ResumeModal = ({ row }) => {
                   <Field
                     value={openedBook.review}
                     name="review"
-                    maxlength="1000"
+                    maxLength="1000"
                     placeholder="..."
                     className={s[textArea]}
                     component={MyInput}

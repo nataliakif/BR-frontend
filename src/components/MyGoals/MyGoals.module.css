@@ -124,6 +124,7 @@
   .containerThreeGoals {
     composes: containerTwoGoals;
     height: 125px;
+    align-items: baseline;
   }
 
   .containerTwoGoals h2 {
@@ -192,6 +193,8 @@
     width: 288px;
     height: 304px;
     padding: 0;
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
 
   .containerThreeGoals {
