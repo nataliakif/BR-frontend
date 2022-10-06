@@ -1,12 +1,18 @@
 .trainingWrapper {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 20px;
   border-top: 1px solid var(--icon-color);
+  border-bottom: 1px solid var(--icon-color);;
+}
+
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+
 }
 .listHeader {
   margin-top: 0px;
@@ -21,47 +27,54 @@
   font-weight: 500;
   color: var(--main-text-color);
 }
-.icon {
-  margin-right: 12px;
+.header {
+  display: none;
+  flex-direction: column;
 }
-
 .list {
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--icon-color);
+  display: flex;
+  margin-left: 30px;
+
 }
 .itemBook {
-  display: flex;
-  flex-direction: row;
   align-items: baseline;
   font-weight: 500;
   color: var(--main-text-color);
 }
 
-.icon::before {
+.iconBook  {
   position: absolute;
+  transform: translateY(-50%);
   margin-right: 5px;
   margin-bottom: -3px;
+}
+.iconDelete {
+  position: absolute;
+  transform: translateX(100%);
+  margin-right: 15px;
 }
 .subtitle {
   display: inline-block;
   width: 70px;
   color: var(--secondary-text-color);
-
 }
 
 
 @media screen and (min-width: 768px) {
   .trainingWrapper {
     border: none;
+    display: block;
   }
+  .header {
+    display: flex;
+  }
+
   .listHeader {
     margin-top: 40px;
   }
   .list {
-    display: inline-block;
-    padding: 0;
+    display: flex;
+    
   }
   .header {
     display: grid;
@@ -77,11 +90,6 @@
     margin: 0;
     padding: 12px 0px;
     border-top: none;
-  }
-
-
-  .itemBook:not(:first-child) {
-    display: none;
   }
 }
 @media screen and (min-width: 1280px) {

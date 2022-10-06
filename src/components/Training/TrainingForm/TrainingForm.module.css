@@ -1,4 +1,6 @@
 .form {
+  display: flex;
+  flex-direction: column;
   min-width: 280px;
   margin-top: 68px;
   height: 60px;
@@ -6,11 +8,7 @@
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   align-items: center;
 }
-.bookPlaceholder {
-  position: absolute;
-  color: var(--icon-color);
-  padding: 10px;
-}
+
 .title {
   margin: 0;
   padding: 18px 81px;
@@ -21,10 +19,9 @@
   text-align: center;
   color: var(--main-color);
 }
+
 .dateContainer {
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
 }
 
 .bookLabel {
@@ -43,15 +40,19 @@
   background: var(--main-color);
   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 }
-
-.arrow {
+.errorMessageStart {
   position: absolute;
-  top: 50%;
-  left: 90%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+  transform: translateY(-100%);
+  left: 90px;
+  color: red;
 }
+.errorMessageFinish {
+  position: absolute;
+  transform: translateY(-80%);
+  left: 90px;
+  color: red;
+}
+
 
 .btnAdd {
   width: 171px;
@@ -81,8 +82,9 @@
     margin-top: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
   }
+
   .bookLabel {
     flex-direction: row;
     flex-grow: 1;
@@ -97,15 +99,36 @@
   .btnAdd {
     margin: 0;
   }
+  .errorMessageStart {
+    transform: translateY(280%);
+    left: 30px;
+  }
+  .errorMessageFinish {
+    transform: translateY(270%);
+    left: 350px;
+  }
+  
+  
 }
 @media screen and (min-width: 1280px) {
   .form {
     margin-bottom: 25px;
     margin-top: 0;
-    width: 928px;
+    max-width: 928px;
     height: 60px;
     left: 16px;
     top: 100px;
+  }
+  .dateContainer {
+    justify-content: center;
+  }
+  .errorMessageStart {
+    transform: translateY(280%);
+    left: 180px;
+  }
+  .errorMessageFinish {
+    transform: translateY(280%);
+    left: 39%;
   }
   
 }

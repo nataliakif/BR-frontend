@@ -25,11 +25,9 @@ const TrainingForm = ({
   const [startDate, setStartDate] = useState(null);
   return (
     <Formik initialValues={initialValues} validationSchema={schema}>
-      {({ values, handleChange }) => (
+      {({ values, handleChange, handleReset }) => (
         <Form
-          onChange={() => {
-            console.log(values);
-          }}
+          onChange={handleReset}
         >
           <div className={s.form} autoComplete="off">
             <h1 className={s.title}> My training</h1>
@@ -48,7 +46,9 @@ const TrainingForm = ({
               autoComplete="off"
               required
             ></DatePickerInput>
-            <ErrorMessage name="start" />
+            <ErrorMessage name="start" 
+            render={msg => <div className={s.errorMessageStart}>{msg}</div>}
+             />
 
             <DatePickerInput
               name="finish"
@@ -64,7 +64,9 @@ const TrainingForm = ({
               autoComplete="off"
               required
             ></DatePickerInput>
-            <ErrorMessage name="finish" />
+            <ErrorMessage name="finish" 
+            render={msg => <div className={s.errorMessageFinish}>{msg}</div>}
+             />
           </div>
           <div className={s.bookLabel}>
             <Field

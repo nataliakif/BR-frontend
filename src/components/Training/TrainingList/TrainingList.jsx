@@ -18,7 +18,13 @@ const TrainingList = ({
           </li>
         ))}
       </ul>
+      {!trainingBooks && (
+        <div>Author...</div>
+      )}{trainingBooks && (
+
+      
       <ul className={s.list}>
+
         {trainingBooks?.map(
           (
             {
@@ -31,7 +37,7 @@ const TrainingList = ({
             index
           ) => (
             <li className={s.item} key={index}>
-              <svg className={s.icon} width="22" height="17">
+              <svg className={s.iconBook} width="22" height="17">
                 <use href={`${sprite}#icon-grey-book`}></use>
               </svg>
 
@@ -63,11 +69,12 @@ const TrainingList = ({
                 className={s.deleteIcon}></use>
               </svg>
             </li>
-          )
+          ) 
         )}
       </ul>
+      )}
     </div>
-  );
+  ) 
 };
 
 export default TrainingList;
