@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import s from './LoginTimer.module.css';
 
@@ -6,6 +7,7 @@ const LoginTimer = () => {
   const [timer, setTimer] = useState(false);
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(30);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (timer) {
@@ -40,7 +42,7 @@ const LoginTimer = () => {
         </span>
       ) : (
         <span className={s.changePage} onClick={handleClick}>
-          Forget password
+          {t('LoginForm.newPassword')}
         </span>
       )}
     </>

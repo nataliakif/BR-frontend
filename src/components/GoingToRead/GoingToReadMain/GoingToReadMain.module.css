@@ -58,6 +58,14 @@
   .styleColums {
     width: 10%;
   }
+
+  .styleAuthor {
+    width: 28%;
+  }
+
+  .styleColums {
+    width: 10%;
+  }
 }
 
 @media screen and (min-width: 1280px) {

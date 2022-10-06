@@ -1,0 +1,166 @@
+{
+  "header": {
+    "logOut": "Wyloguj",
+    "loading": "Ładowanie"
+  },
+
+  "RegisterForm": {
+    "name": "Nazwa",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Hasło",
+    "confirmPasswordLabel": "Potwierdź hasło",
+    "button": "Zarejestruj się",
+    "link": "Zaloguj się",
+    "question": "Masz już konto? "
+  },
+
+  "LoginForm": {
+    "button": "Zaloguj się",
+    "for": "za ",
+    "registration": "Rejestracja",
+    "orNew": "lub nowy ",
+    "newPassword": "Nowe hasło"
+  },
+
+  "validation": {
+    "nameLetter": "Nazwa może zaczynać się tylko od litery lub cyfry",
+    "nameMin": "Nazwa jest za krótka, min znak to 3.",
+    "nameMax": "Maksymalnie 100 znaków!",
+    "requiredName": "Nazwa jest wymagana",
+
+    "incorrectEmail": "Nieprawidłowy e-mail",
+    "emailMin": "E-mail jest za krótki, min znak to 10.",
+    "emailMax": "Maksymalnie 63 znaki!",
+    "emailRequired": "Wymagany jest e-mail",
+
+    "passwordRequired": "Hasło jest wymagane",
+    "incorrectPassword": "Nieprawidłowe hasło",
+    "passwordMin": "Hasło jest za krótkie, min znak to 5.",
+    "passwordMax": "Maksymalnie 30 znaków!",
+
+    "passwordMatch": "Hasła muszą się zgadzać",
+    "confirmPassword": "Potwierdź hasło jest wymagane",
+
+    "bookTitle": "Tytuł książki jest krótki.",
+    "titleMax": "Tytuł jest za długi.",
+    "titleSpace": "Nie można zaczynać od spacji i myślnika",
+    "enterTitle": "Wprowadź tytuł książki.",
+    "titleError": "Wprowadź tytuł książki od 1 do 50 znaków.",
+    "enterAuthor": "Wprowadź autora książki.",
+    "authorSpace": "Nie może zaczynać się spacją i numerem",
+    "authorMin": "Nazwisko autora jest krótkie.",
+    "authorMax": "Nazwisko autora jest za długie.",
+    "authorCharacters": "Wprowadź autora książki od 2 do 150 znaków.",
+    "enterYear": "Wprowadź liczbę całkowitą.",
+    "yearMin": "Czy czytasz rękopis?",
+    "yearMax": "Ta książka jeszcze się nie ukazała.",
+    "yearError": "Wprowadź rok wydania książki od 1000 do 2022.",
+    "pagesNumber": "Wprowadź numer",
+    "pagesMin": "Liczba stron jest większa niż 1.",
+    "pagesMax": "Liczba stron jest mniejsza niż 4.",
+    "pagesFill": "Wypełnij liczbę stron.",
+    "pagesError": "Wprowadź liczbę stron od 1 do 4.",
+    "pagesMin1": "Nie może być mniej niż 1",
+    "pagesMore": "Więcej niż strony w szkoleniu",
+    "fillPages": "Wypełnij liczbę przeczytanych stron.",
+    "pages1000": "Liczba stron musi wynosić od 1 do 1000"
+  },
+
+  "library": {
+    "bookTitle": "Tytuł książki",
+    "title": "Tytuł",
+    "author": "Autor",
+    "publicationDate": "Data publikacji",
+    "amount": "Ilość strony",
+    "add": "Dodaj",
+    "year": "Rok",
+    "pages": "Strony",
+    "going": "Idę czytać",
+    "already": "Już przeczytałem",
+    "reading": "Czytam teraz",
+    "rating": "Ocena",
+    "resume": "Wznów",
+    "choose": "Wybierz ocenę książki",
+    "save": "Zapisz"
+  },
+
+  "training": {
+    "myGoals": "Moje cele",
+    "books": "Ilość książek",
+    "days": "Ilość dni",
+    "booksLeft": "Pozostały książki",
+    "myTraining": "Moje szkolenie",
+    "startTraining": "Rozpocznij szkolenie",
+    "start": "Start",
+    "finish": "Zakończ",
+    "chooseBooks": "Wybierz książki z biblioteki"
+  },
+
+  "statistics": {
+    "days": "DAYS",
+    "hrs": "HRS",
+    "mins": "MINS",
+    "secs": "SECS",
+    "yearsCountdown": "Odliczanie lat",
+    "goalsCountdown": "Odliczanie bramek",
+    "result": "Wynik",
+    "addResult": "Dodaj wynik",
+    "date": "Data",
+    "amountPages": "Ilość stron",
+    "amountPagesDay": "Ilość stron / DZIEŃ",
+    "statistics": "STATYSTYKI",
+    "pages": "strony",
+    "plan": "PLAN",
+    "time": "CZAS",
+    "wellDone": "Dobra robota! ale musisz być trochę szybszy. Możesz to zrobić"
+  },
+
+  "toast": {
+    "regSuccess": "Rejestracja powiodła się"
+  },
+
+  "modal": {
+    "step": "Krok",
+    "createLibrary": "Utwórz własną bibliotekę",
+    "addBooks": "Dodaj tam książki, które zamierzasz przeczytać",
+    "createTraining": "Utwórz swój pierwszy trening",
+    "setAGoal": "Ustaw cel, wybierz okres, rozpocznij trening",
+    "ok": "Ok",
+    "congratulations": "Gratulacje! Wszystkie książki zostały przeczytane!",
+    "newTraining": "Nowe szkolenie",
+    "back": "Tył",
+    "leave": "Jeśli opuścisz program, Twoje dane mogą zostać utracone",
+    "cancel": "Anuluj",
+    "willHelp": "Pomoże ci",
+    "createGoal": "Szybciej utwórz swój cel i przejdź do czytania",
+    "process": "Podziel proces proporcjonalnie na każdy dzień",
+    "trackSuccess": "Śledź swój sukces",
+    "youMay": "Możesz też",
+    "pose": "Postaw swój własny niezależny punkt widzenia",
+    "improve": "Popraw swoje umiejętności zawodowe zgodnie z nową wiedzą",
+    "become": "Zostań interesującym rozmówcą"
+  },
+
+  "quotes": {
+    "quote0": "Książki to statki myśli, wędrujące przez fale czasu.",
+    "author0": "Franciszek Bacon",
+    "quote1": "Tyle książek, tak mało czasu.",
+    "author1": "Frank Zappa",
+    "quote2": "Pokój bez książek jest jak ciało bez duszy.",
+    "author2": "Marcus Tullius Cicero",
+    "quote3": "Jeśli czytasz tylko książki, które czytają wszyscy inni, możesz myśleć tylko o tym, co myślą wszyscy inni.",
+    "author3": "Haruki Murakami",
+    "quote4": "Trzeba zawsze uważać na książki i to, co jest w nich, bo słowa mają moc, aby nas zmienić.",
+    "author4": "Cassandra Clare",
+    "quote5": "Jeśli jest książka, którą chcesz przeczytać, ale nie została jeszcze napisana, musisz ją napisać.",
+    "author5": "Toni Morrison",
+    "quote6": "Świat jest książką, a ci, którzy nie podróżują, czytają tylko jedną stronę.",
+    "author6": "Św. Augustyn",
+    "quote7": "Książki to lustra: widzisz w nich tylko to, co już masz w sobie.",
+    "author7": "Carlos Ruiz Zafón",
+    "quote8": "Pomyśl zanim powiesz. Przeczytaj zanim pomyślisz.",
+    "author8": "Fran Lebowitz",
+    "quote9": "Tak właśnie jest z książkami. Pozwalają podróżować bez poruszania stopami.",
+    "author9": "Jhumpa Lahiri"
+  }
+}

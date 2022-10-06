@@ -25,15 +25,21 @@
 
   display: block;
 }
-.textAreaBox {
+
+.textAreaEmpty {
   width: 240px;
   height: 170px;
   resize: none;
-  /* margin-top: 8px; */
+  margin-top: 8px;
   padding: 8px;
   outline: none;
+  border: 1px solid var(--icon-color);
 }
 
+.textAreaFilled {
+  composes: textAreaEmpty;
+  border: 1px solid var(--accent-color);
+}
 .buttonList {
   display: flex;
   justify-content: space-around;
@@ -116,6 +122,10 @@
     width: 568px;
     height: 170px;
   }
+  .textAreaEmpty {
+    width: 568px;
+    height: 170px;
+  }
 
   .buttonWrapper {
     padding-right: 5px;
@@ -123,6 +133,7 @@
   .buttonWrapper > .buttonOpen {
     width: 80px;
   }
+
   .buttonBack,
   .buttonSave {
     width: 130px;

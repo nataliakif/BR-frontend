@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
-
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import { useEditBookMutation } from '../../../redux/books/booksApi';
@@ -17,7 +17,9 @@ const MyInput = ({ field, ...props }) => {
 const ResumeModal = ({ row }) => {
   const [open, setOpen] = useState(false);
   const [openedBook, setOpenedBook] = useState();
+  const [textArea, setTextArea] = useState('textAreaEmpty');
 
+  const { t } = useTranslation();
   const [editBook] = useEditBookMutation();
 
   const onHandleModalOpen = () => {
@@ -32,7 +34,7 @@ const ResumeModal = ({ row }) => {
   return (
     <div className={s.buttonWrapper}>
       <button className={s.buttonOpen} onClick={onHandleModalOpen}>
-        Resume
+        {t('library.resume')}
       </button>
       <Modal
         open={open}
@@ -42,7 +44,7 @@ const ResumeModal = ({ row }) => {
       >
         <div className={s.box}>
           <Box>
-            <h3 className={s.title}>Choose rating of the book</h3>
+            <h3 className={s.title}>{t('library.choose')}</h3>
             <Formik
               initialValues={{
                 rating: 2,
@@ -52,7 +54,6 @@ const ResumeModal = ({ row }) => {
                   ...openedBook,
                   id: openedBook._id,
                 });
-
                 setOpen(false);
               }}
             >
@@ -67,14 +68,19 @@ const ResumeModal = ({ row }) => {
                     }}
                     precision={1}
                   />
-                  <p className={s.titleTextarea}>Resume</p>
+                  <p className={s.titleTextarea}>{t('library.resume')}</p>
                   <Field
                     value={openedBook.review}
                     name="review"
+                    maxlength="1000"
                     placeholder="..."
-                    className={s.textAreaBox}
+                    className={s[textArea]}
                     component={MyInput}
                     onChange={e => {
+                      e.preventDefault();
+                      setTextArea(
+                        !!e.target.value ? 'textAreaFilled' : 'textAreaEmpty'
+                      );
                       setOpenedBook({ ...openedBook, review: e.target.value });
                     }}
                   />
@@ -85,12 +91,17 @@ const ResumeModal = ({ row }) => {
                         type="submit"
                         onClick={onHandleModalClose}
                       >
-                        Back
+                        {t('modal.back')}
                       </button>
                     </li>
                     <li>
-                      <button className={s.buttonSave} type="submit">
-                        Save
+                      <button
+                        className={s.buttonSave}
+                        type="submit"
+                        tabIndex={0}
+                        autoFocus={true}
+                      >
+                        {t('library.save')}
                       </button>
                     </li>
                   </ul>

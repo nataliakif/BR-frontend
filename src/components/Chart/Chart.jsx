@@ -1,4 +1,5 @@
 import s from './Chart.module.css';
+import { useTranslation } from 'react-i18next';
 
 import {
   Chart as ChartJS,
@@ -22,29 +23,33 @@ ChartJS.register(
   Legend
 );
 
-const customLegend = {
-  id: 'customLegend',
-  afterDraw: (chart, args, options) => {
-    const { _metasets, ctx } = chart;
-    let x, y;
-    ctx.font = 'bold 12px Montserat';
-    ctx.textBaseLine = 'middle';
-    ctx.textAlign = 'center';
+const customLegend = t => {
+  const legend = {
+    id: 'customLegend',
+    afterDraw: (chart, args, options) => {
+      const { _metasets, ctx } = chart;
+      let x, y;
+      ctx.font = 'bold 12px Montserat';
+      ctx.textBaseLine = 'middle';
+      ctx.textAlign = 'center';
 
-    _metasets.forEach(meta => {
-      ctx.fillStyle = meta._dataset.borderColor;
+      _metasets.forEach(meta => {
+        ctx.fillStyle = meta._dataset.borderColor;
 
-      x = meta.data[meta.data.length - 1].x - meta._dataset.label.length * 5;
-      y = meta.data[meta.data.length - 1].y - 10;
+        x = meta.data[meta.data.length - 1].x - meta._dataset.label.length * 5;
+        y = meta.data[meta.data.length - 1].y - 10;
 
-      ctx.fillText(meta._dataset.label, x, y);
-    });
-    ctx.fillStyle = '#091E3F';
-    ctx.fillText('TIME', x, chart.chartArea.height + 23);
-  },
+        ctx.fillText(meta._dataset.label, x, y);
+      });
+      ctx.fillStyle = '#091E3F';
+      ctx.fillText(t('statistics.time'), x, chart.chartArea.height + 23);
+    },
+  };
+  return legend;
 };
 
 export const Chart = ({ plan, readingStatistics }) => {
+  const { t } = useTranslation();
   const dates = readingStatistics.map(stat => stat.date);
   //console.log('dates', dates);
   const pages = readingStatistics.map(stat => stat.pageAmount);
@@ -89,7 +94,7 @@ export const Chart = ({ plan, readingStatistics }) => {
     labels,
     datasets: [
       {
-        label: 'PLAN',
+        label: t('statistics.plan'),
         data:
           actPages.length > 0 ? [...actPages.map(item => plan)] : [plan, plan],
 
@@ -116,10 +121,10 @@ export const Chart = ({ plan, readingStatistics }) => {
   return (
     <div className={s.container}>
       <p className={s.chart__title}>
-        Amont of pages / DAY{' '}
+        {t('statistics.amountPagesDay')}
         <span className={s.trainigPlan__title}>{plan}</span>
       </p>
-      <Line options={options} data={data} plugins={[customLegend]} />
+      <Line options={options} data={data} plugins={[customLegend(t)]} />
     </div>
   );
 };

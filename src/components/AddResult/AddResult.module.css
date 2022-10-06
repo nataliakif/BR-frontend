@@ -3,15 +3,16 @@
   position: relative;
   display: block;
   padding: 22px 20px 22px;
-  width: 288px;
+  min-width: 280px;
+  height: 340px;
   background-color: var(--main-color);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 }
-@media screen and (min-width: 480px) {
+/* @media screen and (min-width: 480px) {
   .form {
     width: 480px;
   }
-}
+} */
 @media screen and (min-width: 768px) {
   .form {
     width: 704px;
@@ -22,6 +23,7 @@
     margin-top: 0;
     padding: 20px 24px 22px;
     width: 288px;
+    height: 340px;
   }
 }
 
@@ -32,7 +34,7 @@
   text-transform: uppercase;
   color: var(--primary-text-color);
 }
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 480px) and (max-width: 1279px) {
   .title {
     font-size: 14px;
     line-height: 1.2;
@@ -49,9 +51,8 @@
   margin-bottom: 30px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 480px) and (max-width: 1279px) {
   .wrapper {
-    justify-content: space-between;
     width: 240px;
     margin-top: 27px;
     margin-bottom: 20px;
@@ -62,9 +63,17 @@
   display: flex;
   justify-content: center;
 }
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+.button:disabled {
+  opacity: 0.5;
+}
+@media screen and (min-width: 480px) and (max-width: 1280px) {
   .button {
     margin-top: 50px;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .button {
+    width: 120px;
   }
 }
 
@@ -80,25 +89,16 @@
   text-transform: uppercase;
   color: var(--primary-text-color);
 }
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .statisticsTitle {
-    margin-top: 20px;
-    margin-bottom: 6px;
-    text-align: left;
-  }
-}
-
 .statisticsTitle::before {
   content: '';
   border-bottom: 1px solid #e0e5eb;
   background-color: #e0e5eb;
+  display: block;
+  top: 6px;
+  left: 5px;
+  width: 71px;
+  position: absolute;
 }
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .statisticsTitle::before {
-    display: none;
-  }
-}
-
 .statisticsTitle::after {
   content: '';
   position: absolute;
@@ -109,7 +109,15 @@
   border-bottom: 1px solid #e0e5eb;
   background-color: #e0e5eb;
 }
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 480px) and (max-width: 1279px) {
+  .statisticsTitle {
+    margin-top: 20px;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+  .statisticsTitle::before {
+    display: none;
+  }
   .statisticsTitle::after {
     top: 6px;
     left: 80px;
@@ -120,7 +128,7 @@
 .iconSvg {
   position: absolute;
   display: block;
-  top: 35px;
+  top: 40px;
   right: 4px;
   width: 13px;
   height: 7px;
@@ -162,7 +170,14 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
+  overflow-x: hidden;
 }
+@media screen and (min-width: 1280px) {
+  .statistics {
+    height: 100px;
+  }
+}
+
 .name {
   font-size: 11px;
   color: var(--secondary-text-color);

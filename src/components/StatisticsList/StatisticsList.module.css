@@ -1,80 +1,65 @@
-.listHeader {
+.tableBox {
   margin-top: 20px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.25;
-  color: var(--secondary-text-color);
+  margin-bottom: 32px;
 }
-.header {
-  display: none;
-}
-.item {
-  margin: 0;
-  font-weight: 500;
-  color: var(--main-text-color);
-}
-.list {
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--icon-color);
-}
-.itemBook {
+
+.titleBookWrapper {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-
-  font-weight: 500;
-  color: var(--main-text-color);
+  height: 60px;
 }
+
+.titleBook {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  padding-left: 9px;
+  padding-right: 74px;
+}
+
+.checkBoxWrapper {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
 .icon {
-  margin-right: 5px;
-}
-.dots {
-  display: block;
-  margin: 0;
-  padding-left: 21px;
-}
-.author {
-  margin-left: 50px;
+  fill: var(--library-color);
 }
 
-@media screen and (min-width: 768px) {
-  .listHeader {
-    margin-top: 40px;
-  }
-  .header {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    display: grid;
-    grid-template-columns: 242px 232px 100px 100px;
-    border-top: 1px solid var(--icon-color);
-    border-bottom: 1px solid var(--icon-color);
-  }
-  .item {
-    margin: 0;
-    padding: 12px 0px;
-    display: grid;
-    grid-template-columns: 242px 232px;
-    border-top: none;
-  }
-  .itemBook:not(:first-child) {
-    display: none;
-  }
+.table {
+  border-collapse: collapse;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  border-top: 1px solid #e0e5eb;
+  border-bottom: 1px solid #e0e5eb;
+
+  table-layout: fixed;
 }
-@media screen and (min-width: 1280px) {
-  .trainingWrapper {
-    margin-top: 44px;
-  }
-  .header {
-    grid-template-columns: 345px 340px 100px 100px;
-  }
-  .item {
-    grid-template-columns: 345px 340px 100px 100px;
-  }
-  .title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+
+.tableTitleCell {
+  text-align: start;
+  color: var(--secondary-text-color);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.tableTBody > tr {
+  border-top: 1px solid #e0e5eb;
+}
+
+.styleCheckBox {
+  width: 1%;
+}
+
+.styleTitleBook {
+  width: 40%;
+}
+
+.styleAuthor {
+  width: 34%;
+}
+
+.styleColums {
+  width: 13%;
 }

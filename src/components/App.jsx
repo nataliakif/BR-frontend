@@ -3,6 +3,8 @@ import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Progress from 'components/Progress/Progress';
+
 // import { useDispatch, useSelector } from 'react-redux';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
@@ -39,9 +41,9 @@ const App = () => {
   return (
     <>
       {false ? (
-        <>Loading</>
+        <Progress />
       ) : (
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Progress />}>
           <Header />
           <Routes>
             <Route path="*" element={<Navigate to="/library" />} />
