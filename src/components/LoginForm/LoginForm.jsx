@@ -59,6 +59,8 @@ const LoginForm = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
+      .matches(/^[^ ]*$/, t('validation.incorrectEmail'))
+      .matches(/^[^а-яА-ЯіІїЇєЄ]*$/, t('validation.incorrectEmail'))
       .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, t('validation.incorrectEmail'))
       .min(10, t('validation.emailMin'))
       .max(63, t('validation.emailMax'))
@@ -66,6 +68,7 @@ const LoginForm = () => {
     password: yup
       .string()
       .required(t('validation.passwordRequired'))
+      .matches(/^[^а-яА-ЯіІїЇєЄ]*$/, t('validation.incorrectPassword'))
       .matches(/^[^.-]\S*$/, t('validation.incorrectPassword'))
       .min(5, t('validation.passwordMin'))
       .max(30, t('validation.passwordMax')),
@@ -116,7 +119,7 @@ const LoginForm = () => {
               label={t('RegisterForm.emailLabel')}
               htmlFor="email"
               error="errEmail"
-              type="email"
+              type="text"
               placeholder="your@email.com"
             />
             <div className={s.relative}>
@@ -147,7 +150,6 @@ const LoginForm = () => {
       </Formik>
       {email ? (
         <>
-          {' '}
           <p className={s.text}>
             <span
               onClick={() => restorePassword({ email })}

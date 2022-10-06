@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, ErrorMessage, useField } from 'formik';
+import { getLang } from 'redux/authUser/authUserSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
@@ -48,17 +49,28 @@ const RegisterForm = () => {
   const [registerUser] = useRegisterUserMutation();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const currentLang = useSelector(getLang);
 
   const schema = yup.object().shape({
     name: yup
       .string()
-      .matches(/^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/, t('validation.nameLetter'))
+      .matches(
+        currentLang === 'ua' ? /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/ : /^[a-zA-Z0-9]/,
+        t('validation.nameLetter')
+      )
+      .matches(
+        currentLang === 'ua'
+          ? /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/
+          : /^[^а-яА-ЯіІїЇєЄ]*$/,
+        t('validation.nameLetter')
+      )
       .min(3, t('validation.nameMin'))
       .max(100, t('validation.nameMax'))
       .required(t('validation.requiredName')),
     email: yup
       .string()
       .matches(/^[^ ]*$/, t('validation.incorrectEmail'))
+      .matches(/^[^а-яА-ЯіІїЇєЄ]*$/, t('validation.incorrectEmail'))
       .matches(/^[^-]\S*.@\S*.\.\S*[^-\s]$/, t('validation.incorrectEmail'))
       .min(10, t('validation.emailMin'))
       .max(63, t('validation.emailMax'))
@@ -66,6 +78,7 @@ const RegisterForm = () => {
     password: yup
       .string()
       .required(t('validation.passwordRequired'))
+      .matches(/^[^а-яА-ЯіІїЇєЄ]*$/, t('validation.incorrectPassword'))
       .matches(/^[^.-]\S*$/, t('validation.incorrectPassword'))
       .min(5, t('validation.passwordMin'))
       .max(30, t('validation.passwordMax')),
@@ -119,7 +132,7 @@ const RegisterForm = () => {
               label={t('RegisterForm.emailLabel')}
               htmlFor="email"
               error="errEmail"
-              type="email"
+              type="text"
               placeholder="your@email.com"
             />
             <div className={s.relative}>
