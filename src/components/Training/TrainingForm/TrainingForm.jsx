@@ -49,7 +49,9 @@ const TrainingForm = ({
                 autoComplete="off"
                 required
               ></DatePickerInput>
-              <ErrorMessage className={s.eerror} name="start" />
+              <span className={s.error}>
+                <ErrorMessage className={s.eerror} name="start" />
+              </span>
             </div>
             <div className={s.date}>
               <DatePickerInput
@@ -66,7 +68,9 @@ const TrainingForm = ({
                 autoComplete="off"
                 required
               ></DatePickerInput>
-              <ErrorMessage name="finish" className={s.error} />
+              <span className={s.error}>
+                <ErrorMessage name="finish" />
+              </span>
             </div>
           </div>
           <div className={s.bookLabel}>
@@ -86,9 +90,9 @@ const TrainingForm = ({
                 </option>
               ))}
             </Field>
-
-            <ErrorMessage name="pages" className={s.error} />
-
+            <span className={s.error}>
+              <ErrorMessage name="pages" />
+            </span>
             <button
               type="button"
               className={s.btnAdd}

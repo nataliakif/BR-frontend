@@ -29,13 +29,17 @@
   margin-top: 32px;
 }
 .date {
+  position: relative;
   display: block;
   margin-bottom: 20px;
 }
 .error {
   color: red !important;
-  font-size: 12px;
-  margin-top: 2px;
+  font-size: 11px;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  color: var(--error-cl);
 }
 .bookInput {
   position: relative;

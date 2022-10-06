@@ -16,7 +16,7 @@ import { Chart } from 'components/Chart/Chart';
 import TrainingList from 'components/Training/TrainingList/TrainingList';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
-
+import TrainingMobileList from '../../components/Training/TrainingList/TrainingMobileList/TrainingMobileList';
 import useIsMobile from '../../helpers/useIsMobile';
 import { BsArrowLeft } from 'react-icons/bs';
 
@@ -127,12 +127,19 @@ const TrainingView = () => {
                 onBtnAddClick={selectBook}
               />
             )}
-            {!showElement && (
+            {!showElement && !isMobile && (
               <TrainingList
                 trainingBooks={selectedBooks}
                 deleteBookFromList={onSelectedBookDelete}
               />
             )}
+            {isMobile && !showElement && (
+              <TrainingMobileList
+                trainingBooks={selectedBooks}
+                deleteBookFromList={onSelectedBookDelete}
+              />
+            )}
+
             {showElement && (
               <BsArrowLeft
                 className={s.arrowButton}
