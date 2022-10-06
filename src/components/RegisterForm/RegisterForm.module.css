@@ -1,8 +1,8 @@
 .container {
-   display: flex;
-   flex-direction: column;
-   width: 280px;
-   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  margin: 0 auto;
 }
 
 .googleLink {
@@ -22,76 +22,85 @@
 }
 
 .form {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.relative {
+  position: relative;
 }
 
 .label {
-   position: relative;
-   margin-bottom: 8px;
-   font-weight: 600;
-   font-size: 14px;
-   line-height: 1.21;
-   color: var(--main-color);
+  position: relative;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.21;
+  color: var(--main-color);
 }
 
 .label::after {
-   content: ' *';
-   color: #f25137;
+  content: ' *';
+  color: #f25137;
 }
 
 .input {
-   margin-bottom: 20px;
-   padding: 14px 8px;
-   outline: none;
-   border: none;
-   background: var(--goals-bg-color);
-   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+  width: 280px;
+  margin-bottom: 20px;
+  margin-top: 8px;
+  padding: 14px 8px;
+  outline: none;
+  border: none;
+  background: var(--goals-bg-color);
+  box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+}
+
+.errInput {
+  composes: input;
+  color: #f25137;
 }
 
 .input:focus {
-   outline: 2px solid var(--accent-color);
+  outline: 2px solid var(--accent-color);
 }
 
 .input:focus::placeholder {
-   color: var(--goals-bg-color);
+  color: var(--goals-bg-color);
 }
 
 .input::placeholder {
-   font-weight: 400;
-   font-size: 14px;
-   line-height: 1.21;
-   color: var(--icon-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: var(--icon-color);
 }
 
 .errName,
 .errEmail,
 .errPassword,
 .errConfirmPassword {
-   position: absolute;
-   text-align: center;
-   width: 100%;
-   left: 0;
-   top: 17%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 17%;
 }
 
 .errEmail {
-   top: 39%;
+  top: 39%;
 }
 
 .errPassword {
-   top: 60%;
+  top: 81%;
 }
 
 .errConfirmPassword {
-   top: 81%;
+  top: 81%;
 }
 
 .errText {
-   font-size: 12px;
-   color: #f25137;
+  font-size: 12px;
+  color: #f25137;
 }
 
 .btn {
@@ -108,36 +117,36 @@
 }
 
 .btn:hover {
-   cursor: pointer;
-   background-color: #d15807;
+  cursor: pointer;
+  background-color: #d15807;
 }
 
 .text {
-   font-weight: 500;
-   font-size: 13px;
-   line-height: 1.23;
-   text-align: center;
-   color: var(--secondary-text-color);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.23;
+  text-align: center;
+  color: var(--secondary-text-color);
 }
 
 .signupLink {
-   text-decoration: none;
-   color: var(--accent-color);
-   transition: color 250ms ease-in-out;
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: color 250ms ease-in-out;
 }
 
 .signupLink:hover {
-   cursor: pointer;
-   color: #d15807;
+  cursor: pointer;
+  color: #d15807;
 }
 
 .icon {
-   position: absolute;
-   top: 40px;
-   right: 20px;
-   width: 20px;
-   height: 12px;
-   cursor: pointer;
+  position: absolute;
+  top: 42px;
+  right: 20px;
+  width: 20px;
+  height: 12px;
+  cursor: pointer;
 }
 
 /** min-width 768px breakpoint */
@@ -147,6 +156,10 @@
     margin: 0 auto;
     padding: 40px;
     background-color: var(--main-color);
+  }
+
+  .input {
+    width: 320px;
   }
 
   .btn {

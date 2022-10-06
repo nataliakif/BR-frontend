@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage, useField } from 'formik';
 import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
@@ -16,6 +16,30 @@ const initialValues = {
   email: '',
   password: '',
   confirmPassword: '',
+};
+
+const Input = ({ name, label, htmlFor, error, ...props }) => {
+  const [field, meta] = useField(name);
+  return (
+    <>
+      <label className={s.label} htmlFor={htmlFor}>
+        {label}
+      </label>
+      <input
+        className={`${meta.error ? s.errInput : s.input}`}
+        {...field}
+        {...props}
+      />
+      <ErrorMessage
+        name={name}
+        render={msg => (
+          <div className={s[error]}>
+            <p className={s.errText}>{msg}</p>
+          </div>
+        )}
+      />
+    </>
+  );
 };
 
 const RegisterForm = () => {
@@ -82,45 +106,32 @@ const RegisterForm = () => {
       >
         {() => (
           <Form className={s.form}>
-            <label className={s.label} htmlFor="name">
-              {t('RegisterForm.name')}
-            </label>
-            <Field
-              className={s.input}
+            <Input
+              name="name"
+              label={t('RegisterForm.name')}
+              htmlFor="name"
+              error="errName"
               type="text"
-              name="name"
               placeholder="..."
-              autoFocus={true}
             />
-            <ErrorMessage
-              name="name"
-              render={msg => (
-                <div className={s.errName}>
-                  <p className={s.errText}>{msg}</p>
-                </div>
-              )}
-            />
-
-            <label className={s.label} htmlFor="email">
-              {t('RegisterForm.emailLabel')}
-            </label>
-            <Field
-              className={s.input}
-              type="email"
+            <Input
               name="email"
+              label={t('RegisterForm.emailLabel')}
+              htmlFor="email"
+              error="errEmail"
+              type="email"
               placeholder="your@email.com"
             />
-            <ErrorMessage
-              name="email"
-              render={msg => (
-                <div className={s.errEmail}>
-                  <p className={s.errText}>{msg}</p>
-                </div>
-              )}
-            />
-
-            <label className={s.label} htmlFor="password">
-              {t('RegisterForm.passwordLabel')}
+            <div className={s.relative}>
+              <Input
+                name="password"
+                label={t('RegisterForm.passwordLabel')}
+                htmlFor="password"
+                error="errPassword"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="..."
+                maxLength={30}
+              />
               <svg
                 className={s.icon}
                 onClick={() => setShowPassword(!showPassword)}
@@ -129,25 +140,18 @@ const RegisterForm = () => {
                   href={sprite + (showPassword ? '#icon-noeye' : '#icon-eye')}
                 />
               </svg>
-            </label>
-            <Field
-              className={s.input}
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              maxLength={30}
-              placeholder="..."
-            />
-            <ErrorMessage
-              name="password"
-              render={msg => (
-                <div className={s.errPassword}>
-                  <p className={s.errText}>{msg}</p>
-                </div>
-              )}
-            />
-            <label className={s.label} htmlFor="confirmPassword">
-              {t('RegisterForm.confirmPasswordLabel')}
-
+            </div>
+            <div className={s.relative}>
+              <Input
+                name="confirmPassword"
+                label={t('RegisterForm.confirmPasswordLabel')}
+                htmlFor="confirmPassword"
+                error="errConfirmPassword"
+                type={showCPassword ? 'text' : 'password'}
+                placeholder="..."
+                maxLength={30}
+                onPaste={e => e.preventDefault()}
+              />
               <svg
                 className={s.icon}
                 onClick={() => setShowCPassword(!showCPassword)}
@@ -156,25 +160,7 @@ const RegisterForm = () => {
                   href={sprite + (showCPassword ? '#icon-noeye' : '#icon-eye')}
                 />
               </svg>
-            </label>
-            <Field
-              className={s.input}
-              type={showCPassword ? 'text' : 'password'}
-              name="confirmPassword"
-              maxLength={30}
-              placeholder="..."
-              onPaste={e => e.preventDefault()}
-            />
-
-            <ErrorMessage
-              name="confirmPassword"
-              render={msg => (
-                <div className={s.errConfirmPassword}>
-                  <p className={s.errText}>{msg}</p>
-                </div>
-              )}
-            />
-
+            </div>
             <button className={s.btn} type="submit">
               {t('RegisterForm.button')}
             </button>
