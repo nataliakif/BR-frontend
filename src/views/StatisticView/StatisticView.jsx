@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Progress from 'components/Progress/Progress';
 import StatisticsList from 'components/StatisticsList/StatisticsList';
+import StatisticsListMobile from 'components/StatisticsList/StatisticsListMobile';
+import useIsMobile from 'helpers/useIsMobile';
 import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
 import { Chart } from 'components/Chart/Chart';
 import calculateStatistics from 'services/calculateStatistics';
@@ -33,6 +35,7 @@ const findAlreadyReadBook = (books, alreadyReadPages) => {
 };
 
 const StatisticView = () => {
+  const isMobile = useIsMobile();
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
 
@@ -54,6 +57,15 @@ const StatisticView = () => {
     if (!userTraining) {
       navigate('/training');
     } else {
+      const changeBookStatusToFinished = booksToChange => {
+        booksToChange.forEach(book => {
+          editBook({
+            ...book,
+            id: book._id,
+            status: 'finished',
+          });
+        });
+      };
       const { startDate, finishDate, books, readStatistics, _id } =
         userTraining;
       const trainingDaysAmount = getTrainingDaysAmount(startDate, finishDate);
@@ -86,17 +98,15 @@ const StatisticView = () => {
         userHadReadNewBook:
           notFinishedBooksAmount < prevState?.notFinishedBooksAmount,
       }));
+      changeBookStatusToFinished(
+        booksWithCurrentStatus.filter(
+          book => book.status !== 'finished' && book.alreadyFinished
+        )
+      );
     }
-  }, [navigate, userTraining]);
+  }, [editBook, navigate, userTraining]);
 
   const handleCloseOfTraining = () => {
-    currentTraining.books.forEach(book => {
-      editBook({
-        ...book,
-        id: book._id,
-        status: 'finished',
-      });
-    });
     deleteTraining(userTraining._id);
   };
 
@@ -108,10 +118,12 @@ const StatisticView = () => {
         <Container>
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
-              <CountdownTimers
-                targetDate={new Date(currentTraining.finishDate).getTime()}
-              />
-              <StatisticsList books={currentTraining.books} />
+              <CountdownTimers targetDate={currentTraining.finishDate} />
+              {isMobile ? (
+                <StatisticsListMobile books={currentTraining.books} />
+              ) : (
+                <StatisticsList books={currentTraining.books} />
+              )}
             </div>
             <MyGoals
               bookAmount={currentTraining.books.length}

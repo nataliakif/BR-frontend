@@ -1,21 +1,24 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useFetchBooksQuery } from 'redux/books/booksApi';
+import { useCreateTrainingMutation } from 'redux/training/trainingApi';
+import { useFetchTrainingQuery } from 'redux/training/trainingApi';
+import { useEditBookMutation } from 'redux/books/booksApi';
+import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
+import getTotalPageAmount from 'helpers/getTotalPageAmount';
+
+import s from './TrainingView.module.css';
 import Container from 'components/Container';
 import MyGoals from 'components/MyGoals';
 import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
-import s from './TrainingView.module.css';
-import { useState, useEffect } from 'react';
-import { useFetchBooksQuery } from 'redux/books/booksApi';
 import { Chart } from 'components/Chart/Chart';
 import TrainingList from 'components/Training/TrainingList/TrainingList';
-import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
-import getTotalPageAmount from 'helpers/getTotalPageAmount';
-import { useCreateTrainingMutation } from 'redux/training/trainingApi';
-import { useFetchTrainingQuery } from 'redux/training/trainingApi';
-import { useNavigate } from 'react-router-dom';
 import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
-import { useEditBookMutation } from 'redux/books/booksApi';
+
 import useIsMobile from '../../helpers/useIsMobile';
-import {  BsArrowLeft } from 'react-icons/bs';
+import { BsArrowLeft } from 'react-icons/bs';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);
@@ -24,8 +27,8 @@ const TrainingView = () => {
   const [planedPagesPerDay, setPlanedPagesPerDay] = useState(0);
   const [trainingDaysAmount, setTrainingDaysAmount] = useState(0);
   const [editBook] = useEditBookMutation();
+  const { t } = useTranslation();
   const [showElement, setShowElement] = useState(false);
-
 
   const { data: userTraining, isLoading: isFetchingTraining } =
     useFetchTrainingQuery();
@@ -132,8 +135,9 @@ const TrainingView = () => {
             )}
             {showElement && (
               <BsArrowLeft
-              className={s.arrowButton}
-              onClick={() => setShowElement(false)}/>
+                className={s.arrowButton}
+                onClick={() => setShowElement(false)}
+              />
             )}
           </div>
         </div>
@@ -142,8 +146,8 @@ const TrainingView = () => {
         {showStButton && !showElement && (
           <Button
             id="startTraining"
-            className={s.startTrainingBtn}
-            text="Start training"
+            className="main"
+            text={t('training.startTraining')}
             onClick={onStartClick}
             onEnded={isLoading}
           />
@@ -152,13 +156,14 @@ const TrainingView = () => {
           <Chart plan={planedPagesPerDay} readingStatistics={[]} />
         )}
         {isMobile && (
-          <button type="button"
-          className={s.addPageBtn} 
-          onClick={() => setShowElement(true)}>
+          <button
+            type="button"
+            className={s.addPageBtn}
+            onClick={() => setShowElement(true)}
+          >
             +
           </button>
         )}
-        
       </Container>
     </>
   );

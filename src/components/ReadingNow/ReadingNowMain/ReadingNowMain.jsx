@@ -6,11 +6,13 @@ import {
 } from '@tanstack/react-table';
 import PropTypes from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
 import stringMax from 'helpers/stringMax';
-import s from './ReadingNowMain.module.css';
 import sprite from '../../../images/sprite.svg';
+import s from './ReadingNowMain.module.css';
 
 const ReadingNowMain = ({ readingNowListBooks }) => {
+  const { t } = useTranslation();
   const data = readingNowListBooks;
   const columnHelper = createColumnHelper(readingNowListBooks);
   const columns = [
@@ -29,22 +31,24 @@ const ReadingNowMain = ({ readingNowListBooks }) => {
       ),
       header: () => (
         <div>
-          <span>Book title</span>
+          <span>{t('library.bookTitle')}</span>
         </div>
       ),
     }),
     columnHelper.accessor('author', {
       id: 'author',
       cell: info => info.getValue(),
-      header: () => <span>Author</span>,
+      header: () => <span>{t('library.author')}</span>,
     }),
     columnHelper.accessor('publicationDate', {
-      header: () => <span>Year</span>,
+      header: () => <span>{t('library.year')}</span>,
+
       cell: info => info.renderValue(),
     }),
     columnHelper.accessor('amountOfPages', {
       cell: info => info.getValue(),
-      header: () => <span>Pages</span>,
+
+      header: () => <span>{t('library.pages')}</span>,
     }),
   ];
   const table = useReactTable({
@@ -55,7 +59,7 @@ const ReadingNowMain = ({ readingNowListBooks }) => {
 
   return (
     <>
-      <h2 className={s.title}>Reading now</h2>
+      <h2 className={s.title}>{t('library.reading')}</h2>
       <div>
         <table className={s.table}>
           <colgroup>

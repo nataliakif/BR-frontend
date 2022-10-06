@@ -1,0 +1,166 @@
+{
+  "header": {
+    "logOut": "Logout",
+    "loading": "Loading"
+  },
+
+  "RegisterForm": {
+    "name": "Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "button": "Register",
+    "link": "Log in",
+    "question": "Already have an account? "
+  },
+
+  "LoginForm": {
+    "button": "Login",
+    "for": "for ",
+    "registration": "Registration",
+    "orNew": "or new ",
+    "newPassword": "New password"
+  },
+
+  "validation": {
+    "nameLetter": "Name can only begin with a letter or a number",
+    "nameMin": "Name is too short, min character is 3.",
+    "nameMax": "Maximum 100 characters!",
+    "requiredName": "Name is required",
+
+    "incorrectEmail": "Incorrect email",
+    "emailMin": "Email is too short, min character is 10.",
+    "emailMax": "Maximum 63 characters!",
+    "emailRequired": "Email is required",
+
+    "passwordRequired": "Password is required",
+    "incorrectPassword": "Incorrect password",
+    "passwordMin": "Password is too short, min character is 5.",
+    "passwordMax": "Maximum 30 characters!",
+
+    "passwordMatch": "Passwords must match",
+    "confirmPassword": "Confirm password is required",
+
+    "bookTitle": "The title of the book is short.",
+    "titleMax": "The title is too long.",
+    "titleSpace": "Cannot start with a space and hyphen",
+    "enterTitle": "Enter the title of the book.",
+    "titleError": "Enter the title of the book from 1 to 50 characters.",
+    "enterAuthor": "Enter the author of the book.",
+    "authorSpace": "Cannot start with a space and number",
+    "authorMin": "The author's name is short.",
+    "authorMax": "The author's name is too long.",
+    "authorCharacters": "Enter the author of the book from 2 to 150 characters.",
+    "enterYear": "Enter an integer.",
+    "yearMin": "Are you reading the manuscript?",
+    "yearMax": "This book has not yet appeared.",
+    "yearError": "Enter the year of publication of the book from 1000 to 2022.",
+    "pagesNumber": "Enter a number",
+    "pagesMin": "The number of pages is more than 1.",
+    "pagesMax": "The number of pages is less than 4.",
+    "pagesFill": "Fill in the number of pages.",
+    "pagesError": "Enter the number of pages from 1 to 4.",
+    "pagesMin1": "May not be less then 1",
+    "pagesMore": "More then the pages in training",
+    "fillPages": "Fill the number of read pages.",
+    "pages1000": "The number of pages must be from 1 to 1000"
+  },
+
+  "library": {
+    "bookTitle": "Book title",
+    "title": "Title",
+    "author": "Author",
+    "publicationDate": "Publication date",
+    "amount": "Amount of page",
+    "add": "Add",
+    "year": "Year",
+    "pages": "Pages",
+    "going": "Going to read",
+    "already": "Already read",
+    "reading": "Reading now",
+    "rating": "Rating",
+    "resume": "Resume",
+    "choose": "Choose rating of the book",
+    "save": "Save"
+  },
+
+  "training": {
+    "myGoals": "My goals",
+    "books": "Amount of books",
+    "days": "Amount of days",
+    "booksLeft": "Books left",
+    "myTraining": "My training",
+    "startTraining": "Start training",
+    "start": "Start",
+    "finish": "Finish",
+    "chooseBooks": "Choose books from the library"
+  },
+
+  "statistics": {
+    "days": "DAYS",
+    "hrs": "HRS",
+    "mins": "MINS",
+    "secs": "SECS",
+    "yearsCountdown": "Years countdown",
+    "goalsCountdown": "Goals countdown",
+    "result": "Result",
+    "addResult": "Add result",
+    "date": "Date",
+    "amountPages": "Amount of pages",
+    "amountPagesDay": "Amount of pages / DAY",
+    "statistics": "STATISTICS",
+    "pages": "pages",
+    "plan": "PLAN",
+    "time": "TIME",
+    "wellDone": "Well done! but you need to be a little bit faster. You can do it"
+  },
+
+  "toast": {
+    "regSuccess": "Registration was successful"
+  },
+
+  "modal": {
+    "step": "Step",
+    "createLibrary": "Create your own library",
+    "addBooks": "Add there books which you are going to read",
+    "createTraining": "Create your first training",
+    "setAGoal": "Set a goal, choose period, start training",
+    "ok": "Ok",
+    "congratulations": "Congratulations! All books have been read!",
+    "newTraining": "New training",
+    "back": "Back",
+    "leave": "If you leave the program your data can be lost",
+    "cancel": "Cancel",
+    "willHelp": "Will help you to",
+    "createGoal": "Create your goal faster and proceed to read",
+    "process": "Divide process proportionally for each day",
+    "trackSuccess": "Track your success",
+    "youMay": "You may also",
+    "pose": "Pose your own independent point of view",
+    "improve": "Improve your professional skills according to new knowledge",
+    "become": "Become an interesting interlocutor"
+  },
+
+  "quotes": {
+    "quote0": "Books are the ships of thoughts, wandering through the waves of time.",
+    "author0": "Francis Bacon",
+    "quote1": "So many books, so little time.",
+    "author1": "Frank Zappa",
+    "quote2": "A room without books is like a body without a soul.",
+    "author2": "Marcus Tullius Cicero",
+    "quote3": "If you only read the books that everyone else is reading, you can only think what everyone else is thinking.",
+    "author3": "Haruki Murakami",
+    "quote4": "One must always be careful of books, and what is inside them, for words have the power to change us.",
+    "author4": "Cassandra Clare",
+    "quote5": "If there's a book that you want to read, but it hasn't been written yet, then you must write it.",
+    "author5": "Toni Morrison",
+    "quote6": "The world is a book and those who do not travel read only one page.",
+    "author6": "St. Augustine",
+    "quote7": "Books are mirrors: you only see in them what you already have inside you.",
+    "author7": "Carlos Ruiz Zafón",
+    "quote8": "Think before you speak. Read before you think.",
+    "author8": "Fran Lebowitz",
+    "quote9": "That's the thing about books. They let you travel without moving your feet.",
+    "author9": "Jhumpa Lahiri"
+  }
+}

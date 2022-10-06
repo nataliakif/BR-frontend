@@ -87,12 +87,14 @@ input:focus {
   }
 }
 
-.button:hover,
+/* .button:hover,
 .button:focus {
   background: var(--accent-color);
   color: var(--bg-color);
+} */
+.button:disabled {
+  opacity: 0.5;
 }
-
 @media screen and (min-width: 768px) {
   .title {
     width: 704px;
