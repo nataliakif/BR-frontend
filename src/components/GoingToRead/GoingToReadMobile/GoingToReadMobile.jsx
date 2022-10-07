@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import s from './GoingToReadMobile.module.css';
 import { useTranslation } from 'react-i18next';
+import s from './GoingToReadMobile.module.css';
 
 const GoingToReadMobile = ({ goingToReadListBooks }) => {
   const { t } = useTranslation();

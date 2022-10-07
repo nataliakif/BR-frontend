@@ -1,12 +1,11 @@
-import Navigation from './Navigation/Navigation';
-import UserBar from './UserBar/UserBar';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LanguageSwitcher from 'components/LanguageSwitcher';
 import { getCurrentStatus } from 'redux/authUser/authUserSlice';
-import { NavLink } from 'react-router-dom';
-
-import s from '../Header/Header.module.css';
+import Navigation from './Navigation/Navigation';
+import UserBar from './UserBar/UserBar';
 import Logout from './Logout/Logout';
-import { useSelector } from 'react-redux';
+import s from '../Header/Header.module.css';
 
 const Header = () => {
   const isLoggedIn = useSelector(getCurrentStatus);

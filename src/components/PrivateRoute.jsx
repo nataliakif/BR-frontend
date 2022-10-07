@@ -15,4 +15,5 @@ PrivateRoute.propTypes = {
     PropTypes.node,
   ]),
 };
+
 export default PrivateRoute;

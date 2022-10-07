@@ -1,19 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { Formik, Form, ErrorMessage, useField } from 'formik';
 import * as yup from 'yup';
 import {
   useLoginUserMutation,
   useRestorePasswordMutation,
 } from 'redux/authUser/authUserApiSlice';
-import LoginTimer from 'components/LoginTimer';
 import { setCredentials, getCurrentUser } from 'redux/authUser/authUserSlice';
+import LoginTimer from 'components/LoginTimer';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
 import sprite from '../../images/sprite.svg';
-import { toast } from 'react-toastify';
-import { useTranslation } from 'react-i18next';
 import s from './LoginForm.module.css';
+import { booksApi } from 'redux/books/booksApi';
 
 const initialValues = {
   email: '',
@@ -78,6 +79,10 @@ const LoginForm = () => {
     try {
       const userData = await loginUser({ email, password }).unwrap();
       dispatch(setCredentials({ ...userData.data }));
+      dispatch({
+        type: `${booksApi.reducerPath}/invalidateTags`,
+        payload: ['Books'],
+      });
     } catch (error) {
       toast.error(error.data.message);
       dispatch(

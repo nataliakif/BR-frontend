@@ -116,7 +116,10 @@
   },
 
   "toast": {
-    "regSuccess": "Registration was successful"
+    "regSuccess": "Registration was successful",
+    "addBook": "Your book ",
+    "addBookSuccess": " has been successfully added",
+    "bookWarning": "You have already added book with title - "
   },
 
   "modal": {

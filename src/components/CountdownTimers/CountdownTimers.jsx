@@ -1,7 +1,7 @@
 import { useCountdown } from 'services/hooks/useCountdown';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import s from './CountdownTimers.module.css';
-import { useTranslation } from 'react-i18next';
 
 const DateTimeDisplay = ({ value, type }) => {
   const minTwoDigits = value => {
@@ -85,8 +85,8 @@ const CountdownTimers = ({ targetDate }) => {
   );
 };
 
-export default CountdownTimers;
-
 CountdownTimers.propTypes = {
   targetDate: PropTypes.string,
 };
+
+export default CountdownTimers;

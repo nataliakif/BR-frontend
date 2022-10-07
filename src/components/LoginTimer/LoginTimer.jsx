@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import s from './LoginTimer.module.css';
 
 const LoginTimer = () => {

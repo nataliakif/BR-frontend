@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 import { getCurrentStatus } from '../redux/authUser/authUserSlice';
 
@@ -22,4 +21,5 @@ PublicRoute.propTypes = {
     PropTypes.node,
   ]),
 };
+
 export default PublicRoute;

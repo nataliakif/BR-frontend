@@ -116,7 +116,10 @@
   },
 
   "toast": {
-    "regSuccess": "Rejestracja powiodła się"
+    "regSuccess": "Rejestracja powiodła się",
+    "addBook": "Twoja książka ",
+    "addBookSuccess": " został pomyślnie dodany",
+    "bookWarning": "Już dodałeś książkę o tytule - "
   },
 
   "modal": {

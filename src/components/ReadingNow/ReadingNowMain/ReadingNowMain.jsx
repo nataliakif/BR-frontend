@@ -5,7 +5,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import PropTypes from 'prop-types';
-
 import { useTranslation } from 'react-i18next';
 import stringMax from 'helpers/stringMax';
 import sprite from '../../../images/sprite.svg';

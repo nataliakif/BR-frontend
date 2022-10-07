@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import s from './StartModal.module.css';
-import Icons from '../../../images/symbol-defs.svg';
-import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import Icons from '../../../images/symbol-defs.svg';
+import s from './StartModal.module.css';
 
 function StartModal() {
   const [open, setOpen] = useState(true);
@@ -43,7 +43,6 @@ function StartModal() {
             </svg>
             <p className={s.secondStepDesc}>{t('modal.setAGoal')}</p>
           </div>
-
 
           <button
             onClose={handleClose}
