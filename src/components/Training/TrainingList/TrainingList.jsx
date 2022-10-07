@@ -46,6 +46,7 @@ const TrainingList = ({
 
               <svg
                 type="button"
+                style={{ cursor: 'pointer' }}
                 id="delete_button"
                 onClick={() => {
                   deleteBookFromList(id);
