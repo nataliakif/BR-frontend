@@ -58,26 +58,29 @@ const CountdownTimers = ({ targetDate }) => {
         minutes={minutesUntilNextYear}
         seconds={secondsUntilNextYear}
       />
-      {daysUntilTargetDate <= 0 &&
-      hoursUntilTargetDate <= 0 &&
-      minutesUntilTargetDate <= 0 &&
-      secondsUntilTargetDate <= 0 ? (
-        <ShowCounter
-          header={t('statistics.goalsCountdown')}
-          days={0}
-          hours={0}
-          minutes={0}
-          seconds={0}
-        />
-      ) : (
-        <ShowCounter
-          header={t('statistics.goalsCountdown')}
-          days={daysUntilTargetDate}
-          hours={hoursUntilTargetDate}
-          minutes={minutesUntilTargetDate}
-          seconds={secondsUntilTargetDate}
-        />
-      )}
+      <ShowCounter
+        header={t('statistics.goalsCountdown')}
+        days={
+          daysUntilTargetDate < 0
+            ? -1 * daysUntilTargetDate
+            : daysUntilTargetDate
+        }
+        hours={
+          hoursUntilTargetDate < 0
+            ? -1 * hoursUntilTargetDate
+            : hoursUntilTargetDate
+        }
+        minutes={
+          minutesUntilTargetDate < 0
+            ? -1 * minutesUntilTargetDate
+            : minutesUntilTargetDate
+        }
+        seconds={
+          secondsUntilTargetDate < 0
+            ? -1 * secondsUntilTargetDate
+            : secondsUntilTargetDate
+        }
+      />
     </div>
   );
 };
