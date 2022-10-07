@@ -22,6 +22,7 @@ const StatisticsListMobile = ({ books }) => {
                   <div className={s.checkBoxWrapper}>
                     <Checkbox
                       checked={alreadyFinished}
+                      disabled
                       name={_id}
                       sx={{
                         '& .MuiSvgIcon-root': { fontSize: 15 },
