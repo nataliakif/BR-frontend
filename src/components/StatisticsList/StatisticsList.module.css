@@ -62,7 +62,6 @@
 .styleColums {
   width: 13%;
 }
-
 @media screen and (min-width: 1280px) {
   .tableTBody {
     overflow-x: hidden;
