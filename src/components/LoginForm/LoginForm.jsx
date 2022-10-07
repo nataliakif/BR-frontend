@@ -101,10 +101,7 @@ const LoginForm = () => {
     <div className={s.container}>
       <a
         className={s.googleLink}
-        href="https://fullstack-team-project-back.herokuapp.com/auth/google"
-        // baseUrl: 'https://br-backend.herokuapp.com/',
-        // baseUrl: 'https://fullstack-team-project-back.herokuapp.com/',
-        // baseUrl: 'http://localhost:3001/',
+        href="https://br-backend.herokuapp.com/auth/google"
       >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
