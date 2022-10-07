@@ -1,4 +1,4 @@
-.sectionStatistic {
+.sectionStatistic, .sectionStatisticTraining {
   width: 280px;
   margin: 0 auto;
 }
@@ -14,13 +14,20 @@
 }
 
 @media screen and (min-width: 480px) {
-  .sectionStatistic {
+  .sectionStatistic, .sectionStatisticTraining {
     width: 480px;
   }
+
+
 }
 
 @media screen and (min-width: 768px) {
-  .sectionStatistic {
+  .sectionStatistic  {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .sectionStatisticTraining {
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
@@ -39,6 +46,13 @@
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  .sectionStatisticTraining {
+    width: 1280px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 32px;
+  }
   .statisticsWrapper {
     display: grid;
     row-gap: 44px;
@@ -55,5 +69,13 @@
     flex-direction: column;
     margin-right: 32px;
     width: 928px;
+  }
+  .sectionMuGoals {
+    width: 288px;
+    height: 329px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    /* Width 288px Height 329px */
   }
 }
