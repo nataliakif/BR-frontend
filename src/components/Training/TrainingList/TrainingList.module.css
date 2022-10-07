@@ -41,6 +41,9 @@
 .plug {
   display: none;
 }
+#delete_button {
+  cursor: pointer;
+}
 
 @media screen and (min-width: 768px) {
   .listHeader {
