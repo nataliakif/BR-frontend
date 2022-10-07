@@ -1,4 +1,3 @@
-import Container from 'components/Container';
 import InputBook from 'components/InputBook';
 import ContainerLibrary from 'components/ContainerLibrary';
 import StartModal from 'components/modals/StartModal';
@@ -28,9 +27,8 @@ const LibraryView = () => {
     <Progress />
   ) : (
     <>
-      <Container>
-        <InputBook addedBookTitles={data?.map(book => book.bookTitle)} />
-      </Container>
+      <InputBook addedBookTitles={data?.map(book => book.bookTitle)} />
+
       {!data?.length && !isLoading && <StartModal />}
 
       {data && (

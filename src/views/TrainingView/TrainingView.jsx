@@ -7,7 +7,6 @@ import { useCreateTrainingMutation } from 'redux/training/trainingApi';
 import { useFetchTrainingQuery } from 'redux/training/trainingApi';
 import { useEditBookMutation } from 'redux/books/booksApi';
 
-import Container from 'components/Container';
 import MyGoals from 'components/MyGoals';
 import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
 import { Chart } from 'components/Chart/Chart';
@@ -107,74 +106,71 @@ const TrainingView = () => {
   return isFetchingTraining ? (
     <Progress />
   ) : (
-    <>
-      <Container>
-        <div className={s.training}>
-          {!showElement && (
-            <MyGoals
-              bookAmount={selectedBooks.length}
-              daysAmount={trainingDaysAmount}
+    <div className={s.container}>
+      <div className={s.training}>
+        {!showElement && (
+          <MyGoals
+            bookAmount={selectedBooks.length}
+            daysAmount={trainingDaysAmount}
+          />
+        )}
+        <div className={s.wrapperContainer}>
+          {(!isMobile || showElement) && (
+            <TrainingForm
+              goingToReadBooks={goingToReadBooks.filter(
+                book => !selectedBooks.map(book => book._id).includes(book._id)
+              )}
+              onStartDateChange={setStartDate}
+              onFinishDateChange={setFinishDate}
+              onBtnAddClick={selectBook}
             />
           )}
-          <div className={s.wrapperContainer}>
-            {(!isMobile || showElement) && (
-              <TrainingForm
-                goingToReadBooks={goingToReadBooks.filter(
-                  book =>
-                    !selectedBooks.map(book => book._id).includes(book._id)
-                )}
-                onStartDateChange={setStartDate}
-                onFinishDateChange={setFinishDate}
-                onBtnAddClick={selectBook}
-              />
-            )}
-            {!showElement && !isMobile && (
-              <TrainingList
-                trainingBooks={selectedBooks}
-                deleteBookFromList={onSelectedBookDelete}
-              />
-            )}
-            {isMobile && !showElement && (
-              <TrainingMobileList
-                trainingBooks={selectedBooks}
-                deleteBookFromList={onSelectedBookDelete}
-              />
-            )}
+          {!showElement && !isMobile && (
+            <TrainingList
+              trainingBooks={selectedBooks}
+              deleteBookFromList={onSelectedBookDelete}
+            />
+          )}
+          {isMobile && !showElement && (
+            <TrainingMobileList
+              trainingBooks={selectedBooks}
+              deleteBookFromList={onSelectedBookDelete}
+            />
+          )}
 
-            {showElement && (
-              <BsArrowLeft
-                className={s.arrowButton}
-                onClick={() => setShowElement(false)}
+          {showElement && (
+            <BsArrowLeft
+              className={s.arrowButton}
+              onClick={() => setShowElement(false)}
+            />
+          )}
+          {showStButton && !showElement && (
+            <div className={s.buttonWrapper}>
+              <Button
+                id="startTraining"
+                className="main"
+                text={t('training.startTraining')}
+                onClick={onStartClick}
+                onEnded={isLoading}
               />
-            )}
-            {showStButton && !showElement && (
-              <div className={s.buttonWrapper}>
-                <Button
-                  id="startTraining"
-                  className="main"
-                  text={t('training.startTraining')}
-                  onClick={onStartClick}
-                  onEnded={isLoading}
-                />
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
+      </div>
 
-        {!showElement && (
-          <Chart plan={planedPagesPerDay} readingStatistics={[]} />
-        )}
-        {isMobile && !showElement && (
-          <button
-            type="button"
-            className={s.addPageBtn}
-            onClick={() => setShowElement(true)}
-          >
-            +
-          </button>
-        )}
-      </Container>
-    </>
+      {!showElement && (
+        <Chart plan={planedPagesPerDay} readingStatistics={[]} />
+      )}
+      {isMobile && !showElement && (
+        <button
+          type="button"
+          className={s.addPageBtn}
+          onClick={() => setShowElement(true)}
+        >
+          +
+        </button>
+      )}
+    </div>
   );
 };
 

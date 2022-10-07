@@ -117,16 +117,15 @@ const StatisticView = () => {
       <>
         <section className={s.sectionStatisticTraining}>
           <div className={s.statisticsWrapper}>
-              <CountdownTimers targetDate={currentTraining.finishDate} />
-              <div className={s.sectionMuGoals}>
-
-            <MyGoals
-              bookAmount={currentTraining.books.length}
-              daysAmount={currentTraining.trainingDaysAmount}
-              booksLeft={currentTraining.notFinishedBooksAmount}
-              showBooksLeft={true}
+            <CountdownTimers targetDate={currentTraining.finishDate} />
+            <div className={s.sectionMuGoals}>
+              <MyGoals
+                bookAmount={currentTraining.books.length}
+                daysAmount={currentTraining.trainingDaysAmount}
+                booksLeft={currentTraining.notFinishedBooksAmount}
+                showBooksLeft={true}
               />
-              </div>
+            </div>
             {isMobile ? (
               <StatisticsListMobile books={currentTraining.books} />
             ) : (
