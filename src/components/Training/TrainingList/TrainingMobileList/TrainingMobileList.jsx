@@ -8,11 +8,37 @@ const TrainingMobileList = ({
   deleteBookFromList,
 }) => {
   const { t } = useTranslation();
-
+  console.log(trainingBooks.length);
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.list}>
-        {trainingBooks?.map(
+        {!trainingBooks.length && (
+          <li className={s.list_item}>
+            <div className={s.infoUp}>
+              <p className={s.title}>
+                <svg className={s.icon} width="22" height="17">
+                  <use href={`${sprite}#icon-grey-book`}></use>
+                </svg>
+                ...
+              </p>
+            </div>
+            <div className={s.info}>
+              <p className={s.item}>
+                <span className={s.subtitle}>{t('library.author')}:</span>
+                ...
+              </p>
+              <p className={s.item}>
+                <span className={s.subtitle}>{t('library.year')}:</span>
+                ...
+              </p>
+              <p className={s.item}>
+                <span className={s.subtitle}>{t('library.pages')}:</span>
+                ...
+              </p>
+            </div>
+          </li>
+        )}
+        {trainingBooks.map(
           (
             {
               _id: id,

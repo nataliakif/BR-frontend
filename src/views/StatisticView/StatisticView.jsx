@@ -1,8 +1,3 @@
-import Container from 'components/Container';
-import CountdownTimers from 'components/CountdownTimers';
-import MyGoals from 'components/MyGoals';
-import AddResult from 'components/AddResult/AddResult';
-import s from './StatisticView.module.css';
 import {
   useDeleteTrainingMutation,
   useFetchTrainingQuery,
@@ -10,15 +5,20 @@ import {
 } from '../../redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+import CountdownTimers from 'components/CountdownTimers';
+import MyGoals from 'components/MyGoals';
+import AddResult from 'components/AddResult/AddResult';
 import Progress from 'components/Progress/Progress';
 import StatisticsList from 'components/StatisticsList/StatisticsList';
 import StatisticsListMobile from 'components/StatisticsList/StatisticsListMobile';
-import useIsMobile from 'helpers/useIsMobile';
-import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
 import { Chart } from 'components/Chart/Chart';
-import calculateStatistics from 'services/calculateStatistics';
-import { useEditBookMutation } from 'redux/books/booksApi';
 import TrainingExecutedModal from 'components/modals/TrainingExecutedModal/TrainingExecutedModal';
+import { useEditBookMutation } from 'redux/books/booksApi';
+import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
+import useIsMobile from 'helpers/useIsMobile';
+import calculateStatistics from 'services/calculateStatistics';
+import s from './StatisticView.module.css';
 
 const findAlreadyReadBook = (books, alreadyReadPages) => {
   let readPagesLeft = alreadyReadPages;
@@ -115,25 +115,23 @@ const StatisticView = () => {
   ) : (
     currentTraining && (
       <>
-        <Container>
-          <div className={s.statistics}>
-            <div className={s.leftWrapper}>
-              <CountdownTimers targetDate={currentTraining.finishDate} />
-              {isMobile ? (
-                <StatisticsListMobile books={currentTraining.books} />
-              ) : (
-                <StatisticsList books={currentTraining.books} />
-              )}
-            </div>
+        <section className={s.sectionStatistic}>
+          <div className={s.statisticsWrapper}>
+            <CountdownTimers targetDate={currentTraining.finishDate} />
             <MyGoals
               bookAmount={currentTraining.books.length}
               daysAmount={currentTraining.trainingDaysAmount}
               booksLeft={currentTraining.notFinishedBooksAmount}
               showBooksLeft={true}
             />
+            {isMobile ? (
+              <StatisticsListMobile books={currentTraining.books} />
+            ) : (
+              <StatisticsList books={currentTraining.books} />
+            )}
           </div>
-        </Container>
-        <Container>
+        </section>
+        <section className={s.sectionStatistic}>
           <div className={s.statistics}>
             <div className={s.leftWrapper}>
               <Chart
@@ -145,7 +143,7 @@ const StatisticView = () => {
             </div>
             <AddResult data={currentTraining} updateResult={updateResult} />
           </div>
-        </Container>
+        </section>
         {isTrainingExecuted && (
           <TrainingExecutedModal
             handleCloseOfTraining={handleCloseOfTraining}
