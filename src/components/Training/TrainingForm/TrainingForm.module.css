@@ -67,6 +67,7 @@
 }
 
 .btnAdd {
+  cursor: pointer;
   width: 171px;
   height: 42px;
   margin: auto;

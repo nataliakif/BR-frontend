@@ -60,7 +60,7 @@
 .buttonOpen {
   padding-top: 11px;
   padding-bottom: 11px;
-
+  cursor: pointer;
   text-align: center;
   width: 127px;
   height: 40px;
@@ -81,6 +81,7 @@
 }
 
 .buttonBack {
+  cursor: pointer;
   min-width: 98px;
   padding-top: 11px;
   padding-bottom: 11px;
@@ -93,6 +94,7 @@
 }
 
 .buttonSave {
+  cursor: pointer;
   min-width: 98px;
   padding-top: 11px;
   padding-bottom: 11px;

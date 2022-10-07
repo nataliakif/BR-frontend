@@ -3,9 +3,11 @@ import ContainerLibrary from 'components/ContainerLibrary';
 import StartModal from 'components/modals/StartModal';
 import GoingToRead from 'components/GoingToRead';
 import { useFetchBooksQuery } from 'redux/books/booksApi';
+import { useNavigate } from 'react-router-dom';
 import ReadingNow from 'components/ReadingNow';
 import AlreadyRead from '../components/AlreadyRead/AlreadyRead';
 import Progress from 'components/Progress/Progress';
+import Button from '../components/Button/Button';
 
 const LibraryView = () => {
   const { data, isLoading } = useFetchBooksQuery();
@@ -16,6 +18,11 @@ const LibraryView = () => {
   const goingToReadListBooks = data?.filter(
     book => book.status === 'going_to_read'
   );
+
+  const navigate = useNavigate();
+  const routeChange = () => {
+    navigate('/training');
+  };
   return isLoading ? (
     <Progress />
   ) : (
@@ -34,6 +41,22 @@ const LibraryView = () => {
           )}
           {goingToReadListBooks.length > 0 && (
             <GoingToRead goingToReadListBooks={goingToReadListBooks} />
+          )}
+          {goingToReadListBooks.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '40px',
+              }}
+            >
+              <Button
+                type="submit"
+                className="main"
+                text="My training"
+                onClick={routeChange}
+              />
+            </div>
           )}
         </ContainerLibrary>
       )}
