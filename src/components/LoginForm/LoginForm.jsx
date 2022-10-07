@@ -14,6 +14,7 @@ import LoginTimer from 'components/LoginTimer';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
 import sprite from '../../images/sprite.svg';
 import s from './LoginForm.module.css';
+import { booksApi } from 'redux/books/booksApi';
 
 const initialValues = {
   email: '',
@@ -78,6 +79,10 @@ const LoginForm = () => {
     try {
       const userData = await loginUser({ email, password }).unwrap();
       dispatch(setCredentials({ ...userData.data }));
+      dispatch({
+        type: `${booksApi.reducerPath}/invalidateTags`,
+        payload: ['Books'],
+      });
     } catch (error) {
       toast.error(error.data.message);
       dispatch(
