@@ -163,7 +163,7 @@ const TrainingView = () => {
         {!showElement && (
           <Chart plan={planedPagesPerDay} readingStatistics={[]} />
         )}
-        {isMobile && (
+        {isMobile && !showElement && (
           <button
             type="button"
             className={s.addPageBtn}
