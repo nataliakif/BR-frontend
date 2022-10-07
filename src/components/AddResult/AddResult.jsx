@@ -15,6 +15,7 @@ const AddResult = ({ data, updateResult }) => {
   const {
     goalPerDay: plan,
     startDate,
+    finishDate,
     readStatistics: results,
     alreadyReadPages,
     isTrainingExecuted,
@@ -75,7 +76,7 @@ const AddResult = ({ data, updateResult }) => {
                     name="date"
                     className={s.input}
                     minDate={new Date(startDate)}
-                    maxDate={new Date()}
+                    maxDate={new Date(finishDate)}
                     dateFormat="dd-MM-yyyy"
                     placeholderText="Choose date"
                     autoComplete="off"
