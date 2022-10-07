@@ -1,3 +1,7 @@
+.container {
+  padding: 40px 0;
+}
+
 .training {
   position: relative;
   display: flex;

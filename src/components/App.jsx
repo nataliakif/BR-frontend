@@ -1,17 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Progress from 'components/Progress/Progress';
-// import { useDispatch, useSelector } from 'react-redux';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import { Navigate } from 'react-router';
-// import {
-//   getCurrentToken,
-//   setCredentials,
-// } from '../redux/authUser/authUserSlice';
-// import { useFetchCurrentUserQuery } from '../redux/authUser/authUserApiSlice';
+import Container from './Container';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
@@ -37,7 +32,7 @@ const App = () => {
   // }, [currentToken, data, dispatch]);
 
   return (
-    <>
+    <Container>
       {false ? (
         <Progress />
       ) : (
@@ -103,7 +98,7 @@ const App = () => {
           />
         </Suspense>
       )}
-    </>
+    </Container>
   );
 };
 
