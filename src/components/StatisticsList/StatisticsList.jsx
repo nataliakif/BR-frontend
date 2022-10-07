@@ -23,6 +23,7 @@ const StatisticsList = ({ books }) => {
         <i>
           <Checkbox
             checked={info.getValue()}
+            disabled
             sx={{
               '& .MuiSvgIcon-root': { fontSize: 15 },
               color: grey[500],
