@@ -2,9 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Progress from 'components/Progress/Progress';
-
 // import { useDispatch, useSelector } from 'react-redux';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';

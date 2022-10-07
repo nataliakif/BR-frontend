@@ -1,6 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import sprite from '../images/sprite.svg';
 import s from './Navigation.module.css';
-import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (

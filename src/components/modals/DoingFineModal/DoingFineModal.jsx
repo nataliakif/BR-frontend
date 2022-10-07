@@ -1,9 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import sprite from './sprite.svg';
 import s from './DoingFineModal.module.css';
-import { useTranslation } from 'react-i18next';
 
 const DoingFineModal = ({ open, onClose }) => {
   const { t } = useTranslation();

@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { BsArrowLeft } from 'react-icons/bs';
 import { useFetchBooksQuery } from 'redux/books/booksApi';
 import { useCreateTrainingMutation } from 'redux/training/trainingApi';
 import { useFetchTrainingQuery } from 'redux/training/trainingApi';
 import { useEditBookMutation } from 'redux/books/booksApi';
-import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
-import getTotalPageAmount from 'helpers/getTotalPageAmount';
 
-import s from './TrainingView.module.css';
 import Container from 'components/Container';
 import MyGoals from 'components/MyGoals';
 import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
@@ -18,7 +16,10 @@ import Progress from 'components/Progress/Progress';
 import Button from 'components/Button/Button';
 import TrainingMobileList from '../../components/Training/TrainingList/TrainingMobileList/TrainingMobileList';
 import useIsMobile from '../../helpers/useIsMobile';
-import { BsArrowLeft } from 'react-icons/bs';
+import getTrainingDaysAmount from 'helpers/getTrainingDaysAmount';
+import getTotalPageAmount from 'helpers/getTotalPageAmount';
+
+import s from './TrainingView.module.css';
 
 const TrainingView = () => {
   const [startDate, setStartDate] = useState(null);

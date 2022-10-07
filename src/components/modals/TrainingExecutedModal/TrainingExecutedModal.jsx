@@ -1,10 +1,10 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import sprite from '../DoingFineModal/sprite.svg';
 import s from './TrainingExecutedModal.module.css';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
   const [open, setOpen] = useState(true);
@@ -27,7 +27,7 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
             disabled={isLoading}
           />
           <Button
-            className="transparent"           
+            className="transparent"
             tabIndex={0}
             autoFocus={true}
             text={t('modal.back')}
@@ -38,6 +38,7 @@ const TrainingExecutedModal = ({ isLoading, handleCloseOfTraining }) => {
     </Modal>
   );
 };
+
 TrainingExecutedModal.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   handleCloseOfTraining: PropTypes.func.isRequired,

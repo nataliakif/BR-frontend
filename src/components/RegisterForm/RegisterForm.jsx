@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { Formik, Form, ErrorMessage, useField } from 'formik';
+import * as yup from 'yup';
 import { getLang } from 'redux/authUser/authUserSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import * as yup from 'yup';
 import { useRegisterUserMutation } from 'redux/authUser/authUserApiSlice';
 import { setCredentials } from 'redux/authUser/authUserSlice';
 import { ReactComponent as GoogleIcon } from '../../images/google.svg';
 import sprite from '../../images/sprite.svg';
-import { toast } from 'react-toastify';
-import { useTranslation } from 'react-i18next';
 import s from './RegisterForm.module.css';
 
 const initialValues = {

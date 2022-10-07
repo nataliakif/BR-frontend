@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import AlreadyReadMobile from './AlreadyReadMobile/AlreadyReadMobile';
 import AlreadyReadMain from './AlreadyReadMain/AlreadyReadMain';
 import useIsMobile from '../../helpers/useIsMobile';

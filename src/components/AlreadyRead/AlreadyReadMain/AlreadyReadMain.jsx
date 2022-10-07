@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 import Rating from '@mui/material/Rating';
 import { useTranslation } from 'react-i18next';
 import ResumeModal from '../../modals/ResumeModal/ResumeModal';
+import stringMax from 'helpers/stringMax';
 import sprite from '../../../images/sprite.svg';
 import s from '../AlreadyReadMain/AlreadyReadMain.module.css';
-import stringMax from 'helpers/stringMax';
 
 const AlreadyReadMain = ({ alreadyReadListBooks }) => {
   const { t } = useTranslation();

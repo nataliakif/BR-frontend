@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field } from 'formik';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
-import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-
 import { useEditBookMutation } from '../../../redux/books/booksApi';
 import s from './ResumeModal.module.css';
 

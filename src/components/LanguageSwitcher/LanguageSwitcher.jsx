@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLang, getLang } from 'redux/authUser/authUserSlice';
 import PropTypes from 'prop-types';
@@ -48,8 +48,8 @@ const LanguageSwitcher = ({ isLoggedIn }) => {
   );
 };
 
-export default LanguageSwitcher;
-
 LanguageSwitcher.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
+
+export default LanguageSwitcher;

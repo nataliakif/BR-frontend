@@ -1,5 +1,5 @@
-import s from './BooksReader.module.css';
 import { useTranslation } from 'react-i18next';
+import s from './BooksReader.module.css';
 
 const BooksReader = () => {
   const { t } = useTranslation();

@@ -29,6 +29,7 @@ export const authUserApi = apiSlice.injectEndpoints({
     }),
   }),
 });
+
 export const {
   useLoginUserMutation,
   useRegisterUserMutation,

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import DatePickerInput from '../DatePicker/DatePicker';
-import s from './TrainingForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { useTranslation } from 'react-i18next';
+import s from './TrainingForm.module.css';
 
 const initialValues = {
   startDate: '',
@@ -115,4 +115,5 @@ const TrainingForm = ({
     </Formik>
   );
 };
+
 export default TrainingForm;
