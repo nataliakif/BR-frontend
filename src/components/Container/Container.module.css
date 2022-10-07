@@ -1,7 +1,9 @@
 .container {
   width: 280px;
   margin: 0 auto;
+  background-color: var(--bg-color);
 }
+
 @media screen and (min-width: 480px) {
   .container {
     width: 480px;
@@ -19,6 +21,6 @@
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;
-    padding: 40px 16px;
+    padding: 0 16px;
   }
 }
