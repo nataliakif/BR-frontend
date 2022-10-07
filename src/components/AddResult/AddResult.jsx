@@ -1,13 +1,13 @@
-import s from './AddResult.module.css';
-import PropTypes from 'prop-types';
-import Button from 'components/Button/Button';
-import sprite from './sprite.svg';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import DatePickerField from '../DatePicker';
-import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
+import DatePickerField from '../DatePicker';
+import Button from 'components/Button/Button';
+import DoingFineModal from 'components/modals/DoingFineModal/DoingFineModal';
+import PropTypes from 'prop-types';
+import sprite from './sprite.svg';
+import s from './AddResult.module.css';
 
 const AddResult = ({ data, updateResult }) => {
   const { t } = useTranslation();

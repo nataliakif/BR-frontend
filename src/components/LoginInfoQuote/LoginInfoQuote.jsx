@@ -1,9 +1,9 @@
-import { setQuote, getQuote } from 'redux/authUser/authUserSlice';
 import { useEffect } from 'react';
+import { setQuote, getQuote } from 'redux/authUser/authUserSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { ReactComponent as QuoteMobileIcon } from '../../images/quote.svg';
 import s from './LoginInfoQuote.module.css';
-import { useTranslation } from 'react-i18next';
 
 const LoginInfoQuote = () => {
   const { t } = useTranslation();

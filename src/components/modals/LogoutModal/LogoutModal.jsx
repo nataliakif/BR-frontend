@@ -1,8 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import s from './LogoutModal.module.css';
-import { useTranslation } from 'react-i18next';
 
 const LogoutModal = ({ open, onClose, logoutFunc }) => {
   const { t } = useTranslation();

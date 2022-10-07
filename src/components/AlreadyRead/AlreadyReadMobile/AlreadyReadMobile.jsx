@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import Rating from '@mui/material/Rating';
-import ResumeModal from 'components/modals/ResumeModal';
-import s from './AlreadyReadMobile.module.css';
 import { useTranslation } from 'react-i18next';
 import { useEditBookMutation } from 'redux/books/booksApi';
+import Rating from '@mui/material/Rating';
+import ResumeModal from 'components/modals/ResumeModal';
+import PropTypes from 'prop-types';
+import s from './AlreadyReadMobile.module.css';
 
 const AlreadyReadMobile = ({ alreadyReadListBooks }) => {
   const [editBook] = useEditBookMutation();

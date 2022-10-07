@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Rating from '@mui/material/Rating';
-
 import { useEditBookMutation } from '../redux/books/booksApi';
 
 const RatingControlled = ({ step, openedBook }) => {

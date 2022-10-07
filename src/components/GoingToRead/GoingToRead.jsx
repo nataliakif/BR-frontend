@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-
 import GoingToReadMobile from './GoingToReadMobile/GoingToReadMobile';
 import GoingToReadMain from './GoingToReadMain/GoingToReadMain';
 import useIsMobile from '../../helpers/useIsMobile';
+import PropTypes from 'prop-types';
 
 const GoingToRead = ({ goingToReadListBooks }) => {
   const isMobile = useIsMobile();

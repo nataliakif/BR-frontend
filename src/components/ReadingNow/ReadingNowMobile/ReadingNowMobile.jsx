@@ -1,6 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import s from './ReadingNowMobile.module.css';
-import { useTranslation } from 'react-i18next';
 
 const ReadingNowMobile = ({ readingNowListBooks }) => {
   const { t } = useTranslation();

@@ -7,8 +7,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import stringMax from 'helpers/stringMax';
-import s from './GoingToReadMain.module.css';
 import sprite from '../../../images/sprite.svg';
+import s from './GoingToReadMain.module.css';
 
 const GoingToReadMain = ({ goingToReadListBooks }) => {
   const { t } = useTranslation();

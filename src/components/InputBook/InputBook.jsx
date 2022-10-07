@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
-import s from './InputBook.module.css';
 import schema from './ErrorInput';
-import PropTypes from 'prop-types';
 import { useCreateBookMutation } from 'redux/books/booksApi';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+import s from './InputBook.module.css';
 
 const initialValues = {
   title: '',
@@ -28,9 +28,7 @@ function InputBook({ addedBookTitles }) {
             onSubmit={e => {
               e.preventDefault();
               if (addedBookTitles.includes(values.title)) {
-                toast.warning(
-                  `You have already added book with title - ${values.title}`
-                );
+                toast.warning(`${t('toast.bookWarning')}${values.title}`);
                 return;
               }
               createBook({
@@ -39,6 +37,11 @@ function InputBook({ addedBookTitles }) {
                 publicationDate: values.publishYear,
                 amountOfPages: values.pagesTotal,
               });
+              toast.success(
+                `${t('toast.addBook')}${values.title}${t(
+                  'toast.addBookSuccess'
+                )}`
+              );
               resetForm();
             }}
           >

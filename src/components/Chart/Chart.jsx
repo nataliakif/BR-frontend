@@ -1,5 +1,5 @@
-import s from './Chart.module.css';
 import { useTranslation } from 'react-i18next';
+import s from './Chart.module.css';
 
 import {
   Chart as ChartJS,
