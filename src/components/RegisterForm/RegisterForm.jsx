@@ -107,7 +107,7 @@ const RegisterForm = () => {
     <div className={s.container}>
       <a
         className={s.googleLink}
-        href="https://br-backend.herokuapp.com/auth/google"
+        href="https://fullstack-team-project-back.herokuapp.com/auth/google"
       >
         <GoogleIcon style={{ marginRight: '15px' }} />
         Google
