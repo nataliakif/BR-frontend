@@ -105,6 +105,7 @@ function InputBook({ addedBookTitles }) {
                   onBlur={handleBlur}
                   placeholder="..."
                   value={values.publishYear}
+                  required
                 />
                 <ErrorMessage
                   component="div"
