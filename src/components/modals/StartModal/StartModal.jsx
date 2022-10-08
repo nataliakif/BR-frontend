@@ -45,7 +45,7 @@ function StartModal() {
           </div>
 
           <button
-            onClose={handleClose}
+            onClick={handleClose}
             className={s.okBtn}
             tabIndex={0}
             autoFocus={true}
