@@ -63,10 +63,9 @@
   width: 13%;
 }
 @media screen and (min-width: 768px) {
-    .tableBox {
-      margin-top: 28px;
-        
-      }
+  .tableBox {
+    margin-top: 28px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .tableTBody {

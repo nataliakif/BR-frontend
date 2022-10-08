@@ -4,15 +4,12 @@
   align-items: center;
   width: 280px;
   margin: 0 auto;
-  /* padding-left: 20px;
-  padding-right: 20px; */
 }
 
 .googleLink {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* font-family: var(--accent-color); */
   font-weight: 700;
 
   width: 150px;
@@ -21,7 +18,6 @@
   font-size: 16px;
   line-height: 2.37;
   text-decoration: none;
-  /* margin: 0 auto; */
   margin-bottom: 28px;
 
   color: #707375;
@@ -55,8 +51,8 @@
 
 .input {
   font-weight: 400;
-    font-size: 14px;
-    line-height:1.21;
+  font-size: 14px;
+  line-height: 1.21;
 
   width: 280px;
   margin-bottom: 20px;

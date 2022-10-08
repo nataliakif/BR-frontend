@@ -6,7 +6,7 @@
 
 @media screen and (min-width: 768px) {
   .form {
-  margin-top: 32px;
+    margin-top: 32px;
   }
 }
 
@@ -14,12 +14,11 @@
   .form {
     flex-direction: column;
     align-items: center;
-
   }
 }
 @media screen and (min-width: 1280px) {
   .form {
-        margin-top: 40px;
+    margin-top: 40px;
   }
 }
 
@@ -65,9 +64,9 @@
   .label:nth-child(2) {
     margin-left: 27px;
   }
-        .label:not(:first-child) {
-          margin-left: 16px;
-        }
+  .label:not(:first-child) {
+    margin-left: 16px;
+  }
 }
 
 input {
@@ -101,7 +100,7 @@ input:focus {
   .button {
     margin-left: 45px;
     margin-top: 37px;
-        width: 181px;
+    width: 181px;
   }
 }
 
