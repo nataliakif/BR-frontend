@@ -1,4 +1,5 @@
-.sectionStatistic, .sectionStatisticTraining {
+.sectionStatistic,
+.sectionStatisticTraining {
   width: 280px;
   margin: 0 auto;
 }
@@ -14,43 +15,38 @@
 }
 
 @media screen and (min-width: 480px) {
-  .sectionStatistic, .sectionStatisticTraining {
+  .sectionStatistic,
+  .sectionStatisticTraining {
     width: 480px;
   }
-
-
 }
 
 @media screen and (min-width: 768px) {
-  .sectionStatistic  {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+  .sectionStatistic {
+    width: 704px;
+    /* padding-left: 32px;
+    padding-right: 32px; */
   }
   .sectionStatisticTraining {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+    width: 704px;
+    /* padding-left: 32px;
+    padding-right: 32px; */
   }
   .statisticsWrapper {
     display: flex;
+    width: 704px;
     flex-direction: column;
     margin-bottom: 32px;
-    /* margin-top: 28px; */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .sectionStatistic {
     width: 1280px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
   .sectionStatisticTraining {
     width: 1280px;
-    padding-left: 16px;
-    padding-right: 16px;
     margin-bottom: 32px;
   }
   .statisticsWrapper {

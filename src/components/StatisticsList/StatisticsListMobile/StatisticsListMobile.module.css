@@ -1,7 +1,8 @@
 .booksMobilesection {
   margin-top: 20px;
   margin-bottom: 32px;
-
+  width: 280px;
+  margin: 20px auto 32px auto;
 }
 
 /* .title {
@@ -25,16 +26,15 @@
   font-size: 19px;
   line-height: 1.21;
 
-  padding-top: 20px;
+  /* padding-top: 20px;
   padding-right: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #E0E5EB;
-
+  padding-bottom: 20px; */
+  border-bottom: 1px solid #e0e5eb;
 }
 
 .cardBook:first-child {
-    border-top: 1px solid #E0E5EB;
-    }
+  border-top: 1px solid #e0e5eb;
+}
 
 .cardBookWrapper {
   font-weight: 500;
