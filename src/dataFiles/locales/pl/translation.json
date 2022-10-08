@@ -42,6 +42,7 @@
     "confirmPassword": "Potwierdź hasło jest wymagane",
 
     "bookTitle": "Tytuł książki jest krótki.",
+    "latinLetters": "Używaj tylko liter łacińskich.",
     "titleMax": "Tytuł jest za długi.",
     "titleSpace": "Nie można zaczynać od spacji i myślnika",
     "enterTitle": "Wprowadź tytuł książki.",
@@ -81,13 +82,14 @@
     "rating": "Ocena",
     "resume": "Wznów",
     "choose": "Wybierz ocenę książki",
-    "save": "Zapisz"
+    "save": "Zapisz",
+    "myTraining": "Mój trening"
   },
 
   "training": {
     "myGoals": "Moje cele",
     "books": "Ilość książek",
-    "days": "Ilość dni",
+    "days": "Liczba dni",
     "booksLeft": "Pozostały książki",
     "myTraining": "Moje szkolenie",
     "startTraining": "Rozpocznij szkolenie",

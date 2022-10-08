@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import InputBook from 'components/InputBook';
 import ContainerLibrary from 'components/ContainerLibrary';
 import StartModal from 'components/modals/StartModal';
@@ -11,6 +12,7 @@ import Button from '../components/Button/Button';
 
 const LibraryView = () => {
   const { data, isLoading } = useFetchBooksQuery();
+  const { t } = useTranslation();
   const alreadyReadListBooks = data?.filter(book => book.status === 'finished');
   const readingNowListBooks = data?.filter(
     book => book.status === 'reading_now'
@@ -53,7 +55,7 @@ const LibraryView = () => {
               <Button
                 type="submit"
                 className="main"
-                text="My training"
+                text={t('library.myTraining')}
                 onClick={routeChange}
               />
             </div>
