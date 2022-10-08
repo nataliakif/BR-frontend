@@ -24,7 +24,7 @@
   margin-left: 4px;
   content: '';
   height: 33px;
-  border-right: 1px solid #e0e5eb;
+  /* border-right: 1px solid #e0e5eb; */
 }
 
 .nav_link {

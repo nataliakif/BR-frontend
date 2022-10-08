@@ -32,12 +32,14 @@ const App = () => {
   // }, [currentToken, data, dispatch]);
 
   return (
-    <Container>
+    <>
+    {/* <Container> */}
       {false ? (
         <Progress />
       ) : (
         <Suspense fallback={<Progress />}>
-          <Header />
+            <Header />
+            <Container>
           <Routes>
             <Route path="*" element={<Navigate to="/library" />} />
             <Route
@@ -95,10 +97,12 @@ const App = () => {
             draggablePercent={60}
             pauseOnHover
             limit={3}
-          />
+              />
+              </Container>
         </Suspense>
       )}
-    </Container>
+      {/* </Container> */}
+      </>
   );
 };
 

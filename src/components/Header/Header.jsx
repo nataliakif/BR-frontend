@@ -6,6 +6,7 @@ import Navigation from './Navigation/Navigation';
 import UserBar from './UserBar/UserBar';
 import Logout from './Logout/Logout';
 import s from '../Header/Header.module.css';
+import Container from 'components/Container';
 
 const Header = () => {
   const isLoggedIn = useSelector(getCurrentStatus);
@@ -16,7 +17,10 @@ const Header = () => {
   }
 
   return (
+    <div className={s.headerContainer}>
+      <Container>
     <header className={s.header}>
+
       <div className={headerStyles.join(' ')}>
         <NavLink to="/library" className={s.logo}>
           BR
@@ -31,6 +35,9 @@ const Header = () => {
         )}
       </div>
     </header>
+        </Container>
+        </div>
+        
   );
 };
 
