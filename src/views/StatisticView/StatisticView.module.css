@@ -2,7 +2,9 @@
 .sectionStatisticTraining {
   width: 280px;
   margin: 0 auto;
+
 }
+
 
 .myGoals {
   padding: 20px;
@@ -47,7 +49,7 @@
 
   .sectionStatisticTraining {
     width: 1280px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
   .statisticsWrapper {
     display: grid;

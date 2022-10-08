@@ -27,6 +27,10 @@
   align-items: center;
   gap: 20px;
 }
+.buttons > button{
+  width: 152px;
+  height: 40px;
+}
 @media screen and (min-width: 480px) {
   .buttons {
     display: flex;
