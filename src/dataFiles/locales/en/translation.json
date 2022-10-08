@@ -42,6 +42,7 @@
     "confirmPassword": "Confirm password is required",
 
     "bookTitle": "The title of the book is short.",
+    "latinLetters": "Use only Latin letters, please.",
     "titleMax": "The title is too long.",
     "titleSpace": "Cannot start with a space and hyphen",
     "enterTitle": "Enter the title of the book.",
@@ -81,7 +82,8 @@
     "rating": "Rating",
     "resume": "Resume",
     "choose": "Choose rating of the book",
-    "save": "Save"
+    "save": "Save",
+    "myTraining": "My training"
   },
 
   "training": {

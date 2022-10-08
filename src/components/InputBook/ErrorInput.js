@@ -4,17 +4,37 @@ const titleRules = /^[^\s-]/;
 const authorRules =
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
-const schema = t => {
+const schema = (t, currentLang) => {
   const InputAddSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, t('validation.bookTitle'))
       .max(50, t('validation.titleMax'))
+      .matches(
+        currentLang === 'ua' ? /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/ : /^[a-zA-Z0-9]/,
+        t('validation.latinLetters')
+      )
+      .matches(
+        currentLang === 'ua'
+          ? /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/
+          : /^[^а-яА-ЯіІїЇєЄ]*$/,
+        t('validation.latinLetters')
+      )
       .matches(titleRules, t('validation.titleSpace'))
       .required(t('validation.enterTitle'))
       .typeError(t('validation.titleError')),
     author: Yup.string()
       .required(t('validation.enterAuthor'))
       .matches(authorRules, t('validation.authorSpace'))
+      .matches(
+        currentLang === 'ua' ? /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/ : /^[a-zA-Z0-9]/,
+        t('validation.latinLetters')
+      )
+      .matches(
+        currentLang === 'ua'
+          ? /^[а-яА-ЯіІїЇєЄa-zA-Z0-9]/
+          : /^[^а-яА-ЯіІїЇєЄ]*$/,
+        t('validation.latinLetters')
+      )
       .min(2, t('validation.authorMin'))
       .max(50, t('validation.authorMax'))
       .typeError(t('validation.authorCharacters')),

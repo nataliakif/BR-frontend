@@ -4,6 +4,8 @@ import schema from './ErrorInput';
 import { useCreateBookMutation } from 'redux/books/booksApi';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { getLang } from 'redux/authUser/authUserSlice';
 import PropTypes from 'prop-types';
 import s from './InputBook.module.css';
 
@@ -15,12 +17,16 @@ const initialValues = {
 };
 
 function InputBook({ addedBookTitles }) {
+  const currentLang = useSelector(getLang);
   const { t } = useTranslation();
   const [createBook] = useCreateBookMutation();
 
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={schema(t)}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema(t, currentLang)}
+      >
         {({ values, handleChange, handleBlur, resetForm, isValid }) => (
           <Form
             className={s.form}
