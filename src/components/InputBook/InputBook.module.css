@@ -3,10 +3,21 @@
   margin-top: 32px;
   padding: 0 20px;
 }
-@media screen and (max-width: 1260px) {
+
+@media screen and (min-width: 768px) {
+  .form {
+    margin-top: 32px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
   .form {
     flex-direction: column;
     align-items: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .form {
     margin-top: 40px;
   }
 }
@@ -53,6 +64,9 @@
   .label:nth-child(2) {
     margin-left: 27px;
   }
+  .label:not(:first-child) {
+    margin-left: 16px;
+  }
 }
 
 input {
@@ -77,15 +91,16 @@ input:focus {
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1279px) {
   .button {
     margin-top: 35px;
   }
 }
-@media screen and (min-width: 1260px) {
+@media screen and (min-width: 1280px) {
   .button {
     margin-left: 45px;
     margin-top: 37px;
+    width: 181px;
   }
 }
 

@@ -24,13 +24,9 @@
 @media screen and (min-width: 768px) {
   .sectionStatistic {
     width: 704px;
-    /* padding-left: 32px;
-    padding-right: 32px; */
   }
   .sectionStatisticTraining {
     width: 704px;
-    /* padding-left: 32px;
-    padding-right: 32px; */
   }
   .statisticsWrapper {
     display: flex;
@@ -47,7 +43,7 @@
 
   .sectionStatisticTraining {
     width: 1280px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
   .statisticsWrapper {
     display: grid;
@@ -71,7 +67,5 @@
     height: 329px;
     grid-row-start: 1;
     grid-row-end: 3;
-
-    /* Width 288px Height 329px */
   }
 }

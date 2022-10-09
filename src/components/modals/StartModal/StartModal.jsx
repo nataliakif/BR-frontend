@@ -21,19 +21,28 @@ function StartModal() {
         aria-describedby="modal-modal-description"
       >
         <Box onClose={handleClose} className={s.modal}>
-          <div className={s.firstStepWrapper}>
-            <p className={s.firstTitle}>{t('modal.step')}1.</p>
-            <svg className={s.firstStepIcon} width="22px" height="17px">
+          <ul>
+            <li className={s.firstStepWrapper}>
+
+
+            <h3 className={s.firstTitle}>{t('modal.step')}1.</h3>
+              <div className={s.firstTitleWrapper}>
+                
+              <svg className={s.firstStepIcon} width="22px" height="17px">
               <use href={`${Icons}#icon-flat-grey`} />
             </svg>
+
             <p className={s.firstStep}>{t('modal.createLibrary')}</p>
-            <svg className={s.firstStepIconDesc} width="10px" height="12px">
+            
+              <svg className={s.firstStepIconDesc} width="10px" height="12px">
               <use href={`${Icons}#icon-Vector`} />
             </svg>
             <p className={s.firstDesc}>{t('modal.addBooks')}</p>
-          </div>
-          <div className={s.stepWrapper}>
-            <p className={s.secondTitle}>{t('modal.step')}2.</p>
+            </div>
+                
+          </li>
+          <li className={s.stepWrapper}>
+            <h3 className={s.secondTitle}>{t('modal.step')}2.</h3>
             <svg className={s.secondStepIcon} width="22px" height="17px">
               <use href={`${Icons}#icon-flag`} />
             </svg>
@@ -42,7 +51,8 @@ function StartModal() {
               <use href={`${Icons}#icon-Vector`} />
             </svg>
             <p className={s.secondStepDesc}>{t('modal.setAGoal')}</p>
-          </div>
+            </li>
+            </ul>
 
           <button
             onClick={handleClose}

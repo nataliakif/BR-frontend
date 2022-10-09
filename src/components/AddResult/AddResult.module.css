@@ -20,6 +20,8 @@
   .form {
     width: 704px;
     margin-left: 0px;
+    margin-right: 0;
+    padding: 28px 96px 32px 96px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -66,6 +68,10 @@
 .button {
   display: flex;
   justify-content: center;
+}
+.button > button {
+  width: 240px;
+  height: 40px;
 }
 .button:disabled {
   opacity: 0.5;
