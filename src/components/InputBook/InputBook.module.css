@@ -138,16 +138,6 @@ input:focus {
     width: 280px;
   }
 }
-@media screen and (min-width: 768px) {
-  .yearPages {
-    width: 152px;
-  }
-}
-@media screen and (min-width: 1260px) {
-  .yearPages {
-    width: 134px;
-  }
-}
 
 .bookError {
   position: absolute;
@@ -156,4 +146,21 @@ input:focus {
   color: var(--accent-color);
   text-align: center;
   font-size: 12px;
+  /* line-height: 1.08; */
+}
+
+@media screen and (min-width: 768px) {
+  .yearPages {
+    width: 152px;
+  }
+    .bookError{
+      top: 93%;
+      line-height: 1.08;
+    }
+}
+
+@media screen and (min-width: 1260px) {
+  .yearPages {
+    width: 134px;
+  }
 }
