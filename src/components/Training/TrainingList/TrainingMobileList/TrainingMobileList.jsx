@@ -8,7 +8,7 @@ const TrainingMobileList = ({
   deleteBookFromList,
 }) => {
   const { t } = useTranslation();
-  console.log(trainingBooks.length);
+  // console.log(trainingBooks.length);
   return (
     <div className={s.trainingWrapper}>
       <ul className={s.list}>

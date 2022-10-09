@@ -3,7 +3,7 @@
 }
 
 .section {
-  padding: 30px 0 35px;
+  padding: 32px 0 32px;
   background-image: linear-gradient(
       to right,
       rgba(9, 30, 63, 0.8),
@@ -67,7 +67,9 @@
   }
 
   .section {
-    padding: 185px 75px 175px;
+    padding: 185px 74px 175px 75px;
+
+    margin: auto 0;
     background-image: linear-gradient(
         to right,
         rgba(9, 30, 63, 0.8),

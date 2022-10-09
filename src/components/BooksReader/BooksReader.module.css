@@ -3,6 +3,11 @@
   padding: 90px 0 70px;
   width: 470px;
 }
+@media screen and (min-width: 768px) {
+  .wrapper {
+  padding: 64px 0 88px;
+  }
+}
 
 @media screen and (min-width: 1280px) {
   .wrapper {
@@ -11,7 +16,7 @@
 }
 
 .title {
-  margin-bottom: 50px;
+  margin-bottom: 48px;
   text-align: center;
   font-family: var(--logo-font);
   font-weight: 400;

@@ -1,6 +1,6 @@
 .modal {
-  padding: 31px 15px 38px 15px;
-  width: 270px;
+  padding: 43px 18px 98px 20px;
+  width: 280px;
   height: 425px;
   position: relative;
   top: 50%;
@@ -10,6 +10,11 @@
   border: 1px solid none var(--main-color);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 }
+
+.firstTitleWrapper {
+  margin-bottom: 8px;
+}
+
 @media screen and (min-width: 768px) {
   .modal {
     width: 570px;
@@ -36,7 +41,6 @@
   position: absolute;
   left: 46px;
   top: 72px;
-  margin-bottom: 8px;
   width: 137px;
   font-weight: 600;
   font-size: 14px;
