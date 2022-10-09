@@ -12,6 +12,7 @@ export const authUserApi = apiSlice.injectEndpoints({
     fetchCurrentUser: builder.query({
       query: () => '/auth/user',
       method: 'GET',
+      transformResponse: response => response.data.user,
     }),
     registerUser: builder.mutation({
       query: credentials => ({
