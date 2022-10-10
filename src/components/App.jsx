@@ -10,7 +10,6 @@ import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import { Navigate } from 'react-router';
 import 'react-toastify/dist/ReactToastify.css';
-import Container from './Container/Container';
 
 const InfoMobile = lazy(() => import('../components/InfoMobile'));
 const LoginView = lazy(() => import('../views/LoginView'));
