@@ -8,6 +8,7 @@ import { Navigate } from 'react-router';
 import Container from './Container';
 import 'react-toastify/dist/ReactToastify.css';
 
+const InfoMobile = lazy(() => import('../components/InfoMobile'));
 const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
@@ -39,6 +40,7 @@ const App = () => {
         <Suspense fallback={<Progress />}>
           <Header />
           <Routes>
+            <Route path="/" exact element={<InfoMobile />} />
             <Route path="*" element={<Navigate to="/library" />} />
             <Route
               path="/login"
@@ -64,7 +66,6 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-
             <Route
               path="/training"
               element={

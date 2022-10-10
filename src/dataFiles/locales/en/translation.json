@@ -60,6 +60,7 @@
     "pagesMin": "The number of pages is more than 1.",
     "pagesMax": "The number of pages is less than 4.",
     "pagesFill": "Fill in the number of pages.",
+    "yearFill": "Fill in the date.",
     "pagesError": "Enter the number of pages from 1 to 4.",
     "pagesMin1": "May not be less then 1",
     "pagesMore": "More then the pages in training",
