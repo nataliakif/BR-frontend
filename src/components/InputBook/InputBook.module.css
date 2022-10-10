@@ -150,6 +150,7 @@ input:focus {
   position: absolute;
   top: 80%;
   right: 2%;
+  margin-top: 7px;
   color: var(--accent-color);
   text-align: center;
   font-size: 12px;
