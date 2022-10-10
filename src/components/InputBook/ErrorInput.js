@@ -41,7 +41,7 @@ const schema = (t, currentLang) => {
     publishYear: Yup.number()
       .min(1890, t('validation.yearMin'))
       .max(2022, t('validation.yearMax'))
-      .required(t('validation.pagesFill'))
+      .required(t('validation.yearFill'))
       .typeError(t('validation.yearError')),
     pagesTotal: Yup.number()
       .min(1, t('validation.pagesMin'))
