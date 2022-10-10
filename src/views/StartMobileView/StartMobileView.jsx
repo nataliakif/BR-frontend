@@ -1,35 +1,40 @@
+import { useTranslation } from 'react-i18next';
 import s from './StartMobileView.module.css';
 
-const StartMobileView = () => {
+const StartMobileView = ({ setInfoMobile }) => {
+  const { t } = useTranslation();
+
   return (
     <section className={s.wrapper}>
       <div className={s.listBox}>
         <h1 className={s.title}>Books Reading</h1>
-        <h2 className={s.subtitle}>Will help you to</h2>
+        <h2 className={s.subtitle}>{t('modal.willHelp')}</h2>
         <ul className={s.list}>
-          <li className={s.item}>
-            Create your goal faster and proceed to read
-          </li>
-          <li className={s.item}>
-            Divide process proportionally <br /> for each day
-          </li>
-          <li className={s.item}>Track your success</li>
+          <li className={s.item}>{t('modal.createGoal')}</li>
+          <li className={s.item}>{t('modal.process')}</li>
+          <li className={s.item}>{t('modal.trackSuccess')}</li>
         </ul>
 
-        <h2 className={s.subtitle}>You may also</h2>
+        <h2 className={s.subtitle}>{t('modal.youMay')}</h2>
         <ul className={s.list}>
-          <li className={s.item}>Pose your own independent point of view</li>
-          <li className={s.item}>
-            Improve your professional skills according to new knowledge
-          </li>
-          <li className={s.item}>Become an interesting interlocutor</li>
+          <li className={s.item}>{t('modal.pose')}</li>
+          <li className={s.item}>{t('modal.improve')}</li>
+          <li className={s.item}>{t('modal.become')}</li>
         </ul>
         <div className={s.linkBox}>
-          <a href="/" className={s.link}>
-            Login
+          <a
+            href="/BR-frontend/login"
+            className={s.link}
+            onClick={() => setInfoMobile(false)}
+          >
+            {t('RegisterForm.link')}
           </a>
-          <a href="/" className={s.link}>
-            Register
+          <a
+            href="/BR-frontend/register"
+            className={s.link}
+            onClick={() => setInfoMobile(false)}
+          >
+            {t('RegisterForm.button')}
           </a>
         </div>
       </div>

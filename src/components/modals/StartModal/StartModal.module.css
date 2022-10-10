@@ -1,7 +1,8 @@
 .modal {
-  padding: 43px 18px 98px 20px;
+  padding: 43px 18px 150px 20px;
   width: 280px;
   height: 425px;
+  margin: 0px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -17,23 +18,21 @@
 
 @media screen and (min-width: 768px) {
   .modal {
-    width: 570px;
-    height: 270px;
-    padding: 15px 30px 30px 30px;
+    width: 600px;
+    margin: 0px;
+    height: 272px;
+    padding: 40px 30px 30px 30px;
   }
 }
 
 .firstTitle {
-  margin-bottom: 5px;
   font-weight: 600;
   font-size: 18px;
-  line-height: 2.1;
   color: #242a37;
 }
 @media screen and (min-width: 768px) {
   .firstTitle {
     font-size: 19px;
-    line-height: 2;
   }
 }
 
@@ -43,17 +42,15 @@
   top: 72px;
   width: 137px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.2;
   color: #242a37;
 }
 @media screen and (min-width: 768px) {
   .firstStep {
-    top: 53px;
     left: 61px;
     width: 270px;
     font-size: 16px;
-    line-height: 2.3;
   }
 }
 
@@ -69,7 +66,7 @@
 @media screen and (min-width: 768px) {
   .firstDesc {
     line-height: 2.7;
-    top: 79px;
+    top: 88px;
     left: 80px;
     width: 390px;
   }
@@ -83,7 +80,6 @@
 @media screen and (min-width: 768px) {
   .firstStepIcon {
     left: 30px;
-    top: 63px;
   }
 }
 
@@ -94,16 +90,14 @@
 }
 @media screen and (min-width: 768px) {
   .firstStepIconDesc {
-    top: 91px;
+    top: 100px;
     left: 61px;
   }
 }
 
 .secondTitle {
   position: absolute;
-  left: 15px;
-  top: 185px;
-  margin-bottom: 5px;
+  top: 160px;
   font-weight: 600;
   font-size: 18px;
   line-height: 2.1;
@@ -111,20 +105,18 @@
 }
 @media screen and (min-width: 768px) {
   .secondTitle {
-    top: 137px;
-    left: 31px;
+    top: 140px;
+    /* left: 31px; */
     font-size: 19px;
-    line-height: 2;
   }
 }
 
 .secondStep {
   position: absolute;
   left: 46px;
-  top: 228px;
-  margin-bottom: 8px;
+  top: 195px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.2;
   color: #242a37;
 }
@@ -141,7 +133,7 @@
 .secondStepDesc {
   position: absolute;
   left: 65px;
-  top: 271px;
+  top: 243px;
   font-size: 14px;
   line-height: 1.2;
   color: #898f9f;
@@ -157,7 +149,7 @@
 .secondStepIcon {
   position: absolute;
   left: 15px;
-  top: 228px;
+  top: 200px;
 }
 @media screen and (min-width: 768px) {
   .secondStepIcon {
@@ -169,7 +161,7 @@
 .secondStepIconDesc {
   position: absolute;
   left: 46px;
-  top: 273px;
+  top: 245px;
 }
 @media screen and (min-width: 768px) {
   .secondStepIconDesc {
@@ -189,8 +181,8 @@
 
 .okBtn {
   position: absolute;
-  left: 71px;
-  top: 347px;
+  left: 76px;
+  top: 310px;
   width: 127px;
   font-size: 14px;
   line-height: 2.7;
