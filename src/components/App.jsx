@@ -29,13 +29,11 @@ const App = () => {
       skip: !currentToken,
     }
   );
-  console.log(data);
   useEffect(() => {
-    console.log(data);
     if (data) {
-      dispatch(setCredentials({ user: data, token: data.token }));
+      dispatch(setCredentials({ user: data }));
     }
-  }, [currentToken, data, dispatch]);
+  }, [data, dispatch]);
 
   return (
     <Container>
