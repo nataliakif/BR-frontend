@@ -13,6 +13,7 @@
   font-weight: 700;
 
   width: 150px;
+  height: 37px;
   padding-top: 1px;
   padding-bottom: 1px;
   font-size: 16px;
@@ -187,7 +188,7 @@
   .btn {
     margin-top: 32px;
   }
-    .errEmail{
-      top: 26%;
-    }
+  .errEmail {
+    top: 26%;
+  }
 }
