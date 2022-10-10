@@ -1,13 +1,7 @@
 .form {
   display: flex;
   margin-top: 32px;
-  padding: 0 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .form {
-    margin-top: 32px;
-  }
+  padding: 0 16px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -26,6 +20,7 @@
   display: flex;
   flex-direction: column;
 }
+
 @media screen and (min-width: 768px) {
   .form__container {
     flex-direction: row;
@@ -74,10 +69,18 @@ input {
   border: 1px solid var(--icon-color);
   box-sizing: border-box;
   height: 42px;
-  margin-bottom: 10px;
   width: 100%;
   padding: 2px 13px;
 }
+@media screen and (max-width: 479px) {
+  input {
+    margin-bottom: 20px;
+  }
+  .button {
+    margin-bottom: 100px;
+  }
+}
+
 input:focus {
   background-color: var(--main-color);
 }
@@ -90,36 +93,29 @@ input:focus {
   cursor: pointer;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
-}
-@media screen and (max-width: 1279px) {
-  .button {
-    margin-top: 35px;
-  }
+  margin-top: 40px;
 }
 @media screen and (min-width: 1280px) {
   .button {
-    margin-left: 45px;
+    margin-left: 48px;
     margin-top: 37px;
     width: 181px;
+    margin-top: 38px;
   }
 }
-
-/* .button:hover,
-.button:focus {
-  background: var(--accent-color);
-  color: var(--bg-color);
-} */
 .button:disabled {
   opacity: 0.5;
 }
 @media screen and (min-width: 768px) {
   .title {
     width: 704px;
+    margin-bottom: 24px;
   }
 }
-@media screen and (min-width: 1259px) {
+@media screen and (min-width: 1280px) {
   .title {
     width: 346px;
+    margin-bottom: 0;
   }
 }
 @media screen and (min-width: 768px) {
@@ -127,7 +123,7 @@ input:focus {
     width: 336px;
   }
 }
-@media screen and (min-width: 1259px) {
+@media screen and (min-width: 1280px) {
   .author {
     width: 250px;
   }
@@ -136,6 +132,17 @@ input:focus {
 @media screen and (max-width: 480px) {
   .yearPages {
     width: 280px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .yearPages {
+    width: 152px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .yearPages {
+    width: 134px;
   }
 }
 
@@ -153,10 +160,10 @@ input:focus {
   .yearPages {
     width: 152px;
   }
-    .bookError{
-      top: 93%;
-      line-height: 1.08;
-    }
+  .bookError {
+    top: 93%;
+    line-height: 1.08;
+  }
 }
 
 @media screen and (min-width: 1260px) {

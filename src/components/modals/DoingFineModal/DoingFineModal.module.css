@@ -1,11 +1,19 @@
 .wrapper {
   padding: 45px 64px;
   text-align: center;
+  width: 280px;
+  height: 358px;
 }
 
 @media screen and (min-width: 480px) {
   .wrapper {
     padding: 42px 30px 48px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 394px;
+    height: 286px;
   }
 }
 .wrapper_svg {
@@ -16,6 +24,7 @@
 .wrapper_text {
   margin-top: 0;
   font-size: 16px;
+  font-weight: 500;
   line-height: 1.38;
   margin-bottom: 24px;
 }
