@@ -2,9 +2,12 @@
   margin-top: 20px;
   margin-bottom: 32px;
   width: 280px;
-  margin: 20px auto 32px auto;
 }
-
+@media screen and (min-width: 480px) {
+  .booksMobilesection {
+    width: 440px;
+  }
+}
 .checkBoxWrapper {
   width: 34px;
 }
@@ -38,7 +41,6 @@
 .cardTableBody > th {
   color: var(--secondary-text-color);
 }
-
 
 .tableContent {
   padding-top: 5px;

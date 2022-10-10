@@ -1,37 +1,35 @@
-.container {
+.chart {
   padding-top: 25px;
   padding-bottom: 49px;
   padding-left: 22px;
   padding-right: 22px;
-  margin: 0 auto;
   width: 280px;
   height: 290px;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 }
-
+@media screen and (min-width: 480px) {
+  .chart {
+    width: 440px;
+  }
+}
 @media screen and (min-width: 768px) {
-  .container {
+  .chart {
     height: 340px;
     width: 704px;
     padding-top: 35px;
     padding-bottom: 60px;
     padding-left: 46px;
     padding-right: 46px;
-    background: #ffffff;
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
+  .chart {
     height: 340px;
     width: 928px;
     padding-left: 40px;
     padding-right: 77px;
-    background: #ffffff;
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
-    margin: 0;
   }
 }
 

@@ -119,7 +119,7 @@ export const Chart = ({ plan, readingStatistics }) => {
   }
 
   return (
-    <div className={s.container}>
+    <div className={s.chart}>
       <p className={s.chart__title}>
         {t('statistics.amountPagesDay')}
         <span className={s.trainigPlan__title}>{plan}</span>

@@ -5,7 +5,7 @@ import {
 } from '../../redux/training/trainingApi';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import Container from 'components/Container';
 import CountdownTimers from 'components/CountdownTimers';
 import MyGoals from 'components/MyGoals';
 import AddResult from 'components/AddResult/AddResult';
@@ -114,45 +114,41 @@ const StatisticView = () => {
     <Progress />
   ) : (
     currentTraining && (
-      <>
-        <section className={s.sectionStatisticTraining}>
-          <div className={s.statisticsWrapper}>
-            <CountdownTimers targetDate={currentTraining.finishDate} />
-            <div className={s.sectionMuGoals}>
-              <MyGoals
-                bookAmount={currentTraining.books.length}
-                daysAmount={currentTraining.trainingDaysAmount}
-                booksLeft={currentTraining.notFinishedBooksAmount}
-                showBooksLeft={true}
-              />
-            </div>
-            {isMobile ? (
-              <StatisticsListMobile books={currentTraining.books} />
-            ) : (
-              <StatisticsList books={currentTraining.books} />
-            )}
+      <Container>
+        <div className={s.statisticsWrapper}>
+          <CountdownTimers targetDate={currentTraining.finishDate} />
+          <div className={s.sectionMuGoals}>
+            <MyGoals
+              bookAmount={currentTraining.books.length}
+              daysAmount={currentTraining.trainingDaysAmount}
+              booksLeft={currentTraining.notFinishedBooksAmount}
+              showBooksLeft={true}
+            />
           </div>
-        </section>
-        <section className={s.sectionStatistic}>
-          <div className={s.statistics}>
-            <div className={s.leftWrapper}>
-              <Chart
-                plan={currentTraining.goalPerDay}
-                readingStatistics={calculateStatistics(
-                  currentTraining.readStatistics ?? []
-                )}
-              />
-            </div>
-            <AddResult data={currentTraining} updateResult={updateResult} />
+          {isMobile ? (
+            <StatisticsListMobile books={currentTraining.books} />
+          ) : (
+            <StatisticsList books={currentTraining.books} />
+          )}
+        </div>
+        <div className={s.statistics}>
+          <div className={s.leftWrapper}>
+            <Chart
+              plan={currentTraining.goalPerDay}
+              readingStatistics={calculateStatistics(
+                currentTraining.readStatistics ?? []
+              )}
+            />
           </div>
-        </section>
+          <AddResult data={currentTraining} updateResult={updateResult} />
+        </div>
         {isTrainingExecuted && (
           <TrainingExecutedModal
             handleCloseOfTraining={handleCloseOfTraining}
             isLoading={isLoading}
           />
-        )}{' '}
-      </>
+        )}
+      </Container>
     )
   );
 };
