@@ -6,7 +6,7 @@ import { useFetchBooksQuery } from 'redux/books/booksApi';
 import { useCreateTrainingMutation } from 'redux/training/trainingApi';
 import { useFetchTrainingQuery } from 'redux/training/trainingApi';
 import { useEditBookMutation } from 'redux/books/booksApi';
-
+import Container from 'components/Container';
 import MyGoals from 'components/MyGoals';
 import TrainingForm from 'components/Training/TrainingForm/TrainingForm';
 import { Chart } from 'components/Chart/Chart';
@@ -106,7 +106,7 @@ const TrainingView = () => {
   return isFetchingTraining ? (
     <Progress />
   ) : (
-    <div className={s.container}>
+    <Container>
       <div className={s.training}>
         {!showElement && (
           <MyGoals
@@ -158,9 +158,11 @@ const TrainingView = () => {
         </div>
       </div>
 
-      {!showElement && (
-        <Chart plan={planedPagesPerDay} readingStatistics={[]} />
-      )}
+      <div className={s.chartContainer}>
+        {!showElement && (
+          <Chart plan={planedPagesPerDay} readingStatistics={[]} />
+        )}
+      </div>
       {isMobile && !showElement && (
         <button
           type="button"
@@ -170,7 +172,7 @@ const TrainingView = () => {
           +
         </button>
       )}
-    </div>
+    </Container>
   );
 };
 

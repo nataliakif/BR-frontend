@@ -9,16 +9,15 @@ import Progress from 'components/Progress/Progress';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import { Navigate } from 'react-router';
-import Container from './Container';
 import 'react-toastify/dist/ReactToastify.css';
+import Container from './Container/Container';
 
 const LoginView = lazy(() => import('../views/LoginView'));
 const RegisterView = lazy(() => import('../views/RegisterView'));
 const Header = lazy(() => import('../components/Header/Header'));
-const LibraryView = lazy(() => import('../views/LibraryView'));
+const LibraryView = lazy(() => import('../views/LibraryView/LibraryView'));
 const TrainingView = lazy(() => import('../views/TrainingView/TrainingView'));
 const StatisticView = lazy(() => import('../views/StatisticView'));
-// const NotFoundView = lazy(() => import('../views/NotFoundView.jsx'));
 
 const App = () => {
   const currentToken = useSelector(getCurrentToken);
@@ -36,7 +35,7 @@ const App = () => {
   }, [data, dispatch]);
 
   return (
-    <Container>
+    <>
       {isFetchingCurUser ? (
         <Progress />
       ) : (
@@ -102,7 +101,7 @@ const App = () => {
           />
         </Suspense>
       )}
-    </Container>
+    </>
   );
 };
 

@@ -2,7 +2,6 @@
   "name": "br-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nataliakif.github.io/BR-frontend/",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -45,9 +44,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
+    "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {
     "extends": [
