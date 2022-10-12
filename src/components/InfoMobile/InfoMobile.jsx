@@ -1,7 +1,7 @@
 import Media from 'react-media';
+import { Navigate } from 'react-router-dom';
 
 import StartMobileView from 'views/StartMobileView';
-import LoginView from 'views/LoginView';
 
 const InfoMobile = () => {
   return (
@@ -14,7 +14,7 @@ const InfoMobile = () => {
       {matches => (
         <>
           {matches.mobile && <StartMobileView />}
-          {matches.tablet && <LoginView />}
+          {matches.tablet && <Navigate to="/login" />}
         </>
       )}
     </Media>
